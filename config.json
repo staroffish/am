@@ -1,0 +1,12 @@
+{
+    "DBIP":"127.0.0.1",
+    "DBPort":"27017",
+    "DBName":"am",
+    "DBUser":"am",
+    "DBPasswd":"amPasswd",
+    "BindAddr":"0.0.0.0:8228",
+    "AdOn":false,
+    "BTWebIP":"127.0.0.1",
+    "BTWebPort":"8888",
+    "DebugOn":true
+}
