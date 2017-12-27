@@ -52,6 +52,7 @@ type MainPage struct {
 
 // ShowPageCtx - 显示页面
 func (m *MainPage) ShowPageCtx(_ *JSONRequest, w http.ResponseWriter) error {
+	defer global.TraceLog("MainPage.ShowPageCtx")()
 	aniLst := make([]db.Anime, 0)
 	it := db.DB.C("anime").Find(bson.M{}).Sort("-updatetime").Iter()
 	// it := db.DB.C("anime").Find(bson.M{}).Iter()
@@ -59,9 +60,16 @@ func (m *MainPage) ShowPageCtx(_ *JSONRequest, w http.ResponseWriter) error {
 	for i := 0; i < 30; i++ {
 		var anime db.Anime
 		if !it.Next(&anime) {
+			if err := it.Err(); err != nil {
+				return err
+			}
 			break
 		}
 		aniLst = append(aniLst, anime)
+	}
+	err := it.Close()
+	if err != nil {
+		global.Log.Debugf("am:it.Close:%v", err);
 	}
 
 	if m.tmpl == nil {

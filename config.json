@@ -6,6 +6,7 @@
     "DBPasswd":"amPasswd",
     "BindAddr":"0.0.0.0:8228",
     "AdOn":false,
+    "AdInter":300,
     "BTWebIP":"127.0.0.1",
     "BTWebPort":"8888",
     "DebugOn":true

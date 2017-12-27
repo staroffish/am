@@ -59,3 +59,11 @@ func (l *LogStruct) Warnf(format string, i ...interface{}) {
 	}
 	l.logger.Printf(warnStr, fmt.Sprintf(format, i...))
 }
+
+// TraceLog - 打印函数的trace log
+func TraceLog(log string) func(){
+	Log.Debugf("Start %s", log);
+	return func(){
+		Log.Debugf("End %s", log);
+	}
+}

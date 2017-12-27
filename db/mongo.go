@@ -13,7 +13,7 @@ var DB *mgo.Database
 func Connect(config *global.Config) error {
 	sess, err := mgo.Dial(config.DBIP + ":" + config.DBPort)
 	if err != nil {
-		return fmt.Errorf("mgo.Dial:%v", err)
+		return fmt.Errorf("mgo.Dial:%v", err);
 	}
 	dbSess = sess
 	db := dbSess.DB(config.DBName)

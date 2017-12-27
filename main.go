@@ -3,6 +3,7 @@
 package main
 
 import (
+	"ad"
 	"db"
 	"fmt"
 	"global"
@@ -13,7 +14,7 @@ import (
 )
 
 var usage = `Usage:am [Config Path]`
-var viewMap = map[string]view.Page {"main":&view.MainPage{}}
+var viewMap = map[string]view.Page{"main": &view.MainPage{}}
 
 func main() {
 	if len(os.Args) < 2 {
@@ -34,19 +35,27 @@ func main() {
 		os.Exit(-1)
 	}
 	defer db.Close()
+	autoDownload := ad.New(global.Cfg)
+
+	autoDownload.Run()
+	if err != nil {
+		global.Log.Errorf("am:autoDownload.Run:%v", err)
+		os.Exit(-1)
+	}
 	http.HandleFunc("/", handler)
 	http.Handle("/js/", http.FileServer(http.Dir("./")))
 	global.Log.Infof("%v", http.ListenAndServe(global.Cfg.BindAddr, nil))
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
+	defer global.TraceLog("main.handler")()
 	body := make([]byte, 1024)
 	n, err := r.Body.Read(body)
 	var jReq *view.JSONRequest
 
 	if n == 0 {
 		// 请求的是主页
-		jReq = &view.JSONRequest{Method:"main"}
+		jReq = &view.JSONRequest{Method: "main"}
 	} else if err != io.EOF {
 		global.Log.Errorf("am:Body.Read:%v", err)
 		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
@@ -60,16 +69,16 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	
+
 	page, ok := viewMap[jReq.Method]
 	if !ok {
-		global.Log.Debugf("%v", "am:unsupported method")
+		global.Log.Debugf("am:unsupported method")
 		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 		return
 	}
-	err = page.ShowPageCtx(jReq, w);
+	err = page.ShowPageCtx(jReq, w)
 	if err != nil {
-		global.Log.Errorf("%v", "am:page.ShowPageCtx:%v", err)
+		global.Log.Errorf("am:page.ShowPageCtx:%v", err)
 		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 	}
 }

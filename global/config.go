@@ -24,6 +24,8 @@ type Config struct {
 	BindAddr string `json:"BindAddr"`
 	// 是否开启自动下载
 	AdOn bool `json:"AdOn"`
+	// 自动下载轮循间隔
+	AdInter int `json:"AdInter"`
 	// BT远程下载的地址
 	BTWebIP string `json:"BTWebIP"`
 	// BT远程下载的端口
