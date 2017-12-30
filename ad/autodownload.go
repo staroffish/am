@@ -98,6 +98,8 @@ func (ad *Ad) Run() {
 				continue;
 			} 
 		
+			// 提交任务
+			
 			fmt.Printf("magnet:%s\n", webCtx[1]);
 		}
 	}

@@ -3,13 +3,14 @@
 package main
 
 import (
-	"ad"
 	"db"
 	"fmt"
 	"global"
 	"io"
 	"net/http"
 	"os"
+	"rd"
+	"rd/deluge"
 	"view"
 )
 
@@ -35,12 +36,39 @@ func main() {
 		os.Exit(-1)
 	}
 	defer db.Close()
-	autoDownload := ad.New(global.Cfg)
+	// autoDownload := ad.New(global.Cfg)
 
-	autoDownload.Run()
-	if err != nil {
-		global.Log.Errorf("am:autoDownload.Run:%v", err)
+	// autoDownload.Run()
+	// if err != nil {
+	// 	global.Log.Errorf("am:autoDownload.Run:%v", err)
+	// 	os.Exit(-1)
+	// }
+
+	dnldr := deluge.NewDownloader()
+	// if err = dnldr.AddTask(&rd.RdTask{Link: "magnet:?xt=urn:btih:8a2e355195bf39add94525e8bdc929433c6a32e7&tr=http://open.acgtracker.com:1096/announce", SavePath: "/usb/"}); err != nil {
+	// 	fmt.Printf("am:%v\n", err)
+	// 	os.Exit(-1)
+	// }
+	if err = dnldr.PauseTask(&rd.RdTask{Id:"c5d436eb9b05e37ca6025f27f87df8ab3f018cdf"}); err != nil {
+		fmt.Printf("am:%v\n", err);
 		os.Exit(-1)
+	}
+	// if err = dnldr.DeleteTask(&rd.RdTask{Id:"8a2e355195bf39add94525e8bdc929433c6a32e7"}); err != nil {
+	// 	fmt.Printf("am:%v\n", err);
+	// 	os.Exit(-1)
+	// }
+	// if err = dnldr.ResumeTask(&rd.RdTask{Id:"c5d436eb9b05e37ca6025f27f87df8ab3f018cdf"}); err != nil {
+	// 	fmt.Printf("am:%v\n", err);
+	// 	os.Exit(-1)
+	// }
+	
+	tasks, err := dnldr.GetAllTask()
+	if err != nil {
+		fmt.Printf("am:%v\n", err)
+		os.Exit(-1)
+	}
+	for _, t := range tasks {
+		fmt.Printf("%v\n", t)
 	}
 	http.HandleFunc("/", handler)
 	http.Handle("/js/", http.FileServer(http.Dir("./")))

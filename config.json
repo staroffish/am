@@ -7,7 +7,7 @@
     "BindAddr":"0.0.0.0:8228",
     "AdOn":false,
     "AdInter":300,
-    "BTWebIP":"127.0.0.1",
-    "BTWebPort":"8888",
+    "BTWebUrl":"http://192.168.3.2:8112/json",
+    "BTWebPass":"amPasswd",
     "DebugOn":true
 }

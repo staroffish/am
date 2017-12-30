@@ -20,29 +20,6 @@ type AdTask struct {
 }
 
 const (
-	// 下载中
-	Downloading = "iota"
-	// 暂停
-	Stoped
-	// 下载完成
-	Completed
-)
-
-// RdTask - 远程下载任务的结构体
-type RdTask struct {
-	// 文件/目录名
-	Name string `json:"name"`
-	// 路径
-	SavePath string `json:"save_path"`
-	// 进度
-	Progress string `json:"progress"`
-	// 状态
-	State string `json:"state"`
-	// 文件大小
-	Size int `json:"total_wanted"`
-}
-
-const (
 	// 连载中
 	OnAir = iota
 	// 已完结

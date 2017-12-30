@@ -27,9 +27,9 @@ type Config struct {
 	// 自动下载轮循间隔
 	AdInter int `json:"AdInter"`
 	// BT远程下载的地址
-	BTWebIP string `json:"BTWebIP"`
-	// BT远程下载的端口
-	BTWebPort string `json:"BTWebPort"`
+	BTWebUrl string `json:"BTWebUrl"`
+	// BT远程下载的密码
+	BTWebPass string `json:"BTWebPass"`
 	// 是否开启DEBUGLOG
 	DebugOn bool `json:"DebugOn"`
 }
@@ -66,7 +66,7 @@ func NewConfig(filePath string) error {
 func (c *Config) check() error {
 	if c.DBIP == "" || c.DBPort == "" ||
 		c.BindAddr == "" ||
-		c.BTWebIP == "" || c.BTWebPort == "" ||
+		c.BTWebUrl == "" ||
 		c.DBName == "" || c.DBUser == "" ||
 		c.DBPasswd == "" {
 		return fmt.Errorf("Config file invalid")
