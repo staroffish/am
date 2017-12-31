@@ -9,5 +9,6 @@
     "AdInter":300,
     "BTWebUrl":"http://192.168.3.2:8112/json",
     "BTWebPass":"amPasswd",
-    "DebugOn":true
+    "DebugOn":true,
+    "WebTimeout":15
 }

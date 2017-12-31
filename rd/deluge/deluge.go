@@ -10,13 +10,17 @@ import (
 	"net/http"
 	"rd"
 	"strings"
+	"time"
 )
 
-var taskType = "magnet"
+// TaskType - 下载类型字符串
+var TaskType = "magnet"
+
 // DelugeDownloader - deluge下载
 type DelugeDownloader struct {
 	password   string
 	requestUrl string
+	timeout    int
 }
 
 type normalRes struct {
@@ -35,9 +39,9 @@ const (
 	searchFmt = `{"method":"web.update_ui","params":[["queue","name","total_wanted","state","progress","num_seeds","total_seeds","num_peers","total_peers","download_payload_rate","upload_payload_rate","eta","ratio","distributed_copies","is_auto_managed","time_added","tracker_host","save_path","total_done","total_uploaded","max_download_speed","max_upload_speed","seeds_peers_ratio"],{}],"id":2}`
 )
 
-func NewDownloader() *DelugeDownloader {
-	defer global.TraceLog("deluge.DelugeDownloader.NewDownloader")()
-	return &DelugeDownloader{global.Cfg.BTWebPass, global.Cfg.BTWebUrl}
+func init() {
+	var dnldr DelugeDownloader
+	rd.SetDownloader(TaskType, &dnldr)
 }
 
 func (d *DelugeDownloader) check() error {
@@ -110,6 +114,20 @@ func checkResp(body io.ReadCloser) bool {
 	return res.Result
 }
 
+// NewDownloader - 初始化下载器
+func (d *DelugeDownloader) InitDownloader(cfg *global.Config) error {
+	defer global.TraceLog("deluge.DelugeDownloader.NewDownloader")()
+	if cfg.BTWebPass == "" ||
+		cfg.BTWebUrl == "" ||
+		cfg.WebTimeout == 0 {
+		return fmt.Errorf("deluge.NewDownloader:Config error")
+	}
+	d.password = cfg.BTWebPass
+	d.requestUrl = cfg.BTWebUrl
+	d.timeout = cfg.WebTimeout
+	return nil
+}
+
 // AddTask - 添加任务
 func (d *DelugeDownloader) AddTask(t *rd.RdTask) error {
 	defer global.TraceLog("deluge.DelugeDownloader.AddTask")()
@@ -143,7 +161,7 @@ func (d *DelugeDownloader) PauseTask(t *rd.RdTask) error {
 	}
 	defer d.logout(cookie)
 
-	jsonStr := fmt.Sprintf(pauseFmt, t.Id)
+	jsonStr := fmt.Sprintf(pauseFmt, t.Ids)
 
 	resp, err := d.sendReq(cookie, jsonStr)
 	if err != nil {
@@ -163,7 +181,7 @@ func (d *DelugeDownloader) DeleteTask(t *rd.RdTask) error {
 	}
 	defer d.logout(cookie)
 
-	jsonStr := fmt.Sprintf(deleteFmt, t.Id)
+	jsonStr := fmt.Sprintf(deleteFmt, t.Ids)
 
 	resp, err := d.sendReq(cookie, jsonStr)
 	if err != nil {
@@ -172,7 +190,7 @@ func (d *DelugeDownloader) DeleteTask(t *rd.RdTask) error {
 	defer resp.Body.Close()
 
 	if checkResp(resp.Body) == false {
-		return fmt.Errorf("DelugeDownloader.DeleteTask:id=%s", t.Id)
+		return fmt.Errorf("DelugeDownloader.DeleteTask:id=%s", t.Ids)
 	}
 
 	return nil
@@ -187,7 +205,7 @@ func (d *DelugeDownloader) ResumeTask(t *rd.RdTask) error {
 	}
 	defer d.logout(cookie)
 
-	jsonStr := fmt.Sprintf(resumeFmt, t.Id)
+	jsonStr := fmt.Sprintf(resumeFmt, t.Ids)
 
 	resp, err := d.sendReq(cookie, jsonStr)
 	if err != nil {
@@ -281,7 +299,7 @@ func (d *DelugeDownloader) GetAllTask() ([]rd.RdTask, error) {
 
 	for id, t := range taskList {
 		var task rd.RdTask
-		task.Id = id
+		task.Ids = id
 		ctx, ok := t.(map[string]interface{})
 		if !ok {
 			return nil, fmt.Errorf("DelugeDownloader.GetAllTask:taskList:no map")
@@ -297,7 +315,7 @@ func (d *DelugeDownloader) GetAllTask() ([]rd.RdTask, error) {
 		if ok {
 			task.Size = int(tmpFloat)
 		}
-		task.TaskType = taskType
+		task.TaskType = TaskType
 
 		tasks = append(tasks, task)
 	}
@@ -310,14 +328,20 @@ func (d *DelugeDownloader) sendReq(cookie *http.Cookie, jsonStr string) (*http.R
 
 	r, err := http.NewRequest(http.MethodPost, d.requestUrl, strings.NewReader(jsonStr))
 	if err != nil {
-		return nil, fmt.Errorf("DelugeDownloader.sendReq:%v", err)
+		return nil, fmt.Errorf("DelugeDownloader.sendReq.NewRequest:%v", err)
 	}
 
 	addHeader(r, cookie)
+	timeout := make(chan struct{})
+	r.Cancel = timeout
+	go func() {
+		defer close(timeout)
+		time.Sleep(time.Duration(d.timeout) * time.Second)
+	}()
 
 	resp, err := http.DefaultClient.Do(r)
 	if err != nil {
-		return nil, fmt.Errorf("DelugeDownloader.sendReq:%v", err)
+		return nil, fmt.Errorf("DelugeDownloader.sendReq.Do:%v", err)
 	}
 
 	if resp.StatusCode != http.StatusOK {

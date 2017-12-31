@@ -32,6 +32,8 @@ type Config struct {
 	BTWebPass string `json:"BTWebPass"`
 	// 是否开启DEBUGLOG
 	DebugOn bool `json:"DebugOn"`
+	// 连接远程WEB服务器的超时时间
+	WebTimeout int `json:"WebTimeout"`
 }
 
 const (
@@ -70,6 +72,9 @@ func (c *Config) check() error {
 		c.DBName == "" || c.DBUser == "" ||
 		c.DBPasswd == "" {
 		return fmt.Errorf("Config file invalid")
+	}
+	if c.WebTimeout == 0 {
+		c.WebTimeout = 10
 	}
 	return nil
 }

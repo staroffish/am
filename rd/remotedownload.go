@@ -7,8 +7,8 @@ import (
 
 // RdTask - 远程下载任务的结构体
 type RdTask struct {
-	// 任务标识
-	Id string
+	// 任务标识(可能是一个逗号分割的ID列表)
+	Ids string
 	// 任务链接
 	Link string
 	// 文件/目录名
@@ -25,15 +25,29 @@ type RdTask struct {
 	TaskType string
 }
 
-var downloaderList map[string]Downloader
+var downloaderList = make(map[string]Downloader)
 
 // Downloader - 远程下载任务的接口
 type Downloader interface {
+	InitDownloader(cfg *global.Config) error
 	AddTask(t *RdTask) error
 	PauseTask(t *RdTask) error
 	ResumeTask(t *RdTask) error
 	DeleteTask(t *RdTask) error
 	GetAllTask() ([]RdTask, error)
+}
+
+// InitDownloader - 初始化下载器
+func InitDownloader() error {
+	if len(downloaderList) == 0 {
+		return fmt.Errorf("InitDownloader:No downloader exists");
+	}
+	for _, downloader := range downloaderList {
+		if err := downloader.InitDownloader(global.Cfg); err != nil {
+			return err;
+		}
+	}
+	return nil
 }
 
 // SetDownloader - 添加下载器
