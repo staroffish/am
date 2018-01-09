@@ -19,37 +19,30 @@ type AdTask struct {
 	AnimeID bson.ObjectId `json:"animeid" bson:"animeid"`
 }
 
-const (
-	// 连载中
-	OnAir = iota
-	// 已完结
-	Finished
-)
-
 // Anime - 动画结构体
 type Anime struct {
-	// 动漫ID
-	AnimeID bson.ObjectId `json:"animeid" bson:"_id"`
+	// 动漫ID(HEX)
+	AnimeID string
+	// 动漫ID(binary)
+	ID bson.ObjectId `bson:"_id"`
 	// 动漫中文名称
-	AnimeNameCn string `json:"animenamecn"`
+	AnimeNameCn string `bson:"animenamecn"`
 	// 动漫日文名称
-	AnimeNameJp string `json:"animenamejp"`
-	// 集数
-	Chapter int `json:"chapter"`
-	// 总集数
-	ChapterCnt int `json:"chaptercnt"`
+	AnimeNameJp string `bson:"animenamejp"`
+	// 主要声优
+	Cast string `bson:"cast"`
 	// 连载期间
-	SerialsDuri string `json:"serialsduri"`
+	SerialsDuri string `bson:"serialsduri"`
 	// 类型
-	Type string `json:"type"`
-	// 图片路径
-	ImagePath string `json:"imagepath"`
+	Type string `bson:"type"`
+	// 图片
+	ImageBin []byte `bson:"image"`
 	// 存储路径
-	StorDir string `json:"stordir"`
+	StorDir string `bson:"stordir"`
 	// 播放路径
-	PlayDir string `json:"playdir"`
+	PlayDir string `bson:"playdir"`
 	// 连载状态
-	Status int `json:"status"`
+	Status string `bson:"status"`
 	// 更新时间
-	UpdateTime time.Time `json:"updatetime"`
+	UpdateTime time.Time `bson:"updatetime"`
 }

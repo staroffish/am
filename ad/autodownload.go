@@ -60,7 +60,7 @@ func (ad *Ad) refreshData() error {
 			}
 			break
 		}
-		ad.aniMap[anime.AnimeID] = anime
+		ad.aniMap[anime.ID] = anime
 	}
 
 	return nil

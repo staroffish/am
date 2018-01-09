@@ -1,16 +1,17 @@
 package view
 
 import (
-	"global"
+	"net/http"
 	"db"
 	"fmt"
+	"global"
 	"html/template"
-	"net/http"
 
 	"gopkg.in/mgo.v2/bson"
 )
 
-var page = `
+
+var pageMain = `
 <script language='javascript' src='js/event.js' ></script>
 <html>
 <head>
@@ -24,7 +25,7 @@ var page = `
         <div style="text-align:left;width:98%">
             <input type="button" style="width:9%;" value="离线下载">
             <input type="button" style="width:9%;" value="自动下载管理">
-            <input type="button" style="width:9%;" value="管理已收藏动漫">
+            <input type="button" style="width:9%;" value="管理已下载动漫">
             <input type="button" style="width:9%;" value="设置">
         </div>
     </td></tr>
@@ -36,7 +37,7 @@ var page = `
     </tr>
     {{range .}}
     <tr align="left" >
-        <td><a href="javascript:void(0)">{{.AnimeNameJp}}</a></td>
+        <td><a href="javascript:void(0)" onclick="javascript:show_anime('{{.AnimeID}}','main()')">{{.AnimeNameJp}}</a></td>
         <td>{{.UpdateTime|showDate}}</td>
     </tr>
     {{end}}
@@ -48,6 +49,21 @@ var page = `
 // MainPage - Main page struct
 type MainPage struct {
 	tmpl *template.Template
+}
+
+// Init - init mainpage
+func (m *MainPage) Init() error {
+	defer global.TraceLog("MainPage.Init")()
+	if m.tmpl == nil {
+		tmp, err := template.New("main").
+						Funcs(template.FuncMap{"showDate":global.FormatTime}).
+						Parse(pageMain)
+		if err != nil {
+			return fmt.Errorf("main:template.New:%v", err)
+		}
+		m.tmpl = tmp
+	}
+	return nil
 }
 
 // ShowPageCtx - 显示页面
@@ -65,22 +81,10 @@ func (m *MainPage) ShowPageCtx(_ *JSONRequest, w http.ResponseWriter) error {
 			}
 			break
 		}
+		anime.AnimeID = anime.ID.Hex()
 		aniLst = append(aniLst, anime)
 	}
-	err := it.Close()
-	if err != nil {
-		global.Log.Debugf("am:it.Close:%v", err);
-	}
-
-	if m.tmpl == nil {
-		tmp, err := template.New("main").
-						Funcs(template.FuncMap{"showDate":global.FormatTime}).
-						Parse(page)
-		if err != nil {
-			return fmt.Errorf("main:template.New:%v", err)
-		}
-		m.tmpl = tmp
-	}
+	defer it.Close()
 
 	if err := m.tmpl.Execute(w, aniLst); err != nil {
 		return fmt.Errorf("main:template.Execute:%v", err)

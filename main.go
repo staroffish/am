@@ -15,7 +15,10 @@ import (
 )
 
 var usage = `Usage:am [Config Path]`
-var viewMap = map[string]view.Page{"main": &view.MainPage{}}
+var viewMap = map[string]view.Page{"main": &view.MainPage{},
+									"show_anime": &view.ShowAnimePage{},
+									"edit_anime": &view.EditAnimePage{},
+									"update_anime": &view.EditAnimePage{}}
 
 func main() {
 	if len(os.Args) < 2 {
@@ -45,10 +48,10 @@ func main() {
 	// }
 	rd.InitDownloader()
 	// dnldr := deluge.NewDownloader()
-	if err = rd.PauseTask(&rd.RdTask{Ids: "c5d436eb9b05e37ca6025f27f87df8ab3f018cdf", SavePath: "/usb/"},"magnet"); err != nil {
-		fmt.Printf("am:%v\n", err)
-		os.Exit(-1)
-	}
+	// if err = rd.PauseTask(&rd.RdTask{Ids: "c5d436eb9b05e37ca6025f27f87df8ab3f018cdf", SavePath: "/usb/"},"magnet"); err != nil {
+	// 	fmt.Printf("am:%v\n", err)
+	// 	os.Exit(-1)
+	// }
 	// if err = dnldr.PauseTask(&rd.RdTask{Ids:"c5d436eb9b05e37ca6025f27f87df8ab3f018cdf"}); err != nil {
 	// 	fmt.Printf("am:%v\n", err);
 	// 	os.Exit(-1)
@@ -75,14 +78,21 @@ func main() {
 	for _, t := range tasks {
 		fmt.Printf("%v\n", t)
 	}
+	for name, page := range viewMap {
+		err := page.Init()
+		if err != nil {
+			global.Log.Errorf("init %s page map err:%v", name, err)
+		}
+	}
 	http.HandleFunc("/", handler)
 	http.Handle("/js/", http.FileServer(http.Dir("./")))
+	http.Handle("/usb/", http.FileServer(http.Dir("/usb/")))
 	global.Log.Infof("%v", http.ListenAndServe(global.Cfg.BindAddr, nil))
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	defer global.TraceLog("main.handler")()
-	body := make([]byte, 1024)
+	body := make([]byte, 8192)
 	n, err := r.Body.Read(body)
 	var jReq *view.JSONRequest
 
