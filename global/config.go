@@ -34,6 +34,8 @@ type Config struct {
 	DebugOn bool `json:"DebugOn"`
 	// 连接远程WEB服务器的超时时间
 	WebTimeout int `json:"WebTimeout"`
+	// 主页显示的动漫的数量
+	AnimeCntInMain int `json:AnimeCntInMain`
 }
 
 const (
@@ -75,6 +77,9 @@ func (c *Config) check() error {
 	}
 	if c.WebTimeout == 0 {
 		c.WebTimeout = 10
+	}
+	if c.AnimeCntInMain == 0 {
+		c.AnimeCntInMain = 30
 	}
 	return nil
 }

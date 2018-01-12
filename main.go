@@ -18,7 +18,9 @@ var usage = `Usage:am [Config Path]`
 var viewMap = map[string]view.Page{"main": &view.MainPage{},
 									"show_anime": &view.ShowAnimePage{},
 									"edit_anime": &view.EditAnimePage{},
-									"update_anime": &view.EditAnimePage{}}
+									"update_anime": &view.EditAnimePage{},
+									"show_collection": &view.ShowCollectionPage{},
+									"search_collection": &view.ShowCollectionPage{}}
 
 func main() {
 	if len(os.Args) < 2 {

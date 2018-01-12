@@ -1,9 +1,11 @@
 package db
 
 import (
-	"gopkg.in/mgo.v2/bson"
+	"time"
 	"fmt"
 	"global"
+	"gopkg.in/mgo.v2/bson"
+	"math"
 
 	mgo "gopkg.in/mgo.v2"
 )
@@ -15,7 +17,7 @@ func Connect(config *global.Config) error {
 	defer global.TraceLog("db.Connect")()
 	sess, err := mgo.Dial(config.DBIP + ":" + config.DBPort)
 	if err != nil {
-		return fmt.Errorf("mgo.Dial:%v", err);
+		return fmt.Errorf("mgo.Dial:%v", err)
 	}
 	dbSess = sess
 	db := dbSess.DB(config.DBName)
@@ -42,14 +44,42 @@ func GetAnime(_id bson.ObjectId) *Anime {
 		global.Log.Errorf("am:db.GetAnime:No anime Item:AnimeId:%s", _id)
 		return nil
 	}
-	anime.AnimeID =anime.ID.Hex()
+	anime.AnimeID = anime.ID.Hex()
 	defer it.Close()
 
 	return &anime
 }
 
+// GetAllAnime - 取得所有动漫动漫
+//		cnt - 取的件数(小于等于0时取得所有)
+func GetAnimeByKey(key bson.M, cnt int) []Anime {
+	defer global.TraceLog("db.GetAllAnime")()
+	var aniLst = make([]Anime, 0)
+	it := DB.C("anime").Find(key).Sort("-updatetime").Iter()
+
+	if cnt <= 0 {
+		cnt = math.MaxInt32
+	}
+
+	for i := 0; i < cnt; i++ {
+		var anime Anime
+		if !it.Next(&anime) {
+			if err := it.Err(); err != nil {
+				global.Log.Errorf("am:db.GetAllAnime:it.Next:%v", err)
+				return nil
+			}
+			break
+		}
+		anime.AnimeID = anime.ID.Hex()
+		aniLst = append(aniLst, anime)
+	}
+	defer it.Close()
+
+	return aniLst
+}
+
 // SaveAnime - 更新或者插入一个动漫
-func SaveAnime(a *Anime) error{
+func SaveAnime(a *Anime) error {
 	defer global.TraceLog("db.SaveAnime")()
 	oldAni := GetAnime(a.ID)
 	if oldAni != nil {
@@ -80,13 +110,14 @@ func SaveAnime(a *Anime) error{
 		if len(a.Status) == 0 {
 			a.Status = oldAni.Status
 		}
-		if a.UpdateTime.IsZero() {
-			a.UpdateTime = oldAni.UpdateTime
-		}
-	} 
+		// if a.UpdateTime.IsZero() {
+		// 	a.UpdateTime = oldAni.UpdateTime
+		// }
+	}
 
+	a.UpdateTime = time.Now()
 	c := DB.C("anime")
-	_, err := c.UpsertId(a.ID,&a)
+	_, err := c.UpsertId(a.ID, &a)
 	if err != nil {
 		a.ImageBin = nil
 		return fmt.Errorf("db.SaveAnime:UpsertId error:%v:%q", err, a)

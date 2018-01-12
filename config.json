@@ -10,5 +10,6 @@
     "BTWebUrl":"http://192.168.3.2:8112/json",
     "BTWebPass":"amPasswd",
     "DebugOn":true,
-    "WebTimeout":15
+    "WebTimeout":15,
+    "AnimeCntInMain":50
 }

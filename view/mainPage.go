@@ -25,7 +25,7 @@ var pageMain = `
         <div style="text-align:left;width:98%">
             <input type="button" style="width:9%;" value="离线下载">
             <input type="button" style="width:9%;" value="自动下载管理">
-            <input type="button" style="width:9%;" value="管理已下载动漫">
+            <input type="button" style="width:9%;" onclick="javascript:show_collection('main()')" value="管理已下载动漫">
             <input type="button" style="width:9%;" value="设置">
         </div>
     </td></tr>
@@ -69,23 +69,8 @@ func (m *MainPage) Init() error {
 // ShowPageCtx - 显示页面
 func (m *MainPage) ShowPageCtx(_ *JSONRequest, w http.ResponseWriter) error {
 	defer global.TraceLog("MainPage.ShowPageCtx")()
-	aniLst := make([]db.Anime, 0)
-	it := db.DB.C("anime").Find(bson.M{}).Sort("-updatetime").Iter()
-	// it := db.DB.C("anime").Find(bson.M{}).Iter()
-
-	for i := 0; i < 30; i++ {
-		var anime db.Anime
-		if !it.Next(&anime) {
-			if err := it.Err(); err != nil {
-				return err
-			}
-			break
-		}
-		anime.AnimeID = anime.ID.Hex()
-		aniLst = append(aniLst, anime)
-	}
-	defer it.Close()
-
+	aniLst := db.GetAnimeByKey(bson.M{}, 30);
+	
 	if err := m.tmpl.Execute(w, aniLst); err != nil {
 		return fmt.Errorf("main:template.Execute:%v", err)
 	}
