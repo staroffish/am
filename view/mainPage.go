@@ -23,10 +23,9 @@ var pageMain = `
     <table width="96%" border="0" align="center">
         <tr><td>
         <div style="text-align:left;width:98%">
-            <input type="button" style="width:9%;" value="离线下载">
+            <input type="button" style="width:9%;" onclick="javascript:get_task()" value="离线下载">
             <input type="button" style="width:9%;" value="自动下载管理">
             <input type="button" style="width:9%;" onclick="javascript:show_collection('main()')" value="管理已下载动漫">
-            <input type="button" style="width:9%;" value="设置">
         </div>
     </td></tr>
     </table>

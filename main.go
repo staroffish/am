@@ -9,8 +9,6 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"rd"
-	_ "rd/deluge"
 	"view"
 )
 
@@ -20,7 +18,12 @@ var viewMap = map[string]view.Page{"main": &view.MainPage{},
 									"edit_anime": &view.EditAnimePage{},
 									"update_anime": &view.EditAnimePage{},
 									"show_collection": &view.ShowCollectionPage{},
-									"search_collection": &view.ShowCollectionPage{}}
+									"search_collection": &view.ShowCollectionPage{},
+									"get_task":&view.RdPage{},
+									"start_task":&view.RdPage{},
+									"pause_task":&view.RdPage{},
+									"del_task":&view.RdPage{},
+									"add_task":&view.RdPage{}}
 
 func main() {
 	if len(os.Args) < 2 {
@@ -48,7 +51,6 @@ func main() {
 	// 	global.Log.Errorf("am:autoDownload.Run:%v", err)
 	// 	os.Exit(-1)
 	// }
-	rd.InitDownloader()
 	// dnldr := deluge.NewDownloader()
 	// if err = rd.PauseTask(&rd.RdTask{Ids: "c5d436eb9b05e37ca6025f27f87df8ab3f018cdf", SavePath: "/usb/"},"magnet"); err != nil {
 	// 	fmt.Printf("am:%v\n", err)
@@ -72,14 +74,14 @@ func main() {
 	// 	fmt.Printf("am:%v\n", err)
 	// 	os.Exit(-1)
 	// }
-	tasks, err := rd.GetAllTask()
-	if err != nil {
-		fmt.Printf("am:%v\n", err)
-		os.Exit(-1)
-	}
-	for _, t := range tasks {
-		fmt.Printf("%v\n", t)
-	}
+	// tasks, err := rd.GetAllTask()
+	// if err != nil {
+	// 	fmt.Printf("am:%v\n", err)
+	// 	os.Exit(-1)
+	// }
+	// for _, t := range tasks {
+	// 	fmt.Printf("%v\n", t)
+	// }
 	for name, page := range viewMap {
 		err := page.Init()
 		if err != nil {

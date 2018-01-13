@@ -31,7 +31,7 @@ var pageAnime = `
 					<tr><td>连载状态</td><td>{{.Anime.Status}} </td></tr>
 					<tr><td>存储路径</td><td>{{.Anime.StorDir}} </td></tr>
 					<tr><td>播放路径</td><td>{{.Anime.PlayDir}} </td></tr>
-                    <tr><td><a href="javascript:void(0)" onclick='{{.PrePage}}'>返回</a>&nbsp;<a href="javascript:void(0)" onclick="javascript:edit_anime('{{.Anime.AnimeID}}','show_anime(\'{{.Anime.AnimeID}}\',\'{{.PrePage}}\')')">编辑</a></td><td></td></tr>
+                    <tr><td><a href="javascript:void(0)" onclick='{{.PrePage}}'>返回</a>&nbsp;<a href="javascript:void(0)" onclick="javascript:edit_anime('{{.Anime.AnimeID}}','{{.PrePage}}')">编辑</a></td><td></td></tr>
                 </table>
             </td>
         </tr>

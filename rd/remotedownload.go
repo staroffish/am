@@ -20,7 +20,7 @@ type RdTask struct {
 	// 状态
 	State string
 	// 文件大小
-	Size int
+	Size int64
 	// 任务类型
 	TaskType string
 }
@@ -36,6 +36,13 @@ type Downloader interface {
 	DeleteTask(t *RdTask) error
 	GetAllTask() ([]RdTask, error)
 }
+
+// 任务状态
+const (
+	Downloading = "Downloading"
+	Paused		= "Paused"
+	Error		= "Error"
+)
 
 // InitDownloader - 初始化下载器
 func InitDownloader() error {

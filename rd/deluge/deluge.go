@@ -313,7 +313,7 @@ func (d *DelugeDownloader) GetAllTask() ([]rd.RdTask, error) {
 		task.State, ok = ctx["state"].(string)
 		tmpFloat, ok = ctx["total_wanted"].(float64)
 		if ok {
-			task.Size = int(tmpFloat)
+			task.Size = int64(tmpFloat)
 		}
 		task.TaskType = TaskType
 

@@ -29,7 +29,15 @@ var pageEditAnime = `
 		<tr><td>存储路径</td><td><input type="text" style="width:100%;" value="{{.Anime.StorDir}}" /> </td></tr>
 		<tr><td>播放路径</td><td><input type="text" style="width:100%;" value="{{.Anime.PlayDir}}" /> </td></tr>
 		<tr><td>上传图片</td><td><input type="text" style="width:100%;" value="" /> </td></tr>
-        <tr><td><td align="right"><input type="button" onclick="javascript:show_anime('5a3e7ebcc1d32b8c1505cce9','show_collection(\'main()\')')" value="返回"></td><td align="right"><input type="button" onclick="javascript:update_anime('{{.Anime.AnimeID}}','{{.PrePage}}')" value="提交"></td></tr>
+		<tr>
+			<td></td>
+			<td align="right">
+				<input type="button" onclick="javascript:show_anime('{{.Anime.AnimeID}}','{{.PrePage}}')" value="返回">
+			</td>
+			<td align="right">
+				<input type="button" onclick="javascript:update_anime('{{.Anime.AnimeID}}','show_anime(\'{{.Anime.AnimeID}}\',\'{{.PrePage}}\')')" value="提交">
+			</td>
+		</tr>
     </table>
 </body>
 </html>
@@ -55,11 +63,14 @@ func (e *EditAnimePage) Init() error {
 // ShowPageCtx - 编辑添加动漫的页面
 func (e *EditAnimePage) ShowPageCtx(req *JSONRequest, w http.ResponseWriter) error {
 	defer global.TraceLog("EditAnimePage.ShowPageCtx")()
+	var sa  struct {
+		Anime   db.Anime
+		PrePage template.JS 
+	}
 	if len(req.Params) == 1 {
-		var sa showAnime
 		prePage, ok := req.Params[0].(string)
 		if !ok {
-			return fmt.Errorf("ShowAnime:ShowPageCtx:Parameter type error:%T", req.Params[1])
+			return fmt.Errorf("ShowAnime:ShowPageCtx:Parameter type error:%T", req.Params[0])
 		}
 		sa.PrePage = template.JS(prePage)
 		// 新增页面所以没有参数直接返回页面
@@ -77,7 +88,7 @@ func (e *EditAnimePage) ShowPageCtx(req *JSONRequest, w http.ResponseWriter) err
 
 	updateFlag, ok := req.Params[2].(bool)
 	if !ok {
-		return fmt.Errorf("EditAnimePage:ShowPageCtx. parameter convert error %v", req.Params[0])
+		return fmt.Errorf("EditAnimePage:ShowPageCtx. parameter convert error %v", req.Params[2])
 	}
 	prePage, ok := req.Params[1].(string)
 	if !ok {
@@ -86,11 +97,10 @@ func (e *EditAnimePage) ShowPageCtx(req *JSONRequest, w http.ResponseWriter) err
 
 	_id, ok := req.Params[0].(string)
 	if !ok {
-		return fmt.Errorf("EditAnimePage:ShowPageCtx:Parameter type error:%v", req.Params[1])
+		return fmt.Errorf("EditAnimePage:ShowPageCtx:Parameter type error:%v", req.Params[0])
 	}
 
 	if updateFlag == false {
-		var sa showAnime
 		ani := db.GetAnime(bson.ObjectIdHex(_id))
 		if ani == nil {
 			// 已经做了错误应答并出了ERROR LOG 所以 直接返回NIL

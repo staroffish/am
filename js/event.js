@@ -91,6 +91,61 @@ function update_anime(_id, prepage)
     xmlhttp.send(arg);
 }
 
+function get_task()
+{
+    var arg = JSON.stringify({'method':'get_task','params':[]})
+    CreateXMLHttpRequest();
+    xmlhttp.onreadystatechange = callhandle;
+    xmlhttp.open("POST","/",true);
+    xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
+    xmlhttp.send(arg);
+}
+function add_task()
+{
+    var magnet = document.getElementById("magnet").value;
+    var savePath = document.getElementById("savePath").value;
+    if(magnet == "" || savePath == "")
+    {
+        alert("链接或路径为空!!!");
+        return;
+    }
+    var arg = JSON.stringify({'method':'add_task','params':[magnet, savePath]})
+    CreateXMLHttpRequest();
+    xmlhttp.onreadystatechange = callhandle;
+    xmlhttp.open("POST","/",true);
+    xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
+    xmlhttp.send(arg);
+}
+
+function start_task(id)
+{
+    var arg = JSON.stringify({'method':'start_task','params':[id]})
+    CreateXMLHttpRequest();
+    xmlhttp.onreadystatechange = callhandle;
+    xmlhttp.open("POST","/",true);
+    xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
+    xmlhttp.send(arg);
+}
+
+function pause_task(id)
+{
+    var arg = JSON.stringify({'method':'pause_task','params':[id]})
+    CreateXMLHttpRequest();
+    xmlhttp.onreadystatechange = callhandle;
+    xmlhttp.open("POST","/",true);
+    xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
+    xmlhttp.send(arg);
+}
+
+function del_task(id)
+{
+    var arg = JSON.stringify({'method':'del_task','params':[id]})
+    CreateXMLHttpRequest();
+    xmlhttp.onreadystatechange = callhandle;
+    xmlhttp.open("POST","/",true);
+    xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
+    xmlhttp.send(arg);
+}
 function CreateXMLHttpRequest()
 {
     if (window.ActiveXObject)
