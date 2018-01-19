@@ -39,7 +39,7 @@ var pageCollection = `
 			<a href="javascript:void(0)" onclick="javascript:show_anime('{{.AnimeID}}','show_collection(\'{{$.PrePage}}\')')">{{.AnimeNameJp}}</a>
 		</td>
 		<td>
-			<input type="button" onclick="javascript:del_anime()" value="删除"/>
+			<input type="button" onclick="javascript:del_anime({{.AnimeID}})" value="删除"/>
 		</td>
 	</tr>
 	{{end}}

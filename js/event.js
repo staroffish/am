@@ -53,11 +53,19 @@ function edit_anime(_id, prepage)
     xmlhttp.send(arg);
 }
 
-function del_anime(_id, prepage)
+function del_anime(_id)
 {
-    alert("这些都是爱啊不能删除")
-    alert("你怎么忍心删除这些呢")
-    alert("好好反省一下自己吧")
+    con = confirm("你确认你要删除这部动画吗?你真的要删除吗?你确定?你不会后悔?");
+    if(con == false)
+    {
+        return;
+    }
+    var arg = JSON.stringify({'method':'del_anime','params':[_id]})
+    CreateXMLHttpRequest();
+    xmlhttp.onreadystatechange = updatehandle;
+    xmlhttp.open("POST","/",true);
+    xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
+    xmlhttp.send(arg);
 }
 
 function add_anime(prepage)
@@ -146,6 +154,79 @@ function del_task(id)
     xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
     xmlhttp.send(arg);
 }
+
+function show_adtask()
+{
+    var arg = JSON.stringify({'method':'show_adtask','params':[]})
+    CreateXMLHttpRequest();
+    xmlhttp.onreadystatechange = callhandle;
+    xmlhttp.open("POST","/",true);
+    xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
+    xmlhttp.send(arg);
+}
+
+function add_adtask()
+{
+    var arg = JSON.stringify({'method':'add_adtask','params':[]})
+    CreateXMLHttpRequest();
+    xmlhttp.onreadystatechange = callhandle;
+    xmlhttp.open("POST","/",true);
+    xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
+    xmlhttp.send(arg);
+}
+
+
+function edit_adtask(id)
+{
+    var arg = JSON.stringify({'method':'edit_adtask','params':[id]})
+    CreateXMLHttpRequest();
+    xmlhttp.onreadystatechange = callhandle;
+    xmlhttp.open("POST","/",true);
+    xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
+    xmlhttp.send(arg);
+}
+function update_adTask(_id)
+{
+    var elems = document.getElementsByTagName("input");
+    var arg = '{"method":"update_adTask","params":["' + _id + '",';
+    for (var i = 0; i < elems.length; i++) 
+    {
+        if(elems[i].type == 'text' || elems[i].type == 'checkbox')
+        {
+            value = elems[i].value;
+            value = value.replace(/\"/g,"\\\"");
+            if(elems[i].type == 'checkbox')
+            {
+                value = elems[i].checked;
+            }
+            arg += '"' + value + '"';
+            arg += ','
+        }
+    }
+    arg =arg.replace(/,$/,"")
+    arg += "]}";
+    CreateXMLHttpRequest();
+    xmlhttp.onreadystatechange = updatehandle;
+    xmlhttp.open("POST","/",true);
+    xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
+    xmlhttp.send(arg);
+}
+
+function delete_adTask(_id)
+{
+    con = confirm("确定要删除吗?");
+    if(con == false)
+    {
+        return;
+    }
+    var arg = JSON.stringify({'method':'delete_adTask','params':[_id]})
+    CreateXMLHttpRequest();
+    xmlhttp.onreadystatechange = updatehandle;
+    xmlhttp.open("POST","/",true);
+    xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
+    xmlhttp.send(arg);
+}
+
 function CreateXMLHttpRequest()
 {
     if (window.ActiveXObject)

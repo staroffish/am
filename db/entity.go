@@ -5,6 +5,8 @@ import "time"
 
 // AdTask - 自动下载任务的结构体
 type AdTask struct {
+	// Task ID
+	Id bson.ObjectId `bson:"_id"`
 	// 动画网页的搜索地址
 	Url string `json:"url"`
 	// 检索动漫关键字
@@ -15,6 +17,8 @@ type AdTask struct {
 	SchChapt int `json:"schchapt"`
 	// 抓取磁链正则
 	MagExp string `json:"magexp"`
+	// 更新时间
+	UpdateTime time.Time `bson:"updatetime"`
 	// 动漫ID
 	AnimeID bson.ObjectId `json:"animeid" bson:"animeid"`
 }

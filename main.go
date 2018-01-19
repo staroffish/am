@@ -17,13 +17,19 @@ var viewMap = map[string]view.Page{"main": &view.MainPage{},
 									"show_anime": &view.ShowAnimePage{},
 									"edit_anime": &view.EditAnimePage{},
 									"update_anime": &view.EditAnimePage{},
+									"del_anime": &view.DeleteAnime{},
 									"show_collection": &view.ShowCollectionPage{},
 									"search_collection": &view.ShowCollectionPage{},
 									"get_task":&view.RdPage{},
 									"start_task":&view.RdPage{},
 									"pause_task":&view.RdPage{},
 									"del_task":&view.RdPage{},
-									"add_task":&view.RdPage{}}
+									"add_task":&view.RdPage{},
+									"show_adtask":&view.ShowAdTaskPage{},
+									"add_adtask":&view.ShowEditAdTaskPage{},
+									"edit_adtask":&view.ShowEditAdTaskPage{},
+									"update_adTask":&view.UpdateAdTask{},
+									"delete_adTask":&view.DeleteAdTask{}}
 
 func main() {
 	if len(os.Args) < 2 {

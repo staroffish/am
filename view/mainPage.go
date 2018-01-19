@@ -24,7 +24,7 @@ var pageMain = `
         <tr><td>
         <div style="text-align:left;width:98%">
             <input type="button" style="width:9%;" onclick="javascript:get_task()" value="离线下载">
-            <input type="button" style="width:9%;" value="自动下载管理">
+            <input type="button" style="width:9%;" onclick="javascript:show_adtask()" value="自动下载管理">
             <input type="button" style="width:9%;" onclick="javascript:show_collection('main()')" value="管理已下载动漫">
         </div>
     </td></tr>
