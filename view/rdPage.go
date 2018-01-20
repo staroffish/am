@@ -7,7 +7,7 @@ import (
 	"global"
 	"html/template"
 	"rd"
-	_ "rd/deluge"
+	// _ "rd/deluge"
 )
 
 
@@ -89,7 +89,6 @@ func (r *RdPage) Init() error {
 		}
 		r.tmpl = tmp
 	}
-	rd.InitDownloader()
 	return nil
 }
 

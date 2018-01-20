@@ -28,7 +28,7 @@ func (d *DeleteAdTask) ShowPageCtx(req *JSONRequest, w http.ResponseWriter) erro
 	}
 
 
-	err := db.DeletedTask(bson.ObjectIdHex(_id));
+	err := db.DeleteAdTask(bson.ObjectIdHex(_id));
 	if err != nil {
 		return fmt.Errorf("UpdateAdTask:ShowPageCtx:DeletedTask err:%v", err)
 	}

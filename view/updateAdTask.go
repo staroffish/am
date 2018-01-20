@@ -115,7 +115,7 @@ func (u *UpdateAdTask) ShowPageCtx(req *JSONRequest, w http.ResponseWriter) erro
 		}
 		adTask.AnimeID = ani.ID
 	}
-	
+	fmt.Printf("%s", adTask.SchExp)
 	err = db.SaveAdTask(&adTask)
 	if err != nil {
 		return fmt.Errorf("UpdateAdTask:ShowPageCtx:SaveAdTask err:%v", err)

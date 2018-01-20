@@ -1,6 +1,8 @@
 package ad
 
 import (
+	"rd"
+	_ "rd/deluge"
 	"io"
 	"bytes"
 	"strings"
@@ -17,49 +19,40 @@ import (
 // Ad - 自动下载
 type Ad struct {
 	config *global.Config
-	adTask []task
+	adTask []db.AdTask
 	aniMap map[bson.ObjectId]db.Anime
 }
-
-type task db.AdTask
 
 // New 创建 自动下载任务
 func New(cfg *global.Config) *Ad {
 	defer global.TraceLog("ad.New")()
 	ad := Ad{config: cfg}
+	rd.InitDownloader()
 	return &ad
 }
 
 func (ad *Ad) refreshData() error {
 	defer global.TraceLog("Ad.updateData")()
-	ad.adTask = make([]task, 0)
-	c := db.DB.C("adtask")
 
 	// 取得所有的自动下载任务
-	err := c.Find(bson.M{}).All(&ad.adTask)
-	if err != nil {
-		return err
-	}
-
-	if len(ad.adTask) == 0 {
+	ad.adTask = db.GetAdTaskByKey(bson.M{})
+	if ad.adTask == nil {
 		return nil
 	}
 
+	// 取得动漫项
 	idList := []bson.ObjectId{}
 	for _, task := range ad.adTask {
 		idList = append(idList, task.AnimeID)
 	}
+
 	ad.aniMap = make(map[bson.ObjectId]db.Anime)
-	c = db.DB.C("anime")
-	it := c.Find(bson.M{"_id": bson.M{"$in": idList}}).Iter()
-	for {
-		var anime db.Anime
-		if !it.Next(&anime) {
-			if err = it.Err(); err != nil {
-				return err
-			}
-			break
-		}
+	animeList := db.GetAnimeByKey(bson.M{"_id": bson.M{"$in": idList}}, 0)
+	if animeList == nil {
+		ad.adTask = nil
+		return nil
+	}
+	for _, anime := range animeList{
 		ad.aniMap[anime.ID] = anime
 	}
 
@@ -80,6 +73,7 @@ func (ad *Ad) Run() {
 				t.Url += "/"
 			}
 		
+			t.SchChapt++
 			// 取得单集的页面
 			requestUrl := fmt.Sprintf("%s%s", t.Url, t.UrlParam)
 			schExp := fmt.Sprintf(t.SchExp, t.SchChapt)
@@ -99,8 +93,29 @@ func (ad *Ad) Run() {
 			} 
 		
 			// 提交任务
+			rdTask := rd.RdTask{}
+			rdTask.Link = webCtx[1]
+			anime, ok := ad.aniMap[t.AnimeID]
+			if !ok {
+				global.Log.Errorf("am:ad.Run:get anime of task is not exist:%s", t.Id.Hex())
+				continue;
+			}
+
+			rdTask.SavePath = anime.StorDir
+
+			err = rd.AddTask(&rdTask, "magnet")
+			if err != nil {
+				global.Log.Errorf("am:ad.Run:AddTask error:%v", err)
+				continue;
+			}
+
+			err = db.SaveAdTask(&t)
+			if err != nil {
+				global.Log.Errorf("am:ad.Run:SaveAdTask error:%v", err)
+				continue;
+			}
 			
-			fmt.Printf("magnet:%s\n", webCtx[1]);
+			global.Log.Infof("am:ad.Run:OK:%q", t)
 		}
 	}
 }

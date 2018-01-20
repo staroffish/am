@@ -189,11 +189,13 @@ function update_adTask(_id)
 {
     var elems = document.getElementsByTagName("input");
     var arg = '{"method":"update_adTask","params":["' + _id + '",';
+    
     for (var i = 0; i < elems.length; i++) 
     {
         if(elems[i].type == 'text' || elems[i].type == 'checkbox')
         {
             value = elems[i].value;
+            value = value.replace(/\\/g,"\\\\");
             value = value.replace(/\"/g,"\\\"");
             if(elems[i].type == 'checkbox')
             {
@@ -205,6 +207,7 @@ function update_adTask(_id)
     }
     arg =arg.replace(/,$/,"")
     arg += "]}";
+    alert(arg)
     CreateXMLHttpRequest();
     xmlhttp.onreadystatechange = updatehandle;
     xmlhttp.open("POST","/",true);

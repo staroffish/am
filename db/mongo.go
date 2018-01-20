@@ -151,7 +151,7 @@ func SaveAdTask(a *AdTask) error {
 }
 
 // DeletedTask - 删除一个自动下载任务
-func DeletedTask(id bson.ObjectId) error {
+func DeleteAdTask(id bson.ObjectId) error {
 	defer global.TraceLog("db.DeletedTask")()
 
 	c := DB.C("adtask")
