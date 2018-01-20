@@ -32,6 +32,6 @@ func (d *DeleteAnime) ShowPageCtx(req *JSONRequest, w http.ResponseWriter) error
 		return fmt.Errorf("DeleteAnime:ShowPageCtx:DeletedTask err:%v", err)
 	}
 
-	fmt.Fprint(w, "show_collection('main')");
+	fmt.Fprint(w, "show_collection('main()')");
 	return nil
 }

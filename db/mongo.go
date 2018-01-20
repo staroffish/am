@@ -100,6 +100,19 @@ func SaveAnime(a *Anime) error {
 	return nil
 }
 
+// UpdateAnimeTime - 更新动漫的更新时间
+func UpdateAnimeTime(id bson.ObjectId) error {
+	defer global.TraceLog("db.UpdateAnimeTime")()
+
+	c := DB.C("anime")
+	err := c.Update(bson.M{"_id":id},bson.M{"$set":bson.M{"updatetime":time.Now()}})
+	if err != nil {
+		return fmt.Errorf("db.UpdateAnimeTime:Update error:%v", err)
+	}
+
+	return nil
+}
+
 // DeletedAnime - 删除一个动画
 func DeletedAnime(id bson.ObjectId) error {
 	defer global.TraceLog("db.DeletedAnime")()

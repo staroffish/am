@@ -1,11 +1,11 @@
 package view
 
 import (
-	"strconv"
 	"db"
 	"fmt"
 	"global"
 	"gopkg.in/mgo.v2/bson"
+	"strconv"
 	// "html/template"
 	"net/http"
 )
@@ -34,7 +34,7 @@ func (u *UpdateAdTask) ShowPageCtx(req *JSONRequest, w http.ResponseWriter) erro
 	if _id == "" {
 		_id = bson.NewObjectId().Hex()
 	}
-	adTask.Id = bson.ObjectIdHex(_id);
+	adTask.Id = bson.ObjectIdHex(_id)
 	var i = 1
 	ani.AnimeNameJp, ok = req.Params[i].(string)
 	if !ok {
@@ -115,12 +115,12 @@ func (u *UpdateAdTask) ShowPageCtx(req *JSONRequest, w http.ResponseWriter) erro
 		}
 		adTask.AnimeID = ani.ID
 	}
-	fmt.Printf("%s", adTask.SchExp)
+
 	err = db.SaveAdTask(&adTask)
 	if err != nil {
 		return fmt.Errorf("UpdateAdTask:ShowPageCtx:SaveAdTask err:%v", err)
 	}
 
-	fmt.Fprint(w, "show_adtask()");
+	fmt.Fprint(w, "show_adtask()")
 	return nil
 }

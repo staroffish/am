@@ -207,7 +207,6 @@ function update_adTask(_id)
     }
     arg =arg.replace(/,$/,"")
     arg += "]}";
-    alert(arg)
     CreateXMLHttpRequest();
     xmlhttp.onreadystatechange = updatehandle;
     xmlhttp.open("POST","/",true);

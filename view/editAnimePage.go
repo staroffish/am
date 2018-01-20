@@ -129,6 +129,7 @@ func (e *EditAnimePage) ShowPageCtx(req *JSONRequest, w http.ResponseWriter) err
 	// 添加新项目时ani.AnimeID不存在,生成一个新的object id
 	if _id == "" {
 		_id = bson.NewObjectId().Hex()
+		prePage = "show_collection('main()')"
 	}
 	ani.ID = bson.ObjectIdHex(_id)
 	ani.AnimeNameCn, ok = req.Params[i].(string)

@@ -24,7 +24,7 @@ const (
 // newLogger 生成一个新的Log结构体
 func NewLogger(debugOn bool) {
 	Log = &LogStruct{}
-	Log.logger, _ = syslog.NewLogger(syslog.LOG_LOCAL0, 0)
+	Log.logger, _ = syslog.NewLogger(syslog.LOG_USER|syslog.LOG_INFO, 0)
 	Log.debugOn = debugOn
 }
 

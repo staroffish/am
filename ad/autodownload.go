@@ -114,6 +114,12 @@ func (ad *Ad) Run() {
 				global.Log.Errorf("am:ad.Run:SaveAdTask error:%v", err)
 				continue;
 			}
+
+			err = db.UpdateAnimeTime(t.AnimeID)
+			if err != nil {
+				global.Log.Errorf("am:ad.Run:UpdateAnimeTime err:%v", err)
+				continue;
+			}
 			
 			global.Log.Infof("am:ad.Run:OK:%q", t)
 		}

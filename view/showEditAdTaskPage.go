@@ -23,7 +23,7 @@ var pageEditAd = `
 		<tr><td>抓取网页条件</td><td  width="90%"><input style="width:100%;" type="text" value="{{.UrlParam}}" /></td></tr>
         <tr><td>抓取网页正则</td><td><input style="width:100%;" type="text" value="{{.SchExp}}" /></td></tr>
 		<tr><td>抓取磁链正则</td><td><input style="width:100%;" type="text" value="{{.MagExp}}" /></td></tr>
-		<tr><td>抓取开始集数</td><td><input style="width:100%;" type="text" value="{{.SchChapt}}" /></td></tr>
+		<tr><td>最新集数</td><td><input style="width:100%;" type="text" value="{{.SchChapt}}" /></td></tr>
         <tr><td>储存地址</td><td><input type="text" {{.Disabled}} style="width:100%;" value="{{.StorDir}}" /></td></tr>
 		<tr><td>播放地址</td><td><input type="text" {{.Disabled}} style="width:100%;" value="{{.PlayDir}}" /> </td></tr>
 		<tr><td>收藏动漫ID</td><td><input type="text" style="width:100%;" value="{{.AnimeID}}" /> </td></tr>
@@ -100,7 +100,7 @@ func (s *ShowEditAdTaskPage) ShowPageCtx(jr *JSONRequest, w http.ResponseWriter)
 		td.PlayDir = anime[0].PlayDir
 		td.Disabled = "disabled"
 	} else {
-		td.CheckBox = template.HTML(`<tr><td>是否保存到收藏文件夹</td><td><input type="checkbox" checked="true" /> </td></tr>`)
+		td.CheckBox = template.HTML(`<tr><td>是否创建动漫选项</td><td><input type="checkbox" checked="true" /> </td></tr>`)
 	}
 
 	if err := s.tmpl.Execute(w, &td); err != nil {
