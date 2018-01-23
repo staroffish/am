@@ -1,6 +1,7 @@
 package ad
 
 import (
+	"strconv"
 	"rd"
 	_ "rd/deluge"
 	"io"
@@ -82,7 +83,15 @@ func (ad *Ad) Run() {
 			if err != nil {
 				global.Log.Errorf("am:ad.getCtxFromWeb error:%v", err)
 				continue;
-			} 
+			}
+
+			// 抓取到的链接可能是多集的
+			if len(webCtx) > 2 {
+				chapter, err := strconv.Atoi(webCtx[2])
+				if err == nil {
+					t.SchChapt = chapter
+				}
+			}
 		
 			// 从单集页面去的磁链
 			requestUrl = fmt.Sprintf("%s%s", t.Url, webCtx[1])
@@ -154,7 +163,7 @@ func (ad *Ad) getCtxFromWeb(url,schExp string) ([]string, error) {
 	}
 
 	findList := reg.FindStringSubmatch(buf.String())
-	if findList == nil {
+	if findList == nil && len(findList) < 2 {
 		return nil, fmt.Errorf("match error:url=%s,exp=%s", url, schExp); 
 	}
 
