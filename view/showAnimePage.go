@@ -99,22 +99,22 @@ func (a *ShowAnimePage) ShowPageCtx(req *JSONRequest, w http.ResponseWriter) err
 	shower.PrePage = template.JS(prePage)
 	// 取得文件夹下面的所有文件
 	fileList, err := ioutil.ReadDir(shower.Anime.StorDir)
-	if err != nil {
-		return fmt.Errorf("ShowAnime:ShowPageCtx:read dir error:%s:%v", shower.Anime.StorDir, err)
+	if err == nil {
+		shower.Chapter = []struct {
+			FullPath string
+			FileName string
+		}{}
+		for _, file := range fileList {
+			playPath := fmt.Sprintf("%s/%s", shower.Anime.PlayDir, file.Name())
+			shower.Chapter = append(shower.Chapter,
+				struct {
+					FullPath string
+					FileName string
+				}{playPath, file.Name()})
+		}
+	} else {
+		global.Log.Infof("ShowAnime:ShowPageCtx:open or read dir error:%s:%v", shower.Anime.StorDir, err)
 	}
-	shower.Chapter = []struct {
-		FullPath string
-		FileName string
-	}{}
-	for _, file := range fileList {
-		playPath := fmt.Sprintf("%s/%s", shower.Anime.PlayDir, file.Name())
-		shower.Chapter = append(shower.Chapter,
-			struct {
-				FullPath string
-				FileName string
-			}{playPath, file.Name()})
-	}
-
 	if err := a.tmpl.Execute(w, &shower); err != nil {
 		return fmt.Errorf("ShowAnime:ShowPageCtx.Execute:%v", err)
 	}
