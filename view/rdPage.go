@@ -18,7 +18,7 @@ var pageRd = `
     <title>离线下载</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
-<body onload="reload()">
+<body>
     <table width="96%" border="0" align="center"><tr><td><h1>离线下载</h1></td></tr></table>
     <table width="96%" border="1" align="center">
         <tr>

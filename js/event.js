@@ -107,7 +107,6 @@ function get_task()
     xmlhttp.open("POST","/",true);
     xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
     xmlhttp.send(arg);
-    reload();
 }
 function add_task()
 {
@@ -273,8 +272,4 @@ function updatehandle()
         start = end + 1;
         fn(id, prePage);
     }
-}
-function reload()
-{
-    setTimeout(get_task, 10000)
 }
