@@ -3,14 +3,13 @@
 package main
 
 import (
-	"db"
 	"ad"
+	"db"
 	"fmt"
 	"global"
-	"io"
+	"io/ioutil"
 	"net/http"
 	"os"
-	// "view"
 	"ctrl"
 )
 
@@ -38,7 +37,7 @@ func init() {
 	ctrlMap["update_adTask"] = adCtl
 	ctrlMap["delete_adTask"] = adCtl
 }
-func main() {									
+func main() {
 	if len(os.Args) < 2 {
 		fmt.Println(usage)
 		os.Exit(-1)
@@ -60,12 +59,6 @@ func main() {
 	autoDownload := ad.New(global.Cfg)
 
 	go autoDownload.Run()
-	// for name, page := range viewMap {
-	// 	err := page.Init()
-	// 	if err != nil {
-	// 		global.Log.Errorf("init %s page map err:%v", name, err)
-	// 	}
-	// }
 	for name, ctrl := range ctrlMap {
 		err := ctrl.Init()
 		if err != nil {
@@ -80,22 +73,24 @@ func main() {
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	defer global.TraceLog("main.handler")()
-	body := make([]byte, 8192)
-	n, err := r.Body.Read(body)
-	var jReq *ctrl.JSONRequest
+	var body []byte
 
-	if n == 0 {
-		// 请求的是主页
-		// jReq = &view.JSONRequest{Method: "main"}
-		jReq = &ctrl.JSONRequest{Method: "main"}
-	} else if err != io.EOF {
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
 		global.Log.Errorf("am:Body.Read:%v", err)
 		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 		return
+	}
+
+	var jReq *ctrl.JSONRequest
+
+	if len(body) == 0 {
+		// 请求的是主页
+		// jReq = &view.JSONRequest{Method: "main"}
+		jReq = &ctrl.JSONRequest{Method: "main"}
 	} else {
 		// 请求的其他页面
-		// jReq, err = view.ParsePostData(body[:n])
-		jReq, err = ctrl.ParsePostData(body[:n])
+		jReq, err = ctrl.ParsePostData(body)
 		if err != nil {
 			global.Log.Errorf("am:view.ParsePostData:%v", err)
 			http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
