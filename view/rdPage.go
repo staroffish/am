@@ -26,7 +26,7 @@ var pageRd = `
              <td>存储路径</td>
             <td><input style="width:82%;" type="text" name="" id="savePath"/>
                 <input type="button" style="width:6%;" onclick="javascript:add_task()" value="提交">
-				<input type="button" style="width:6%;" onclick="javascript:main()" value="返回">
+				<input type="button" style="width:6%;" onclick="location='/'" value="返回">
 			</td>
         </tr>
     </table>
