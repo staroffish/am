@@ -1,12 +1,8 @@
 package view
 
 import (
-	"gopkg.in/mgo.v2/bson"
-	"db"
-	"net/http"
 	"fmt"
 	"global"
-	"time"
 	"html/template"
 )
 
@@ -20,7 +16,7 @@ var pageAd = `
 </head>
 <body>
     <table width="96%" border="0" align="center"><tr><td><h1>自动下载</h1></td></tr></table>
-    <div style="text-align:right;width:98%"><input type="button" style="width:8%;" onclick="javascript:add_adtask()" value="添加新的自动下载"><input type="button" onclick="javascript:main()" style="width:8%;" value="返回"></div>
+    <div style="text-align:right;width:98%"><input type="button" style="width:8%;" onclick="javascript:edit_adtask('')" value="添加新的自动下载"><input type="button" onclick="javascript:main()" style="width:8%;" value="返回"></div>
     <table width="96%" border="1" align="center">
     <tr align="left" >
         <th>任务名</th>
@@ -43,67 +39,22 @@ var pageAd = `
 </body>
 </html>`
 
-// AdPage - Main page struct
-type ShowAdTaskPage struct {
-	tmpl *template.Template
+// AdTaskPage - AdTaskPage struct
+type AdTaskPage struct {
+	CommonPage
 }
 
 // Init - init mainpage
-func (a *ShowAdTaskPage) Init() error {
-	defer global.TraceLog("ShowAdTaskPage.Init")()
+func (a *AdTaskPage) Init() error {
+	defer global.TraceLog("AdTaskPage.Init")()
 	if a.tmpl == nil {
 		tmp, err := template.New("autodownload").
 						Funcs(template.FuncMap{"showDate":global.FormatTime}).
 						Parse(pageAd)
 		if err != nil {
-			return fmt.Errorf("ShowAdTaskPage:template.New:%v", err)
+			return fmt.Errorf("AdTaskPage:template.New:%v", err)
 		}
 		a.tmpl = tmp
 	}
-	return nil
-}
-
-// ShowPageCtx - 显示页面
-func (a *ShowAdTaskPage) ShowPageCtx(jr *JSONRequest, w http.ResponseWriter) error {
-	defer global.TraceLog("ShowAdTaskPage.ShowPageCtx")()
-
-	type taskData struct {
-		Id string
-		AnimeNameJp string
-		SchChapt int
-		StorDir string
-		UpdateTime time.Time
-	}
-	tds := []taskData{}
-
-	tasks := db.GetAdTaskByKey(bson.M{});
-	if tasks != nil {
-		animeList := db.GetAnimeByKey(bson.M{}, 0);
-		if animeList != nil {
-			var animeMap = make(map[string]*db.Anime)
-			for i := 0; i < len(animeList); i++ {
-				animeList[i].ImageBin = nil
-				animeMap[animeList[i].AnimeID] = &animeList[i]	
-			}
-			for _, task := range tasks {
-				var td taskData
-				td.Id = task.Id.Hex()
-				td.SchChapt = task.SchChapt
-				anime, ok := animeMap[task.AnimeID.Hex()]
-				if !ok {
-					global.Log.Debugf("am:db.ShowAdTaskPage:animeID in adtask but not in anime:%s", task.AnimeID.Hex())
-					continue;
-				}
-				td.StorDir = anime.StorDir
-				td.AnimeNameJp = anime.AnimeNameJp
-				td.UpdateTime = task.UpdateTime
-				tds = append(tds, td)
-			}
-		}
-	}
-	if err := a.tmpl.Execute(w, &tds); err != nil {
-		return fmt.Errorf("ShowAdTaskPage:template.Execute:%v", err)
-	}
-
 	return nil
 }

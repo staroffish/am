@@ -10,29 +10,35 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"view"
+	// "view"
+	"ctrl"
 )
 
 var usage = `Usage:am [Config Path]`
-var viewMap = map[string]view.Page{"main": &view.MainPage{},
-									"show_anime": &view.ShowAnimePage{},
-									"edit_anime": &view.EditAnimePage{},
-									"update_anime": &view.EditAnimePage{},
-									"del_anime": &view.DeleteAnime{},
-									"show_collection": &view.ShowCollectionPage{},
-									"search_collection": &view.ShowCollectionPage{},
-									"get_task":&view.RdPage{},
-									"start_task":&view.RdPage{},
-									"pause_task":&view.RdPage{},
-									"del_task":&view.RdPage{},
-									"add_task":&view.RdPage{},
-									"show_adtask":&view.ShowAdTaskPage{},
-									"add_adtask":&view.ShowEditAdTaskPage{},
-									"edit_adtask":&view.ShowEditAdTaskPage{},
-									"update_adTask":&view.UpdateAdTask{},
-									"delete_adTask":&view.DeleteAdTask{}}
+var ctrlMap map[string]ctrl.Control
 
-func main() {
+func init() {
+	ctrlMap = make(map[string]ctrl.Control)
+	ctrlMap["main"] = &ctrl.MainCtrl{}
+	anime := &ctrl.AnimeCtrl{}
+	ctrlMap["show_collection"] = anime
+	ctrlMap["show_anime"] = anime
+	ctrlMap["edit_anime"] = anime
+	ctrlMap["update_anime"] = anime
+	ctrlMap["del_anime"] = anime
+	rdCtl := &ctrl.RdCtrl{}
+	ctrlMap["get_task"] = rdCtl
+	ctrlMap["pause_task"] = rdCtl
+	ctrlMap["start_task"] = rdCtl
+	ctrlMap["del_task"] = rdCtl
+	ctrlMap["add_task"] = rdCtl
+	adCtl := &ctrl.AdCtrl{}
+	ctrlMap["show_adtask"] = adCtl
+	ctrlMap["edit_adtask"] = adCtl
+	ctrlMap["update_adTask"] = adCtl
+	ctrlMap["delete_adTask"] = adCtl
+}
+func main() {									
 	if len(os.Args) < 2 {
 		fmt.Println(usage)
 		os.Exit(-1)
@@ -54,10 +60,16 @@ func main() {
 	autoDownload := ad.New(global.Cfg)
 
 	go autoDownload.Run()
-	for name, page := range viewMap {
-		err := page.Init()
+	// for name, page := range viewMap {
+	// 	err := page.Init()
+	// 	if err != nil {
+	// 		global.Log.Errorf("init %s page map err:%v", name, err)
+	// 	}
+	// }
+	for name, ctrl := range ctrlMap {
+		err := ctrl.Init()
 		if err != nil {
-			global.Log.Errorf("init %s page map err:%v", name, err)
+			global.Log.Errorf("init %s ctrl map err:%v", name, err)
 		}
 	}
 	http.HandleFunc("/", handler)
@@ -70,18 +82,20 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	defer global.TraceLog("main.handler")()
 	body := make([]byte, 8192)
 	n, err := r.Body.Read(body)
-	var jReq *view.JSONRequest
+	var jReq *ctrl.JSONRequest
 
 	if n == 0 {
 		// 请求的是主页
-		jReq = &view.JSONRequest{Method: "main"}
+		// jReq = &view.JSONRequest{Method: "main"}
+		jReq = &ctrl.JSONRequest{Method: "main"}
 	} else if err != io.EOF {
 		global.Log.Errorf("am:Body.Read:%v", err)
 		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 		return
 	} else {
 		// 请求的其他页面
-		jReq, err = view.ParsePostData(body[:n])
+		// jReq, err = view.ParsePostData(body[:n])
+		jReq, err = ctrl.ParsePostData(body[:n])
 		if err != nil {
 			global.Log.Errorf("am:view.ParsePostData:%v", err)
 			http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
@@ -89,13 +103,15 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	page, ok := viewMap[jReq.Method]
+	// page, ok := viewMap[jReq.Method]
+	ctrl, ok := ctrlMap[jReq.Method]
 	if !ok {
 		global.Log.Debugf("am:unsupported method")
 		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 		return
 	}
-	err = page.ShowPageCtx(jReq, w)
+	// err = page.ShowPageCtx(jReq, w)
+	err = ctrl.Process(jReq, w)
 	if err != nil {
 		global.Log.Errorf("am:page.ShowPageCtx:%v", err)
 		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)

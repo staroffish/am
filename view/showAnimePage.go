@@ -1,13 +1,9 @@
 package view
 
 import (
-	"gopkg.in/mgo.v2/bson"
-	"db"
 	"fmt"
 	"global"
 	"html/template"
-	"io/ioutil"
-	"net/http"
 )
 
 var pageAnime = `
@@ -46,21 +42,12 @@ var pageAnime = `
 </body>`
 
 // 动漫显示 结构体
-type ShowAnimePage struct {
-	tmpl *template.Template
+type AnimePage struct {
+	CommonPage
 }
 
-type showAnime struct {
-	Anime   db.Anime
-	Chapter []struct {
-		FullPath string
-		FileName string
-	}
-	PrePage template.JS
-}
-
-func (a *ShowAnimePage) Init() error {
-	defer global.TraceLog("ShowAnimePage.Init")()
+func (a *AnimePage) Init() error {
+	defer global.TraceLog("AnimePage.Init")()
 	if a.tmpl == nil {
 		tmp, err := template.New("anime").Funcs(template.FuncMap{"base64": global.EncodeBase64}).Parse(pageAnime)
 		if err != nil {
@@ -68,56 +55,5 @@ func (a *ShowAnimePage) Init() error {
 		}
 		a.tmpl = tmp
 	}
-	return nil
-}
-
-// 动漫显示方法
-func (a *ShowAnimePage) ShowPageCtx(req *JSONRequest, w http.ResponseWriter) error {
-	defer global.TraceLog("ShowAnimePage.ShowPageCtx")()
-	if len(req.Params) <= 1 {
-		return fmt.Errorf("ShowAnime:ShowPageCtx:Parameter Num is zero")
-	}
-
-	_id, ok := req.Params[0].(string)
-	if !ok {
-		return fmt.Errorf("ShowAnime:ShowPageCtx:Parameter type error:%T", req.Params[0])
-	}
-
-	var shower showAnime
-	ani := db.GetAnime(bson.ObjectIdHex(_id))
-	if ani == nil {
-		// 已经做了错误应答并出了ERROR LOG 所以 直接返回NIL
-		http.Error(w, "Page Not Found", http.StatusNotFound)
-		return nil
-	}
-
-	shower.Anime = *ani
-	prePage, ok := req.Params[1].(string) 
-	if !ok {
-		return fmt.Errorf("ShowAnime:ShowPageCtx:Parameter type error:%T", req.Params[1])
-	}
-	shower.PrePage = template.JS(prePage)
-	// 取得文件夹下面的所有文件
-	fileList, err := ioutil.ReadDir(shower.Anime.StorDir)
-	if err == nil {
-		shower.Chapter = []struct {
-			FullPath string
-			FileName string
-		}{}
-		for _, file := range fileList {
-			playPath := fmt.Sprintf("%s/%s", shower.Anime.PlayDir, file.Name())
-			shower.Chapter = append(shower.Chapter,
-				struct {
-					FullPath string
-					FileName string
-				}{playPath, file.Name()})
-		}
-	} else {
-		global.Log.Infof("ShowAnime:ShowPageCtx:open or read dir error:%s:%v", shower.Anime.StorDir, err)
-	}
-	if err := a.tmpl.Execute(w, &shower); err != nil {
-		return fmt.Errorf("ShowAnime:ShowPageCtx.Execute:%v", err)
-	}
-
 	return nil
 }

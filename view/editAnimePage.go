@@ -1,14 +1,9 @@
 package view
 
 import (
-	"db"
 	"fmt"
 	"global"
 	"html/template"
-	"io/ioutil"
-	"net/http"
-
-	"gopkg.in/mgo.v2/bson"
 )
 
 var pageEditAnime = `
@@ -35,7 +30,7 @@ var pageEditAnime = `
 				<input type="button" onclick="javascript:show_anime('{{.Anime.AnimeID}}','{{.PrePage}}')" value="返回">
 			</td>
 			<td align="right">
-				<input type="button" onclick="javascript:update_anime('{{.Anime.AnimeID}}','show_anime(\'{{.Anime.AnimeID}}\',\'{{.PrePage}}\')')" value="提交">
+				<input type="button" onclick="javascript:update_anime('{{.Anime.AnimeID}}','{{.PrePage}}')" value="提交">
 			</td>
 		</tr>
     </table>
@@ -45,7 +40,7 @@ var pageEditAnime = `
 
 // EditAnimePage - 动漫编辑 结构体
 type EditAnimePage struct {
-	tmpl *template.Template
+	CommonPage
 }
 
 func (e *EditAnimePage) Init() error {
@@ -57,125 +52,5 @@ func (e *EditAnimePage) Init() error {
 		}
 		e.tmpl = tmp
 	}
-	return nil
-}
-
-// ShowPageCtx - 编辑添加动漫的页面
-func (e *EditAnimePage) ShowPageCtx(req *JSONRequest, w http.ResponseWriter) error {
-	defer global.TraceLog("EditAnimePage.ShowPageCtx")()
-	var sa  struct {
-		Anime   db.Anime
-		PrePage template.JS 
-	}
-	if len(req.Params) == 1 {
-		prePage, ok := req.Params[0].(string)
-		if !ok {
-			return fmt.Errorf("ShowAnime:ShowPageCtx:Parameter type error:%T", req.Params[0])
-		}
-		sa.PrePage = template.JS(prePage)
-		// 新增页面所以没有参数直接返回页面
-		if err := e.tmpl.Execute(w, &sa); err != nil {
-			return fmt.Errorf("EditAnimePage:ShowPageCtx.Execute:%v", err)
-		}
-		return nil
-	}
-
-	// 取得是修改还是显示编辑页面的FLAG
-	// 显示编辑页面
-	if len(req.Params) < 3 {
-		return fmt.Errorf("EditAnimePage:ShowPageCtx:Parameter Num is less then 2")
-	}
-
-	updateFlag, ok := req.Params[2].(bool)
-	if !ok {
-		return fmt.Errorf("EditAnimePage:ShowPageCtx. parameter convert error %v", req.Params[2])
-	}
-	prePage, ok := req.Params[1].(string)
-	if !ok {
-		return fmt.Errorf("ShowAnime:ShowPageCtx:Parameter type error:%T", req.Params[1])
-	}
-
-	_id, ok := req.Params[0].(string)
-	if !ok {
-		return fmt.Errorf("EditAnimePage:ShowPageCtx:Parameter type error:%v", req.Params[0])
-	}
-
-	if updateFlag == false {
-		ani := db.GetAnime(bson.ObjectIdHex(_id))
-		if ani == nil {
-			// 已经做了错误应答并出了ERROR LOG 所以 直接返回NIL
-			http.Error(w, "Page Not Found", http.StatusNotFound)
-			return nil
-		}
-		sa.Anime = *ani
-		sa.PrePage = template.JS(prePage)
-		if err := e.tmpl.Execute(w, &sa); err != nil {
-			return fmt.Errorf("EditAnimePage:ShowPageCtx.Execute:%v", err)
-		}
-
-		return nil
-	}
-
-	var ani db.Anime
-	for _, param := range req.Params[3:] {
-		_, ok := param.(string)
-		if !ok {
-			return fmt.Errorf("EditAnimePage:ShowPageCtx:Parameter type error:value:%v:type:%T", param, param)
-		}
-	}
-
-	var i = 3
-
-	// 添加新项目时ani.AnimeID不存在,生成一个新的object id
-	if _id == "" {
-		_id = bson.NewObjectId().Hex()
-		prePage = "show_collection('main()')"
-	}
-	ani.ID = bson.ObjectIdHex(_id)
-	ani.AnimeNameCn, ok = req.Params[i].(string)
-	i++
-	ani.AnimeNameJp, ok = req.Params[i].(string)
-	i++
-	ani.Cast, ok = req.Params[i].(string)
-	i++
-	ani.Type, ok = req.Params[i].(string)
-	i++
-	ani.Status, ok = req.Params[i].(string)
-	i++
-	ani.SerialsDuri, ok = req.Params[i].(string)
-	i++
-	ani.StorDir, ok = req.Params[i].(string)
-	i++
-	ani.PlayDir, ok = req.Params[i].(string)
-	i++
-	imageUrl, ok := req.Params[i].(string)
-	i++
-
-	// 如果图片路径存在则取得图片
-	if imageUrl != "" {
-		resp, err := http.Get(imageUrl)
-		if err != nil {
-			global.Log.Errorf("am:EditAnimePage:ShowPageCtx:Get image error:%v", err)
-		} else {
-			defer resp.Body.Close()
-			ani.ImageBin, err = ioutil.ReadAll(resp.Body)
-			if err != nil {
-				global.Log.Errorf("am:EditAnimePage:ShowPageCtx:Read image error:%v", err)
-			}
-		}
-	}
-
-	// 更新数据库
-	err := db.SaveAnime(&ani)
-	if err != nil {
-		return fmt.Errorf("EditAnimePage:ShowPageCtx:SaveAnime:%v", err)
-	}
-
-	// 返回页面请求拼装
-	_, err = w.Write([]byte(prePage))
-	if err != nil {
-		return fmt.Errorf("EditAnimePage:ShowPageCtx:write:%v", err)
-	}
-
 	return nil
 }

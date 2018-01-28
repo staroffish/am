@@ -1,13 +1,10 @@
 package view
 
 import (
-	"time"
-	"net/http"
 	"fmt"
 	"global"
 	"html/template"
 	"rd"
-	// _ "rd/deluge"
 )
 
 
@@ -58,7 +55,7 @@ var pageRd = `
 
 // MainPage - Main page struct
 type RdPage struct {
-	tmpl *template.Template
+	CommonPage
 }
 
 func GetPauseBtnValue(status string) string {
@@ -89,63 +86,5 @@ func (r *RdPage) Init() error {
 		}
 		r.tmpl = tmp
 	}
-	return nil
-}
-
-// ShowPageCtx - 显示页面
-func (r *RdPage) ShowPageCtx(jr *JSONRequest, w http.ResponseWriter) error {
-	defer global.TraceLog("RdPage.ShowPageCtx")()
-	
-	if jr.Method == "add_task" {
-		link, ok := jr.Params[0].(string)
-		if !ok {
-			return fmt.Errorf("RdPage:rd.add_task:link type error:%T", jr.Params[0])
-		}
-		savePath, ok := jr.Params[1].(string)
-		if !ok {
-			return fmt.Errorf("RdPage:rd.add_task:savePath type error:%T", jr.Params[1])
-		}
-		if err := rd.AddTask(&rd.RdTask{Link:link, SavePath:savePath}, "magnet"); err != nil {
-			return fmt.Errorf("RdPage:rd.add_task:rd.AddTask:%v", err)
-		}
-
-	} else if jr.Method == "start_task" {
-		ids, ok := jr.Params[0].(string)
-		if !ok {
-			return fmt.Errorf("RdPage:rd.ResumeTask:ids type error:%T", jr.Params[0])
-		}
-		if err := rd.ResumeTask(&rd.RdTask{Ids:ids}, "magnet"); err != nil {
-			return fmt.Errorf("RdPage:rd.ResumeTask:%v", err)
-		}
-	} else if jr.Method == "pause_task" {
-		ids, ok := jr.Params[0].(string)
-		if !ok {
-			return fmt.Errorf("RdPage:rd.PauseTask:ids type error:%T", jr.Params[0])
-		}
-		if err := rd.PauseTask(&rd.RdTask{Ids:ids}, "magnet"); err != nil {
-			return fmt.Errorf("RdPage:rd.PauseTask:%v", err)
-		}
-	} else if jr.Method == "del_task" {
-		ids, ok := jr.Params[0].(string)
-		if !ok {
-			return fmt.Errorf("RdPage:rd.PauseTask:ids type error:%T", jr.Params[0])
-		}
-		if err := rd.DeleteTask(&rd.RdTask{Ids:ids}, "magnet"); err != nil {
-			return fmt.Errorf("RdPage:rd.PauseTask:%v", err)
-		}
-	}
-
-
-	time.Sleep(500 * time.Millisecond)
-	
-	tasks, err := rd.GetAllTask()
-	if err != nil {
-		return fmt.Errorf("RdPage:rd.GetAllTask:%v", err)
-	}
-	
-	if err := r.tmpl.Execute(w, tasks); err != nil {
-		return fmt.Errorf("RdPage:template.Execute:%v", err)
-	}
-
 	return nil
 }
