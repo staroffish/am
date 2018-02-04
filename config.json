@@ -11,5 +11,7 @@
     "BTWebPass":"amPasswd",
     "DebugOn":true,
     "WebTimeout":15,
-    "AnimeCntInMain":50
+    "AnimeCntInMain":50,
+    "RedisAddr": "127.0.0.1:6379",
+    "RedisPasswd": "amPasswd"
 }

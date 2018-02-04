@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"global"
 	"net/http"
-	"view"
 	"rd"
 	"time"
+	"view"
 )
 
 // MainCtrl 主页逻辑控制
@@ -33,7 +33,7 @@ func (r *RdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {
 		if !ok {
 			return fmt.Errorf("RdCtrl.Process:rd.add_task:savePath type error:%T", jr.Params[1])
 		}
-		if err := rd.AddTask(&rd.RdTask{Link:link, SavePath:savePath}, "magnet"); err != nil {
+		if err := rd.AddTask(&rd.RdTask{Link: link, SavePath: savePath}, "magnet"); err != nil {
 			return fmt.Errorf("RdCtrl.Process:rd.add_task:rd.AddTask:%v", err)
 		}
 	case "start_task":
@@ -41,7 +41,7 @@ func (r *RdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {
 		if !ok {
 			return fmt.Errorf("RdCtrl.Process:rd.ResumeTask:ids type error:%T", jr.Params[0])
 		}
-		if err := rd.ResumeTask(&rd.RdTask{Ids:ids}, "magnet"); err != nil {
+		if err := rd.ResumeTask(&rd.RdTask{Ids: ids}, "magnet"); err != nil {
 			return fmt.Errorf("RdCtrl.Process:rd.ResumeTask:%v", err)
 		}
 	case "pause_task":
@@ -49,7 +49,7 @@ func (r *RdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {
 		if !ok {
 			return fmt.Errorf("RdCtrl.Process:rd.PauseTask:ids type error:%T", jr.Params[0])
 		}
-		if err := rd.PauseTask(&rd.RdTask{Ids:ids}, "magnet"); err != nil {
+		if err := rd.PauseTask(&rd.RdTask{Ids: ids}, "magnet"); err != nil {
 			return fmt.Errorf("RdCtrl.Process:rd.PauseTask:%v", err)
 		}
 	case "del_task":
@@ -57,7 +57,7 @@ func (r *RdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {
 		if !ok {
 			return fmt.Errorf("RdCtrl.Process:rd.PauseTask:ids type error:%T", jr.Params[0])
 		}
-		if err := rd.DeleteTask(&rd.RdTask{Ids:ids}, "magnet"); err != nil {
+		if err := rd.DeleteTask(&rd.RdTask{Ids: ids}, "magnet"); err != nil {
 			return fmt.Errorf("RdCtrl.Process:rd.PauseTask:%v", err)
 		}
 	}

@@ -317,6 +317,13 @@ func (d *DelugeDownloader) GetAllTask() ([]rd.RdTask, error) {
 		}
 		task.TaskType = TaskType
 
+		tmpTime, ok := ctx["time_added"].(float64)
+		if !ok {
+			task.CreateTime = global.FormatTime(time.Time{})
+		} else {
+			task.CreateTime = global.FormatTime(time.Unix(int64(tmpTime), 0))
+		}
+
 		tasks = append(tasks, task)
 	}
 

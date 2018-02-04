@@ -23,6 +23,8 @@ type RdTask struct {
 	Size int64
 	// 任务类型
 	TaskType string
+	// 创建时间
+	CreateTime string
 }
 
 var downloaderList = make(map[string]Downloader)
@@ -40,18 +42,18 @@ type Downloader interface {
 // 任务状态
 const (
 	Downloading = "Downloading"
-	Paused		= "Paused"
-	Error		= "Error"
+	Paused      = "Paused"
+	Error       = "Error"
 )
 
 // InitDownloader - 初始化下载器
 func InitDownloader() error {
 	if len(downloaderList) == 0 {
-		return fmt.Errorf("InitDownloader:No downloader exists");
+		return fmt.Errorf("InitDownloader:No downloader exists")
 	}
 	for _, downloader := range downloaderList {
 		if err := downloader.InitDownloader(global.Cfg); err != nil {
-			return err;
+			return err
 		}
 	}
 	return nil

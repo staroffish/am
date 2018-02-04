@@ -1,17 +1,16 @@
 package ad
 
 import (
-	"strconv"
-	"rd"
-	_ "rd/deluge"
-	"io"
 	"bytes"
-	"strings"
 	"db"
 	"fmt"
 	"global"
+	"io"
 	"net/http"
+	"rd"
 	"regexp"
+	"strconv"
+	"strings"
 	"time"
 
 	"gopkg.in/mgo.v2/bson"
@@ -25,11 +24,13 @@ type Ad struct {
 }
 
 // New 创建 自动下载任务
-func New(cfg *global.Config) *Ad {
+func New(cfg *global.Config) (*Ad, error) {
 	defer global.TraceLog("ad.New")()
 	ad := Ad{config: cfg}
-	rd.InitDownloader()
-	return &ad
+	if err := rd.InitDownloader(); err != nil {
+		return nil, err
+	}
+	return &ad, nil
 }
 
 func (ad *Ad) refreshData() error {
@@ -53,7 +54,7 @@ func (ad *Ad) refreshData() error {
 		ad.adTask = nil
 		return nil
 	}
-	for _, anime := range animeList{
+	for _, anime := range animeList {
 		ad.aniMap[anime.ID] = anime
 	}
 
@@ -63,26 +64,26 @@ func (ad *Ad) refreshData() error {
 // Run - 开始自动下载
 func (ad *Ad) Run() {
 	defer global.TraceLog("Ad.Run")()
-	for{
+	for {
 		time.Sleep(time.Duration(ad.config.AdInter) * time.Second)
 		if err := ad.refreshData(); err != nil {
 			global.Log.Errorf("am:ad.updateData error:%v", err)
-			return;
+			return
 		}
-		for _, t := range ad.adTask{
+		for _, t := range ad.adTask {
 			if strings.HasSuffix(t.Url, "/") == false {
 				t.Url += "/"
 			}
-		
+
 			t.SchChapt++
 			// 取得单集的页面
 			requestUrl := fmt.Sprintf("%s%s", t.Url, t.UrlParam)
 			schExp := fmt.Sprintf(t.SchExp, t.SchChapt)
-		
+
 			webCtx, err := ad.getCtxFromWeb(requestUrl, schExp)
 			if err != nil {
 				global.Log.Errorf("am:ad.getCtxFromWeb error:%v", err)
-				continue;
+				continue
 			}
 
 			// 抓取到的链接可能是多集的
@@ -92,22 +93,22 @@ func (ad *Ad) Run() {
 					t.SchChapt = chapter
 				}
 			}
-		
+
 			// 从单集页面去的磁链
 			requestUrl = fmt.Sprintf("%s%s", t.Url, webCtx[1])
 			webCtx, err = ad.getCtxFromWeb(requestUrl, t.MagExp)
 			if err != nil {
 				global.Log.Errorf("am:ad.getCtxFromWeb error:%v", err)
-				continue;
-			} 
-		
+				continue
+			}
+
 			// 提交任务
 			rdTask := rd.RdTask{}
 			rdTask.Link = webCtx[1]
 			anime, ok := ad.aniMap[t.AnimeID]
 			if !ok {
 				global.Log.Errorf("am:ad.Run:get anime of task is not exist:%s", t.Id.Hex())
-				continue;
+				continue
 			}
 
 			rdTask.SavePath = anime.StorDir
@@ -115,28 +116,28 @@ func (ad *Ad) Run() {
 			err = rd.AddTask(&rdTask, "magnet")
 			if err != nil {
 				global.Log.Errorf("am:ad.Run:AddTask error:%v", err)
-				continue;
+				continue
 			}
 
 			err = db.SaveAdTask(&t)
 			if err != nil {
 				global.Log.Errorf("am:ad.Run:SaveAdTask error:%v", err)
-				continue;
+				continue
 			}
 
 			err = db.UpdateAnimeTime(t.AnimeID)
 			if err != nil {
 				global.Log.Errorf("am:ad.Run:UpdateAnimeTime err:%v", err)
-				continue;
+				continue
 			}
-			
+
 			global.Log.Infof("am:ad.Run:OK:%q", t)
 		}
 	}
 }
 
 // getLinkFromWeb 通过正则表达式获取网页上的内容
-func (ad *Ad) getCtxFromWeb(url,schExp string) ([]string, error) {
+func (ad *Ad) getCtxFromWeb(url, schExp string) ([]string, error) {
 	defer global.TraceLog("ad.getCtxFromWeb")()
 
 	resp, err := http.Get(url)
@@ -164,7 +165,7 @@ func (ad *Ad) getCtxFromWeb(url,schExp string) ([]string, error) {
 
 	findList := reg.FindStringSubmatch(buf.String())
 	if findList == nil && len(findList) < 2 {
-		return nil, fmt.Errorf("match error:url=%s,exp=%s", url, schExp); 
+		return nil, fmt.Errorf("match error:url=%s,exp=%s", url, schExp)
 	}
 
 	return findList, nil

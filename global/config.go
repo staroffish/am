@@ -35,7 +35,11 @@ type Config struct {
 	// 连接远程WEB服务器的超时时间
 	WebTimeout int `json:"WebTimeout"`
 	// 主页显示的动漫的数量
-	AnimeCntInMain int `json:AnimeCntInMain`
+	AnimeCntInMain int `json:"AnimeCntInMain"`
+	// redis ip
+	RedisAddr string `json:"RedisAddr"`
+	// redis password
+	RedisPasswd string `json:"RedisPasswd"`
 }
 
 const (

@@ -4,13 +4,15 @@ package main
 
 import (
 	"ad"
+	"ctrl"
 	"db"
 	"fmt"
 	"global"
 	"io/ioutil"
 	"net/http"
 	"os"
-	"ctrl"
+	_ "rd/deluge"
+	_ "rd/http"
 )
 
 var usage = `Usage:am [Config Path]`
@@ -56,13 +58,18 @@ func main() {
 		os.Exit(-1)
 	}
 	defer db.Close()
-	autoDownload := ad.New(global.Cfg)
+	autoDownload, err := ad.New(global.Cfg)
+	if err != nil {
+		global.Log.Errorf("am:ad.New:%v", err)
+		os.Exit(-1)
+	}
 
 	go autoDownload.Run()
 	for name, ctrl := range ctrlMap {
 		err := ctrl.Init()
 		if err != nil {
-			global.Log.Errorf("init %s ctrl map err:%v", name, err)
+			global.Log.Errorf("am:init %s ctrl map err:%v", name, err)
+			os.Exit(-1)
 		}
 	}
 	http.HandleFunc("/", handler)

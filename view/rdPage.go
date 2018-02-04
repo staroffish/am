@@ -7,7 +7,6 @@ import (
 	"rd"
 )
 
-
 var pageRd = `
 <script language='javascript' src='js/event.js' ></script>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -37,6 +36,7 @@ var pageRd = `
         <th>存储路径</th>
 		<th width="5%">进度</th>
 		<th>状态</th>
+		<th>创建时间</th>
         <th>操作</th>
 	</tr>
 	{{range .}}
@@ -46,6 +46,7 @@ var pageRd = `
         <td>{{.SavePath}}</td>
 		<td>{{.Progress}}%</td>
 		<td>{{.State}}</td>
+		<td>{{.CreateTime}}</td>
         <td><input type="button" style="width:50%;" onclick="javascript:{{.State|GetPauseBtnEvent}}'{{.Ids}}')" value="{{.State|GetPauseBtnValue}}"><input type="button" style="width:50%;" onclick="del_task('{{.Ids}}')" value="删除"></td>
 	</tr>
 	{{end}}
@@ -77,10 +78,10 @@ func (r *RdPage) Init() error {
 	defer global.TraceLog("RdPage.Init")()
 	if r.tmpl == nil {
 		tmp, err := template.New("remotedownload").
-						Funcs(template.FuncMap{"GetPauseBtnValue":GetPauseBtnValue}).
-						Funcs(template.FuncMap{"SizeToString":global.SizeToString}).
-						Funcs(template.FuncMap{"GetPauseBtnEvent":GetPauseBtnEvent}).
-						Parse(pageRd)
+			Funcs(template.FuncMap{"GetPauseBtnValue": GetPauseBtnValue}).
+			Funcs(template.FuncMap{"SizeToString": global.SizeToString}).
+			Funcs(template.FuncMap{"GetPauseBtnEvent": GetPauseBtnEvent}).
+			Parse(pageRd)
 		if err != nil {
 			return fmt.Errorf("RdPage:template.New:%v", err)
 		}
