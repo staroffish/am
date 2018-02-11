@@ -155,6 +155,7 @@ func (a *AnimeCtrl) showCollection(req *JSONRequest, w http.ResponseWriter) erro
 				bson.M{"serialsduri": bson.RegEx{Pattern: keyword}},
 				bson.M{"type": bson.RegEx{Pattern: keyword}},
 				bson.M{"status": bson.RegEx{Pattern: keyword}},
+				bson.M{"stordir": bson.RegEx{Pattern: keyword}},
 			}}
 		}
 	}
