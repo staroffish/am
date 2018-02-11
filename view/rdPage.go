@@ -47,7 +47,7 @@ var pageRd = `
 		<td>{{.Progress}}%</td>
 		<td>{{.State}}</td>
 		<td>{{.CreateTime}}</td>
-        <td><input type="button" style="width:50%;" onclick="javascript:{{.State|GetPauseBtnEvent}}'{{.Ids}}')" value="{{.State|GetPauseBtnValue}}"><input type="button" style="width:50%;" onclick="del_task('{{.Ids}}')" value="删除"></td>
+        <td><input type="button" style="width:50%;" {{.State|GetPauseBtnDisnable}} onclick="javascript:{{.State|GetPauseBtnEvent}}'{{.Ids}}:{{.TaskType}}')" value="{{.State|GetPauseBtnValue}}"><input type="button" style="width:50%;" onclick="del_task('{{.Ids}}:{{.TaskType}}')" value="删除"></td>
 	</tr>
 	{{end}}
     </table>
@@ -59,18 +59,25 @@ type RdPage struct {
 	CommonPage
 }
 
-func GetPauseBtnValue(status string) string {
-	if status == rd.Paused {
+func getPauseBtnValue(status string) string {
+	if status == rd.Paused || status == rd.Error || status == rd.Finished {
 		return "开始"
 	}
 	return "暂停"
 }
 
-func GetPauseBtnEvent(status string) template.JS {
-	if status == rd.Paused {
+func getPauseBtnEvent(status string) template.JS {
+	if status == rd.Paused || status == rd.Error || status == rd.Finished {
 		return "start_task("
 	}
 	return "pause_task("
+}
+
+func getPauseBtnDisnable(status string) template.JS {
+	if status == rd.Finished {
+		return "disabled"
+	}
+	return ""
 }
 
 // Init - init mainpage
@@ -78,9 +85,10 @@ func (r *RdPage) Init() error {
 	defer global.TraceLog("RdPage.Init")()
 	if r.tmpl == nil {
 		tmp, err := template.New("remotedownload").
-			Funcs(template.FuncMap{"GetPauseBtnValue": GetPauseBtnValue}).
+			Funcs(template.FuncMap{"GetPauseBtnValue": getPauseBtnValue}).
 			Funcs(template.FuncMap{"SizeToString": global.SizeToString}).
-			Funcs(template.FuncMap{"GetPauseBtnEvent": GetPauseBtnEvent}).
+			Funcs(template.FuncMap{"GetPauseBtnEvent": getPauseBtnEvent}).
+			Funcs(template.FuncMap{"GetPauseBtnDisnable": getPauseBtnDisnable}).
 			Parse(pageRd)
 		if err != nil {
 			return fmt.Errorf("RdPage:template.New:%v", err)

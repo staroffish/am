@@ -112,8 +112,9 @@ func (ad *Ad) Run() {
 			}
 
 			rdTask.SavePath = anime.StorDir
+			rdTask.TaskType = "magnet"
 
-			err = rd.AddTask(&rdTask, "magnet")
+			err = rd.AddTask(&rdTask)
 			if err != nil {
 				global.Log.Errorf("am:ad.Run:AddTask error:%v", err)
 				continue
