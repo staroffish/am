@@ -18,7 +18,7 @@ var pageRd = `
     <table width="96%" border="0" align="center"><tr><td><h1>离线下载</h1></td></tr></table>
     <table width="96%" border="1" align="center">
         <tr>
-            <td width="18%">下载地址(磁链)</td>
+            <td width="18%">下载地址(磁链/HTTP下载)</td>
             <td><input style="width:82%;" type="text" name="" id="magnet"/></td>
         </tr>
         <tr>
