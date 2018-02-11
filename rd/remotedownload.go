@@ -48,6 +48,9 @@ const (
 	Error       = "Error"
 )
 
+var httpType = "http"
+var httpsType = "https"
+
 // InitDownloader - 初始化下载器
 func InitDownloader() error {
 	if len(downloaderList) == 0 {
@@ -129,6 +132,25 @@ func GetAllTask() ([]RdTask, error) {
 	sort.Sort(ts)
 
 	return rtnList, nil
+}
+
+func PauseAllTask() {
+	defer global.TraceLog("rd.PauseAllTask")()
+
+	for typ, downloader := range downloaderList {
+		taskList, err := downloader.GetAllTask()
+		if err != nil {
+			global.Log.Errorf("am:rd.GetAllTask:%v:type:%s", err, typ)
+			continue
+		}
+		for _, task := range taskList {
+			if task.State == Downloading && (task.TaskType == httpsType || task.TaskType == httpType) {
+				if err := downloader.PauseTask(&task); err != nil {
+					global.Log.Errorf("am:rd.downloader.PauseTask:%v:type:%s:id:%s", err, typ, task.Ids)
+				}
+			}
+		}
+	}
 }
 
 type taskSorter struct {

@@ -20,6 +20,10 @@ func (r *RdCtrl) Init() error {
 	return r.RdPage.Init()
 }
 
+func (r *RdCtrl) Close() {
+	rd.PauseAllTask()
+}
+
 // Process 处理函数
 func (r *RdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {
 	defer global.TraceLog("RdCtrl.Process")()
@@ -32,15 +36,22 @@ func (r *RdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {
 			return fmt.Errorf("RdCtrl.Process:rd.add_task:link type error:%T", jr.Params[0])
 		}
 
-		idx = strings.LastIndex(param1, ":")
-		id = param1[:idx]
-		taskType = param1[idx+1:]
 		link = param1
+		idx = strings.LastIndex(param1, ":")
+		if idx != -1 {
+			id = param1[:idx]
+			taskType = param1[idx+1:]
+			link = param1
+		}
 	}
 
 	switch jr.Method {
 	case "add_task":
 		idx = strings.Index(link, ":")
+		if idx == -1 {
+			link = fmt.Sprintf("http://%s", link)
+			idx = 4
+		}
 		taskType = link[:idx]
 		savePath, ok := jr.Params[1].(string)
 		if !ok {

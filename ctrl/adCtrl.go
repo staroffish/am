@@ -1,15 +1,16 @@
 package ctrl
 
 import (
+	"db"
 	"fmt"
 	"global"
 	"html/template"
 	"net/http"
+	"strconv"
 	"time"
 	"view"
-	"db"
+
 	"gopkg.in/mgo.v2/bson"
-	"strconv"
 )
 
 // MainCtrl 主页逻辑控制
@@ -39,9 +40,11 @@ type taskData struct {
 	StorDir     string
 	PlayDir     string
 	CheckBox    template.HTML
-	Disabled	string
+	Disabled    string
 	UpdateTime  time.Time
 }
+
+func (a *AdCtrl) Close() {}
 
 // Process 处理函数
 func (a *AdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {

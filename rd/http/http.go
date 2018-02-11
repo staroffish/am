@@ -27,8 +27,8 @@ type HttpDownloader struct {
 var mapMutex sync.Mutex
 
 // HttpType/HttpsType - 下载类型字符串
-var HttpType = "http"
-var HttpsType = "https"
+var httpType = "http"
+var httpsType = "https"
 
 type httpTask struct {
 	// Id       string `redis:"Id"`       // 任务ID(保存文件的全路径)
@@ -44,8 +44,8 @@ type httpTask struct {
 }
 
 func init() {
-	rd.SetDownloader(HttpType, &HttpDownloader{db: 0})
-	rd.SetDownloader(HttpsType, &HttpDownloader{db: 1})
+	rd.SetDownloader(httpType, &HttpDownloader{db: 0})
+	rd.SetDownloader(httpsType, &HttpDownloader{db: 1})
 }
 
 // NewDownloader - 初始化下载器

@@ -4,11 +4,12 @@ import (
 	"db"
 	"fmt"
 	"global"
-	"gopkg.in/mgo.v2/bson"
 	"html/template"
 	"io/ioutil"
 	"net/http"
 	"view"
+
+	"gopkg.in/mgo.v2/bson"
 )
 
 // AnimeCtrl 动漫页面控制类
@@ -44,6 +45,8 @@ func (a *AnimeCtrl) Init() error {
 	return a.EditAnimePage.Init()
 }
 
+func (a *AnimeCtrl) Close() {}
+
 // Process 处理函数
 func (a *AnimeCtrl) Process(req *JSONRequest, w http.ResponseWriter) error {
 	defer global.TraceLog("AnimeCtrl.Process")()
@@ -51,7 +54,7 @@ func (a *AnimeCtrl) Process(req *JSONRequest, w http.ResponseWriter) error {
 	switch req.Method {
 	// 显示已收藏动漫页面
 	case "show_collection":
-		err := a.showCollection(req , w)
+		err := a.showCollection(req, w)
 		if err != nil {
 			return err
 		}
@@ -109,25 +112,25 @@ func (a *AnimeCtrl) Process(req *JSONRequest, w http.ResponseWriter) error {
 		if len(req.Params) < 1 {
 			return fmt.Errorf("AnimeCtrl:Process:del_anime:Parameter Num is less then 1")
 		}
-	
+
 		_id, ok := req.Params[0].(string)
 		if !ok {
 			return fmt.Errorf("AnimeCtrl:Process:del_anime:Parameter type error:%v", req.Params[0])
 		}
-	
-		err := db.DeletedAnime(bson.ObjectIdHex(_id));
+
+		err := db.DeletedAnime(bson.ObjectIdHex(_id))
 		if err != nil {
 			return fmt.Errorf("AnimeCtrl:Process:del_anime:DeletedTask err:%v", err)
 		}
 		req.Params[0] = ""
-		err = a.showCollection(req , w)
+		err = a.showCollection(req, w)
 		if err != nil {
 			return err
 		}
 		break
 	default:
 		return fmt.Errorf("AnimeCtrl:Process:unsupport method")
-		
+
 	}
 
 	return nil
@@ -184,7 +187,7 @@ func (a *AnimeCtrl) showAnime(req *JSONRequest, w http.ResponseWriter) error {
 	if _id == "" {
 		// id 为空来自添加页面 所以不存在id
 		req.Params = req.Params[0:0]
-		return a.showCollection(req , w)
+		return a.showCollection(req, w)
 	}
 
 	ani := db.GetAnime(bson.ObjectIdHex(_id))
@@ -299,11 +302,11 @@ func (a *AnimeCtrl) updateAnime(req *JSONRequest, w http.ResponseWriter) error {
 	}
 
 	var jr JSONRequest
-	
-	if prePage == ""{
+
+	if prePage == "" {
 		jr.Method = "show_collection"
 		err = a.showCollection(&jr, w)
-	}else{
+	} else {
 		jr.Method = "show_anime"
 		jr.Params = []interface{}{_id, prePage}
 		err = a.showAnime(&jr, w)

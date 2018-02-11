@@ -4,9 +4,10 @@ import (
 	"db"
 	"fmt"
 	"global"
-	"gopkg.in/mgo.v2/bson"
 	"net/http"
 	"view"
+
+	"gopkg.in/mgo.v2/bson"
 )
 
 // MainCtrl 主页逻辑控制
@@ -18,6 +19,8 @@ type MainCtrl struct {
 func (m *MainCtrl) Init() error {
 	return m.MainPage.Init()
 }
+
+func (m *MainCtrl) Close() {}
 
 // Process 处理函数
 func (m *MainCtrl) Process(_ *JSONRequest, w http.ResponseWriter) error {

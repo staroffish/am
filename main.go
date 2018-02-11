@@ -9,10 +9,13 @@ import (
 	"fmt"
 	"global"
 	"io/ioutil"
+	"net"
 	"net/http"
 	"os"
+	"os/signal"
 	_ "rd/deluge"
 	_ "rd/http"
+	"syscall"
 )
 
 var usage = `Usage:am [Config Path]`
@@ -75,7 +78,36 @@ func main() {
 	http.HandleFunc("/", handler)
 	http.Handle("/js/", http.FileServer(http.Dir("./")))
 	http.Handle("/usb/", http.FileServer(http.Dir("/usb/")))
-	global.Log.Infof("%v", http.ListenAndServe(global.Cfg.BindAddr, nil))
+	ln, err := net.Listen("tcp", global.Cfg.BindAddr)
+	if err != nil {
+		global.Log.Errorf("am:net.Listen error:%v", err)
+		os.Exit(-1)
+	}
+
+	s := http.Server{}
+	s.SetKeepAlivesEnabled(true)
+	sigCh := make(chan os.Signal)
+	signal.Ignore(syscall.SIGHUP)
+	signal.Notify(sigCh, os.Interrupt, syscall.SIGTERM)
+
+	go func() {
+		<-sigCh
+		for _, ctrl := range ctrlMap {
+			ctrl.Close()
+		}
+
+		err := s.Shutdown(nil)
+		if err != nil {
+			global.Log.Errorf("am:s.Shutdown error:%v", err)
+		}
+	}()
+	err = s.Serve(ln)
+	if err != nil && err != http.ErrServerClosed {
+		global.Log.Errorf("am:s.Serve error:%v", err)
+		os.Exit(-1)
+	}
+
+	global.Log.Infof("End program")
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {

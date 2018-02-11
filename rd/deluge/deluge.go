@@ -14,7 +14,7 @@ import (
 )
 
 // TaskType - 下载类型字符串
-var TaskType = "magnet"
+var taskType = "magnet"
 
 // DelugeDownloader - deluge下载
 type DelugeDownloader struct {
@@ -41,7 +41,7 @@ const (
 
 func init() {
 	var dnldr DelugeDownloader
-	rd.SetDownloader(TaskType, &dnldr)
+	rd.SetDownloader(taskType, &dnldr)
 }
 
 func (d *DelugeDownloader) check() error {
@@ -315,7 +315,7 @@ func (d *DelugeDownloader) GetAllTask() ([]rd.RdTask, error) {
 		if ok {
 			task.Size = int64(tmpFloat)
 		}
-		task.TaskType = TaskType
+		task.TaskType = taskType
 
 		tmpTime, ok := ctx["time_added"].(float64)
 		if !ok {

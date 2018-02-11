@@ -8,4 +8,5 @@ import (
 type Control interface {
 	Init() error
 	Process(*JSONRequest, http.ResponseWriter) error
+	Close()
 }
