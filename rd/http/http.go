@@ -179,7 +179,11 @@ func (d *HttpDownloader) GetAllTask() ([]rd.RdTask, error) {
 		rdt.Link = task.Url
 		rdt.Name = task.FileName
 		rdt.SavePath = task.Path
-		rdt.Progress = int(task.FinishedSize / task.TotalSize * 100)
+
+		if task.TotalSize != 0 {
+			rdt.Progress = int(task.FinishedSize / task.TotalSize * 100)
+		}
+
 		rdt.Size = int64(task.TotalSize)
 		rdt.TaskType = task.TaskType
 		rdt.State = task.State
