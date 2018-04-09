@@ -2,16 +2,18 @@ package ad
 
 import (
 	"bytes"
-	"db"
 	"fmt"
-	"global"
 	"io"
 	"net/http"
-	"rd"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/staroffish/am/db"
+	"github.com/staroffish/am/global"
+
+	"github.com/staroffish/am/rd"
 
 	"gopkg.in/mgo.v2/bson"
 )

@@ -5,12 +5,14 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"global"
 	"io"
 	"net/http"
-	"rd"
 	"strings"
 	"time"
+
+	"github.com/staroffish/am/rd"
+
+	"github.com/staroffish/am/global"
 )
 
 // TaskType - 下载类型字符串

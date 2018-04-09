@@ -2,8 +2,9 @@ package view
 
 import (
 	"fmt"
-	"global"
 	"html/template"
+
+	"github.com/staroffish/am/global"
 )
 
 var pageCollection = `
@@ -62,8 +63,8 @@ type AnimeCollectionPage struct {
 func (s *AnimeCollectionPage) Init() error {
 	defer global.TraceLog("AnimeCollectionPage.Init")()
 	tmp, err := template.New("collection").
-				Funcs(template.FuncMap{"showDate": global.FormatTime}).
-				Parse(pageCollection)
+		Funcs(template.FuncMap{"showDate": global.FormatTime}).
+		Parse(pageCollection)
 	if err != nil {
 		return fmt.Errorf("Init:template.New:%v", err)
 	}

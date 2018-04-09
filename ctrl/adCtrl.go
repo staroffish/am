@@ -1,15 +1,17 @@
 package ctrl
 
 import (
-	"db"
 	"fmt"
-	"global"
 	"html/template"
 	"net/http"
 	"strconv"
 	"time"
-	"view"
 
+	"github.com/staroffish/am/db"
+
+	"github.com/staroffish/am/global"
+
+	"github.com/staroffish/am/view"
 	"gopkg.in/mgo.v2/bson"
 )
 

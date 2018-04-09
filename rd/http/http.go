@@ -3,16 +3,17 @@ package http
 import (
 	"crypto/tls"
 	"fmt"
-	"global"
 	"io"
 	"mime/multipart"
 	"net/http"
 	"os"
-	"rd"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/staroffish/am/global"
+	"github.com/staroffish/am/rd"
 
 	"github.com/garyburd/redigo/redis"
 )

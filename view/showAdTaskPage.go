@@ -2,10 +2,10 @@ package view
 
 import (
 	"fmt"
-	"global"
 	"html/template"
-)
 
+	"github.com/staroffish/am/global"
+)
 
 var pageAd = `
 <script language='javascript' src='js/event.js' ></script>
@@ -49,8 +49,8 @@ func (a *AdTaskPage) Init() error {
 	defer global.TraceLog("AdTaskPage.Init")()
 	if a.tmpl == nil {
 		tmp, err := template.New("autodownload").
-						Funcs(template.FuncMap{"showDate":global.FormatTime}).
-						Parse(pageAd)
+			Funcs(template.FuncMap{"showDate": global.FormatTime}).
+			Parse(pageAd)
 		if err != nil {
 			return fmt.Errorf("AdTaskPage:template.New:%v", err)
 		}

@@ -2,8 +2,9 @@ package rd
 
 import (
 	"fmt"
-	"global"
 	"sort"
+
+	"github.com/staroffish/am/global"
 )
 
 // RdTask - 远程下载任务的结构体

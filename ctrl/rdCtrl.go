@@ -2,12 +2,14 @@ package ctrl
 
 import (
 	"fmt"
-	"global"
 	"net/http"
-	"rd"
 	"strings"
 	"time"
-	"view"
+
+	"github.com/staroffish/am/global"
+
+	"github.com/staroffish/am/rd"
+	"github.com/staroffish/am/view"
 )
 
 // MainCtrl 主页逻辑控制

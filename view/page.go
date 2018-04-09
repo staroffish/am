@@ -1,10 +1,11 @@
 package view
 
 import (
-	"global"
-	"net/http"
-	"html/template"
 	"fmt"
+	"html/template"
+	"net/http"
+
+	"github.com/staroffish/am/global"
 )
 
 // Page - The interface of web page
@@ -14,7 +15,7 @@ type Page interface {
 }
 
 // CommonPage - 公用页面类
-type CommonPage struct{
+type CommonPage struct {
 	tmpl *template.Template
 }
 

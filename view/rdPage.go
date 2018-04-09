@@ -2,9 +2,10 @@ package view
 
 import (
 	"fmt"
-	"global"
 	"html/template"
-	"rd"
+
+	"github.com/staroffish/am/global"
+	"github.com/staroffish/am/rd"
 )
 
 var pageRd = `

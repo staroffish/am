@@ -1,11 +1,12 @@
 package db
 
 import (
-	"time"
 	"fmt"
-	"global"
-	"gopkg.in/mgo.v2/bson"
 	"math"
+	"time"
+
+	"github.com/staroffish/am/global"
+	"gopkg.in/mgo.v2/bson"
 
 	mgo "gopkg.in/mgo.v2"
 )
@@ -17,7 +18,7 @@ func Connect(config *global.Config) error {
 	defer global.TraceLog("db.Connect")()
 	sess, err := mgo.Dial(config.DBIP + ":" + config.DBPort)
 	if err != nil {
-		
+
 		return fmt.Errorf("mgo.Dial:%v", err)
 	}
 	dbSess = sess
@@ -105,7 +106,7 @@ func UpdateAnimeTime(id bson.ObjectId) error {
 	defer global.TraceLog("db.UpdateAnimeTime")()
 
 	c := DB.C("anime")
-	err := c.Update(bson.M{"_id":id},bson.M{"$set":bson.M{"updatetime":time.Now()}})
+	err := c.Update(bson.M{"_id": id}, bson.M{"$set": bson.M{"updatetime": time.Now()}})
 	if err != nil {
 		return fmt.Errorf("db.UpdateAnimeTime:Update error:%v", err)
 	}
@@ -118,7 +119,7 @@ func DeletedAnime(id bson.ObjectId) error {
 	defer global.TraceLog("db.DeletedAnime")()
 
 	c := DB.C("anime")
-	err := c.Remove(bson.M{"_id":id})
+	err := c.Remove(bson.M{"_id": id})
 	if err != nil {
 		return fmt.Errorf("db.DeletedAnime:UpsertRemoveId error:%v:%q", err, id.Hex())
 	}
@@ -127,7 +128,7 @@ func DeletedAnime(id bson.ObjectId) error {
 }
 
 // GetAdTaskByKey - 根据ID取得自动下载任务
-func GetAdTaskByKey(key bson.M) []AdTask{
+func GetAdTaskByKey(key bson.M) []AdTask {
 	defer global.TraceLog("db.GetAdTaskByKey")()
 	var adTasks = make([]AdTask, 0)
 	it := DB.C("adtask").Find(key).Sort("-updatetime").Iter()
@@ -168,7 +169,7 @@ func DeleteAdTask(id bson.ObjectId) error {
 	defer global.TraceLog("db.DeletedTask")()
 
 	c := DB.C("adtask")
-	err := c.Remove(bson.M{"_id":id})
+	err := c.Remove(bson.M{"_id": id})
 	if err != nil {
 		return fmt.Errorf("db.DeletedTask:Remove error:%v:%q", err, id.Hex())
 	}

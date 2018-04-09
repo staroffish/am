@@ -2,8 +2,9 @@ package view
 
 import (
 	"fmt"
-	"global"
 	"html/template"
+
+	"github.com/staroffish/am/global"
 )
 
 var pageAnime = `

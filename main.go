@@ -3,19 +3,20 @@
 package main
 
 import (
-	"ad"
-	"ctrl"
-	"db"
 	"fmt"
-	"global"
 	"io/ioutil"
 	"net"
 	"net/http"
 	"os"
 	"os/signal"
-	_ "rd/deluge"
-	_ "rd/http"
 	"syscall"
+
+	"github.com/staroffish/am/ad"
+	"github.com/staroffish/am/ctrl"
+	"github.com/staroffish/am/db"
+	"github.com/staroffish/am/global"
+	_ "github.com/staroffish/am/rd/deluge"
+	_ "github.com/staroffish/am/rd/http"
 )
 
 var usage = `Usage:am [Config Path]`

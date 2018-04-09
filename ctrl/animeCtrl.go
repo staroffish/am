@@ -1,13 +1,15 @@
 package ctrl
 
 import (
-	"db"
 	"fmt"
-	"global"
 	"html/template"
 	"io/ioutil"
 	"net/http"
-	"view"
+
+	"github.com/staroffish/am/global"
+
+	"github.com/staroffish/am/db"
+	"github.com/staroffish/am/view"
 
 	"gopkg.in/mgo.v2/bson"
 )

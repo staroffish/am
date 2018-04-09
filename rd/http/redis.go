@@ -2,8 +2,9 @@ package http
 
 import (
 	"fmt"
-	"global"
 	"strconv"
+
+	"github.com/staroffish/am/global"
 
 	"github.com/garyburd/redigo/redis"
 )
