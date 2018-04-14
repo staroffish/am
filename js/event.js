@@ -97,7 +97,8 @@ function get_task()
     xmlhttp.open("POST","/",true);
     xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
     xmlhttp.send(arg);
-    reload();
+    // reload();
+    get_task_by_ws();
 }
 function add_task()
 {
@@ -110,7 +111,7 @@ function add_task()
     }
     var arg = JSON.stringify({'method':'add_task','params':[magnet, savePath]})
     CreateXMLHttpRequest();
-    xmlhttp.onreadystatechange = callhandle;
+    // xmlhttp.onreadystatechange = callhandle;
     xmlhttp.open("POST","/",true);
     xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
     xmlhttp.send(arg);
@@ -120,7 +121,7 @@ function start_task(id)
 {
     var arg = JSON.stringify({'method':'start_task','params':[id]})
     CreateXMLHttpRequest();
-    xmlhttp.onreadystatechange = callhandle;
+    // xmlhttp.onreadystatechange = callhandle;
     xmlhttp.open("POST","/",true);
     xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
     xmlhttp.send(arg);
@@ -130,7 +131,7 @@ function pause_task(id)
 {
     var arg = JSON.stringify({'method':'pause_task','params':[id]})
     CreateXMLHttpRequest();
-    xmlhttp.onreadystatechange = callhandle;
+    // xmlhttp.onreadystatechange = callhandle;
     xmlhttp.open("POST","/",true);
     xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
     xmlhttp.send(arg);
@@ -140,7 +141,7 @@ function del_task(id)
 {
     var arg = JSON.stringify({'method':'del_task','params':[id]})
     CreateXMLHttpRequest();
-    xmlhttp.onreadystatechange = callhandle;
+    // xmlhttp.onreadystatechange = callhandle;
     xmlhttp.open("POST","/",true);
     xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");  //用POST的时候一定要有这句
     xmlhttp.send(arg);
@@ -224,11 +225,33 @@ function callhandle()
 {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
     {
-        document.body.innerHTML=xmlhttp.responseText 
+        document.body.innerHTML=xmlhttp.responseText;
     }
 }
 
 function reload()
 {
-    setTimeout(get_task, 60000)
+    setTimeout(get_task, 60000);
+}
+
+
+function get_task_by_ws()
+{
+    // alert("get_task_by_ws");
+    host = document.location.hostname;
+    port = document.location.port;
+    uri = 'ws://'+ host + ':' + port +'/rdtask';
+
+    ws = new WebSocket(uri);
+    
+    ws.onmessage = function(evt) {
+        div = document.getElementById("tasks");
+        if(div == null)
+        {
+            Socket.close();
+            return;
+        }
+        div.innerHTML = evt.data;
+
+    }
 }

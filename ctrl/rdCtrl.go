@@ -2,9 +2,12 @@ package ctrl
 
 import (
 	"fmt"
+	"net"
 	"net/http"
 	"strings"
 	"time"
+
+	"golang.org/x/net/websocket"
 
 	"github.com/staroffish/am/global"
 
@@ -15,10 +18,12 @@ import (
 // MainCtrl 主页逻辑控制
 type RdCtrl struct {
 	view.RdPage
+	PushChan chan struct{}
 }
 
 // Init - 初始化
 func (r *RdCtrl) Init() error {
+	r.PushChan = make(chan struct{})
 	return r.RdPage.Init()
 }
 
@@ -74,13 +79,38 @@ func (r *RdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {
 		if err := rd.DeleteTask(&rd.RdTask{Ids: id, TaskType: taskType}); err != nil {
 			return fmt.Errorf("RdCtrl.Process:rd.PauseTask:%v", err)
 		}
+	case "get_task":
+		_, err := w.Write(r.RdPage.Head)
+		if err != nil {
+			return fmt.Errorf("RdCtrl.Process:rd.get_task:%v", err)
+		}
 	}
 
-	time.Sleep(500 * time.Millisecond)
-	tasks, err := rd.GetAllTask()
-	if err != nil {
-		return fmt.Errorf("RdPage:rd.GetAllTask:%v", err)
-	}
+	rd.UpdateChan <- struct{}{}
+	<-rd.UpdateChan
+	r.PushChan <- struct{}{}
 
-	return r.ShowPage(tasks, w)
+	return nil
+}
+
+func (r *RdCtrl) PushTasks(w http.ResponseWriter, req *http.Request) {
+	defer global.TraceLog("RdCtrl.PushTasks")()
+	websocket.Handler(func(ws *websocket.Conn) {
+		ticker := time.NewTicker(time.Second * 5)
+		for {
+			select {
+			case <-r.PushChan:
+			case <-ticker.C:
+			}
+			rdTasks := rd.GetCachedTask()
+			if err := r.RdPage.PushPageCtx(ws, rdTasks); err != nil {
+				_, ok := err.(*net.OpError)
+				if !ok {
+					global.Log.Errorf("Push rd task error:%v", err)
+				}
+
+				return
+			}
+		}
+	}).ServeHTTP(w, req)
 }

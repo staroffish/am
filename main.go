@@ -73,10 +73,11 @@ func main() {
 		err := ctrl.Init()
 		if err != nil {
 			global.Log.Errorf("am:init %s ctrl map err:%v", name, err)
-			os.Exit(-1)
+			os.Exit(-1) // http.HandleFunc("/rdtask", PushTasks)
 		}
 	}
 	http.HandleFunc("/", handler)
+	http.HandleFunc("/rdtask", ctrlMap["get_task"].(*ctrl.RdCtrl).PushTasks)
 	http.Handle("/js/", http.FileServer(http.Dir("./")))
 	http.Handle("/usb/", http.FileServer(http.Dir("/usb/")))
 	ln, err := net.Listen("tcp", global.Cfg.BindAddr)

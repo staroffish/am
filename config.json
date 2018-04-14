@@ -9,7 +9,7 @@
     "AdInter":600,
     "BTWebUrl":"http://192.168.3.2:8112/json",
     "BTWebPass":"amPasswd",
-    "DebugOn":true,
+    "DebugOn":false,
     "WebTimeout":15,
     "AnimeCntInMain":50,
     "RedisAddr": "127.0.0.1:6379",

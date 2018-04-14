@@ -3,6 +3,8 @@ package rd
 import (
 	"fmt"
 	"sort"
+	"sync"
+	"time"
 
 	"github.com/staroffish/am/global"
 )
@@ -52,6 +54,12 @@ const (
 var httpType = "http"
 var httpsType = "https"
 
+var cacheTask [2][]RdTask
+var curIndex int
+var mutex sync.Mutex
+
+var UpdateChan chan struct{}
+
 // InitDownloader - 初始化下载器
 func InitDownloader() error {
 	if len(downloaderList) == 0 {
@@ -62,6 +70,21 @@ func InitDownloader() error {
 			return err
 		}
 	}
+
+	UpdateChan = make(chan struct{})
+	go func() {
+		ticker := time.NewTicker(5 * time.Second)
+		for {
+			select {
+			case <-ticker.C:
+				UpdateCacheTask()
+			case <-UpdateChan:
+				UpdateCacheTask()
+				UpdateChan <- struct{}{}
+			}
+
+		}
+	}()
 	return nil
 }
 
@@ -152,6 +175,27 @@ func PauseAllTask() {
 			}
 		}
 	}
+}
+
+func UpdateCacheTask() {
+	defer global.TraceLog("rd.updateTask")()
+	rdt, err := GetAllTask()
+	if err != nil {
+		global.Log.Errorf("am:rd.updateTask:%v", err)
+		return
+	}
+
+	cacheTask[1-curIndex] = rdt
+	mutex.Lock()
+	defer mutex.Unlock()
+	curIndex = 1 - curIndex
+
+}
+
+func GetCachedTask() []RdTask {
+	mutex.Lock()
+	defer mutex.Unlock()
+	return cacheTask[curIndex]
 }
 
 type taskSorter struct {
