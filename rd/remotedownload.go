@@ -82,7 +82,6 @@ func InitDownloader() error {
 				UpdateCacheTask()
 				UpdateChan <- struct{}{}
 			}
-
 		}
 	}()
 	return nil

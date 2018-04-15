@@ -18,12 +18,24 @@ import (
 // MainCtrl 主页逻辑控制
 type RdCtrl struct {
 	view.RdPage
-	PushChan chan struct{}
 }
+
+type webSocketCtl struct {
+	ws        *websocket.Conn
+	closeChan chan struct{}
+}
+
+var wsChan chan webSocketCtl
+var pushChan chan struct{}
 
 // Init - 初始化
 func (r *RdCtrl) Init() error {
-	r.PushChan = make(chan struct{})
+	if wsChan != nil {
+		return nil
+	}
+	wsChan = make(chan webSocketCtl)
+	pushChan = make(chan struct{})
+	go r.sendMsg()
 	return r.RdPage.Init()
 }
 
@@ -86,31 +98,80 @@ func (r *RdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {
 		}
 	}
 
+	// if jr.Method != "get_task" {
 	rd.UpdateChan <- struct{}{}
 	<-rd.UpdateChan
-	r.PushChan <- struct{}{}
+	// }
 
 	return nil
 }
 
+// func (r *RdCtrl) PushTasks(w http.ResponseWriter, req *http.Request) {
+// 	defer global.TraceLog("RdCtrl.PushTasks")()
+// 	websocket.Handler(func(ws *websocket.Conn) {
+// 		ticker := time.NewTicker(time.Second * 2)
+// 		for {
+// 			rdTasks := rd.GetCachedTask()
+// 			if err := r.RdPage.PushPageCtx(ws, rdTasks); err != nil {
+// 				_, ok := err.(*net.OpError)
+// 				if !ok {
+// 					global.Log.Errorf("Push rd task error:%v", err)
+// 				}
+
+// 				return
+// 			}
+// 			select {
+// 			case <-ticker.C:
+// 			}
+// 		}
+// 	}).ServeHTTP(w, req)
+// }
+
 func (r *RdCtrl) PushTasks(w http.ResponseWriter, req *http.Request) {
 	defer global.TraceLog("RdCtrl.PushTasks")()
 	websocket.Handler(func(ws *websocket.Conn) {
-		ticker := time.NewTicker(time.Second * 5)
-		for {
-			select {
-			case <-r.PushChan:
-			case <-ticker.C:
-			}
-			rdTasks := rd.GetCachedTask()
-			if err := r.RdPage.PushPageCtx(ws, rdTasks); err != nil {
-				_, ok := err.(*net.OpError)
-				if !ok {
-					global.Log.Errorf("Push rd task error:%v", err)
-				}
+		wsc := webSocketCtl{ws, make(chan struct{})}
+		wsChan <- wsc
+		<-wsc.closeChan
+		global.Log.Infof("ws end")
+	}).ServeHTTP(w, req)
+}
 
-				return
+func (r *RdCtrl) sendMsg() {
+	ticker := time.NewTicker(time.Second * 2)
+	wsList := make(map[uint]webSocketCtl)
+	i := uint(0)
+
+	var sendfunc = func(idx uint, rdTasks []rd.RdTask) {
+		if err := r.RdPage.PushPageCtx(wsList[idx].ws, rdTasks); err != nil {
+			close(wsList[idx].closeChan)
+			delete(wsList, idx)
+			_, ok := err.(*net.OpError)
+			if !ok {
+				global.Log.Errorf("Push rd task error:%v", err)
 			}
 		}
-	}).ServeHTTP(w, req)
+	}
+
+	for {
+		select {
+		case ws := <-wsChan:
+			wsList[i] = ws
+			rd.UpdateChan <- struct{}{}
+			<-rd.UpdateChan
+			rdTasks := rd.GetCachedTask()
+			sendfunc(i, rdTasks)
+			i++
+			continue
+		case <-ticker.C:
+
+		}
+
+		global.Log.Infof("start push %s", time.Now().String())
+		rdTasks := rd.GetCachedTask()
+		for idx, _ := range wsList {
+			sendfunc(idx, rdTasks)
+		}
+		global.Log.Infof("end push %s", time.Now().String())
+	}
 }

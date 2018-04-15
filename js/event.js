@@ -248,7 +248,7 @@ function get_task_by_ws()
         div = document.getElementById("tasks");
         if(div == null)
         {
-            Socket.close();
+            ws.close();
             return;
         }
         div.innerHTML = evt.data;
