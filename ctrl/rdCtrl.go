@@ -160,7 +160,7 @@ func (r *RdCtrl) sendMsg() {
 			rd.UpdateChan <- struct{}{}
 			<-rd.UpdateChan
 			rdTasks := rd.GetCachedTask()
-			sendfunc(i, rdTasks)
+			go sendfunc(i, rdTasks)
 			i++
 			continue
 		case <-ticker.C:
