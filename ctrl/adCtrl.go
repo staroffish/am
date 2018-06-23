@@ -91,6 +91,10 @@ func (a *AdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {
 			td.PlayDir = anime[0].PlayDir
 			td.Disabled = "disabled"
 		} else {
+			td.Url = global.Cfg.DefaultAdUrl
+			td.MagExp = global.Cfg.DefaultAdMagExp
+			td.StorDir = "/usb"
+			// td.PlayDir = "/usb"
 			td.SchChapt = 0
 			td.CheckBox = template.HTML(`<tr><td>是否创建动漫选项</td><td><input type="checkbox" checked="true" /> </td></tr>`)
 		}

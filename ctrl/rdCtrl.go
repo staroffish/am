@@ -143,6 +143,7 @@ func (r *RdCtrl) sendMsg() {
 	i := uint(0)
 
 	var sendfunc = func(idx uint, rdTasks []rd.RdTask) {
+		global.Log.Infof("start push %s", time.Now().String())
 		if err := r.RdPage.PushPageCtx(wsList[idx].ws, rdTasks); err != nil {
 			close(wsList[idx].closeChan)
 			delete(wsList, idx)
@@ -151,6 +152,7 @@ func (r *RdCtrl) sendMsg() {
 				global.Log.Errorf("Push rd task error:%v", err)
 			}
 		}
+		global.Log.Infof("end push %s", time.Now().String())
 	}
 
 	for {
@@ -167,11 +169,9 @@ func (r *RdCtrl) sendMsg() {
 
 		}
 
-		global.Log.Infof("start push %s", time.Now().String())
 		rdTasks := rd.GetCachedTask()
 		for idx, _ := range wsList {
 			sendfunc(idx, rdTasks)
 		}
-		global.Log.Infof("end push %s", time.Now().String())
 	}
 }

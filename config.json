@@ -6,12 +6,14 @@
     "DBPasswd":"amPasswd",
     "BindAddr":"0.0.0.0:8228",
     "AdOn":false,
-    "AdInter":600,
+    "AdInter":1800,
     "BTWebUrl":"http://192.168.3.2:8112/json",
     "BTWebPass":"amPasswd",
     "DebugOn":false,
     "WebTimeout":15,
     "AnimeCntInMain":50,
     "RedisAddr": "127.0.0.1:6379",
-    "RedisPasswd": "amPasswd"
+    "RedisPasswd": "amPasswd",
+    "DefaultAdUrl": "http://www.kisssub.org/",
+    "DefaultAdMagExp": "<a id=\"magnet\" href=\"(magnet.+)\""
 }

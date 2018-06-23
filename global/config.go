@@ -40,6 +40,10 @@ type Config struct {
 	RedisAddr string `json:"RedisAddr"`
 	// redis password
 	RedisPasswd string `json:"RedisPasswd"`
+	// 默认自动下载的页面
+	DefaultAdUrl string `json:"DefaultAdUrl"`
+	// 默认抓取磁连的正则
+	DefaultAdMagExp string `json:"DefaultAdMagExp"`
 }
 
 const (
