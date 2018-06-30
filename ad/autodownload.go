@@ -66,11 +66,15 @@ func (ad *Ad) refreshData() error {
 // Run - 开始自动下载
 func (ad *Ad) Run() {
 	defer global.TraceLog("Ad.Run")()
+	first := true
 	for {
-		time.Sleep(time.Duration(ad.config.AdInter) * time.Second)
+		if !first {
+			time.Sleep(time.Duration(ad.config.AdInter) * time.Second)
+		}
+		first = false
 		if err := ad.refreshData(); err != nil {
 			global.Log.Errorf("am:ad.refreshData error:%v", err)
-			return
+			continue
 		}
 		urlList := make(map[string][]*db.AdTask)
 		// 将URL相同的任务归类
@@ -87,7 +91,7 @@ func (ad *Ad) Run() {
 			req, err := http.NewRequest("GET", url, nil)
 			if err != nil {
 				global.Log.Errorf("am:ad.Run:http.NewRequest:%v", err)
-				return
+				continue
 			}
 
 			// 由于go自己的 user-agent貌似被对方屏蔽了 所以 这里改成firefox的user-agent
@@ -95,14 +99,14 @@ func (ad *Ad) Run() {
 			resp, err := http.DefaultClient.Do(req)
 			if err != nil {
 				global.Log.Errorf("am:ad.Run:http.Get:%v", err)
-				return
+				continue
 			}
 
 			if resp.StatusCode != http.StatusOK {
 				resp.Body.Close()
 				global.Log.Errorf("am:ad.Run:http request error:url=%s,status=%d",
 					url, resp.StatusCode)
-				return
+				continue
 			}
 
 			var buf bytes.Buffer
@@ -112,7 +116,7 @@ func (ad *Ad) Run() {
 				global.Log.Errorf("am:ad.Run:io.Copy error:url=%s,status=%d",
 					url, resp.StatusCode)
 				resp.Body.Close()
-				return
+				continue
 			}
 			resp.Body.Close()
 
@@ -127,7 +131,7 @@ func (ad *Ad) Run() {
 				reg, err := regexp.Compile(schExp)
 				if err != nil {
 					global.Log.Errorf("am:ad.Run:regexp.Compile error:%v", err)
-					return
+					continue
 				}
 
 				// 匹配该集动漫的链接

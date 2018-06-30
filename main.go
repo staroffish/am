@@ -50,7 +50,7 @@ func main() {
 	}
 	err := global.NewConfig(os.Args[1])
 	if err != nil {
-		global.Log.Errorf("am:Read config error:%v", err)
+		fmt.Fprintf(os.Stderr, "am:Read config error:%v", err)
 		os.Exit(-1)
 	}
 
