@@ -244,6 +244,7 @@ func (a *AdCtrl) updateAdTask(req *JSONRequest, w http.ResponseWriter) error {
 	if addAniFlg == "true" {
 		ani.ID = bson.NewObjectId()
 		ani.AnimeID = ani.ID.Hex()
+		ani.Status = "连载中"
 		err := db.SaveAnime(&ani)
 		if err != nil {
 			return fmt.Errorf("UpdateAdTask:ShowPageCtx:SaveAdTask err:%v", err)

@@ -78,11 +78,11 @@ func (ad *Ad) Run() {
 		}
 		urlList := make(map[string][]*db.AdTask)
 		// 将URL相同的任务归类
-		for i, t := range ad.adTask {
-			if strings.HasSuffix(t.Url, "/") == false {
-				t.Url += "/"
+		for i, _ := range ad.adTask {
+			if strings.HasSuffix(ad.adTask[i].Url, "/") == false {
+				ad.adTask[i].Url += "/"
 			}
-			requestUrl := fmt.Sprintf("%s%s", t.Url, t.UrlParam)
+			requestUrl := fmt.Sprintf("%s%s", ad.adTask[i].Url, ad.adTask[i].UrlParam)
 			urlList[requestUrl] = append(urlList[requestUrl], &(ad.adTask[i]))
 		}
 
@@ -148,6 +148,8 @@ func (ad *Ad) Run() {
 						t.SchChapt = chapter
 					}
 				}
+
+				global.Log.Infof("am:ad.Run:match ok:exp=%s,chapter=%d", schExp, t.SchChapt)
 
 				// 取得单集页面 并从中取得磁连
 				requestUrl := fmt.Sprintf("%s%s", t.Url, findList[1])
