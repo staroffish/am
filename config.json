@@ -15,5 +15,6 @@
     "RedisAddr": "127.0.0.1:6379",
     "RedisPasswd": "amPasswd",
     "DefaultAdUrl": "http://www.kisssub.org/",
-    "DefaultAdMagExp": "<a id=\"magnet\" href=\"(magnet.+)\""
+    "DefaultAdMagExp": "<a id=\"magnet\" href=\"(magnet.+)\"",
+    "SaveDir":"/usb/"
 }

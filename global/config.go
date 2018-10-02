@@ -44,6 +44,8 @@ type Config struct {
 	DefaultAdUrl string `json:"DefaultAdUrl"`
 	// 默认抓取磁连的正则
 	DefaultAdMagExp string `json:"DefaultAdMagExp"`
+	// 保存动漫的根地址(如果配置错误,网页中的动画文件链接可能无法打开)
+	SaveDir string `json:"SaveDir"`
 }
 
 const (
@@ -80,7 +82,7 @@ func (c *Config) check() error {
 		c.BindAddr == "" ||
 		c.BTWebUrl == "" ||
 		c.DBName == "" || c.DBUser == "" ||
-		c.DBPasswd == "" {
+		c.DBPasswd == "" || c.SaveDir == "" {
 		return fmt.Errorf("Config file invalid")
 	}
 	if c.WebTimeout == 0 {

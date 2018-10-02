@@ -112,13 +112,12 @@ func (ad *Ad) Run() {
 			var buf bytes.Buffer
 
 			_, err = io.Copy(&buf, resp.Body)
+			resp.Body.Close()
 			if err != nil {
 				global.Log.Errorf("am:ad.Run:io.Copy error:url=%s,status=%d",
 					url, resp.StatusCode)
-				resp.Body.Close()
 				continue
 			}
-			resp.Body.Close()
 
 			httpCtx := buf.String()
 
