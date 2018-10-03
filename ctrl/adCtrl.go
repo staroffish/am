@@ -93,8 +93,24 @@ func (a *AdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {
 		} else {
 			td.Url = global.Cfg.DefaultAdUrl
 			td.MagExp = global.Cfg.DefaultAdMagExp
-			td.StorDir = "/usb"
-			// td.PlayDir = "/usb"
+			now := time.Now()
+			nowMonth := int(now.Month())
+			var season string
+
+			// 计算添加的是哪一季度的动画
+			if dateDiff := nowMonth - 1; dateDiff < 2 {
+				season = "01"
+			} else if dateDiff = nowMonth - 4; dateDiff < 2 {
+				season = "04"
+			} else if dateDiff = nowMonth - 7; dateDiff < 2 {
+				season = "07"
+			} else if dateDiff = nowMonth - 10; dateDiff < 2 {
+				season = "10"
+			}
+			year := now.Year() - (now.Year() / 100 * 100)
+			defaultDir := fmt.Sprintf("%s%02d%s/", global.Cfg.AnimeDefaultDirPre, year, season)
+			td.StorDir = defaultDir
+			td.PlayDir = defaultDir
 			td.SchChapt = 0
 			td.CheckBox = template.HTML(`<tr><td>是否创建动漫选项</td><td><input type="checkbox" checked="true" /> </td></tr>`)
 		}

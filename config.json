@@ -16,5 +16,6 @@
     "RedisPasswd": "amPasswd",
     "DefaultAdUrl": "http://www.kisssub.org/",
     "DefaultAdMagExp": "<a id=\"magnet\" href=\"(magnet.+)\"",
-    "SaveDir":"/usb/"
+    "SaveDir":"/usb/",
+    "AnimeDefaultDirPre":"/usb/TV/"
 }

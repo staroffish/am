@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"strings"
 )
 
 var Cfg *Config
@@ -44,8 +45,10 @@ type Config struct {
 	DefaultAdUrl string `json:"DefaultAdUrl"`
 	// 默认抓取磁连的正则
 	DefaultAdMagExp string `json:"DefaultAdMagExp"`
-	// 保存动漫的根地址(如果配置错误,网页中的动画文件链接可能无法打开)
+	// 文件服务器的目录(如果配置错误,网页中的动画文件链接可能无法打开)
 	SaveDir string `json:"SaveDir"`
+	// 动漫保存默认路径前缀
+	AnimeDefaultDirPre string `json:"AnimeDefaultDirPre"`
 }
 
 const (
@@ -73,7 +76,6 @@ func NewConfig(filePath string) error {
 	if err != nil {
 		return err
 	}
-
 	return Cfg.check()
 }
 
@@ -90,6 +92,13 @@ func (c *Config) check() error {
 	}
 	if c.AnimeCntInMain == 0 {
 		c.AnimeCntInMain = 30
+	}
+
+	if !strings.HasPrefix(c.SaveDir, "/") {
+		c.SaveDir += "/"
+	}
+	if !strings.HasPrefix(c.AnimeDefaultDirPre, "/") {
+		c.AnimeDefaultDirPre += "/"
 	}
 	return nil
 }
