@@ -90,7 +90,7 @@ func (ad *Ad) Run() {
 			ad.cookies = []*http.Cookie{}
 			global.Log.Infof("Start autodownload.")
 		}
-		continue
+
 		if err := ad.refreshData(); err != nil {
 			global.Log.Errorf("am:ad.refreshData error:%v", err)
 			continue
