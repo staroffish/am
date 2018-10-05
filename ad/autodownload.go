@@ -84,15 +84,13 @@ func (ad *Ad) Run() {
 	ad.ManualCheckDownload()
 	for {
 		select {
-		case <-ticker:
-			ad.cookies = []*http.Cookie{}
-			// 防止在设置manualAction时候卡死
-			_, _ = <-ad.manualAction
-			global.Log.Infof("Start autodownload.")
 		case <-ad.manualAction:
 			global.Log.Infof("Start manual action.")
+		case <-ticker:
+			ad.cookies = []*http.Cookie{}
+			global.Log.Infof("Start autodownload.")
 		}
-
+		continue
 		if err := ad.refreshData(); err != nil {
 			global.Log.Errorf("am:ad.refreshData error:%v", err)
 			continue
