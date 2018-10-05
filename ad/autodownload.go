@@ -127,6 +127,7 @@ func (ad *Ad) Run() {
 			}
 
 			if resp.StatusCode != http.StatusOK {
+				resp.Body.Close()
 				if resp.StatusCode == http.StatusServiceUnavailable {
 					// 可能网站存在浏览器检查,调用webdriver取得cookie
 					err = ad.getCheckBrowserPageCookies(url)
@@ -137,7 +138,6 @@ func (ad *Ad) Run() {
 					ad.ManualCheckDownload()
 					break
 				}
-				resp.Body.Close()
 				global.Log.Errorf("am:ad.Run:http request error:url=%s,status=%d",
 					url, resp.StatusCode)
 				continue
