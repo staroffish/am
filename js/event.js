@@ -202,7 +202,9 @@ function delete_adTask(_id)
     {
         return;
     }
-    var arg = JSON.stringify({'method':'delete_adTask','params':[_id]})
+    isDone = confirm("该片是否已完结?");
+
+    var arg = JSON.stringify({'method':'delete_adTask','params':[_id, isDone]})
     CreateXMLHttpRequest();
     xmlhttp.onreadystatechange = callhandle;
     xmlhttp.open("POST","/",true);

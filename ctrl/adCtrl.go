@@ -93,22 +93,12 @@ func (a *AdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {
 		} else {
 			td.Url = global.Cfg.DefaultAdUrl
 			td.MagExp = global.Cfg.DefaultAdMagExp
-			now := time.Now()
-			nowMonth := int(now.Month())
-			var season string
 
-			// 计算添加的是哪一季度的动画
-			if dateDiff := nowMonth - 1; dateDiff < 2 {
-				season = "01"
-			} else if dateDiff = nowMonth - 4; dateDiff < 2 {
-				season = "04"
-			} else if dateDiff = nowMonth - 7; dateDiff < 2 {
-				season = "07"
-			} else if dateDiff = nowMonth - 10; dateDiff < 2 {
-				season = "10"
-			}
-			year := now.Year() - (now.Year() / 100 * 100)
-			defaultDir := fmt.Sprintf("%s%02d%s/", global.Cfg.AnimeDefaultDirPre, year, season)
+			year, season := global.GetNowSeason()
+
+			year = year - (year / 100 * 100)
+
+			defaultDir := fmt.Sprintf("%s%02d%02d/", global.Cfg.AnimeDefaultDirPre, year, season)
 			td.StorDir = defaultDir
 			td.PlayDir = defaultDir
 			td.SchChapt = 0
@@ -119,17 +109,30 @@ func (a *AdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {
 		return a.updateAdTask(jr, w)
 	case "delete_adTask":
 		if len(jr.Params) < 1 {
-			return fmt.Errorf("RdCtrl.Process:ShowPageCtx:Parameter Num is less then 1")
+			return fmt.Errorf("RdCtrl.Process:Parameter Num is less then 1")
 		}
 
 		_id, ok := jr.Params[0].(string)
 		if !ok {
-			return fmt.Errorf("RdCtrl.Process:ShowPageCtx:Parameter type error:%v", jr.Params[0])
+			return fmt.Errorf("RdCtrl.Process:Parameter type error:%v", jr.Params[0])
+		}
+
+		isDone, ok := jr.Params[1].(bool)
+		if ok && isDone {
+			adTask := db.GetAdTaskByKey(bson.M{"_id": bson.ObjectIdHex(_id)})
+			if adTask == nil || len(adTask) < 1 {
+				return fmt.Errorf("RdCtrl.Process:GetAdTaskByKey error")
+			}
+
+			err := db.UpdateAnimeDone(adTask[0].AnimeID)
+			if err != nil {
+				return fmt.Errorf("RdCtrl.Process:UpdateAnimeStatus err:%v", err)
+			}
 		}
 
 		err := db.DeleteAdTask(bson.ObjectIdHex(_id))
 		if err != nil {
-			return fmt.Errorf("RdCtrl.Process:ShowPageCtx:DeletedTask err:%v", err)
+			return fmt.Errorf("RdCtrl.Process:DeletedTask err:%v", err)
 		}
 		return a.showAdTask(w)
 	}
@@ -261,6 +264,10 @@ func (a *AdCtrl) updateAdTask(req *JSONRequest, w http.ResponseWriter) error {
 		ani.ID = bson.NewObjectId()
 		ani.AnimeID = ani.ID.Hex()
 		ani.Status = "连载中"
+		year, season := global.GetNowSeason()
+
+		ani.SerialsDuri = fmt.Sprintf("%04d/%02d~", year, season)
+
 		err := db.SaveAnime(&ani)
 		if err != nil {
 			return fmt.Errorf("UpdateAdTask:ShowPageCtx:SaveAdTask err:%v", err)

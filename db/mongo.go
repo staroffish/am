@@ -3,6 +3,7 @@ package db
 import (
 	"fmt"
 	"math"
+	"strings"
 	"time"
 
 	"github.com/staroffish/am/global"
@@ -107,6 +108,32 @@ func UpdateAnimeTime(id bson.ObjectId) error {
 
 	c := DB.C("anime")
 	err := c.Update(bson.M{"_id": id}, bson.M{"$set": bson.M{"updatetime": time.Now()}})
+	if err != nil {
+		return fmt.Errorf("db.UpdateAnimeTime:Update error:%v", err)
+	}
+
+	return nil
+}
+
+// UpdateAnimeDone - 将动漫更新为已完结
+func UpdateAnimeDone(id bson.ObjectId) error {
+	defer global.TraceLog("db.UpdateAnimeStatus")()
+
+	ani := GetAnime(id)
+	if ani == nil {
+		return fmt.Errorf("am:db.GetAnime:No anime Item:AnimeId:%s", id)
+	}
+
+	year, season := global.GetNowSeason()
+
+	if !strings.HasSuffix(ani.SerialsDuri, "~") &&
+		!strings.HasSuffix(ani.SerialsDuri, "-") {
+		ani.SerialsDuri += "~"
+	}
+	ani.SerialsDuri += fmt.Sprintf("%04d/%02d", year, season)
+
+	c := DB.C("anime")
+	err := c.Update(bson.M{"_id": id}, bson.M{"$set": bson.M{"updatetime": time.Now(), "status": "已完结", "serialsduri": ani.SerialsDuri}})
 	if err != nil {
 		return fmt.Errorf("db.UpdateAnimeTime:Update error:%v", err)
 	}

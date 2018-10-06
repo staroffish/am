@@ -42,3 +42,23 @@ func SizeToString(size int64) string {
 		return fmt.Sprintf("%.1fGB", float64(size)/giga)
 	}
 }
+
+// 计算现在属于哪一季度
+func GetNowSeason() (int, int) {
+	now := time.Now()
+	nowMonth := int(now.Month())
+	var season int
+
+	// 计算添加的是哪一季度的动画
+	if dateDiff := nowMonth - 1; dateDiff < 2 {
+		season = 1
+	} else if dateDiff = nowMonth - 4; dateDiff < 2 {
+		season = 4
+	} else if dateDiff = nowMonth - 7; dateDiff < 2 {
+		season = 7
+	} else if dateDiff = nowMonth - 10; dateDiff < 2 {
+		season = 10
+	}
+
+	return now.Year(), season
+}
