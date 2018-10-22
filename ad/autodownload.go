@@ -26,7 +26,7 @@ type Ad struct {
 	config       *global.Config
 	adTask       []db.AdTask
 	aniMap       map[bson.ObjectId]db.Anime
-	cookies      []*http.Cookie
+	cookies      map[string][]*http.Cookie
 }
 
 // New 创建 自动下载
@@ -39,7 +39,7 @@ func New(cfg *global.Config) (*Ad, error) {
 
 	ad.manualAction = make(chan struct{})
 
-	ad.cookies = []*http.Cookie{}
+	ad.cookies = map[string][]*http.Cookie{}
 
 	return &ad, nil
 }
@@ -87,7 +87,7 @@ func (ad *Ad) Run() {
 		case <-ad.manualAction:
 			global.Log.Infof("Start manual action.")
 		case <-ticker:
-			ad.cookies = []*http.Cookie{}
+			ad.cookies = map[string][]*http.Cookie{}
 			global.Log.Infof("Start autodownload.")
 		}
 
@@ -114,9 +114,7 @@ func (ad *Ad) Run() {
 			}
 
 			// 如果有cookie就添加到request中
-			for _, cookie := range ad.cookies {
-				req.AddCookie(cookie)
-			}
+			ad.addCookieToRequest(req, url)
 
 			// 由于go自己的 user-agent貌似被对方屏蔽了 所以 这里改成firefox的user-agent
 			req.Header.Add("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0")
@@ -129,6 +127,7 @@ func (ad *Ad) Run() {
 			if resp.StatusCode != http.StatusOK {
 				resp.Body.Close()
 				if resp.StatusCode == http.StatusServiceUnavailable {
+					global.Log.Infof("am:ad.Run:http.Get url %s StatusServiceUnavailable", url)
 					// 可能网站存在浏览器检查,调用webdriver取得cookie
 					err = ad.getCheckBrowserPageCookies(url)
 					if err != nil {
@@ -142,6 +141,8 @@ func (ad *Ad) Run() {
 					url, resp.StatusCode)
 				continue
 			}
+
+			global.Log.Infof("am:ad.Run:Get page OK:url=%s", url)
 
 			var buf bytes.Buffer
 
@@ -186,7 +187,7 @@ func (ad *Ad) Run() {
 
 				// 取得单集页面 并从中取得磁连
 				requestUrl := fmt.Sprintf("%s%s", t.Url, findList[1])
-				webCtx, err := ad.getMagnetFromWeb(requestUrl, t.MagExp)
+				webCtx, err := ad.getMagnetFromWeb(requestUrl, t.MagExp, url)
 				if err != nil {
 					global.Log.Errorf("am:ad.getCtxFromWeb error:%v", err)
 					continue
@@ -228,7 +229,7 @@ func (ad *Ad) Run() {
 }
 
 // getLinkFromWeb 通过正则表达式获取网页上的内容
-func (ad *Ad) getMagnetFromWeb(url, schExp string) ([]string, error) {
+func (ad *Ad) getMagnetFromWeb(url, schExp, cookieMapKey string) ([]string, error) {
 	defer global.TraceLog("ad.getCtxFromWeb")()
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -239,9 +240,7 @@ func (ad *Ad) getMagnetFromWeb(url, schExp string) ([]string, error) {
 	req.Header.Add("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0")
 
 	// 如果有cookie就添加到request中
-	for _, cookie := range ad.cookies {
-		req.AddCookie(cookie)
-	}
+	ad.addCookieToRequest(req, cookieMapKey)
 
 	// resp, err := http.Get(url)
 	resp, err := http.DefaultClient.Do(req)
@@ -308,10 +307,21 @@ func (ad *Ad) getCheckBrowserPageCookies(url string) error {
 		log.Fatalf("GetCookies error:%v", err)
 	}
 
+	ad.cookies[url] = []*http.Cookie{}
 	for _, cookie := range cookies {
-		global.Log.Infof("Get check broser page cookie:name=%s, value=%s", cookie.Name, cookie.Value)
-		ad.cookies = append(ad.cookies, cookie)
+		global.Log.Infof("Get check browser page cookie:url=%s, name=%s, value=%s", url, cookie.Name, cookie.Value)
+		ad.cookies[url] = append(ad.cookies[url], cookie)
 	}
 
 	return nil
+}
+
+func (ad *Ad) addCookieToRequest(req *http.Request, url string) {
+	_, hasCookie := ad.cookies[url]
+	if hasCookie {
+		for _, cookie := range ad.cookies[url] {
+			global.Log.Debugf("am:ad.Run:addCookie:url=%s, key=%s,value=%s", url, cookie.Name, cookie.Value)
+			req.AddCookie(cookie)
+		}
+	}
 }
