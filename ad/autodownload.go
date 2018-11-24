@@ -297,14 +297,14 @@ func (ad *Ad) getCheckBrowserPageCookies(url string) error {
 	}
 
 	if err := page.Navigate(url); err != nil {
-		log.Fatalf("page.Navigate error:%v", err)
+		return fmt.Errorf("page.Navigate error:%v", err)
 	}
 
 	time.Sleep(15 * time.Second)
 
 	cookies, err := page.GetCookies()
 	if err != nil {
-		log.Fatalf("GetCookies error:%v", err)
+		return fmt.Errorf("GetCookies error:%v", err)
 	}
 
 	ad.cookies[url] = []*http.Cookie{}
