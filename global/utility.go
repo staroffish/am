@@ -47,6 +47,7 @@ func SizeToString(size int64) string {
 func GetNowSeason() (int, int) {
 	now := time.Now()
 	nowMonth := int(now.Month())
+	nowYear := now.Year()
 	var season int
 
 	// 计算添加的是哪一季度的动画
@@ -59,6 +60,7 @@ func GetNowSeason() (int, int) {
 	} else if dateDiff = nowMonth - 10; dateDiff < 2 {
 		season = 10
 	} else {
+		nowYear++
 		season = 1
 	}
 
