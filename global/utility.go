@@ -58,6 +58,8 @@ func GetNowSeason() (int, int) {
 		season = 7
 	} else if dateDiff = nowMonth - 10; dateDiff < 2 {
 		season = 10
+	} else {
+		season = 1
 	}
 
 	return now.Year(), season
