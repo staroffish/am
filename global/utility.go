@@ -64,5 +64,5 @@ func GetNowSeason() (int, int) {
 		season = 1
 	}
 
-	return now.Year(), season
+	return nowYear, season
 }
