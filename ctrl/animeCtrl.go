@@ -87,6 +87,10 @@ func (a *AnimeCtrl) Process(req *JSONRequest, w http.ResponseWriter) error {
 		if _id == "" {
 			// 新增动漫页面所以没有参数直接返回页面
 			sa.Anime = &db.Anime{}
+			year, season := global.GetNowSeason()
+			defaultDir := fmt.Sprintf("%s%02d%02d/", global.Cfg.AnimeDefaultDirPre, year, season)
+			sa.Anime.StorDir = defaultDir
+			sa.Anime.PlayDir = defaultDir
 			sa.PrePage = template.JS(prePage)
 		} else {
 			// 编辑动漫页面
