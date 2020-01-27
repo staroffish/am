@@ -54,7 +54,6 @@ func main() {
 		os.Exit(-1)
 	}
 
-	global.NewLogger(global.Cfg.DebugOn)
 	global.Log.Infof("Start Program")
 	err = db.Connect(global.Cfg)
 	if err != nil {

@@ -3,11 +3,17 @@ package global
 import (
 	"encoding/json"
 	"fmt"
+	"log/syslog"
 	"os"
 	"strings"
 )
 
 var Cfg *Config
+
+const (
+	LOG_TYPE_SYSLOG = "SYSLOG"
+	LOG_TYPE_FILE   = "FILE"
+)
 
 // Config 配置文件结构体定义
 type Config struct {
@@ -49,6 +55,10 @@ type Config struct {
 	SaveDir string `json:"SaveDir"`
 	// 动漫保存默认路径前缀
 	AnimeDefaultDirPre string `json:"AnimeDefaultDirPre"`
+	// 日志类型(SYSLOG,FILE)
+	LogType string `json:"LogType"`
+	// 日志路径 当制定SYSLOG时无效
+	LogPath string `json:"LogPath"`
 }
 
 const (
@@ -100,5 +110,22 @@ func (c *Config) check() error {
 	if !strings.HasPrefix(c.AnimeDefaultDirPre, "/") {
 		c.AnimeDefaultDirPre += "/"
 	}
+	var logger Logger
+	var err error
+	switch c.LogType {
+	case LOG_TYPE_SYSLOG:
+		logger, err = syslog.NewLogger(syslog.LOG_USER|syslog.LOG_INFO, 0)
+		if err != nil {
+			return fmt.Errorf("New sys logger error", err)
+		}
+	case LOG_TYPE_FILE:
+		logger, err = NewFileLogger(c.LogPath)
+		if err != nil {
+			return fmt.Errorf("New file logger error", err)
+		}
+	default:
+		return fmt.Errorf("invaild log type:%s. log type must be:%s,%s", c.LogType, LOG_TYPE_SYSLOG, LOG_TYPE_FILE)
+	}
+	NewLogger(c.DebugOn, logger)
 	return nil
 }

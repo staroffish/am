@@ -2,14 +2,22 @@ package global
 
 import (
 	"fmt"
-	"log"
-	"log/syslog"
+	"os"
+	"time"
 )
+
+type Logger interface {
+	Printf(format string, v ...interface{})
+}
+
+type FileLogger struct {
+	file *os.File
+}
 
 // LogStruct struct
 type LogStruct struct {
 	debugOn bool
-	logger  *log.Logger
+	logger  Logger
 }
 
 var Log *LogStruct
@@ -22,9 +30,9 @@ const (
 )
 
 // newLogger 生成一个新的Log结构体
-func NewLogger(debugOn bool) {
+func NewLogger(debugOn bool, logger Logger) {
 	Log = &LogStruct{}
-	Log.logger, _ = syslog.NewLogger(syslog.LOG_USER|syslog.LOG_INFO, 0)
+	Log.logger = logger
 	Log.debugOn = debugOn
 }
 
@@ -61,9 +69,23 @@ func (l *LogStruct) Warnf(format string, i ...interface{}) {
 }
 
 // TraceLog - 打印函数的trace log
-func TraceLog(log string) func(){
-	Log.Debugf("Start %s", log);
-	return func(){
-		Log.Debugf("End %s", log);
+func TraceLog(log string) func() {
+	Log.Debugf("Start %s", log)
+	return func() {
+		Log.Debugf("End %s", log)
 	}
+}
+
+func NewFileLogger(logPath string) (*FileLogger, error) {
+	logFile, err := os.OpenFile(logPath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0755)
+	if err != nil {
+		return nil, err
+	}
+	return &FileLogger{file: logFile}, nil
+}
+
+func (l *FileLogger) Printf(format string, v ...interface{}) {
+	timeStr := time.Now().Format("2006-1-2 15:04:05")
+	logMsg := fmt.Sprintf(format, v...)
+	fmt.Fprintf(l.file, "%s %s\n", timeStr, logMsg)
 }
