@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"path/filepath"
 	"syscall"
 
 	"github.com/staroffish/am/ad"
@@ -56,11 +57,7 @@ func main() {
 
 	global.Log.Infof("Start Program")
 
-	workDir, err := os.Getwd()
-	if err != nil {
-		global.Log.Errorf("am:os.Getwd error:%v", err)
-		os.Exit(-1)
-	}
+	workDir := filepath.Dir(os.Args[0])
 
 	err = db.Connect(global.Cfg)
 	if err != nil {
