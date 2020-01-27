@@ -85,8 +85,8 @@ func main() {
 
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/rdtask", ctrlMap["get_task"].(*ctrl.RdCtrl).PushTasks)
-	http.Handle("/js/", http.FileServer(http.Dir("./")))
-	http.Handle(global.Cfg.SaveDir, http.FileServer(http.Dir(workDir)))
+	http.Handle("/js/", http.FileServer(http.Dir(workDir)))
+	http.Handle(global.Cfg.SaveDir, http.FileServer(http.Dir("/")))
 	ln, err := net.Listen("tcp", global.Cfg.BindAddr)
 	if err != nil {
 		global.Log.Errorf("am:net.Listen error:%v", err)
