@@ -61,7 +61,6 @@ func main() {
 		global.Log.Errorf("am:os.Getwd error:%v", err)
 		os.Exit(-1)
 	}
-	fmt.Printf("dir=%s\n", dir)
 
 	err = db.Connect(global.Cfg)
 	if err != nil {
