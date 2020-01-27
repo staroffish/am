@@ -55,6 +55,14 @@ func main() {
 	}
 
 	global.Log.Infof("Start Program")
+
+	workDir, err := os.Getwd()
+	if err != nil {
+		global.Log.Errorf("am:os.Getwd error:%v", err)
+		os.Exit(-1)
+	}
+	fmt.Printf("dir=%s\n", dir)
+
 	err = db.Connect(global.Cfg)
 	if err != nil {
 		global.Log.Errorf("am:Connect error:%v", err)
@@ -75,10 +83,11 @@ func main() {
 			os.Exit(-1) // http.HandleFunc("/rdtask", PushTasks)
 		}
 	}
+
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/rdtask", ctrlMap["get_task"].(*ctrl.RdCtrl).PushTasks)
 	http.Handle("/js/", http.FileServer(http.Dir("./")))
-	http.Handle(global.Cfg.SaveDir, http.FileServer(http.Dir("/")))
+	http.Handle(global.Cfg.SaveDir, http.FileServer(http.Dir(workDir)))
 	ln, err := net.Listen("tcp", global.Cfg.BindAddr)
 	if err != nil {
 		global.Log.Errorf("am:net.Listen error:%v", err)
