@@ -58,7 +58,7 @@ type Config struct {
 	// 日志类型(SYSLOG,FILE)
 	LogType string `json:"LogType"`
 	// 日志路径 当制定SYSLOG时无效
-	LogPath string `json:"LogPath"`
+	LogFile string `json:"LogFile"`
 }
 
 const (
@@ -119,7 +119,7 @@ func (c *Config) check() error {
 			return fmt.Errorf("New sys logger error", err)
 		}
 	case LOG_TYPE_FILE:
-		logger, err = NewFileLogger(c.LogPath)
+		logger, err = NewFileLogger(c.LogFile)
 		if err != nil {
 			return fmt.Errorf("New file logger error", err)
 		}

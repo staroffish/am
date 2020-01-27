@@ -19,5 +19,5 @@
     "SaveDir":"/usb/",
     "AnimeDefaultDirPre":"/usb/TV/",
     "LogType":"FILE",
-    "LogPath":"/home/saber/tmp/am.log"
+    "LogFile":"/home/saber/tmp/am.log"
 }
