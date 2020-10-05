@@ -6,7 +6,7 @@ steps:
 - name: build
   image: golang
   commands:
-  - go build -o am 
+  - go build -mod vendor -o am 
 
 - name: docker-build
   image: plugins/docker

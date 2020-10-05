@@ -1,0 +1,30 @@
+# github.com/garyburd/redigo v1.6.2
+## explicit
+github.com/garyburd/redigo/internal
+github.com/garyburd/redigo/redis
+# github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e
+## explicit
+# github.com/onsi/ginkgo v1.14.1
+## explicit
+# github.com/onsi/gomega v1.10.2
+## explicit
+# github.com/sclevine/agouti v3.0.0+incompatible
+## explicit
+github.com/sclevine/agouti
+github.com/sclevine/agouti/api
+github.com/sclevine/agouti/api/internal/bus
+github.com/sclevine/agouti/api/internal/service
+github.com/sclevine/agouti/internal/element
+github.com/sclevine/agouti/internal/target
+# golang.org/x/net v0.0.0-20201002202402-0a1ea396d57c
+## explicit
+golang.org/x/net/websocket
+# gopkg.in/check.v1 v1.0.0-20200902074654-038fdea0a05b
+## explicit
+# gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
+## explicit
+gopkg.in/mgo.v2
+gopkg.in/mgo.v2/bson
+gopkg.in/mgo.v2/internal/json
+gopkg.in/mgo.v2/internal/sasl
+gopkg.in/mgo.v2/internal/scram
