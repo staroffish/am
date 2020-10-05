@@ -96,7 +96,7 @@ func (a *AdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {
 
 			year, season := global.GetNowSeason()
 
-			year = year - (year / 100 * 100)
+			// year = year - (year / 100 * 100)
 
 			defaultDir := fmt.Sprintf("%s%02d%02d/", global.Cfg.AnimeDefaultDirPre, year, season)
 			td.StorDir = defaultDir

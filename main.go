@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"path/filepath"
 	"syscall"
 
 	"github.com/staroffish/am/ad"
@@ -54,8 +55,10 @@ func main() {
 		os.Exit(-1)
 	}
 
-	global.NewLogger(global.Cfg.DebugOn)
 	global.Log.Infof("Start Program")
+
+	workDir := filepath.Dir(os.Args[0])
+
 	err = db.Connect(global.Cfg)
 	if err != nil {
 		global.Log.Errorf("am:Connect error:%v", err)
@@ -76,9 +79,10 @@ func main() {
 			os.Exit(-1) // http.HandleFunc("/rdtask", PushTasks)
 		}
 	}
+
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/rdtask", ctrlMap["get_task"].(*ctrl.RdCtrl).PushTasks)
-	http.Handle("/js/", http.FileServer(http.Dir("./")))
+	http.Handle("/js/", http.FileServer(http.Dir(workDir)))
 	http.Handle(global.Cfg.SaveDir, http.FileServer(http.Dir("/")))
 	ln, err := net.Listen("tcp", global.Cfg.BindAddr)
 	if err != nil {

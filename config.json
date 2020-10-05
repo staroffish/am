@@ -17,5 +17,7 @@
     "DefaultAdUrl": "http://www.kisssub.org/",
     "DefaultAdMagExp": "<a id=\"magnet\" href=\"(magnet.+)\"",
     "SaveDir":"/usb/",
-    "AnimeDefaultDirPre":"/usb/TV/"
+    "AnimeDefaultDirPre":"/usb/TV/",
+    "LogType":"FILE",
+    "LogFile":"/home/saber/tmp/am.log"
 }

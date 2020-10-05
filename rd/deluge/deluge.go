@@ -26,19 +26,19 @@ type DelugeDownloader struct {
 }
 
 type normalRes struct {
-	Id     int    `json:"id"`
-	Result bool   `json:"result"`
-	Err    string `json:"error"`
+	Id     int         `json:"id"`
+	Result interface{} `json:"result"`
+	Err    interface{} `json:"error"`
 }
 
 const (
 	loginFmt  = `{"method":"auth.login","params":["%s"],"id":1}`
 	logoutFmt = `{"method":"auth.delete_session","params":[],"id":3}`
-	addFmt    = `{"method":"web.add_torrents","params":[[{"path":"%s","options":{"file_priorities":[],"add_paused":false,"compact_allocation":false,"download_location":"%s","move_completed":false,"move_completed_path":"%s","max_connections":-1,"max_download_speed":-1,"max_upload_slots":-1,"max_upload_speed":-1,"prioritize_first_last_pieces":false}}]],"id":2}`
+	addFmt    = `{"method":"web.add_torrents","params":[[{"path":"%s","options":{"file_priorities":[],"add_paused":false,"sequential_download":false,"pre_allocate_storage":false,"download_location":"%s","move_completed":false,"move_completed_path":"%s","max_connections":-1,"max_download_speed":-1,"max_upload_slots":-1,"max_upload_speed":-1,"prioritize_first_last_pieces":false,"seed_mode":false,"super_seeding":false}}]],"id":31}`
 	pauseFmt  = `{"method":"core.pause_torrent","params":[["%s"]],"id":2}`
 	deleteFmt = `{"method":"core.remove_torrent","params":["%s",false],"id":460}`
 	resumeFmt = `{"method":"core.resume_torrent","params":[["%s"]],"id":2}`
-	searchFmt = `{"method":"web.update_ui","params":[["queue","name","total_wanted","state","progress","num_seeds","total_seeds","num_peers","total_peers","download_payload_rate","upload_payload_rate","eta","ratio","distributed_copies","is_auto_managed","time_added","tracker_host","save_path","total_done","total_uploaded","max_download_speed","max_upload_speed","seeds_peers_ratio"],{}],"id":2}`
+	searchFmt = `{"method":"web.update_ui","params":[["name","total_wanted","state","progress","time_added","save_path"],{}],"id":2}`
 )
 
 func init() {
@@ -105,15 +105,12 @@ func checkResp(body io.ReadCloser) bool {
 		global.Log.Errorf("am:deluge.checkResp error:%v", err)
 		return false
 	}
-	if res.Err != "" {
+	if res.Err != nil {
 		global.Log.Errorf("am:deluge.checkResp errmsg:%v", res.Err)
+		return false
 	}
 
-	if res.Result != true {
-		global.Log.Debugf("am:deluge.checkResp res:%v", res)
-	}
-
-	return res.Result
+	return true
 }
 
 // NewDownloader - 初始化下载器
@@ -243,57 +240,29 @@ func (d *DelugeDownloader) GetAllTask() ([]rd.RdTask, error) {
 		return nil, fmt.Errorf("DelugeDownloader.GetAllTask:%v", err)
 	}
 
-	// 取得任务总数
 	body := buf.Bytes()
-	sInd := bytes.Index(body, []byte("{\"state\": ["))
-	if sInd == -1 {
-		return nil, fmt.Errorf("DelugeDownloader.GetAllTask:Error response:%s", body)
-	}
-	eInd := bytes.Index(body[sInd:], []byte("}"))
-	if eInd == -1 {
-		return nil, fmt.Errorf("DelugeDownloader.GetAllTask:Error response:%s", body)
-	}
-	stateStr := body[sInd : sInd+eInd+1]
-
-	var totalInfo struct {
-		State []interface{} `json:"state"`
-	}
-	err = json.Unmarshal(stateStr, &totalInfo)
-	if err != nil {
-		return nil, fmt.Errorf("DelugeDownloader.GetAllTask:taskCnt:%v", err)
-	}
-
-	if len(totalInfo.State) == 0 {
-		return nil, fmt.Errorf("DelugeDownloader.GetAllTask:state:0", err)
-	}
-
-	states, ok := totalInfo.State[0].([]interface{})
-	if !ok {
-		return nil, fmt.Errorf("DelugeDownloader.GetAllTask:parse task count error")
-	}
-
-	taskCnt, ok := states[1].(float64)
-	if !ok {
-		return nil, fmt.Errorf("DelugeDownloader.GetAllTask:parse task count error")
-	}
-	if taskCnt == 0 {
-		return tasks, nil
-	}
 
 	// 取得任务列表
-	sInd = bytes.Index(body, []byte("\"torrents\": "))
+	sInd := bytes.Index(body, []byte("\"torrents\": "))
 	if sInd == -1 {
 		return nil, fmt.Errorf("DelugeDownloader.GetAllTask:Error response:%s", body)
 	}
 
 	sInd += len("\"torrents\": ")
-	eInd = bytes.Index(body[sInd:], []byte(", \"filters\""))
+	eInd := bytes.Index(body[sInd:], []byte(", \"filters\""))
 	if eInd == -1 {
 		return nil, fmt.Errorf("DelugeDownloader.GetAllTask:Error response:%s", body)
 	}
 
 	taskStr := body[sInd : sInd+eInd]
-	var taskList = make(map[string]interface{})
+	var taskList = make(map[string]struct {
+		State     string  `json:"state"`
+		Progress  float64 `json:"progress"`
+		SavePath  string  `json:"save_path"`
+		TimeAdded float64 `json:"time_added"`
+		Size      float64 `json:"total_wanted"`
+		Name      string  `json:"name"`
+	})
 	err = json.Unmarshal(taskStr, &taskList)
 	if err != nil {
 		return nil, fmt.Errorf("DelugeDownloader.GetAllTask:taskList:%v", err)
@@ -302,30 +271,13 @@ func (d *DelugeDownloader) GetAllTask() ([]rd.RdTask, error) {
 	for id, t := range taskList {
 		var task rd.RdTask
 		task.Ids = id
-		ctx, ok := t.(map[string]interface{})
-		if !ok {
-			return nil, fmt.Errorf("DelugeDownloader.GetAllTask:taskList:no map")
-		}
-		task.Name, ok = ctx["name"].(string)
-		task.SavePath, ok = ctx["save_path"].(string)
-		tmpFloat, ok := ctx["progress"].(float64)
-		if ok {
-			task.Progress = int(tmpFloat)
-		}
-		task.State, ok = ctx["state"].(string)
-		tmpFloat, ok = ctx["total_wanted"].(float64)
-		if ok {
-			task.Size = int64(tmpFloat)
-		}
+		task.Name = t.Name
+		task.SavePath = t.SavePath
+		task.Progress = int(t.Progress)
+		task.State = t.State
+		task.Size = int64(t.Size)
 		task.TaskType = taskType
-
-		tmpTime, ok := ctx["time_added"].(float64)
-		if !ok {
-			task.CreateTime = global.FormatTime(time.Time{})
-		} else {
-			task.CreateTime = global.FormatTime(time.Unix(int64(tmpTime), 0))
-		}
-
+		task.CreateTime = global.FormatTime(time.Unix(int64(t.TimeAdded), 0))
 		tasks = append(tasks, task)
 	}
 
