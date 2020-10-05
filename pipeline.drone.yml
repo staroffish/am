@@ -1,0 +1,29 @@
+kind: pipeline
+type: docker
+name: am
+
+steps:
+- name: test
+  image: golang
+  commands:
+  - go test
+
+- name: build
+  image: golang
+  commands:
+  - go build -o am 
+
+- name: docker-build
+  image: plugins/docker
+  settings:
+    repo: archer.holygrail.com:5000/am
+    registry: archer.holygrail.com:5000
+    auto_tag: true
+    insecure: true
+    mirror: http://hub-mirror.c.163.com
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
