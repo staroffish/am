@@ -121,7 +121,7 @@ func (c *Config) check() error {
 	case LOG_TYPE_FILE:
 		logger, err = NewFileLogger(c.LogFile)
 		if err != nil {
-			return fmt.Errorf("New file logger error", err)
+			return fmt.Errorf("New file logger error, %v", err)
 		}
 	default:
 		return fmt.Errorf("invaild log type:%s. log type must be:%s,%s", c.LogType, LOG_TYPE_SYSLOG, LOG_TYPE_FILE)

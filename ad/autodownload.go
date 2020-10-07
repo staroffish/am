@@ -2,6 +2,7 @@ package ad
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"io"
 	"log"
@@ -9,6 +10,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/sclevine/agouti"
@@ -17,6 +19,7 @@ import (
 
 	"github.com/staroffish/am/rd"
 
+	"github.com/go-redis/redis/v8"
 	"gopkg.in/mgo.v2/bson"
 )
 
@@ -27,6 +30,8 @@ type Ad struct {
 	adTask       []db.AdTask
 	aniMap       map[bson.ObjectId]db.Anime
 	cookies      map[string][]*http.Cookie
+	rdb          *redis.Client
+	adTaskMutex  *sync.Mutex
 }
 
 // New 创建 自动下载
@@ -37,9 +42,17 @@ func New(cfg *global.Config) (*Ad, error) {
 		return nil, err
 	}
 
-	ad.manualAction = make(chan struct{})
+	rdb, err := connectRedis(ad.config.RedisAddr, ad.config.RedisPasswd)
+	if err != nil {
+		global.Log.Errorf("ad:Run:connectRedis error:%v", err)
+		log.Fatalf("ad:Run:connectRedis error:%v", err)
+	}
+
+	ad.manualAction = make(chan struct{}, 2)
 
 	ad.cookies = map[string][]*http.Cookie{}
+	ad.adTaskMutex = &sync.Mutex{}
+	ad.rdb = rdb
 
 	return &ad, nil
 }
@@ -52,6 +65,8 @@ func (ad *Ad) ManualCheckDownload() {
 func (ad *Ad) refreshData() error {
 	defer global.TraceLog("Ad.updateData")()
 
+	ad.adTaskMutex.Lock()
+	defer ad.adTaskMutex.Unlock()
 	// 取得所有的自动下载任务
 	ad.adTask = db.GetAdTaskByKey(bson.M{})
 	if ad.adTask == nil {
@@ -77,86 +92,182 @@ func (ad *Ad) refreshData() error {
 	return nil
 }
 
+func (ad *Ad) getAdTasks() []db.AdTask {
+	ad.adTaskMutex.Lock()
+	defer ad.adTaskMutex.Unlock()
+
+	adtasks := make([]db.AdTask, len(ad.adTask))
+	copy(adtasks, ad.adTask)
+	return adtasks
+}
+
 // Run - 开始自动下载
 func (ad *Ad) Run() {
 	defer global.TraceLog("Ad.Run")()
-	ticker := time.Tick(time.Duration(ad.config.AdInter) * time.Second)
-	ad.ManualCheckDownload()
-	for {
-		select {
-		case <-ad.manualAction:
-			global.Log.Infof("Start manual action.")
-		case <-ticker:
-			ad.cookies = map[string][]*http.Cookie{}
-			global.Log.Infof("Start autodownload.")
-		}
+	crawlerTicker := time.Tick(time.Duration(ad.config.AdInter) * time.Second)
+	MatchingTicker := time.Tick(15 * time.Second)
+	var ThirtyDaysSecond int64 = 30 * 24 * 60 * 60
 
-		if err := ad.refreshData(); err != nil {
-			global.Log.Errorf("am:ad.refreshData error:%v", err)
-			continue
-		}
-		urlList := make(map[string][]*db.AdTask)
-		// 将URL相同的任务归类
-		for i, _ := range ad.adTask {
-			if strings.HasSuffix(ad.adTask[i].Url, "/") == false {
-				ad.adTask[i].Url += "/"
+	if err := ad.refreshData(); err != nil {
+		global.Log.Errorf("am:ad.refreshData error:%v", err)
+		panic("refresh data error when boot up")
+	}
+
+	go func() {
+		for {
+			select {
+			case <-ad.manualAction:
+				global.Log.Infof("Start manual action.")
+			case <-crawlerTicker:
+				ad.cookies = map[string][]*http.Cookie{}
+				global.Log.Infof("Start autodownload.")
 			}
-			requestUrl := fmt.Sprintf("%s%s", ad.adTask[i].Url, ad.adTask[i].UrlParam)
-			urlList[requestUrl] = append(urlList[requestUrl], &(ad.adTask[i]))
-		}
+			adTasks := ad.getAdTasks()
+			urlList := make(map[string]struct{})
 
-		for url, taskList := range urlList {
-			// 取得页面
-			req, err := http.NewRequest("GET", url, nil)
-			if err != nil {
-				global.Log.Errorf("am:ad.Run:http.NewRequest:%v", err)
-				continue
-			}
-
-			// 如果有cookie就添加到request中
-			ad.addCookieToRequest(req, url)
-
-			// 由于go自己的 user-agent貌似被对方屏蔽了 所以 这里改成firefox的user-agent
-			req.Header.Add("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0")
-			resp, err := http.DefaultClient.Do(req)
-			if err != nil {
-				global.Log.Errorf("am:ad.Run:http.Get:%v", err)
-				continue
-			}
-
-			if resp.StatusCode != http.StatusOK {
-				resp.Body.Close()
-				if resp.StatusCode == http.StatusServiceUnavailable {
-					global.Log.Infof("am:ad.Run:http.Get url %s StatusServiceUnavailable", url)
-					// 可能网站存在浏览器检查,调用webdriver取得cookie
-					err = ad.getCheckBrowserPageCookies(url)
-					if err != nil {
-						global.Log.Errorf("am:ad.getCheckBrowserPageCookies:%v", err)
-						continue
-					}
-					ad.ManualCheckDownload()
-					break
+			global.Log.Infof("ad task count:%d,%d", len(adTasks), len(ad.adTask))
+			// 将URL相同的任务归类
+			for i, _ := range adTasks {
+				if strings.HasSuffix(adTasks[i].Url, "/") == false {
+					adTasks[i].Url += "/"
 				}
-				global.Log.Errorf("am:ad.Run:http request error:url=%s,status=%d",
-					url, resp.StatusCode)
-				continue
+				requestUrl := fmt.Sprintf("%s%s", adTasks[i].Url, adTasks[i].UrlParam)
+				urlList[requestUrl] = struct{}{}
 			}
 
-			global.Log.Infof("am:ad.Run:Get page OK:url=%s", url)
+			for url, _ := range urlList {
 
-			var buf bytes.Buffer
+				global.Log.Infof("get url page. url=%s", url)
+				// 取得页面
+				req, err := http.NewRequest("GET", url, nil)
+				if err != nil {
+					global.Log.Errorf("am:ad.Run:http.NewRequest:%v", err)
+					continue
+				}
 
-			_, err = io.Copy(&buf, resp.Body)
-			resp.Body.Close()
+				// 如果有cookie就添加到request中
+				ad.addCookieToRequest(req, url)
+
+				// 由于go自己的 user-agent貌似被对方屏蔽了 所以 这里改成firefox的user-agent
+				req.Header.Add("User-Agent", "Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101 Firefox/59.0")
+				resp, err := http.DefaultClient.Do(req)
+				if err != nil {
+					global.Log.Errorf("am:ad.Run:http.Get:%v", err)
+					continue
+				}
+
+				if resp.StatusCode != http.StatusOK {
+					resp.Body.Close()
+					if resp.StatusCode == http.StatusServiceUnavailable {
+						global.Log.Infof("am:ad.Run:http.Get url %s StatusServiceUnavailable", url)
+						// 可能网站存在浏览器检查,调用webdriver取得cookie
+						err = ad.getCheckBrowserPageCookies(url)
+						if err != nil {
+							global.Log.Errorf("am:ad.getCheckBrowserPageCookies:%v", err)
+							continue
+						}
+						ad.ManualCheckDownload()
+						break
+					}
+					global.Log.Errorf("am:ad.Run:http request error:url=%s,status=%d",
+						url, resp.StatusCode)
+					continue
+				}
+
+				global.Log.Infof("am:ad.Run:Get page OK:url=%s", url)
+
+				var buf bytes.Buffer
+
+				_, err = io.Copy(&buf, resp.Body)
+				resp.Body.Close()
+				if err != nil {
+					global.Log.Errorf("am:ad.Run:io.Copy error:url=%s,status=%d",
+						url, resp.StatusCode)
+					continue
+				}
+
+				httpCtx := buf.String()
+				ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+				timestamp := time.Now().Unix()
+				pageCacheKey := fmt.Sprintf("pagecache:%s:%d", url, timestamp)
+				err = ad.rdb.Set(ctx, pageCacheKey, httpCtx, time.Second*time.Duration(ThirtyDaysSecond)).Err()
+				cancel()
+				if err != nil {
+					global.Log.Errorf("am:set pagecache error:key=%s, err=%v", pageCacheKey, err)
+					continue
+				}
+
+				ctx, cancel = context.WithTimeout(context.Background(), 5*time.Second)
+				err = ad.rdb.ZAdd(ctx, "pagecache:time", &redis.Z{
+					Score:  float64(time.Now().Unix()),
+					Member: pageCacheKey,
+				}).Err()
+				cancel()
+				if err != nil {
+					global.Log.Errorf("am:add pagecache:time error:member=%s, error=%v", pageCacheKey, err)
+					continue
+				}
+			}
+		}
+	}()
+
+	go func() {
+		for {
+			select {
+			case <-MatchingTicker:
+				ad.cookies = map[string][]*http.Cookie{}
+				global.Log.Infof("check page cache.")
+			}
+
+			ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+			err := ad.rdb.ZRemRangeByScore(ctx, "pagecache:time", "0", fmt.Sprintf("%d", time.Now().Unix()-ThirtyDaysSecond)).Err()
+			cancel()
 			if err != nil {
-				global.Log.Errorf("am:ad.Run:io.Copy error:url=%s,status=%d",
-					url, resp.StatusCode)
+				global.Log.Errorf("am:ZRemRangeByScore pagecache:time error:scope=0-%d, error=%v", time.Now().Unix()-ThirtyDaysSecond, err)
+			}
+
+			if err := ad.refreshData(); err != nil {
+				global.Log.Errorf("am:ad.refreshData error:%v", err)
 				continue
 			}
 
-			httpCtx := buf.String()
+			pageCache := map[string][]string{}
 
-			for _, t := range taskList {
+			ctx, cancel = context.WithTimeout(context.Background(), 5*time.Second)
+			pageCacheKeys, err := ad.rdb.ZRange(ctx, "pagecache:time", 0, -1).Result()
+			cancel()
+			if err != nil {
+				global.Log.Errorf("am:zrange pagecache:time error:%v", err)
+				continue
+			}
+
+			for _, key := range pageCacheKeys {
+				ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+				pageCacheCtx, err := ad.rdb.Get(ctx, key).Result()
+				cancel()
+				if err != nil {
+					global.Log.Errorf("am:Get %s error:%v", key, err)
+					continue
+				}
+
+				splitedKeys := key[strings.Index(key, ":")+1 : strings.LastIndex(key, ":")]
+				if len(splitedKeys) < 2 {
+					global.Log.Errorf("am:incorrect page cache key %s", key)
+					continue
+				}
+				global.Log.Infof("key=%s, splitedKeys = %v", key, splitedKeys)
+				pageCache[splitedKeys] = append(pageCache[splitedKeys], pageCacheCtx)
+			}
+
+			adTasks := ad.getAdTasks()
+
+			for _, t := range adTasks {
+
+				if strings.HasSuffix(t.Url, "/") == false {
+					t.Url += "/"
+				}
+				requestUrl := fmt.Sprintf("%s%s", t.Url, t.UrlParam)
+
 				// 最新集数+1
 				t.SchChapt++
 
@@ -168,26 +279,35 @@ func (ad *Ad) Run() {
 					continue
 				}
 
-				// 匹配该集动漫的链接
-				findList := reg.FindStringSubmatch(httpCtx)
-				if findList == nil && len(findList) < 2 {
-					global.Log.Errorf("am:ad.Run:match error:url=%s,exp=%s", url, schExp)
-					continue
+				var findList []string = nil
+				for _, pageCtx := range pageCache[requestUrl] {
+					// 匹配该集动漫的链接
+					findList = reg.FindStringSubmatch(pageCtx)
+					if findList == nil || len(findList) < 2 {
+						continue
+					}
+
+					// 抓取到的链接可能是多集的如[1-2]这种情况
+					if len(findList) > 2 {
+						chapter, err := strconv.Atoi(findList[2])
+						if err == nil {
+							t.SchChapt = chapter
+						}
+					}
+
+					break
 				}
 
-				// 抓取到的链接可能是多集的如[1-2]这种情况
-				if len(findList) > 2 {
-					chapter, err := strconv.Atoi(findList[2])
-					if err == nil {
-						t.SchChapt = chapter
-					}
+				if findList == nil || len(findList) < 2 {
+					global.Log.Errorf("am:ad.Run:match error:url=%s,exp=%s", requestUrl, schExp)
+					continue
 				}
 
 				global.Log.Infof("am:ad.Run:match ok:exp=%s,chapter=%d", schExp, t.SchChapt)
 
 				// 取得单集页面 并从中取得磁连
-				requestUrl := fmt.Sprintf("%s%s", t.Url, findList[1])
-				webCtx, err := ad.getMagnetFromWeb(requestUrl, t.MagExp, url)
+				animeChapterUrl := fmt.Sprintf("%s%s", t.Url, findList[1])
+				webCtx, err := ad.getMagnetFromWeb(animeChapterUrl, t.MagExp, requestUrl)
 				if err != nil {
 					global.Log.Errorf("am:ad.getCtxFromWeb error:%v", err)
 					continue
@@ -211,7 +331,7 @@ func (ad *Ad) Run() {
 					continue
 				}
 
-				err = db.SaveAdTask(t)
+				err = db.SaveAdTask(&t)
 				if err != nil {
 					global.Log.Errorf("am:ad.Run:SaveAdTask error:%v", err)
 					continue
@@ -222,10 +342,13 @@ func (ad *Ad) Run() {
 					global.Log.Errorf("am:ad.Run:UpdateAnimeTime err:%v", err)
 					continue
 				}
-				global.Log.Infof("am:ad.Run:OK:%q", *t)
+				global.Log.Infof("am:ad.Run:OK:%q", t)
 			}
 		}
-	}
+	}()
+
+	// 在最后出发一次网页抓取
+	ad.ManualCheckDownload()
 }
 
 // getLinkFromWeb 通过正则表达式获取网页上的内容
@@ -324,4 +447,19 @@ func (ad *Ad) addCookieToRequest(req *http.Request, url string) {
 			req.AddCookie(cookie)
 		}
 	}
+}
+
+func connectRedis(addr, password string) (*redis.Client, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	rdb := redis.NewClient(&redis.Options{
+		Addr:     addr,
+		Password: password,
+		DB:       2, // use default DB
+	})
+	_, err := rdb.Ping(ctx).Result()
+	if err != nil {
+		return nil, fmt.Errorf("connect to redis error: %v", err)
+	}
+	return rdb, nil
 }

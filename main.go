@@ -94,7 +94,7 @@ func main() {
 	s.SetKeepAlivesEnabled(true)
 	sigCh := make(chan os.Signal)
 	signal.Ignore(syscall.SIGHUP)
-	signal.Notify(sigCh, os.Interrupt, syscall.SIGTERM)
+	signal.Notify(sigCh, os.Interrupt, syscall.SIGTERM, syscall.SIGUSR1)
 
 	go func() {
 		<-sigCh
