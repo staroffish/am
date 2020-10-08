@@ -31,19 +31,41 @@ type normalRes struct {
 	Err    interface{} `json:"error"`
 }
 
+type GetHostRes struct {
+	Id     int             `json:"id"`
+	Result [][]interface{} `json:"result"`
+	Err    interface{}     `json:"error"`
+}
+
 const (
-	loginFmt  = `{"method":"auth.login","params":["%s"],"id":1}`
-	logoutFmt = `{"method":"auth.delete_session","params":[],"id":3}`
-	addFmt    = `{"method":"web.add_torrents","params":[[{"path":"%s","options":{"file_priorities":[],"add_paused":false,"sequential_download":false,"pre_allocate_storage":false,"download_location":"%s","move_completed":false,"move_completed_path":"%s","max_connections":-1,"max_download_speed":-1,"max_upload_slots":-1,"max_upload_speed":-1,"prioritize_first_last_pieces":false,"seed_mode":false,"super_seeding":false}}]],"id":31}`
-	pauseFmt  = `{"method":"core.pause_torrent","params":[["%s"]],"id":2}`
-	deleteFmt = `{"method":"core.remove_torrent","params":["%s",false],"id":460}`
-	resumeFmt = `{"method":"core.resume_torrent","params":[["%s"]],"id":2}`
-	searchFmt = `{"method":"web.update_ui","params":[["name","total_wanted","state","progress","time_added","save_path"],{}],"id":2}`
+	loginFmt   = `{"method":"auth.login","params":["%s"],"id":1}`
+	logoutFmt  = `{"method":"auth.delete_session","params":[],"id":3}`
+	addFmt     = `{"method":"web.add_torrents","params":[[{"path":"%s","options":{"file_priorities":[],"add_paused":false,"sequential_download":false,"pre_allocate_storage":false,"download_location":"%s","move_completed":false,"move_completed_path":"%s","max_connections":-1,"max_download_speed":-1,"max_upload_slots":-1,"max_upload_speed":-1,"prioritize_first_last_pieces":false,"seed_mode":false,"super_seeding":false}}]],"id":31}`
+	pauseFmt   = `{"method":"core.pause_torrent","params":[["%s"]],"id":2}`
+	deleteFmt  = `{"method":"core.remove_torrent","params":["%s",false],"id":460}`
+	resumeFmt  = `{"method":"core.resume_torrent","params":[["%s"]],"id":2}`
+	searchFmt  = `{"method":"web.update_ui","params":[["name","total_wanted","state","progress","time_added","save_path"],{}],"id":2}`
+	getHostFmt = `{"method":"web.get_hosts","params":[],"id":53}`
+	connectFmt = `{"method":"web.connect","params":["%s"],"id":149}`
 )
 
 func init() {
 	var dnldr DelugeDownloader
 	rd.SetDownloader(taskType, &dnldr)
+}
+
+// NewDownloader - 初始化下载器
+func (d *DelugeDownloader) InitDownloader(cfg *global.Config) error {
+	defer global.TraceLog("deluge.DelugeDownloader.NewDownloader")()
+	if cfg.BTWebPass == "" ||
+		cfg.BTWebUrl == "" ||
+		cfg.WebTimeout == 0 {
+		return fmt.Errorf("deluge.NewDownloader:Config error")
+	}
+	d.password = cfg.BTWebPass
+	d.requestUrl = cfg.BTWebUrl
+	d.timeout = cfg.WebTimeout
+	return nil
 }
 
 func (d *DelugeDownloader) check() error {
@@ -54,24 +76,77 @@ func (d *DelugeDownloader) check() error {
 	return nil
 }
 
-func (d *DelugeDownloader) login() (*http.Cookie, error) {
-	defer global.TraceLog("deluge.DelugeDownloader.login")()
-	jsonStr := fmt.Sprintf(loginFmt, d.password)
+func (d *DelugeDownloader) connectHost(cookies *http.Cookie) error {
+	defer global.TraceLog("deluge.DelugeDownloader.connectHost")()
 
-	resp, err := d.sendReq(nil, jsonStr)
+	// 获取服务器列表
+	resp, err := d.sendReq(cookies, getHostFmt)
 	if err != nil {
-		return nil, fmt.Errorf("sendReq:%v", err)
+		return fmt.Errorf("am:DelugeDownloader:connectHost:sendReq:%v", err)
+	}
+	buff := bytes.NewBuffer([]byte{})
+	_, err = io.Copy(buff, resp.Body)
+	resp.Body.Close()
+	if err != nil {
+		return fmt.Errorf("am:DelugeDownloader:connectHost:copy http response error:%v", err)
+	}
+	getHostRes := &GetHostRes{}
+	if err := json.Unmarshal(buff.Bytes(), getHostRes); err != nil {
+		return fmt.Errorf("am:DelugeDownloader:connectHost:Unmarshal http response error:%v", err)
+	}
+
+	if getHostRes.Err != nil {
+		return fmt.Errorf("am:DelugeDownloader:connectHost:return error:%v", getHostRes.Err)
+	}
+
+	if len(getHostRes.Result) <= 0 || len(getHostRes.Result[0]) <= 0 {
+		return fmt.Errorf("am:DelugeDownloader:connectHost:get a invalid response:result=%v", getHostRes.Result)
+	}
+
+	hostId, ok := getHostRes.Result[0][0].(string)
+	if !ok {
+		return fmt.Errorf("am:DelugeDownloader:connectHost:get a invalid response:result=%v", getHostRes.Result)
+	}
+
+	// 连接服务器
+	connectHostReq := fmt.Sprintf(connectFmt, hostId)
+	resp, err = d.sendReq(cookies, connectHostReq)
+	if err != nil {
+		return fmt.Errorf("am:DelugeDownloader:connectHost:sendReq:%v", err)
 	}
 	defer resp.Body.Close()
 
 	if checkResp(resp.Body) == false {
-		return nil, fmt.Errorf("DelugeDownloader.login: auth failure:password=%s", d.password)
+		return fmt.Errorf("am:DelugeDownloader.connectHost: connect host error:hostId=%s", hostId)
+	}
+	return nil
+}
+
+func (d *DelugeDownloader) login() (*http.Cookie, error) {
+	defer global.TraceLog("deluge.DelugeDownloader.login")()
+
+	global.Log.Errorf("DelugeDownloader.login")
+	jsonStr := fmt.Sprintf(loginFmt, d.password)
+
+	resp, err := d.sendReq(nil, jsonStr)
+	if err != nil {
+		return nil, fmt.Errorf("am:DelugeDownloader.login: sendReq:%v", err)
+	}
+	defer resp.Body.Close()
+
+	if checkResp(resp.Body) == false {
+		return nil, fmt.Errorf("am:DelugeDownloader.login: auth failure:password=%s", d.password)
 	}
 
 	cookies := resp.Cookies()
 	if len(cookies) == 0 {
 		return nil, nil
 	}
+
+	if err := d.connectHost(cookies[0]); err != nil {
+		global.Log.Errorf("connect host error:%v", err)
+	}
+
 	return cookies[0], nil
 }
 
@@ -111,20 +186,6 @@ func checkResp(body io.ReadCloser) bool {
 	}
 
 	return true
-}
-
-// NewDownloader - 初始化下载器
-func (d *DelugeDownloader) InitDownloader(cfg *global.Config) error {
-	defer global.TraceLog("deluge.DelugeDownloader.NewDownloader")()
-	if cfg.BTWebPass == "" ||
-		cfg.BTWebUrl == "" ||
-		cfg.WebTimeout == 0 {
-		return fmt.Errorf("deluge.NewDownloader:Config error")
-	}
-	d.password = cfg.BTWebPass
-	d.requestUrl = cfg.BTWebUrl
-	d.timeout = cfg.WebTimeout
-	return nil
 }
 
 // AddTask - 添加任务
