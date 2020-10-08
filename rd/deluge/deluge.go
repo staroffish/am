@@ -125,7 +125,6 @@ func (d *DelugeDownloader) connectHost(cookies *http.Cookie) error {
 func (d *DelugeDownloader) login() (*http.Cookie, error) {
 	defer global.TraceLog("deluge.DelugeDownloader.login")()
 
-	global.Log.Errorf("DelugeDownloader.login")
 	jsonStr := fmt.Sprintf(loginFmt, d.password)
 
 	resp, err := d.sendReq(nil, jsonStr)
