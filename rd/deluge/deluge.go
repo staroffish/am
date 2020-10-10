@@ -284,7 +284,6 @@ func (d *DelugeDownloader) GetAllTask() ([]rd.RdTask, error) {
 	}
 
 	defer d.logout(cookie)
-
 	resp, err := d.sendReq(cookie, searchFmt)
 	if err != nil {
 		return nil, fmt.Errorf("DelugeDownloader.GetAllTask:%v", err)
@@ -362,7 +361,7 @@ func (d *DelugeDownloader) sendReq(cookie *http.Cookie, jsonStr string) (*http.R
 
 	resp, err := http.DefaultClient.Do(r)
 	if err != nil {
-		return nil, fmt.Errorf("DelugeDownloader.sendReq.Do:%v", err)
+		return nil, fmt.Errorf("DelugeDownloader.sendReq.Do:err=%v, jsonStr=%s, url=%s", err, jsonStr, d.requestUrl)
 	}
 
 	if resp.StatusCode != http.StatusOK {

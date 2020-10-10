@@ -255,7 +255,6 @@ func (ad *Ad) Run() {
 					global.Log.Errorf("am:incorrect page cache key %s", key)
 					continue
 				}
-				global.Log.Infof("key=%s, splitedKeys = %v", key, splitedKeys)
 				pageCache[splitedKeys] = append(pageCache[splitedKeys], pageCacheCtx)
 			}
 
