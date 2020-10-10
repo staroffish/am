@@ -16,6 +16,9 @@ steps:
     auto_tag: true
     insecure: true
     mirror: http://hub-mirror.c.163.com
+  when:
+    event:
+    - promote
 
 - name: deploy
   image: appleboy/drone-ssh
@@ -28,9 +31,13 @@ steps:
     script:
       - docker pull archer.holygrail.com:5000/am:latest
       - docker-compose -f /usb/config/docker-compose/docker-compose.yml up -d
+  when:
+    event:
+    - promote
 
 trigger:
   branch:
   - master
   event:
   - push
+  - promote

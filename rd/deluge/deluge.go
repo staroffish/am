@@ -142,10 +142,6 @@ func (d *DelugeDownloader) login() (*http.Cookie, error) {
 		return nil, nil
 	}
 
-	if err := d.connectHost(cookies[0]); err != nil {
-		global.Log.Errorf("connect host error:%v", err)
-	}
-
 	return cookies[0], nil
 }
 
@@ -195,6 +191,10 @@ func (d *DelugeDownloader) AddTask(t *rd.RdTask) error {
 		return err
 	}
 	defer d.logout(cookie)
+
+	if err := d.connectHost(cookie); err != nil {
+		global.Log.Errorf("connect host error:%v", err)
+	}
 
 	jsonStr := fmt.Sprintf(addFmt, t.Link, t.SavePath, t.SavePath)
 
