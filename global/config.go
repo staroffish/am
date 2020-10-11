@@ -59,6 +59,8 @@ type Config struct {
 	LogType string `json:"LogType"`
 	// 日志路径 当制定SYSLOG时无效
 	LogFile string `json:"LogFile"`
+	// 网页缓存时长(天)
+	PageCacheDuration int `json:"PageCacheDuration"`
 }
 
 const (
@@ -102,6 +104,10 @@ func (c *Config) check() error {
 	}
 	if c.AnimeCntInMain == 0 {
 		c.AnimeCntInMain = 30
+	}
+
+	if c.PageCacheDuration <= 0 {
+		c.PageCacheDuration = 180
 	}
 
 	if !strings.HasPrefix(c.SaveDir, "/") {

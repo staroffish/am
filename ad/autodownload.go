@@ -23,6 +23,8 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
+const DayDuration = 24 * time.Hour
+
 // Ad - 自动下载
 type Ad struct {
 	manualAction chan struct{}
@@ -106,7 +108,6 @@ func (ad *Ad) Run() {
 	defer global.TraceLog("Ad.Run")()
 	crawlerTicker := time.Tick(time.Duration(ad.config.AdInter) * time.Second)
 	MatchingTicker := time.Tick(15 * time.Second)
-	var ThirtyDaysSecond int64 = 30 * 24 * 60 * 60
 
 	if err := ad.refreshData(); err != nil {
 		global.Log.Errorf("am:ad.refreshData error:%v", err)
@@ -190,7 +191,7 @@ func (ad *Ad) Run() {
 				ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 				timestamp := time.Now().Unix()
 				pageCacheKey := fmt.Sprintf("pagecache:%s:%d", url, timestamp)
-				err = ad.rdb.Set(ctx, pageCacheKey, httpCtx, time.Second*time.Duration(ThirtyDaysSecond)).Err()
+				err = ad.rdb.Set(ctx, pageCacheKey, httpCtx, DayDuration*time.Duration(ad.config.PageCacheDuration)).Err()
 				cancel()
 				if err != nil {
 					global.Log.Errorf("am:set pagecache error:key=%s, err=%v", pageCacheKey, err)
@@ -220,10 +221,11 @@ func (ad *Ad) Run() {
 			}
 
 			ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-			err := ad.rdb.ZRemRangeByScore(ctx, "pagecache:time", "0", fmt.Sprintf("%d", time.Now().Unix()-ThirtyDaysSecond)).Err()
+			expiration := time.Now().Add(-1 * DayDuration * time.Duration(ad.config.PageCacheDuration))
+			err := ad.rdb.ZRemRangeByScore(ctx, "pagecache:time", "0", fmt.Sprintf("%d", expiration.Unix())).Err()
 			cancel()
 			if err != nil {
-				global.Log.Errorf("am:ZRemRangeByScore pagecache:time error:scope=0-%d, error=%v", time.Now().Unix()-ThirtyDaysSecond, err)
+				global.Log.Errorf("am:ZRemRangeByScore pagecache:time error:scope=0-%d, error=%v", expiration.Unix(), err)
 			}
 
 			if err := ad.refreshData(); err != nil {
