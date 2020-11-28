@@ -248,6 +248,7 @@ func (ad *Ad) Run() {
 				pageCacheCtx, err := ad.rdb.Get(ctx, key).Result()
 				cancel()
 				if err != nil {
+					ad.rdb.ZRem(context.Background(), "pagecache:time", key)
 					global.Log.Errorf("am:Get %s error:%v", key, err)
 					continue
 				}
