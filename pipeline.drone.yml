@@ -4,7 +4,7 @@ name: am
 
 steps:
 - name: build
-  image: golang
+  image: archer.holygrail.com:5000/golang:latest
   commands:
   - go build -mod vendor -o am 
 
