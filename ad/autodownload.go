@@ -242,7 +242,7 @@ func (ad *Ad) Run() {
 				if err != nil {
 					global.Log.Errorf("am:Get %s error:%v", key, err)
 					if err == redis.Nil {
-						go func() {
+						go func(key string) {
 							ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 							err := ad.rdb.ZRem(ctx, "pagecache:time", key).Err()
 							cancel()
@@ -252,7 +252,7 @@ func (ad *Ad) Run() {
 								global.Log.Infof("am:deleted %v from pagecache:time", key)
 							}
 
-						}()
+						}(key)
 					}
 					continue
 				}
