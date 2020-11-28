@@ -220,14 +220,6 @@ func (ad *Ad) Run() {
 				global.Log.Infof("check page cache.")
 			}
 
-			ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-			expiration := time.Now().Add(-1 * DayDuration * time.Duration(ad.config.PageCacheDuration))
-			err := ad.rdb.ZRemRangeByScore(ctx, "pagecache:time", "0", fmt.Sprintf("%d", expiration.Unix())).Err()
-			cancel()
-			if err != nil {
-				global.Log.Errorf("am:ZRemRangeByScore pagecache:time error:scope=0-%d, error=%v", expiration.Unix(), err)
-			}
-
 			if err := ad.refreshData(); err != nil {
 				global.Log.Errorf("am:ad.refreshData error:%v", err)
 				continue
@@ -235,7 +227,7 @@ func (ad *Ad) Run() {
 
 			pageCache := map[string][]string{}
 
-			ctx, cancel = context.WithTimeout(context.Background(), 5*time.Second)
+			ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 			pageCacheKeys, err := ad.rdb.ZRange(ctx, "pagecache:time", 0, -1).Result()
 			cancel()
 			if err != nil {
@@ -248,8 +240,20 @@ func (ad *Ad) Run() {
 				pageCacheCtx, err := ad.rdb.Get(ctx, key).Result()
 				cancel()
 				if err != nil {
-					ad.rdb.ZRem(context.Background(), "pagecache:time", key)
 					global.Log.Errorf("am:Get %s error:%v", key, err)
+					if err == redis.Nil {
+						go func() {
+							ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+							err := ad.rdb.ZRem(ctx, "pagecache:time", key).Err()
+							cancel()
+							if err != nil {
+								global.Log.Errorf("am:deleted %v from pagecache:time error:%v", key, err)
+							} else {
+								global.Log.Infof("am:deleted %v from pagecache:time", key)
+							}
+
+						}()
+					}
 					continue
 				}
 
