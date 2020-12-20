@@ -17,10 +17,6 @@ github.com/go-redis/redis/v8/internal/rand
 github.com/go-redis/redis/v8/internal/util
 # github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e
 ## explicit
-# github.com/onsi/ginkgo v1.14.1
-## explicit
-# github.com/onsi/gomega v1.10.2
-## explicit
 # github.com/sclevine/agouti v3.0.0+incompatible
 ## explicit
 github.com/sclevine/agouti
@@ -45,9 +41,11 @@ go.opentelemetry.io/otel/internal/trace/noop
 go.opentelemetry.io/otel/label
 go.opentelemetry.io/otel/propagators
 go.opentelemetry.io/otel/unit
-# golang.org/x/net v0.0.0-20201002202402-0a1ea396d57c
+# golang.org/x/net v0.0.0-20201021035429-f5854403a974
 ## explicit
 golang.org/x/net/websocket
+# golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1
+## explicit
 # gopkg.in/check.v1 v1.0.0-20200902074654-038fdea0a05b
 ## explicit
 # gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
