@@ -107,7 +107,7 @@ func (ad *Ad) getAdTasks() []db.AdTask {
 func (ad *Ad) Run() {
 	defer global.TraceLog("Ad.Run")()
 	crawlerTicker := time.Tick(time.Duration(ad.config.AdInter) * time.Second)
-	MatchingTicker := time.Tick(15 * time.Second)
+	MatchingTicker := time.Tick(time.Duration(ad.config.AdSearchFromPageCacheInter) * time.Second)
 
 	if err := ad.refreshData(); err != nil {
 		global.Log.Errorf("am:ad.refreshData error:%v", err)

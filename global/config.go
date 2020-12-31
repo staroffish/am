@@ -31,8 +31,10 @@ type Config struct {
 	BindAddr string `json:"BindAddr"`
 	// 是否开启自动下载
 	AdOn bool `json:"AdOn"`
-	// 自动下载轮循间隔
+	// 自动下载 - 爬取网页的间隔(秒)
 	AdInter int `json:"AdInter"`
+	// 从爬取到的网页的缓存中查找数据的间隔(秒)
+	AdSearchFromPageCacheInter int `json:"AdSearchFromPageCacheInter"`
 	// BT远程下载的地址
 	BTWebUrl string `json:"BTWebUrl"`
 	// BT远程下载的密码
@@ -69,7 +71,13 @@ const (
 
 // NewConfig 读入配置文件
 func NewConfig(filePath string) error {
-	Cfg = &Config{}
+	Cfg = &Config{
+		WebTimeout:                 30,
+		AnimeCntInMain:             30,
+		PageCacheDuration:          180,
+		AdInter:                    3600,
+		AdSearchFromPageCacheInter: 60,
+	}
 
 	fileCtx := make([]byte, 8192)
 	file, err := os.Open(filePath)
@@ -98,16 +106,6 @@ func (c *Config) check() error {
 		c.DBName == "" || c.DBUser == "" ||
 		c.DBPasswd == "" || c.SaveDir == "" {
 		return fmt.Errorf("Config file invalid")
-	}
-	if c.WebTimeout == 0 {
-		c.WebTimeout = 10
-	}
-	if c.AnimeCntInMain == 0 {
-		c.AnimeCntInMain = 30
-	}
-
-	if c.PageCacheDuration <= 0 {
-		c.PageCacheDuration = 180
 	}
 
 	if !strings.HasPrefix(c.SaveDir, "/") {
