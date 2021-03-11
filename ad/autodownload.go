@@ -225,7 +225,7 @@ func (ad *Ad) Run() {
 				continue
 			}
 
-			pageCache := map[string][]string{}
+			urlPageKeyMap := map[string][]string{}
 
 			ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 			pageCacheKeys, err := ad.rdb.ZRange(ctx, "pagecache:time", 0, -1).Result()
@@ -237,24 +237,25 @@ func (ad *Ad) Run() {
 
 			for _, key := range pageCacheKeys {
 				ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-				pageCacheCtx, err := ad.rdb.Get(ctx, key).Result()
+				exists, err := ad.rdb.Exists(ctx, key).Result()
 				cancel()
 				if err != nil {
 					global.Log.Errorf("am:Get %s error:%v", key, err)
-					if err == redis.Nil {
-						go func(key string) {
-							ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-							err := ad.rdb.ZRem(ctx, "pagecache:time", key).Err()
-							cancel()
-							if err != nil {
-								global.Log.Errorf("am:deleted %v from pagecache:time error:%v", key, err)
-							} else {
-								global.Log.Infof("am:deleted %v from pagecache:time", key)
-							}
-
-						}(key)
-					}
 					continue
+				}
+
+				// delete item in pagecache:time when page cahe expired
+				if exists == 0 {
+					go func(key string) {
+						ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+						err := ad.rdb.ZRem(ctx, "pagecache:time", key).Err()
+						cancel()
+						if err != nil {
+							global.Log.Errorf("am:deleted %v from pagecache:time error:%v", key, err)
+						} else {
+							global.Log.Infof("am:deleted %v from pagecache:time", key)
+						}
+					}(key)
 				}
 
 				splitedKeys := key[strings.Index(key, ":")+1 : strings.LastIndex(key, ":")]
@@ -262,7 +263,7 @@ func (ad *Ad) Run() {
 					global.Log.Errorf("am:incorrect page cache key %s", key)
 					continue
 				}
-				pageCache[splitedKeys] = append(pageCache[splitedKeys], pageCacheCtx)
+				urlPageKeyMap[splitedKeys] = append(urlPageKeyMap[splitedKeys], key)
 			}
 
 			adTasks := ad.getAdTasks()
@@ -286,7 +287,16 @@ func (ad *Ad) Run() {
 				}
 
 				var findList []string = nil
-				for _, pageCtx := range pageCache[requestUrl] {
+				for _, key := range urlPageKeyMap[requestUrl] {
+					ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+
+					pageCtx, err := ad.rdb.Get(ctx, key).Result()
+					cancel()
+					if err != nil {
+						global.Log.Errorf("am:ad.Run:get redis %s error:%v", key, err)
+						continue
+					}
+
 					// 匹配该集动漫的链接
 					findList = reg.FindStringSubmatch(pageCtx)
 					if findList == nil || len(findList) < 2 {
