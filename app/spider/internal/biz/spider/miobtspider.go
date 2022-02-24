@@ -6,16 +6,17 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/staroffish/am/common/dto/spider"
 )
 
 type MiobtSpider struct {
 	BaseSpider
 }
 
-func (m *MiobtSpider) ExtractData(ctx context.Context, webContent string) ([]*AnimeMagnet, error) {
+func (m *MiobtSpider) ExtractData(ctx context.Context, webContent string) ([]*spider.AnimeMagnet, error) {
 	m.log.WithContext(ctx).Info("Call MiobtSpider.ExtractData")
 
-	animeMagnets := []*AnimeMagnet{}
+	animeMagnets := []*spider.AnimeMagnet{}
 
 	doc, err := goquery.NewDocumentFromReader(strings.NewReader(webContent))
 	if err != nil {
@@ -31,7 +32,7 @@ func (m *MiobtSpider) ExtractData(ctx context.Context, webContent string) ([]*An
 			}
 			href = strings.TrimPrefix(href, "show-")
 			magnet := strings.TrimSuffix(href, ".html")
-			animeMagnets = append(animeMagnets, &AnimeMagnet{
+			animeMagnets = append(animeMagnets, &spider.AnimeMagnet{
 				Name:       TrimAnimeName(aSelector.Text()),
 				MagnetLink: fmt.Sprintf("magnet:?xt=urn:btih:%s&tr=http://open.acgtracker.com:1096/announce", magnet),
 			})

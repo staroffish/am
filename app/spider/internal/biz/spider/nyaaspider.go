@@ -5,16 +5,17 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/staroffish/am/common/dto/spider"
 )
 
 type NyaaSpider struct {
 	BaseSpider
 }
 
-func (m *NyaaSpider) ExtractData(ctx context.Context, webContent string) ([]*AnimeMagnet, error) {
+func (m *NyaaSpider) ExtractData(ctx context.Context, webContent string) ([]*spider.AnimeMagnet, error) {
 	m.log.WithContext(ctx).Info("Call NyaaSpider.ExtractData")
 
-	animeMagnets := []*AnimeMagnet{}
+	animeMagnets := []*spider.AnimeMagnet{}
 
 	doc, err := goquery.NewDocumentFromReader(strings.NewReader(webContent))
 	if err != nil {
@@ -24,7 +25,7 @@ func (m *NyaaSpider) ExtractData(ctx context.Context, webContent string) ([]*Ani
 
 	doc.Find("tbody").Each(func(_ int, tbodySelector *goquery.Selection) {
 		tbodySelector.Find("tr[class]").Each(func(_ int, trSelector *goquery.Selection) {
-			animeMagnet := AnimeMagnet{}
+			animeMagnet := spider.AnimeMagnet{}
 			trSelector.Find("td>a[href*=view][class!=comments]").EachWithBreak(func(_ int, aSelector *goquery.Selection) bool {
 				animeMagnet.Name = TrimAnimeName(aSelector.Text())
 				return false
