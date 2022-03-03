@@ -3,20 +3,14 @@ package spider
 import (
 	"context"
 	"fmt"
-	"os"
 	"testing"
 
 	"github.com/go-kratos/kratos/v2/log"
+	dto "github.com/staroffish/am/common/dto/spider"
+	"github.com/staroffish/am/common/util"
 )
 
-func newLogger() log.Logger {
-	return log.With(log.NewStdLogger(os.Stdout),
-		"ts", log.DefaultTimestamp,
-		"caller", log.Caller(4),
-	)
-}
-
-func compareAnimeMagnets(a, b []*AnimeMagnet) *AnimeMagnet {
+func compareAnimeMagnets(a, b []*dto.AnimeMagnet) *dto.AnimeMagnet {
 	for i, _ := range a {
 		if a[i].MagnetLink != b[i].MagnetLink {
 			return a[i]
@@ -34,10 +28,10 @@ func compareAnimeMagnets(a, b []*AnimeMagnet) *AnimeMagnet {
 func TestMioBtSpider(t *testing.T) {
 	miobtSpider := MiobtSpider{
 		BaseSpider: BaseSpider{
-			log: log.NewHelper(newLogger()),
+			log: log.NewHelper(util.NewTestLogger()),
 		},
 	}
-	animeMagnetsBeCompare := []*AnimeMagnet{
+	animeMagnetsBeCompare := []*dto.AnimeMagnet{
 		{
 			Name:       "[orion origin发布组] 更衣人偶坠入爱河/恋上换装娃娃 Sono Bisque Doll wa Koi wo Suru [07] [1440p] [GB] [网盘] [2022年1月番]",
 			MagnetLink: "magnet:?xt=urn:btih:e83f7a6092c662faa16003769114abf0a5ef2148&tr=http://open.acgtracker.com:1096/announce",
@@ -253,7 +247,7 @@ func TestMioBtSpider(t *testing.T) {
 func TestDMHYSpider(t *testing.T) {
 	dmhySpider := DmhySpider{
 		BaseSpider: BaseSpider{
-			log: log.NewHelper(newLogger()),
+			log: log.NewHelper(util.NewTestLogger()),
 		},
 	}
 
@@ -270,7 +264,7 @@ func TestDMHYSpider(t *testing.T) {
 func TestNyaaSpider(t *testing.T) {
 	nyaaSpider := NyaaSpider{
 		BaseSpider: BaseSpider{
-			log: log.NewHelper(newLogger()),
+			log: log.NewHelper(util.NewTestLogger()),
 		},
 	}
 

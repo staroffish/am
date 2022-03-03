@@ -1,0 +1,18 @@
+syntax = "proto3";
+package kratos.api;
+
+option go_package = "github.com/staroffish/am/app/downloadmanager/internal/conf;conf";
+
+message Bootstrap {
+  Data data = 1;
+}
+
+message Data {
+  message Etcd {
+    repeated string end_points = 1;
+    string user = 2;
+    string password = 3;
+    uint32 dial_timeout = 4;
+  }
+  Etcd etcd = 1;
+}

@@ -21,17 +21,17 @@ import (
 // Injectors from wire.go:
 
 // initApp init kratos application.
-func initApp(confServer *conf.Server, confData *conf.Data, spiderConfig *conf.SpiderConfig, logger log.Logger, registrar registry.Registrar) (*kratos.App, func(), error) {
-	dataData, cleanup, err := data.NewData(confData, logger)
+func initApp(spiderServerConfig *conf.SpiderServerConfig, spiderConfig *conf.SpiderConfig, logger log.Logger, registrar registry.Registrar) (*kratos.App, func(), error) {
+	dataData, cleanup, err := data.NewData(spiderServerConfig, logger)
 	if err != nil {
 		return nil, nil, err
 	}
-	animeSpiderRepo := data.NewAmSpiderRepo(spiderConfig, dataData, confData, logger)
+	animeSpiderRepo := data.NewAmSpiderRepo(spiderConfig, dataData, spiderServerConfig, logger)
 	spiderInterface := spider.NewSpider(spiderConfig, logger)
 	amSpider := biz.NewAmSpider(animeSpiderRepo, spiderInterface, logger)
 	amspiderService := service.NewAmspiderService(amSpider, logger)
-	httpServer := server.NewHTTPServer(confServer, amspiderService, logger)
-	grpcServer := server.NewGRPCServer(confServer, amspiderService, logger)
+	httpServer := server.NewHTTPServer(spiderServerConfig, amspiderService, logger)
+	grpcServer := server.NewGRPCServer(spiderServerConfig, amspiderService, logger)
 	app := newApp(logger, httpServer, grpcServer, registrar)
 	return app, func() {
 		cleanup()

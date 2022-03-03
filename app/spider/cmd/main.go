@@ -17,6 +17,7 @@ import (
 	"github.com/go-kratos/kratos/v2/transport/grpc"
 	"github.com/go-kratos/kratos/v2/transport/http"
 	"github.com/staroffish/am/app/spider/internal/conf"
+	commonConfig "github.com/staroffish/am/common/config"
 	clientv3 "go.etcd.io/etcd/client/v3"
 	ggrpc "google.golang.org/grpc"
 )
@@ -33,6 +34,8 @@ var (
 	componentName string
 
 	id, _ = os.Hostname()
+
+	componentType = "spider"
 )
 
 func init() {
@@ -91,7 +94,6 @@ func main() {
 	}
 
 	log.Infof("Bootstrap loaded config:%v", bc.Data)
-	log.Infof("Bootstrap loaded server config:%v", bc.Server)
 
 	client, err := clientv3.New(clientv3.Config{
 		Endpoints:   bc.Data.Etcd.EndPoints,
@@ -105,15 +107,36 @@ func main() {
 		os.Exit(-1)
 	}
 
-	etcdSource, err := etcdCfg.New(client, etcdCfg.WithPath(fmt.Sprintf("/spider/%s", componentName)), etcdCfg.WithPrefix(true))
+	httpConfig, grpcConfig, err := commonConfig.NewAPIServerConfig(client, componentName)
 	if err != nil {
-		log.Errorf("New etcd source error:%v", err)
+		log.Errorf("commonConfig.NewAPIServerConfig error:%v", err)
+		os.Exit(-1)
+	}
+
+	redisConfig, err := commonConfig.NewRedisConfig(client)
+	if err != nil {
+		log.Errorf("commonConfig.NewRedisConfig error:%v", err)
+		os.Exit(-1)
+	}
+
+	log.Infof("httpServer=%v, grpcServer=%v, redisConfig=%v", httpConfig, grpcConfig, redisConfig)
+
+	if httpConfig.Addr == "" || grpcConfig.Addr == "" || redisConfig.Addr == "" {
+		log.Error("http server addr or grpc server or redis server addr is empty")
+		os.Exit(-1)
+	}
+
+	serverConfig := conf.NewSpiderServerConfig(httpConfig, grpcConfig, redisConfig)
+
+	etcdSourceSpider, err := etcdCfg.New(client, etcdCfg.WithPath(fmt.Sprintf("/%s/%s", componentType, componentName)), etcdCfg.WithPrefix(true))
+	if err != nil {
+		log.Errorf("New etcdSourceSpider error:%v", err)
 		os.Exit(-1)
 	}
 
 	etcdConfig := config.New(
 		config.WithSource(
-			etcdSource,
+			etcdSourceSpider,
 		),
 	)
 	defer etcdConfig.Close()
@@ -146,7 +169,7 @@ func main() {
 		os.Exit(-1)
 	}
 
-	app, cleanup, err := initApp(bc.Server, bc.Data, spiderConfig, logger, etcd.New(client))
+	app, cleanup, err := initApp(serverConfig, spiderConfig, logger, etcd.New(client))
 	if err != nil {
 		panic(err)
 	}
@@ -158,8 +181,8 @@ func main() {
 	}
 }
 
-func initSpiderParameters(etcdConfig config.Config, conponentName string) (*conf.SpiderParameter, error) {
-	prefix := fmt.Sprintf("/spider/%s", conponentName)
+func initSpiderParameters(etcdConfig config.Config, componentName string) (*conf.SpiderParameter, error) {
+	prefix := fmt.Sprintf("/%s/%s", componentType, componentName)
 	var err error
 
 	spiderConf := &conf.SpiderParameter{}
@@ -177,13 +200,17 @@ func initSpiderParameters(etcdConfig config.Config, conponentName string) (*conf
 	if err != nil {
 		return nil, fmt.Errorf("get %s error:%v", fmt.Sprintf("%s/%s", prefix, "type"), err)
 	}
-	spiderConf.Interval, err = etcdConfig.Value(fmt.Sprintf("%s/%s", prefix, "interval")).String()
+	spiderConf.Interval, err = etcdConfig.Value(fmt.Sprintf("%s/%s", prefix, "interval")).Int()
 	if err != nil {
 		return nil, fmt.Errorf("get %s error:%v", fmt.Sprintf("%s/%s", prefix, "interval"), err)
 	}
 	spiderConf.UserAgent, err = etcdConfig.Value(fmt.Sprintf("%s/%s", prefix, "user-agent")).String()
 	if err != nil {
 		return nil, fmt.Errorf("get %s error:%v", fmt.Sprintf("%s/%s", prefix, "user-agent"), err)
+	}
+	spiderConf.AnimeMagnetTimeout, err = etcdConfig.Value(fmt.Sprintf("%s/%s", prefix, "anime_magnet_timeout")).Int()
+	if err != nil {
+		return nil, fmt.Errorf("get %s error:%v", fmt.Sprintf("%s/%s", prefix, "anime_magnet_timeout"), err)
 	}
 
 	return spiderConf, err

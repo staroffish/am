@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+package api.downloadmanager.v1;
+
+import "google/api/annotations.proto";
+option go_package = "github.com/staroffish/am/api/downloadmanager/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.downloadmanager.v1";
+
+service Downloadmanager {
+	rpc ScanTaskAndDownload (Empty) returns (ScanTaskAndDownloadReply)  {
+		option (google.api.http) = {
+			post: "/v1/download_manager/scan_and_download"
+		};
+	}
+	rpc ScanTask (Empty) returns (ScanTaskReply)  {
+		option (google.api.http) = {
+			post: "/v1/download_manager/scan"
+		};
+	}
+	rpc AddTask (AddTaskRequest) returns (Empty)  {
+		option (google.api.http) = {
+			post: "/v1/download_manager/download_task/save"
+			body: "*"
+		};
+	}
+	rpc UpdateTask (UpdateTaskRequest) returns (Empty)  {
+		option (google.api.http) = {
+			post: "/v1/download_manager/download_task/update"
+			body: "*"
+		};
+	}
+	rpc DeleteTask (DeleteTaskRequest) returns (Empty)  {
+		option (google.api.http) = {
+			delete: "/v1/download_manager/download_task/{id}"
+		};
+	}
+	rpc ListTask (ListTaskRequest) returns (ListTaskReply)  {
+		option (google.api.http) = {
+			get: "/v1/download_manager/download_task"
+		};
+	}
+}
+
+message Empty {}
+
+message DownloadTask {
+	string name = 1;
+	int32 chapter_start = 2;
+	int32 chapter_end = 3;
+	string magnet_link = 4;
+}
+
+message ScanTaskAndDownloadReply {
+	repeated DownloadTask created_tasks = 1;
+}
+
+message ScanTaskReply {
+	repeated DownloadTask matched_tasks = 1;
+}
+
+message AddTaskRequest {
+	string name = 1;
+	string regexp = 2;
+	int32 latest_chapter = 3;
+	string store_path = 4;
+	string anime_id = 5;
+}
+
+message UpdateTaskRequest {
+	int32 id = 1;
+	string name = 2;
+	string regexp = 3;
+	int32 latest_chapter = 4;
+	string store_path = 5;
+	string anime_id = 6;
+}
+
+message DeleteTaskRequest {
+	int32 id = 1;
+}
+
+message ListTaskRequest {
+	repeated int32 id = 1;
+	repeated string name = 2;
+}
+
+message ListTaskReply {
+	message DownloadTaskInfo {
+		int32 id = 1;
+		string name = 2;
+		string regexp = 3;
+		int32 latest_chapter = 4;
+		string store_path = 5;
+		string updateTime = 6;
+		string anime_id = 7;
+	}
+	repeated DownloadTaskInfo tasks = 1;;
+}

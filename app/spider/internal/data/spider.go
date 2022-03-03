@@ -12,24 +12,22 @@ import (
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-redis/redis/v8"
 	"github.com/staroffish/am/app/spider/internal/biz"
-	amspider "github.com/staroffish/am/app/spider/internal/biz/spider"
 	"github.com/staroffish/am/app/spider/internal/conf"
+	dto "github.com/staroffish/am/common/dto/spider"
 )
 
 type amSpiderRepo struct {
-	spiderConfig        *conf.SpiderConfig
-	log                 *log.Helper
-	redisClient         *redis.Client
-	animeMangetsTimeout int32
+	spiderConfig *conf.SpiderConfig
+	log          *log.Helper
+	redisClient  *redis.Client
 }
 
 // NewGreeterRepo .
-func NewAmSpiderRepo(c *conf.SpiderConfig, database *Data, confData *conf.Data, logger log.Logger) biz.AnimeSpiderRepo {
+func NewAmSpiderRepo(c *conf.SpiderConfig, database *Data, confData *conf.SpiderServerConfig, logger log.Logger) biz.AnimeSpiderRepo {
 	return &amSpiderRepo{
-		spiderConfig:        c,
-		log:                 log.NewHelper(logger),
-		redisClient:         database.Client,
-		animeMangetsTimeout: confData.Redis.AnimeMagnetTimeout,
+		spiderConfig: c,
+		log:          log.NewHelper(logger),
+		redisClient:  database.Client,
 	}
 }
 
@@ -77,12 +75,13 @@ func (a *amSpiderRepo) GetWebContent(ctx context.Context) (webContent string, er
 	return buf.String(), nil
 }
 
-func (a *amSpiderRepo) SaveAnimeMagnets(ctx context.Context, animeMagnets []*amspider.AnimeMagnet) error {
+func (a *amSpiderRepo) SaveAnimeMagnets(ctx context.Context, animeMagnets []*dto.AnimeMagnet) error {
 	today := time.Now().Format("2006-01-02")
+	conf := a.spiderConfig.GetConfig()
 	key := fmt.Sprintf("anime:link:%s", today)
 
 	var retError error
-
+	a.log.Infof("key=%s, timeout=%d", key, conf.AnimeMagnetTimeout)
 	for _, animeMagnet := range animeMagnets {
 		exists, err := a.redisClient.HExists(ctx, key, animeMagnet.Name).Result()
 		if err != nil {
@@ -108,7 +107,7 @@ func (a *amSpiderRepo) SaveAnimeMagnets(ctx context.Context, animeMagnets []*ams
 	}
 
 	if ttl == -1 {
-		expire := time.Duration(a.animeMangetsTimeout*24*60*60) * time.Second
+		expire := time.Duration(conf.AnimeMagnetTimeout*24*60*60) * time.Second
 		_, err := a.redisClient.Expire(ctx, key, expire).Result()
 		if err != nil {
 			a.log.Errorf("a.redisClient.Expire %s %d error:%v", key, expire, err)

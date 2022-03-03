@@ -1,0 +1,19 @@
+server:
+  http:
+    addr: 0.0.0.0:11000
+    timeout: 5s
+  grpc:
+    addr: 0.0.0.0:10000
+    timeout: 5s
+data:
+  etcd:
+    end_points: 
+      - etcd01.holygrail.com:2379
+    dial_timeout: 5
+  redis:
+    addr: redis.holygrail.com:6379
+    password: amPasswd
+    read_timeout: 5s
+    write_timeout: 5s
+    db: 2
+    anime_magnet_timeout: 180 # number of day

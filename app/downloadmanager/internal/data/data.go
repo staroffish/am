@@ -8,19 +8,21 @@ import (
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-redis/redis/v8"
 	"github.com/google/wire"
-	"github.com/staroffish/am/app/spider/internal/conf"
+	"github.com/staroffish/am/app/downloadmanager/internal/conf"
+	etcd "go.etcd.io/etcd/client/v3"
 )
 
 // ProviderSet is data providers.
-var ProviderSet = wire.NewSet(NewData, NewAmSpiderRepo)
+var ProviderSet = wire.NewSet(NewData, NewDownloadManagerRepo, NewDownloadTask)
 
 // Data .
 type Data struct {
-	*redis.Client
+	redisCli *redis.Client
+	etcdCli  *etcd.Client
 }
 
 // NewData .
-func NewData(c *conf.SpiderServerConfig, logger log.Logger) (*Data, func(), error) {
+func NewData(c *conf.DownloadManagerServerConfig, etcdCli *etcd.Client, logger log.Logger) (*Data, func(), error) {
 	cleanup := func() {
 		log.NewHelper(logger).Info("closing the data resources")
 	}
@@ -29,8 +31,8 @@ func NewData(c *conf.SpiderServerConfig, logger log.Logger) (*Data, func(), erro
 		Addr:         c.Redis.Addr,
 		Username:     c.Redis.User,
 		Password:     c.Redis.Password,
-		ReadTimeout:  time.Second * time.Duration(c.Redis.ReadTimeout),
-		WriteTimeout: time.Second * time.Duration(c.Redis.WriteTimeout),
+		ReadTimeout:  time.Duration(c.Redis.ReadTimeout) * time.Second,
+		WriteTimeout: time.Duration(c.Redis.WriteTimeout) * time.Second,
 		DB:           int(c.Redis.Db),
 	})
 	_, err := redisClient.Get(context.Background(), "").Result()
@@ -39,6 +41,7 @@ func NewData(c *conf.SpiderServerConfig, logger log.Logger) (*Data, func(), erro
 		panic(fmt.Sprintf("redisClient.Get error %v", err))
 	}
 	return &Data{
-		Client: redisClient,
+		redisCli: redisClient,
+		etcdCli:  etcdCli,
 	}, cleanup, nil
 }
