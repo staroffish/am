@@ -3,34 +3,36 @@ syntax = "proto3";
 package api.downloadmanager.v1;
 
 import "google/api/annotations.proto";
+import "api/common/common.proto";
+
 option go_package = "github.com/staroffish/am/api/downloadmanager/v1;v1";
 option java_multiple_files = true;
 option java_package = "api.downloadmanager.v1";
 
 service Downloadmanager {
-	rpc ScanTaskAndDownload (Empty) returns (ScanTaskAndDownloadReply)  {
+	rpc ScanTaskAndDownload (api.common.Empty) returns (ScanTaskAndDownloadReply)  {
 		option (google.api.http) = {
 			post: "/v1/download_manager/scan_and_download"
 		};
 	}
-	rpc ScanTask (Empty) returns (ScanTaskReply)  {
+	rpc ScanTask (api.common.Empty) returns (ScanTaskReply)  {
 		option (google.api.http) = {
 			post: "/v1/download_manager/scan"
 		};
 	}
-	rpc AddTask (AddTaskRequest) returns (Empty)  {
+	rpc AddTask (AddTaskRequest) returns (api.common.Empty)  {
 		option (google.api.http) = {
 			post: "/v1/download_manager/download_task/save"
 			body: "*"
 		};
 	}
-	rpc UpdateTask (UpdateTaskRequest) returns (Empty)  {
+	rpc UpdateTask (UpdateTaskRequest) returns (api.common.Empty)  {
 		option (google.api.http) = {
 			post: "/v1/download_manager/download_task/update"
 			body: "*"
 		};
 	}
-	rpc DeleteTask (DeleteTaskRequest) returns (Empty)  {
+	rpc DeleteTask (DeleteTaskRequest) returns (api.common.Empty)  {
 		option (google.api.http) = {
 			delete: "/v1/download_manager/download_task/{id}"
 		};
@@ -41,8 +43,6 @@ service Downloadmanager {
 		};
 	}
 }
-
-message Empty {}
 
 message DownloadTask {
 	string name = 1;

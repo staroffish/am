@@ -9,10 +9,12 @@ import (
 	"github.com/go-redis/redis/v8"
 	"github.com/google/wire"
 	"github.com/staroffish/am/app/spider/internal/conf"
+	"github.com/staroffish/am/common/config"
+	"github.com/staroffish/am/common/util"
 )
 
 // ProviderSet is data providers.
-var ProviderSet = wire.NewSet(NewData, NewAmSpiderRepo)
+var ProviderSet = wire.NewSet(NewData, NewAmSpiderRepo, NewDownloadManagerClient, util.NewReidsClient, config.NewRedisConfig, conf.NewSpiderServerConfig)
 
 // Data .
 type Data struct {

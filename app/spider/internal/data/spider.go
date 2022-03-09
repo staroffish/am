@@ -10,24 +10,42 @@ import (
 	"time"
 
 	"github.com/go-kratos/kratos/v2/log"
+	"github.com/go-kratos/kratos/v2/registry"
+	"github.com/go-kratos/kratos/v2/transport/grpc"
 	"github.com/go-redis/redis/v8"
+	"github.com/staroffish/am/api/common"
+	pb "github.com/staroffish/am/api/downloadmanager/v1"
 	"github.com/staroffish/am/app/spider/internal/biz"
 	"github.com/staroffish/am/app/spider/internal/conf"
 	dto "github.com/staroffish/am/common/dto/spider"
 )
 
 type amSpiderRepo struct {
-	spiderConfig *conf.SpiderConfig
-	log          *log.Helper
-	redisClient  *redis.Client
+	spiderConfig      *conf.SpiderConfig
+	log               *log.Helper
+	redisClient       *redis.Client
+	downloadMangerCli pb.DownloadmanagerClient
+}
+
+func NewDownloadManagerClient(r registry.Discovery) pb.DownloadmanagerClient {
+	conn, err := grpc.DialInsecure(
+		context.Background(),
+		grpc.WithEndpoint("discovery:///download-manager"),
+		grpc.WithDiscovery(r),
+	)
+	if err != nil {
+		panic(err)
+	}
+	return pb.NewDownloadmanagerClient(conn)
 }
 
 // NewGreeterRepo .
-func NewAmSpiderRepo(c *conf.SpiderConfig, database *Data, confData *conf.SpiderServerConfig, logger log.Logger) biz.AnimeSpiderRepo {
+func NewAmSpiderRepo(c *conf.SpiderConfig, database *Data, confData *conf.SpiderServerConfig, downloadMangerCli pb.DownloadmanagerClient, logger log.Logger) biz.AnimeSpiderRepo {
 	return &amSpiderRepo{
-		spiderConfig: c,
-		log:          log.NewHelper(logger),
-		redisClient:  database.Client,
+		spiderConfig:      c,
+		log:               log.NewHelper(logger),
+		downloadMangerCli: downloadMangerCli,
+		redisClient:       database.Client,
 	}
 }
 
@@ -36,12 +54,12 @@ func (a *amSpiderRepo) GetWebContent(ctx context.Context) (webContent string, er
 	conf := a.spiderConfig.GetConfig()
 	a.log.Infof("webSpiderRepo.GetWebContent get config %v", conf)
 
-	req, err := http.NewRequest("GET", conf.GetUrl(), nil)
+	req, err := http.NewRequest(conf.Method, conf.GetUrl(), nil)
 	if err != nil {
 		return "", fmt.Errorf("GetWebContent:http.NewRequest error:%v", err)
 	}
 
-	// 由于go自己的 user-agent貌似被对方屏蔽了 所以 这里改成firefox的user-agent
+	// 由于go自己的 user-agent 可能会被屏蔽 所以 这里改成firefox的user-agent
 	req.Header.Add("User-Agent", conf.GetUserAgent())
 
 	// 如果存在使用代理
@@ -114,6 +132,17 @@ func (a *amSpiderRepo) SaveAnimeMagnets(ctx context.Context, animeMagnets []*dto
 			retError = err
 		}
 	}
+
+	go func() {
+		timeOutctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+		defer cancel()
+		reply, err := a.downloadMangerCli.ScanTaskAndDownload(timeOutctx, &common.Empty{})
+		if err != nil {
+			a.log.Errorf("downloadMangerCli.ScanTaskAndDownload error: %v", err)
+			return
+		}
+		a.log.Infof("downloadMangerCli.ScanTaskAndDownload:matched task count:%d", len(reply.CreatedTasks))
+	}()
 
 	return retError // 只是为了让上层感知到发生了错误
 }

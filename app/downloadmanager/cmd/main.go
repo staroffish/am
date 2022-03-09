@@ -45,8 +45,8 @@ func init() {
 
 func newApp(logger log.Logger, hs *http.Server, gs *grpc.Server, r registry.Registrar) *kratos.App {
 	return kratos.New(
-		kratos.ID(id),
-		kratos.Name(componentName),
+		kratos.ID(componentName),
+		kratos.Name(componentType),
 		kratos.Version(Version),
 		kratos.Metadata(map[string]string{}),
 		kratos.Logger(logger),
@@ -107,30 +107,9 @@ func main() {
 		os.Exit(-1)
 	}
 
-	httpConfig, grpcConfig, err := commonConfig.NewAPIServerConfig(client, componentName)
-	if err != nil {
-		log.Errorf("commonConfig.NewAPIServerConfig error:%v", err)
-		os.Exit(-1)
-	}
-
-	redisConfig, err := commonConfig.NewRedisConfig(client)
-	if err != nil {
-		log.Errorf("commonConfig.NewRedisConfig error:%v", err)
-		os.Exit(-1)
-	}
-
-	log.Infof("httpServer=%v, grpcServer=%v, redisConfig=%v", httpConfig, grpcConfig, redisConfig)
-
-	if httpConfig.Addr == "" || grpcConfig.Addr == "" || redisConfig.Addr == "" {
-		log.Error("http server addr or grpc server or redis server addr is empty")
-		os.Exit(-1)
-	}
-
-	serverConfig := conf.NewDownloadManagerServerConfig(httpConfig, grpcConfig, redisConfig)
-
 	prefixString := data.TaskEtcdPrefix(fmt.Sprintf("/%s/%s/tasks", componentType, componentName))
 
-	app, cleanup, err := initApp(serverConfig, bc.Data, client, logger, etcd.New(client), prefixString)
+	app, cleanup, err := initApp(commonConfig.ComponentName(componentName), client, logger, etcd.New(client), prefixString)
 	if err != nil {
 		panic(err)
 	}

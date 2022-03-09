@@ -8,6 +8,7 @@ package v1
 
 import (
 	context "context"
+	common "github.com/staroffish/am/api/common"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -22,11 +23,11 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DownloadmanagerClient interface {
-	ScanTaskAndDownload(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ScanTaskAndDownloadReply, error)
-	ScanTask(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ScanTaskReply, error)
-	AddTask(ctx context.Context, in *AddTaskRequest, opts ...grpc.CallOption) (*Empty, error)
-	UpdateTask(ctx context.Context, in *UpdateTaskRequest, opts ...grpc.CallOption) (*Empty, error)
-	DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*Empty, error)
+	ScanTaskAndDownload(ctx context.Context, in *common.Empty, opts ...grpc.CallOption) (*ScanTaskAndDownloadReply, error)
+	ScanTask(ctx context.Context, in *common.Empty, opts ...grpc.CallOption) (*ScanTaskReply, error)
+	AddTask(ctx context.Context, in *AddTaskRequest, opts ...grpc.CallOption) (*common.Empty, error)
+	UpdateTask(ctx context.Context, in *UpdateTaskRequest, opts ...grpc.CallOption) (*common.Empty, error)
+	DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*common.Empty, error)
 	ListTask(ctx context.Context, in *ListTaskRequest, opts ...grpc.CallOption) (*ListTaskReply, error)
 }
 
@@ -38,7 +39,7 @@ func NewDownloadmanagerClient(cc grpc.ClientConnInterface) DownloadmanagerClient
 	return &downloadmanagerClient{cc}
 }
 
-func (c *downloadmanagerClient) ScanTaskAndDownload(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ScanTaskAndDownloadReply, error) {
+func (c *downloadmanagerClient) ScanTaskAndDownload(ctx context.Context, in *common.Empty, opts ...grpc.CallOption) (*ScanTaskAndDownloadReply, error) {
 	out := new(ScanTaskAndDownloadReply)
 	err := c.cc.Invoke(ctx, "/api.downloadmanager.v1.Downloadmanager/ScanTaskAndDownload", in, out, opts...)
 	if err != nil {
@@ -47,7 +48,7 @@ func (c *downloadmanagerClient) ScanTaskAndDownload(ctx context.Context, in *Emp
 	return out, nil
 }
 
-func (c *downloadmanagerClient) ScanTask(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ScanTaskReply, error) {
+func (c *downloadmanagerClient) ScanTask(ctx context.Context, in *common.Empty, opts ...grpc.CallOption) (*ScanTaskReply, error) {
 	out := new(ScanTaskReply)
 	err := c.cc.Invoke(ctx, "/api.downloadmanager.v1.Downloadmanager/ScanTask", in, out, opts...)
 	if err != nil {
@@ -56,8 +57,8 @@ func (c *downloadmanagerClient) ScanTask(ctx context.Context, in *Empty, opts ..
 	return out, nil
 }
 
-func (c *downloadmanagerClient) AddTask(ctx context.Context, in *AddTaskRequest, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
+func (c *downloadmanagerClient) AddTask(ctx context.Context, in *AddTaskRequest, opts ...grpc.CallOption) (*common.Empty, error) {
+	out := new(common.Empty)
 	err := c.cc.Invoke(ctx, "/api.downloadmanager.v1.Downloadmanager/AddTask", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -65,8 +66,8 @@ func (c *downloadmanagerClient) AddTask(ctx context.Context, in *AddTaskRequest,
 	return out, nil
 }
 
-func (c *downloadmanagerClient) UpdateTask(ctx context.Context, in *UpdateTaskRequest, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
+func (c *downloadmanagerClient) UpdateTask(ctx context.Context, in *UpdateTaskRequest, opts ...grpc.CallOption) (*common.Empty, error) {
+	out := new(common.Empty)
 	err := c.cc.Invoke(ctx, "/api.downloadmanager.v1.Downloadmanager/UpdateTask", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -74,8 +75,8 @@ func (c *downloadmanagerClient) UpdateTask(ctx context.Context, in *UpdateTaskRe
 	return out, nil
 }
 
-func (c *downloadmanagerClient) DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
+func (c *downloadmanagerClient) DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*common.Empty, error) {
+	out := new(common.Empty)
 	err := c.cc.Invoke(ctx, "/api.downloadmanager.v1.Downloadmanager/DeleteTask", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -96,11 +97,11 @@ func (c *downloadmanagerClient) ListTask(ctx context.Context, in *ListTaskReques
 // All implementations must embed UnimplementedDownloadmanagerServer
 // for forward compatibility
 type DownloadmanagerServer interface {
-	ScanTaskAndDownload(context.Context, *Empty) (*ScanTaskAndDownloadReply, error)
-	ScanTask(context.Context, *Empty) (*ScanTaskReply, error)
-	AddTask(context.Context, *AddTaskRequest) (*Empty, error)
-	UpdateTask(context.Context, *UpdateTaskRequest) (*Empty, error)
-	DeleteTask(context.Context, *DeleteTaskRequest) (*Empty, error)
+	ScanTaskAndDownload(context.Context, *common.Empty) (*ScanTaskAndDownloadReply, error)
+	ScanTask(context.Context, *common.Empty) (*ScanTaskReply, error)
+	AddTask(context.Context, *AddTaskRequest) (*common.Empty, error)
+	UpdateTask(context.Context, *UpdateTaskRequest) (*common.Empty, error)
+	DeleteTask(context.Context, *DeleteTaskRequest) (*common.Empty, error)
 	ListTask(context.Context, *ListTaskRequest) (*ListTaskReply, error)
 	mustEmbedUnimplementedDownloadmanagerServer()
 }
@@ -109,19 +110,19 @@ type DownloadmanagerServer interface {
 type UnimplementedDownloadmanagerServer struct {
 }
 
-func (UnimplementedDownloadmanagerServer) ScanTaskAndDownload(context.Context, *Empty) (*ScanTaskAndDownloadReply, error) {
+func (UnimplementedDownloadmanagerServer) ScanTaskAndDownload(context.Context, *common.Empty) (*ScanTaskAndDownloadReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ScanTaskAndDownload not implemented")
 }
-func (UnimplementedDownloadmanagerServer) ScanTask(context.Context, *Empty) (*ScanTaskReply, error) {
+func (UnimplementedDownloadmanagerServer) ScanTask(context.Context, *common.Empty) (*ScanTaskReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ScanTask not implemented")
 }
-func (UnimplementedDownloadmanagerServer) AddTask(context.Context, *AddTaskRequest) (*Empty, error) {
+func (UnimplementedDownloadmanagerServer) AddTask(context.Context, *AddTaskRequest) (*common.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddTask not implemented")
 }
-func (UnimplementedDownloadmanagerServer) UpdateTask(context.Context, *UpdateTaskRequest) (*Empty, error) {
+func (UnimplementedDownloadmanagerServer) UpdateTask(context.Context, *UpdateTaskRequest) (*common.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateTask not implemented")
 }
-func (UnimplementedDownloadmanagerServer) DeleteTask(context.Context, *DeleteTaskRequest) (*Empty, error) {
+func (UnimplementedDownloadmanagerServer) DeleteTask(context.Context, *DeleteTaskRequest) (*common.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTask not implemented")
 }
 func (UnimplementedDownloadmanagerServer) ListTask(context.Context, *ListTaskRequest) (*ListTaskReply, error) {
@@ -141,7 +142,7 @@ func RegisterDownloadmanagerServer(s grpc.ServiceRegistrar, srv DownloadmanagerS
 }
 
 func _Downloadmanager_ScanTaskAndDownload_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+	in := new(common.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -153,13 +154,13 @@ func _Downloadmanager_ScanTaskAndDownload_Handler(srv interface{}, ctx context.C
 		FullMethod: "/api.downloadmanager.v1.Downloadmanager/ScanTaskAndDownload",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DownloadmanagerServer).ScanTaskAndDownload(ctx, req.(*Empty))
+		return srv.(DownloadmanagerServer).ScanTaskAndDownload(ctx, req.(*common.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Downloadmanager_ScanTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+	in := new(common.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -171,7 +172,7 @@ func _Downloadmanager_ScanTask_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/api.downloadmanager.v1.Downloadmanager/ScanTask",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DownloadmanagerServer).ScanTask(ctx, req.(*Empty))
+		return srv.(DownloadmanagerServer).ScanTask(ctx, req.(*common.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }

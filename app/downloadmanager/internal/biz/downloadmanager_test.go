@@ -2,6 +2,7 @@ package biz
 
 import (
 	"context"
+	"fmt"
 	"reflect"
 	"testing"
 
@@ -107,4 +108,9 @@ func TestScan(t *testing.T) {
 			t.Fatalf("downloadTask = %v, result = %v not equal", downloadTasks[n], result[n])
 		}
 	}
+
+	for _, downloadTask := range downloadTasks {
+		fmt.Printf("downloadTasks=%v\n", downloadTask)
+	}
+
 }

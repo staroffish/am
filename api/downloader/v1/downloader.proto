@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package api.downloader.v1;
+
+import "google/api/annotations.proto";
+import "api/common/common.proto";
+
+option go_package = "github.com/staroffish/am/api/downloader/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.downloader.v1";
+
+service Downloader {
+	rpc Add (AddRequest) returns (api.common.Empty)  {
+		option (google.api.http) = {
+			post: "/v1/downloader/task/add"
+			body: "*"
+		};
+	}
+	rpc Delete (DeleteRequest) returns (api.common.Empty)  {
+		option (google.api.http) = {
+			delete: "/v1/downloader/task/delete/{id}"
+		};
+	}
+	rpc List (api.common.Empty) returns (ListResponse)  {
+		option (google.api.http) = {
+			get: "/v1/downloader/task"
+		};
+	}
+	rpc Pause (PauseRequest) returns (api.common.Empty)  {
+		option (google.api.http) = {
+			post: "/v1/downloader/task/pause/{id}"
+		};
+	}
+	rpc Resume (ResumeRequest) returns (api.common.Empty)  {
+		option (google.api.http) = {
+			post: "/v1/downloader/task/resume/{id}"
+		};
+	}
+}
+
+message AddRequest {
+	string link = 1;
+	string store_path = 2;
+}
+
+message DeleteRequest {
+	string id = 1;
+}
+
+message PauseRequest {
+	string id = 1;
+}
+
+message ResumeRequest {
+	string id = 1;
+}
+
+message ListResponse {
+	message task_info {
+		string name = 1;
+		int64 size = 2;	// unit: byte
+		string store_path = 3; 
+		float progress = 4;
+		string status = 5;
+		string created_time = 6;
+		string id = 7;
+	}
+	repeated task_info task_infos = 1;
+}

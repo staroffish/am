@@ -16,6 +16,7 @@ type ServerConfig struct {
 
 type HttpServerConfig ServerConfig
 type GrpcServerConfig ServerConfig
+type ComponentName string
 
 type ReidsConfig struct {
 	Addr         string `protobuf:"bytes,1,opt,name=addr,proto3" json:"addr,omitempty"`
@@ -26,48 +27,57 @@ type ReidsConfig struct {
 	WriteTimeout int64  `protobuf:"bytes,7,opt,name=write_timeout,json=writeTimeout,proto3" json:"write_timeout,omitempty"`
 }
 
-func NewAPIServerConfig(client *clientv3.Client, componentName string) (*HttpServerConfig, *GrpcServerConfig, error) {
-	ctx := context.Background()
-	prefix := fmt.Sprintf("/component/%s", componentName)
+func NewGrpcServerConfig(client *clientv3.Client, componentName ComponentName) (*GrpcServerConfig, error) {
+	prefix := fmt.Sprintf("/component/%s/grpc", componentName)
 
-	httpConfig := &HttpServerConfig{
-		Timeout: 5,
-	}
-	grpcConfig := &GrpcServerConfig{
-		Timeout: 5,
-	}
-
-	resp, err := client.Get(ctx, prefix, clientv3.WithPrefix())
+	grpcConfig, err := newServerConfig(client, prefix)
 	if err != nil {
-		return nil, nil, fmt.Errorf("get %s error:%v", prefix, err)
+		return nil, err
+	}
+
+	return (*GrpcServerConfig)(grpcConfig), nil
+}
+
+func NewHTTPServerConfig(client *clientv3.Client, componentName ComponentName) (*HttpServerConfig, error) {
+	prefix := fmt.Sprintf("/component/%s/http", componentName)
+
+	httpConfig, err := newServerConfig(client, prefix)
+	if err != nil {
+		return nil, err
+	}
+
+	return (*HttpServerConfig)(httpConfig), nil
+}
+
+func newServerConfig(client *clientv3.Client, prefix string) (*ServerConfig, error) {
+	serverConfig := &ServerConfig{}
+	resp, err := client.Get(context.Background(), prefix, clientv3.WithPrefix())
+	if err != nil {
+		return nil, fmt.Errorf("get %s error:%v", prefix, err)
 	}
 	for _, kv := range resp.Kvs {
 		key := string(kv.Key)
 		switch key {
-		case fmt.Sprintf("%s/http/addr", prefix):
-			httpConfig.Addr = string(kv.Value)
-		case fmt.Sprintf("%s/http/timeout", prefix):
+		case fmt.Sprintf("%s/addr", prefix):
+			serverConfig.Addr = string(kv.Value)
+		case fmt.Sprintf("%s/timeout", prefix):
 			timeout, err := strconv.ParseInt(string(kv.Value), 10, 64)
 			if err != nil {
-				return nil, nil, fmt.Errorf("convert %s to int error:%v", key, err)
+				return nil, fmt.Errorf("convert %s to int error:%v", key, err)
 			}
-			httpConfig.Timeout = timeout
-		case fmt.Sprintf("%s/http/network", prefix):
-			httpConfig.Network = string(kv.Value)
-		case fmt.Sprintf("%s/grpc/addr", prefix):
-			grpcConfig.Addr = string(kv.Value)
-		case fmt.Sprintf("%s/grpc/timeout", prefix):
-			timeout, err := strconv.ParseInt(string(kv.Value), 10, 64)
-			if err != nil {
-				return nil, nil, fmt.Errorf("convert %s to int error:%v", key, err)
+			serverConfig.Timeout = timeout
+			if serverConfig.Timeout == 0 {
+				serverConfig.Timeout = 5
 			}
-			grpcConfig.Timeout = timeout
-		case fmt.Sprintf("%s/grpc/network", prefix):
-			grpcConfig.Network = string(kv.Value)
+		case fmt.Sprintf("%s/network", prefix):
+			serverConfig.Network = string(kv.Value)
 		}
 	}
 
-	return httpConfig, grpcConfig, nil
+	if serverConfig.Addr == "" {
+		return nil, fmt.Errorf("http or grpc server addr is empty")
+	}
+	return serverConfig, nil
 }
 
 func NewRedisConfig(client *clientv3.Client) (*ReidsConfig, error) {

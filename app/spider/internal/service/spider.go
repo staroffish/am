@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/go-kratos/kratos/v2/log"
+	commonPb "github.com/staroffish/am/api/common"
 	pb "github.com/staroffish/am/api/spider/v1"
 	"github.com/staroffish/am/app/spider/internal/biz"
 )
@@ -21,7 +22,7 @@ func NewAmspiderService(amSpider *biz.AmSpider, logger log.Logger) *AmspiderServ
 	}
 }
 
-func (s *AmspiderService) Crawl(ctx context.Context, _ *pb.CrawlRequest) (*pb.CrawlResponse, error) {
+func (s *AmspiderService) Crawl(ctx context.Context, _ *commonPb.Empty) (*pb.CrawlResponse, error) {
 	s.log.WithContext(ctx).Info("Call AmspiderService.Crawl")
 	animeMagnets, err := s.amSpider.CrawlLink(ctx)
 	animeMagnetdatas := []*pb.CrawlResponse_AnimeMagnetData{}

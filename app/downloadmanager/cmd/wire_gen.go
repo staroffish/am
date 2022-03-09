@@ -15,19 +15,33 @@ import (
 	"github.com/staroffish/am/app/downloadmanager/internal/data"
 	"github.com/staroffish/am/app/downloadmanager/internal/server"
 	"github.com/staroffish/am/app/downloadmanager/internal/service"
+	"github.com/staroffish/am/common/config"
 	"go.etcd.io/etcd/client/v3"
 )
 
 // Injectors from wire.go:
 
 // initApp init kratos application.
-func initApp(downloadManagerServerConfig *conf.DownloadManagerServerConfig, confData *conf.Data, client *clientv3.Client, logger log.Logger, registrar registry.Registrar, taskEtcdPrefix data.TaskEtcdPrefix) (*kratos.App, func(), error) {
+func initApp(configComponentName config.ComponentName, client *clientv3.Client, logger log.Logger, registrar registry.Registrar, taskEtcdPrefix data.TaskEtcdPrefix) (*kratos.App, func(), error) {
+	httpServerConfig, err := config.NewHTTPServerConfig(client, configComponentName)
+	if err != nil {
+		return nil, nil, err
+	}
+	grpcServerConfig, err := config.NewGrpcServerConfig(client, configComponentName)
+	if err != nil {
+		return nil, nil, err
+	}
+	reidsConfig, err := config.NewRedisConfig(client)
+	if err != nil {
+		return nil, nil, err
+	}
+	downloadManagerServerConfig := conf.NewDownloadManagerServerConfig(httpServerConfig, grpcServerConfig, reidsConfig)
 	dataData, cleanup, err := data.NewData(downloadManagerServerConfig, client, logger)
 	if err != nil {
 		return nil, nil, err
 	}
 	downloadTask := data.NewDownloadTask(dataData, taskEtcdPrefix, logger)
-	downloadManagerRepo := data.NewDownloadManagerRepo(dataData, downloadManagerServerConfig, downloadTask, logger)
+	downloadManagerRepo := data.NewDownloadManagerRepo(dataData, downloadTask, logger)
 	downloadManager := biz.NewDownloadManager(downloadManagerRepo, logger)
 	downloadmanagerService := service.NewDownloadmanagerService(downloadManager, logger)
 	httpServer := server.NewHTTPServer(downloadManagerServerConfig, downloadmanagerService, logger)

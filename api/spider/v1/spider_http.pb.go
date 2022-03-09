@@ -8,6 +8,7 @@ import (
 	context "context"
 	http "github.com/go-kratos/kratos/v2/transport/http"
 	binding "github.com/go-kratos/kratos/v2/transport/http/binding"
+	common "github.com/staroffish/am/api/common"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -18,7 +19,7 @@ var _ = binding.EncodeURL
 const _ = http.SupportPackageIsVersion1
 
 type SpiderHTTPServer interface {
-	Crawl(context.Context, *CrawlRequest) (*CrawlResponse, error)
+	Crawl(context.Context, *common.Empty) (*CrawlResponse, error)
 }
 
 func RegisterSpiderHTTPServer(s *http.Server, srv SpiderHTTPServer) {
@@ -28,13 +29,13 @@ func RegisterSpiderHTTPServer(s *http.Server, srv SpiderHTTPServer) {
 
 func _Spider_Crawl0_HTTP_Handler(srv SpiderHTTPServer) func(ctx http.Context) error {
 	return func(ctx http.Context) error {
-		var in CrawlRequest
+		var in common.Empty
 		if err := ctx.BindQuery(&in); err != nil {
 			return err
 		}
 		http.SetOperation(ctx, "/api.spider.v1.Spider/Crawl")
 		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
-			return srv.Crawl(ctx, req.(*CrawlRequest))
+			return srv.Crawl(ctx, req.(*common.Empty))
 		})
 		out, err := h(ctx, &in)
 		if err != nil {
@@ -46,7 +47,7 @@ func _Spider_Crawl0_HTTP_Handler(srv SpiderHTTPServer) func(ctx http.Context) er
 }
 
 type SpiderHTTPClient interface {
-	Crawl(ctx context.Context, req *CrawlRequest, opts ...http.CallOption) (rsp *CrawlResponse, err error)
+	Crawl(ctx context.Context, req *common.Empty, opts ...http.CallOption) (rsp *CrawlResponse, err error)
 }
 
 type SpiderHTTPClientImpl struct {
@@ -57,7 +58,7 @@ func NewSpiderHTTPClient(client *http.Client) SpiderHTTPClient {
 	return &SpiderHTTPClientImpl{client}
 }
 
-func (c *SpiderHTTPClientImpl) Crawl(ctx context.Context, in *CrawlRequest, opts ...http.CallOption) (*CrawlResponse, error) {
+func (c *SpiderHTTPClientImpl) Crawl(ctx context.Context, in *common.Empty, opts ...http.CallOption) (*CrawlResponse, error) {
 	var out CrawlResponse
 	pattern := "/v1/spider/crawl"
 	path := binding.EncodeURL(pattern, in, true)

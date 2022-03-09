@@ -7,7 +7,6 @@ import (
 
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/staroffish/am/app/downloadmanager/internal/biz"
-	"github.com/staroffish/am/app/downloadmanager/internal/conf"
 	dtoSpider "github.com/staroffish/am/common/dto/spider"
 )
 
@@ -18,7 +17,7 @@ type downloadManagerRepo struct {
 }
 
 // NewGreeterRepo .
-func NewDownloadManagerRepo(database *Data, confData *conf.DownloadManagerServerConfig, downloadTask *DownloadTask, logger log.Logger) biz.DownloadManagerRepo {
+func NewDownloadManagerRepo(database *Data, downloadTask *DownloadTask, logger log.Logger) biz.DownloadManagerRepo {
 	return &downloadManagerRepo{
 		log:          log.NewHelper(logger),
 		db:           database,

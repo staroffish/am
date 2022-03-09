@@ -15,9 +15,11 @@ import (
 	"github.com/staroffish/am/app/spider/internal/data"
 	"github.com/staroffish/am/app/spider/internal/server"
 	"github.com/staroffish/am/app/spider/internal/service"
+	"github.com/staroffish/am/common/config"
+	clientv3 "go.etcd.io/etcd/client/v3"
 )
 
 // initApp init kratos application.
-func initApp(*conf.SpiderServerConfig, *conf.SpiderConfig, log.Logger, registry.Registrar) (*kratos.App, func(), error) {
+func initApp(config.ComponentName, *clientv3.Client, *conf.SpiderConfig, log.Logger, registry.Registrar, registry.Discovery) (*kratos.App, func(), error) {
 	panic(wire.Build(server.ProviderSet, data.ProviderSet, biz.ProviderSet, service.ProviderSet, newApp))
 }

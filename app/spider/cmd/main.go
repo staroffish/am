@@ -45,8 +45,8 @@ func init() {
 
 func newApp(logger log.Logger, hs *http.Server, gs *grpc.Server, r registry.Registrar) *kratos.App {
 	return kratos.New(
-		kratos.ID(id),
-		kratos.Name(componentName),
+		kratos.ID(componentName),
+		kratos.Name(componentType),
 		kratos.Version(Version),
 		kratos.Metadata(map[string]string{}),
 		kratos.Logger(logger),
@@ -107,27 +107,6 @@ func main() {
 		os.Exit(-1)
 	}
 
-	httpConfig, grpcConfig, err := commonConfig.NewAPIServerConfig(client, componentName)
-	if err != nil {
-		log.Errorf("commonConfig.NewAPIServerConfig error:%v", err)
-		os.Exit(-1)
-	}
-
-	redisConfig, err := commonConfig.NewRedisConfig(client)
-	if err != nil {
-		log.Errorf("commonConfig.NewRedisConfig error:%v", err)
-		os.Exit(-1)
-	}
-
-	log.Infof("httpServer=%v, grpcServer=%v, redisConfig=%v", httpConfig, grpcConfig, redisConfig)
-
-	if httpConfig.Addr == "" || grpcConfig.Addr == "" || redisConfig.Addr == "" {
-		log.Error("http server addr or grpc server or redis server addr is empty")
-		os.Exit(-1)
-	}
-
-	serverConfig := conf.NewSpiderServerConfig(httpConfig, grpcConfig, redisConfig)
-
 	etcdSourceSpider, err := etcdCfg.New(client, etcdCfg.WithPath(fmt.Sprintf("/%s/%s", componentType, componentName)), etcdCfg.WithPrefix(true))
 	if err != nil {
 		log.Errorf("New etcdSourceSpider error:%v", err)
@@ -169,7 +148,8 @@ func main() {
 		os.Exit(-1)
 	}
 
-	app, cleanup, err := initApp(serverConfig, spiderConfig, logger, etcd.New(client))
+	registry := etcd.New(client)
+	app, cleanup, err := initApp(commonConfig.ComponentName(componentName), client, spiderConfig, logger, registry, registry)
 	if err != nil {
 		panic(err)
 	}
@@ -204,9 +184,9 @@ func initSpiderParameters(etcdConfig config.Config, componentName string) (*conf
 	if err != nil {
 		return nil, fmt.Errorf("get %s error:%v", fmt.Sprintf("%s/%s", prefix, "interval"), err)
 	}
-	spiderConf.UserAgent, err = etcdConfig.Value(fmt.Sprintf("%s/%s", prefix, "user-agent")).String()
+	spiderConf.UserAgent, err = etcdConfig.Value(fmt.Sprintf("%s/%s", prefix, "user_agent")).String()
 	if err != nil {
-		return nil, fmt.Errorf("get %s error:%v", fmt.Sprintf("%s/%s", prefix, "user-agent"), err)
+		return nil, fmt.Errorf("get %s error:%v", fmt.Sprintf("%s/%s", prefix, "user_agent"), err)
 	}
 	spiderConf.AnimeMagnetTimeout, err = etcdConfig.Value(fmt.Sprintf("%s/%s", prefix, "anime_magnet_timeout")).Int()
 	if err != nil {

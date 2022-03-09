@@ -8,6 +8,7 @@ package v1
 
 import (
 	context "context"
+	common "github.com/staroffish/am/api/common"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -22,7 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SpiderClient interface {
-	Crawl(ctx context.Context, in *CrawlRequest, opts ...grpc.CallOption) (*CrawlResponse, error)
+	Crawl(ctx context.Context, in *common.Empty, opts ...grpc.CallOption) (*CrawlResponse, error)
 }
 
 type spiderClient struct {
@@ -33,7 +34,7 @@ func NewSpiderClient(cc grpc.ClientConnInterface) SpiderClient {
 	return &spiderClient{cc}
 }
 
-func (c *spiderClient) Crawl(ctx context.Context, in *CrawlRequest, opts ...grpc.CallOption) (*CrawlResponse, error) {
+func (c *spiderClient) Crawl(ctx context.Context, in *common.Empty, opts ...grpc.CallOption) (*CrawlResponse, error) {
 	out := new(CrawlResponse)
 	err := c.cc.Invoke(ctx, "/api.spider.v1.Spider/Crawl", in, out, opts...)
 	if err != nil {
@@ -46,7 +47,7 @@ func (c *spiderClient) Crawl(ctx context.Context, in *CrawlRequest, opts ...grpc
 // All implementations must embed UnimplementedSpiderServer
 // for forward compatibility
 type SpiderServer interface {
-	Crawl(context.Context, *CrawlRequest) (*CrawlResponse, error)
+	Crawl(context.Context, *common.Empty) (*CrawlResponse, error)
 	mustEmbedUnimplementedSpiderServer()
 }
 
@@ -54,7 +55,7 @@ type SpiderServer interface {
 type UnimplementedSpiderServer struct {
 }
 
-func (UnimplementedSpiderServer) Crawl(context.Context, *CrawlRequest) (*CrawlResponse, error) {
+func (UnimplementedSpiderServer) Crawl(context.Context, *common.Empty) (*CrawlResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Crawl not implemented")
 }
 func (UnimplementedSpiderServer) mustEmbedUnimplementedSpiderServer() {}
@@ -71,7 +72,7 @@ func RegisterSpiderServer(s grpc.ServiceRegistrar, srv SpiderServer) {
 }
 
 func _Spider_Crawl_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CrawlRequest)
+	in := new(common.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -83,7 +84,7 @@ func _Spider_Crawl_Handler(srv interface{}, ctx context.Context, dec func(interf
 		FullMethod: "/api.spider.v1.Spider/Crawl",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SpiderServer).Crawl(ctx, req.(*CrawlRequest))
+		return srv.(SpiderServer).Crawl(ctx, req.(*common.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }

@@ -16,17 +16,33 @@ import (
 	"github.com/staroffish/am/app/spider/internal/data"
 	"github.com/staroffish/am/app/spider/internal/server"
 	"github.com/staroffish/am/app/spider/internal/service"
+	"github.com/staroffish/am/common/config"
+	"go.etcd.io/etcd/client/v3"
 )
 
 // Injectors from wire.go:
 
 // initApp init kratos application.
-func initApp(spiderServerConfig *conf.SpiderServerConfig, spiderConfig *conf.SpiderConfig, logger log.Logger, registrar registry.Registrar) (*kratos.App, func(), error) {
+func initApp(configComponentName config.ComponentName, client *clientv3.Client, spiderConfig *conf.SpiderConfig, logger log.Logger, registrar registry.Registrar, discovery registry.Discovery) (*kratos.App, func(), error) {
+	httpServerConfig, err := config.NewHTTPServerConfig(client, configComponentName)
+	if err != nil {
+		return nil, nil, err
+	}
+	grpcServerConfig, err := config.NewGrpcServerConfig(client, configComponentName)
+	if err != nil {
+		return nil, nil, err
+	}
+	reidsConfig, err := config.NewRedisConfig(client)
+	if err != nil {
+		return nil, nil, err
+	}
+	spiderServerConfig := conf.NewSpiderServerConfig(httpServerConfig, grpcServerConfig, reidsConfig)
 	dataData, cleanup, err := data.NewData(spiderServerConfig, logger)
 	if err != nil {
 		return nil, nil, err
 	}
-	animeSpiderRepo := data.NewAmSpiderRepo(spiderConfig, dataData, spiderServerConfig, logger)
+	downloadmanagerClient := data.NewDownloadManagerClient(discovery)
+	animeSpiderRepo := data.NewAmSpiderRepo(spiderConfig, dataData, spiderServerConfig, downloadmanagerClient, logger)
 	spiderInterface := spider.NewSpider(spiderConfig, logger)
 	amSpider := biz.NewAmSpider(animeSpiderRepo, spiderInterface, logger)
 	amspiderService := service.NewAmspiderService(amSpider, logger)

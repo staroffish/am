@@ -1,0 +1,38 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/apps/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: Amspider API
+    version: 0.0.1
+paths:
+    /v1/crawl:
+        post:
+            tags:
+                - Amspider
+            operationId: Amspider_Crawl
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/CrawlResponse'
+components:
+    schemas:
+        CrawlResponse:
+            type: object
+            properties:
+                animeMagnetdatas:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/CrawlResponse_AnimeMagnetData'
+        CrawlResponse_AnimeMagnetData:
+            type: object
+            properties:
+                itemName:
+                    type: string
+                magnet:
+                    type: string
+tags:
+    - name: Amspider

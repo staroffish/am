@@ -38,6 +38,7 @@ func NewDownloadTask(db *Data, prefix TaskEtcdPrefix, logger log.Logger) *Downlo
 	watchChan := downloadTask.db.etcdCli.Watch(context.Background(), downloadTask.watchPrefix)
 	go func() {
 		for range watchChan {
+			downloadTask.log.Infof("%s changed", downloadTask.watchPrefix)
 			if err := downloadTask.SyncDownloadTask(); err != nil {
 				downloadTask.log.Errorf("watch downloadTask.UpdateDownloadTask error:%v", err)
 			}

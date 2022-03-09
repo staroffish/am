@@ -9,11 +9,13 @@ import (
 	"github.com/go-redis/redis/v8"
 	"github.com/google/wire"
 	"github.com/staroffish/am/app/downloadmanager/internal/conf"
+	"github.com/staroffish/am/common/config"
+	"github.com/staroffish/am/common/util"
 	etcd "go.etcd.io/etcd/client/v3"
 )
 
 // ProviderSet is data providers.
-var ProviderSet = wire.NewSet(NewData, NewDownloadManagerRepo, NewDownloadTask)
+var ProviderSet = wire.NewSet(NewData, NewDownloadManagerRepo, NewDownloadTask, util.NewReidsClient, config.NewRedisConfig, conf.NewDownloadManagerServerConfig)
 
 // Data .
 type Data struct {
