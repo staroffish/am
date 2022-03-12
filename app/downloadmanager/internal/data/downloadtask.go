@@ -183,7 +183,7 @@ func (s *DownloadTask) DeleteTask(ctx context.Context, id int32) error {
 }
 
 func (s *DownloadTask) UpdateLatestChapter(ctx context.Context, id, latestChapter int32) error {
-	taskInfo := s.GetTaskInfoById(id)
+	taskInfo := s.GetDownloadTaskInfoById(id)
 	if taskInfo == nil {
 		err := fmt.Errorf("DownloadTask.UpdateLatestChapter:task id:%d not found", id)
 		s.log.Error(err)
@@ -200,7 +200,7 @@ func (s *DownloadTask) UpdateLatestChapter(ctx context.Context, id, latestChapte
 }
 
 func (s *DownloadTask) UpdateTaskInfo(ctx context.Context, taskInfo *dto.DownloadTaskInfo) error {
-	taskInfoCached := s.GetTaskInfoById(taskInfo.Id)
+	taskInfoCached := s.GetDownloadTaskInfoById(taskInfo.Id)
 	if taskInfoCached == nil {
 		err := fmt.Errorf("DownloadTask.UpdateTaskInfo:task id:%d not found", taskInfo.Id)
 		s.log.Error(err)
@@ -234,7 +234,7 @@ func (s *DownloadTask) UpdateTaskInfo(ctx context.Context, taskInfo *dto.Downloa
 	return nil
 }
 
-func (s *DownloadTask) GetTaskInfoById(id int32) *dto.DownloadTaskInfo {
+func (s *DownloadTask) GetDownloadTaskInfoById(id int32) *dto.DownloadTaskInfo {
 	s.rwLock.RLock()
 	defer s.rwLock.RUnlock()
 	taskInfo, ok := s.downloadTaskById[id]

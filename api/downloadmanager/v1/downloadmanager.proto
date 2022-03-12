@@ -37,9 +37,14 @@ service Downloadmanager {
 			delete: "/v1/download_manager/download_task/{id}"
 		};
 	}
-	rpc ListTask (ListTaskRequest) returns (ListTaskReply)  {
+	rpc ListTask (api.common.Empty) returns (ListTaskReply)  {
 		option (google.api.http) = {
 			get: "/v1/download_manager/download_task"
+		};
+	}
+	rpc GetTask (GetTaskRequest) returns (GetTaskReply)  {
+		option (google.api.http) = {
+			get: "/v1/download_manager/download_task/{id}"
 		};
 	}
 }
@@ -80,20 +85,24 @@ message DeleteTaskRequest {
 	int32 id = 1;
 }
 
-message ListTaskRequest {
-	repeated int32 id = 1;
-	repeated string name = 2;
+message GetTaskRequest {
+	int32 id = 1;
+}
+
+message DownloadTaskInfo {
+	int32 id = 1;
+	string name = 2;
+	string regexp = 3;
+	int32 latest_chapter = 4;
+	string store_path = 5;
+	string updateTime = 6;
+	string anime_id = 7;
 }
 
 message ListTaskReply {
-	message DownloadTaskInfo {
-		int32 id = 1;
-		string name = 2;
-		string regexp = 3;
-		int32 latest_chapter = 4;
-		string store_path = 5;
-		string updateTime = 6;
-		string anime_id = 7;
-	}
 	repeated DownloadTaskInfo tasks = 1;;
+}
+
+message GetTaskReply {
+	DownloadTaskInfo task = 1;;
 }

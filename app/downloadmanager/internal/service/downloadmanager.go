@@ -76,15 +76,15 @@ func (s *DownloadmanagerService) DeleteTask(ctx context.Context, req *pb.DeleteT
 	return &commonPb.Empty{}, nil
 }
 
-func (s *DownloadmanagerService) ListTask(ctx context.Context, req *pb.ListTaskRequest) (*pb.ListTaskReply, error) {
+func (s *DownloadmanagerService) ListTask(ctx context.Context, req *commonPb.Empty) (*pb.ListTaskReply, error) {
 	downloadTaskInofs := s.downloadManager.ListTask(ctx)
 
 	reply := &pb.ListTaskReply{
-		Tasks: []*pb.ListTaskReply_DownloadTaskInfo{},
+		Tasks: []*pb.DownloadTaskInfo{},
 	}
 
 	for _, downloadTaskInfo := range downloadTaskInofs {
-		replyTaskInfo := pb.ListTaskReply_DownloadTaskInfo{
+		replyTaskInfo := pb.DownloadTaskInfo{
 			Id:            downloadTaskInfo.Id,
 			Name:          downloadTaskInfo.Name,
 			Regexp:        downloadTaskInfo.Regexp,
@@ -113,6 +113,23 @@ func (s *DownloadmanagerService) UpdateTask(ctx context.Context, req *pb.UpdateT
 		return nil, err
 	}
 	return &commonPb.Empty{}, nil
+}
+
+func (s *DownloadmanagerService) GetTask(ctx context.Context, req *pb.GetTaskRequest) (*pb.GetTaskReply, error) {
+	taskInfo, err := s.downloadManager.GetDownloadTaskInfoById(ctx, req.Id)
+	if err != nil {
+		s.log.Errorf("DownloadmanagerService.GetTask error: %v", err)
+		return nil, err
+	}
+	return &pb.GetTaskReply{Task: &pb.DownloadTaskInfo{
+		Id:            taskInfo.Id,
+		Name:          taskInfo.Name,
+		Regexp:        taskInfo.Regexp,
+		LatestChapter: taskInfo.LatestChapter,
+		StorePath:     taskInfo.StorePath,
+		UpdateTime:    taskInfo.UpdateTime,
+		AnimeId:       taskInfo.AnimeId,
+	}}, nil
 }
 
 func downloadTasksToReplayTaskInfos(downloadTasks []*biz.DownloadTask) []*pb.DownloadTask {

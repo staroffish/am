@@ -3,7 +3,7 @@
 
 openapi: 3.0.3
 info:
-    title: Downloadmanager API
+    title: ""
     version: 0.0.1
 paths:
     /v1/download_manager/download_task:
@@ -11,20 +11,6 @@ paths:
             tags:
                 - Downloadmanager
             operationId: Downloadmanager_ListTask
-            parameters:
-                - name: id
-                  in: query
-                  schema:
-                    type: array
-                    items:
-                        type: integer
-                        format: int32
-                - name: name
-                  in: query
-                  schema:
-                    type: array
-                    items:
-                        type: string
             responses:
                 "200":
                     description: OK
@@ -69,6 +55,24 @@ paths:
                             schema:
                                 $ref: '#/components/schemas/Empty'
     /v1/download_manager/download_task/{id}:
+        get:
+            tags:
+                - Downloadmanager
+            operationId: Downloadmanager_GetTask
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                    type: integer
+                    format: int32
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/GetTaskReply'
         delete:
             tags:
                 - Downloadmanager
@@ -111,8 +115,111 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/ScanTaskAndDownloadReply'
+    /v1/downloader/task:
+        get:
+            tags:
+                - Downloader
+            operationId: Downloader_List
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ListResponse'
+    /v1/downloader/task/add:
+        post:
+            tags:
+                - Downloader
+            operationId: Downloader_Add
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/AddRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Empty'
+    /v1/downloader/task/delete/{id}:
+        delete:
+            tags:
+                - Downloader
+            operationId: Downloader_Delete
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Empty'
+    /v1/downloader/task/pause/{id}:
+        post:
+            tags:
+                - Downloader
+            operationId: Downloader_Pause
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Empty'
+    /v1/downloader/task/resume/{id}:
+        post:
+            tags:
+                - Downloader
+            operationId: Downloader_Resume
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Empty'
+    /v1/spider/crawl:
+        post:
+            tags:
+                - Spider
+            operationId: Spider_Crawl
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/CrawlResponse'
 components:
     schemas:
+        AddRequest:
+            type: object
+            properties:
+                link:
+                    type: string
+                storePath:
+                    type: string
         AddTaskRequest:
             type: object
             properties:
@@ -127,6 +234,20 @@ components:
                     type: string
                 animeId:
                     type: string
+        CrawlResponse:
+            type: object
+            properties:
+                animeMagnetdatas:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/CrawlResponse_AnimeMagnetData'
+        CrawlResponse_AnimeMagnetData:
+            type: object
+            properties:
+                itemName:
+                    type: string
+                magnet:
+                    type: string
         DownloadTask:
             type: object
             properties:
@@ -140,17 +261,7 @@ components:
                     format: int32
                 magnetLink:
                     type: string
-        Empty:
-            type: object
-            properties: {}
-        ListTaskReply:
-            type: object
-            properties:
-                tasks:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/ListTaskReply_DownloadTaskInfo'
-        ListTaskReply_DownloadTaskInfo:
+        DownloadTaskInfo:
             type: object
             properties:
                 id:
@@ -169,6 +280,47 @@ components:
                     type: string
                 animeId:
                     type: string
+        Empty:
+            type: object
+            properties: {}
+        GetTaskReply:
+            type: object
+            properties:
+                task:
+                    $ref: '#/components/schemas/DownloadTaskInfo'
+        ListResponse:
+            type: object
+            properties:
+                taskInfos:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/ListResponse_task_info'
+        ListResponse_task_info:
+            type: object
+            properties:
+                name:
+                    type: string
+                size:
+                    type: integer
+                    format: int64
+                storePath:
+                    type: string
+                progress:
+                    type: number
+                    format: float
+                status:
+                    type: string
+                createdTime:
+                    type: string
+                id:
+                    type: string
+        ListTaskReply:
+            type: object
+            properties:
+                tasks:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/DownloadTaskInfo'
         ScanTaskAndDownloadReply:
             type: object
             properties:
@@ -201,4 +353,6 @@ components:
                 animeId:
                     type: string
 tags:
+    - name: Downloader
     - name: Downloadmanager
+    - name: Spider

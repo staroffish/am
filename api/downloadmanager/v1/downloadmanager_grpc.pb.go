@@ -28,7 +28,8 @@ type DownloadmanagerClient interface {
 	AddTask(ctx context.Context, in *AddTaskRequest, opts ...grpc.CallOption) (*common.Empty, error)
 	UpdateTask(ctx context.Context, in *UpdateTaskRequest, opts ...grpc.CallOption) (*common.Empty, error)
 	DeleteTask(ctx context.Context, in *DeleteTaskRequest, opts ...grpc.CallOption) (*common.Empty, error)
-	ListTask(ctx context.Context, in *ListTaskRequest, opts ...grpc.CallOption) (*ListTaskReply, error)
+	ListTask(ctx context.Context, in *common.Empty, opts ...grpc.CallOption) (*ListTaskReply, error)
+	GetTask(ctx context.Context, in *GetTaskRequest, opts ...grpc.CallOption) (*GetTaskReply, error)
 }
 
 type downloadmanagerClient struct {
@@ -84,9 +85,18 @@ func (c *downloadmanagerClient) DeleteTask(ctx context.Context, in *DeleteTaskRe
 	return out, nil
 }
 
-func (c *downloadmanagerClient) ListTask(ctx context.Context, in *ListTaskRequest, opts ...grpc.CallOption) (*ListTaskReply, error) {
+func (c *downloadmanagerClient) ListTask(ctx context.Context, in *common.Empty, opts ...grpc.CallOption) (*ListTaskReply, error) {
 	out := new(ListTaskReply)
 	err := c.cc.Invoke(ctx, "/api.downloadmanager.v1.Downloadmanager/ListTask", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *downloadmanagerClient) GetTask(ctx context.Context, in *GetTaskRequest, opts ...grpc.CallOption) (*GetTaskReply, error) {
+	out := new(GetTaskReply)
+	err := c.cc.Invoke(ctx, "/api.downloadmanager.v1.Downloadmanager/GetTask", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -102,7 +112,8 @@ type DownloadmanagerServer interface {
 	AddTask(context.Context, *AddTaskRequest) (*common.Empty, error)
 	UpdateTask(context.Context, *UpdateTaskRequest) (*common.Empty, error)
 	DeleteTask(context.Context, *DeleteTaskRequest) (*common.Empty, error)
-	ListTask(context.Context, *ListTaskRequest) (*ListTaskReply, error)
+	ListTask(context.Context, *common.Empty) (*ListTaskReply, error)
+	GetTask(context.Context, *GetTaskRequest) (*GetTaskReply, error)
 	mustEmbedUnimplementedDownloadmanagerServer()
 }
 
@@ -125,8 +136,11 @@ func (UnimplementedDownloadmanagerServer) UpdateTask(context.Context, *UpdateTas
 func (UnimplementedDownloadmanagerServer) DeleteTask(context.Context, *DeleteTaskRequest) (*common.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTask not implemented")
 }
-func (UnimplementedDownloadmanagerServer) ListTask(context.Context, *ListTaskRequest) (*ListTaskReply, error) {
+func (UnimplementedDownloadmanagerServer) ListTask(context.Context, *common.Empty) (*ListTaskReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTask not implemented")
+}
+func (UnimplementedDownloadmanagerServer) GetTask(context.Context, *GetTaskRequest) (*GetTaskReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTask not implemented")
 }
 func (UnimplementedDownloadmanagerServer) mustEmbedUnimplementedDownloadmanagerServer() {}
 
@@ -232,7 +246,7 @@ func _Downloadmanager_DeleteTask_Handler(srv interface{}, ctx context.Context, d
 }
 
 func _Downloadmanager_ListTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListTaskRequest)
+	in := new(common.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -244,7 +258,25 @@ func _Downloadmanager_ListTask_Handler(srv interface{}, ctx context.Context, dec
 		FullMethod: "/api.downloadmanager.v1.Downloadmanager/ListTask",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DownloadmanagerServer).ListTask(ctx, req.(*ListTaskRequest))
+		return srv.(DownloadmanagerServer).ListTask(ctx, req.(*common.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Downloadmanager_GetTask_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTaskRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DownloadmanagerServer).GetTask(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/api.downloadmanager.v1.Downloadmanager/GetTask",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DownloadmanagerServer).GetTask(ctx, req.(*GetTaskRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -279,6 +311,10 @@ var Downloadmanager_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListTask",
 			Handler:    _Downloadmanager_ListTask_Handler,
+		},
+		{
+			MethodName: "GetTask",
+			Handler:    _Downloadmanager_GetTask_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

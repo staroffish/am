@@ -21,7 +21,8 @@ const _ = http.SupportPackageIsVersion1
 type DownloadmanagerHTTPServer interface {
 	AddTask(context.Context, *AddTaskRequest) (*common.Empty, error)
 	DeleteTask(context.Context, *DeleteTaskRequest) (*common.Empty, error)
-	ListTask(context.Context, *ListTaskRequest) (*ListTaskReply, error)
+	GetTask(context.Context, *GetTaskRequest) (*GetTaskReply, error)
+	ListTask(context.Context, *common.Empty) (*ListTaskReply, error)
 	ScanTask(context.Context, *common.Empty) (*ScanTaskReply, error)
 	ScanTaskAndDownload(context.Context, *common.Empty) (*ScanTaskAndDownloadReply, error)
 	UpdateTask(context.Context, *UpdateTaskRequest) (*common.Empty, error)
@@ -35,6 +36,7 @@ func RegisterDownloadmanagerHTTPServer(s *http.Server, srv DownloadmanagerHTTPSe
 	r.POST("/v1/download_manager/download_task/update", _Downloadmanager_UpdateTask0_HTTP_Handler(srv))
 	r.DELETE("/v1/download_manager/download_task/{id}", _Downloadmanager_DeleteTask0_HTTP_Handler(srv))
 	r.GET("/v1/download_manager/download_task", _Downloadmanager_ListTask0_HTTP_Handler(srv))
+	r.GET("/v1/download_manager/download_task/{id}", _Downloadmanager_GetTask0_HTTP_Handler(srv))
 }
 
 func _Downloadmanager_ScanTaskAndDownload0_HTTP_Handler(srv DownloadmanagerHTTPServer) func(ctx http.Context) error {
@@ -137,13 +139,13 @@ func _Downloadmanager_DeleteTask0_HTTP_Handler(srv DownloadmanagerHTTPServer) fu
 
 func _Downloadmanager_ListTask0_HTTP_Handler(srv DownloadmanagerHTTPServer) func(ctx http.Context) error {
 	return func(ctx http.Context) error {
-		var in ListTaskRequest
+		var in common.Empty
 		if err := ctx.BindQuery(&in); err != nil {
 			return err
 		}
 		http.SetOperation(ctx, "/api.downloadmanager.v1.Downloadmanager/ListTask")
 		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
-			return srv.ListTask(ctx, req.(*ListTaskRequest))
+			return srv.ListTask(ctx, req.(*common.Empty))
 		})
 		out, err := h(ctx, &in)
 		if err != nil {
@@ -154,10 +156,33 @@ func _Downloadmanager_ListTask0_HTTP_Handler(srv DownloadmanagerHTTPServer) func
 	}
 }
 
+func _Downloadmanager_GetTask0_HTTP_Handler(srv DownloadmanagerHTTPServer) func(ctx http.Context) error {
+	return func(ctx http.Context) error {
+		var in GetTaskRequest
+		if err := ctx.BindQuery(&in); err != nil {
+			return err
+		}
+		if err := ctx.BindVars(&in); err != nil {
+			return err
+		}
+		http.SetOperation(ctx, "/api.downloadmanager.v1.Downloadmanager/GetTask")
+		h := ctx.Middleware(func(ctx context.Context, req interface{}) (interface{}, error) {
+			return srv.GetTask(ctx, req.(*GetTaskRequest))
+		})
+		out, err := h(ctx, &in)
+		if err != nil {
+			return err
+		}
+		reply := out.(*GetTaskReply)
+		return ctx.Result(200, reply)
+	}
+}
+
 type DownloadmanagerHTTPClient interface {
 	AddTask(ctx context.Context, req *AddTaskRequest, opts ...http.CallOption) (rsp *common.Empty, err error)
 	DeleteTask(ctx context.Context, req *DeleteTaskRequest, opts ...http.CallOption) (rsp *common.Empty, err error)
-	ListTask(ctx context.Context, req *ListTaskRequest, opts ...http.CallOption) (rsp *ListTaskReply, err error)
+	GetTask(ctx context.Context, req *GetTaskRequest, opts ...http.CallOption) (rsp *GetTaskReply, err error)
+	ListTask(ctx context.Context, req *common.Empty, opts ...http.CallOption) (rsp *ListTaskReply, err error)
 	ScanTask(ctx context.Context, req *common.Empty, opts ...http.CallOption) (rsp *ScanTaskReply, err error)
 	ScanTaskAndDownload(ctx context.Context, req *common.Empty, opts ...http.CallOption) (rsp *ScanTaskAndDownloadReply, err error)
 	UpdateTask(ctx context.Context, req *UpdateTaskRequest, opts ...http.CallOption) (rsp *common.Empty, err error)
@@ -197,7 +222,20 @@ func (c *DownloadmanagerHTTPClientImpl) DeleteTask(ctx context.Context, in *Dele
 	return &out, err
 }
 
-func (c *DownloadmanagerHTTPClientImpl) ListTask(ctx context.Context, in *ListTaskRequest, opts ...http.CallOption) (*ListTaskReply, error) {
+func (c *DownloadmanagerHTTPClientImpl) GetTask(ctx context.Context, in *GetTaskRequest, opts ...http.CallOption) (*GetTaskReply, error) {
+	var out GetTaskReply
+	pattern := "/v1/download_manager/download_task/{id}"
+	path := binding.EncodeURL(pattern, in, true)
+	opts = append(opts, http.Operation("/api.downloadmanager.v1.Downloadmanager/GetTask"))
+	opts = append(opts, http.PathTemplate(pattern))
+	err := c.cc.Invoke(ctx, "GET", path, nil, &out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return &out, err
+}
+
+func (c *DownloadmanagerHTTPClientImpl) ListTask(ctx context.Context, in *common.Empty, opts ...http.CallOption) (*ListTaskReply, error) {
 	var out ListTaskReply
 	pattern := "/v1/download_manager/download_task"
 	path := binding.EncodeURL(pattern, in, true)

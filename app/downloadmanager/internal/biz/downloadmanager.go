@@ -19,6 +19,7 @@ type DownloadManagerRepo interface {
 	GetDownloadTaskInfos() []*dtoDownloadmanager.DownloadTaskInfo
 	UpdateLatestChapter(ctx context.Context, id, latestChapter int32) error
 	UpdateTaskInfo(ctx context.Context, taskInfo *dtoDownloadmanager.DownloadTaskInfo) error
+	GetDownloadTaskInfoById(id int32) *dtoDownloadmanager.DownloadTaskInfo
 }
 
 type DownloadTask struct {
@@ -150,4 +151,14 @@ func (a *DownloadManager) UpdateTaskInfo(ctx context.Context, taskInfo *dtoDownl
 		return err
 	}
 	return nil
+}
+
+func (a *DownloadManager) GetDownloadTaskInfoById(ctx context.Context, id int32) (*dtoDownloadmanager.DownloadTaskInfo, error) {
+	taskInfo := a.repo.GetDownloadTaskInfoById(id)
+	if taskInfo == nil {
+		err := fmt.Errorf("DownloadManager.GetDownloadTaskInfoById error: %d task not found", id)
+		a.log.Error(err)
+		return nil, err
+	}
+	return taskInfo, nil
 }

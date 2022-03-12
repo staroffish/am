@@ -20,6 +20,6 @@ import (
 )
 
 // initApp init kratos application.
-func initApp(config.ComponentName, *etcd.Client, log.Logger, registry.Registrar, data.TaskEtcdPrefix) (*kratos.App, func(), error) {
+func initApp(config.ComponentName, *etcd.Client, log.Logger, registry.Registrar, data.TaskEtcdPrefix, registry.Discovery) (*kratos.App, func(), error) {
 	panic(wire.Build(server.ProviderSet, data.ProviderSet, biz.ProviderSet, service.ProviderSet, newApp))
 }

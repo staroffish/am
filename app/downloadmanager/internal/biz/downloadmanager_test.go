@@ -8,6 +8,7 @@ import (
 
 	"github.com/go-kratos/kratos/v2/log"
 	dtoDownloadManager "github.com/staroffish/am/common/dto/downloadmanager"
+	dtoDownloadmanager "github.com/staroffish/am/common/dto/downloadmanager"
 	dtoSpider "github.com/staroffish/am/common/dto/spider"
 	"github.com/staroffish/am/common/util"
 )
@@ -69,6 +70,10 @@ func (r *testRepo) UpdateLatestChapter(ctx context.Context, id, latestChapter in
 	return nil
 }
 func (r *testRepo) UpdateTaskInfo(ctx context.Context, taskInfo *dtoDownloadManager.DownloadTaskInfo) error {
+	return nil
+}
+
+func (r *testRepo) GetDownloadTaskInfoById(id int32) *dtoDownloadmanager.DownloadTaskInfo {
 	return nil
 }
 

@@ -22,7 +22,7 @@ import (
 // Injectors from wire.go:
 
 // initApp init kratos application.
-func initApp(configComponentName config.ComponentName, client *clientv3.Client, logger log.Logger, registrar registry.Registrar, taskEtcdPrefix data.TaskEtcdPrefix) (*kratos.App, func(), error) {
+func initApp(configComponentName config.ComponentName, client *clientv3.Client, logger log.Logger, registrar registry.Registrar, taskEtcdPrefix data.TaskEtcdPrefix, discovery registry.Discovery) (*kratos.App, func(), error) {
 	httpServerConfig, err := config.NewHTTPServerConfig(client, configComponentName)
 	if err != nil {
 		return nil, nil, err
@@ -41,7 +41,8 @@ func initApp(configComponentName config.ComponentName, client *clientv3.Client, 
 		return nil, nil, err
 	}
 	downloadTask := data.NewDownloadTask(dataData, taskEtcdPrefix, logger)
-	downloadManagerRepo := data.NewDownloadManagerRepo(dataData, downloadTask, logger)
+	downloaderClient := data.NewDownloaderClient(discovery)
+	downloadManagerRepo := data.NewDownloadManagerRepo(dataData, downloadTask, downloaderClient, logger)
 	downloadManager := biz.NewDownloadManager(downloadManagerRepo, logger)
 	downloadmanagerService := service.NewDownloadmanagerService(downloadManager, logger)
 	httpServer := server.NewHTTPServer(downloadManagerServerConfig, downloadmanagerService, logger)

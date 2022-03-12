@@ -109,7 +109,9 @@ func main() {
 
 	prefixString := data.TaskEtcdPrefix(fmt.Sprintf("/%s/%s/tasks", componentType, componentName))
 
-	app, cleanup, err := initApp(commonConfig.ComponentName(componentName), client, logger, etcd.New(client), prefixString)
+	registry := etcd.New(client)
+
+	app, cleanup, err := initApp(commonConfig.ComponentName(componentName), client, logger, registry, prefixString, registry)
 	if err != nil {
 		panic(err)
 	}
