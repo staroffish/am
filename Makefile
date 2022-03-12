@@ -1,7 +1,13 @@
 GOPATH:=$(shell go env GOPATH)
 VERSION=$(shell git describe --tags --always)
-INTERNAL_PROTO_FILES=$(shell find app/*/internal -name *.proto)
 API_PROTO_FILES=$(shell find api -name *.proto)
+APP_CONFIG_DIRS=$(shell find app/*/internal -maxdepth 1 -type d -name conf)
+APP_DIRS=$(shell find app -maxdepth 1 -type d ! -name app)
+APP_DIRS_CONFIG=$(APP_DIRS:%=%_config)
+APP_DIRS_BUILD=$(APP_DIRS:%=%_build)
+APP_DIRS_GENERATE=$(APP_DIRS:%=%_generate)
+
+.PHONY: $(APP_DIRS)
 
 .PHONY: init
 # init env
@@ -22,10 +28,12 @@ errors:
                --go-errors_out=paths=source_relative:. \
                $(API_PROTO_FILES)
 
-.PHONY: config
+.PHONY: config $(APP_DIRS_CONFIG)
 # generate internal proto
-config:
-	make -f app/*/Makefile config
+config: $(APP_DIRS_CONFIG)
+
+$(APP_DIRS_CONFIG): 
+	make -C $(@:%_config=%) config
 
 .PHONY: api
 # generate api proto
@@ -38,15 +46,19 @@ api:
  	       --openapi_out==paths=source_relative:. \
 	       $(API_PROTO_FILES)
 
-.PHONY: build
+.PHONY: build $(APP_DIRS_BUILD)
 # build
-build:
-	mkdir -p bin/ && go build -ldflags "-X main.Version=$(VERSION)" -o ./bin/ ./...
+build: $(APP_DIRS_BUILD)
 
-.PHONY: generate
+$(APP_DIRS_BUILD):
+	 make -C $(@:%_build=%) build
+
+.PHONY: generate $(APP_DIRS_GENERATE)
 # generate
-generate:
-	go generate ./...
+generate: $(APP_DIRS_GENERATE)
+
+$(APP_DIRS_GENERATE): 
+	make -C $(@:%_generate=%) generate
 
 .PHONY: all
 # generate all
@@ -74,3 +86,4 @@ help:
 	{ lastLine = $$0 }' $(MAKEFILE_LIST)
 
 .DEFAULT_GOAL := help
+
