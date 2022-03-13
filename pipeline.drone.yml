@@ -18,7 +18,7 @@ steps:
 - name: docker-build
   image: plugins/docker
   settings:
-    repo: registry.holygrail.com:5000/am-micro:latest
+    repo: registry.holygrail.com:5000/am-micro
     registry: registry.holygrail.com:5000
     insecure: true
     mirror: https://docker.mirrors.ustc.edu.cn/
