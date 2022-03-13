@@ -35,9 +35,9 @@ steps:
   settings:
     host: archer.holygrail.com
     username:
-      from_secret: docker_user
+      from_secret: archer_docker_user
     password:
-      from_secret: docker_password
+      from_secret: archer_docker_password
     script:
       - docker stop am-downloader
       - docker rm am-downloader
