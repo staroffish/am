@@ -1,7 +1,7 @@
 GOPATH:=$(shell go env GOPATH)
 VERSION=$(shell git rev-parse HEAD)
 INTERNAL_PROTO_FILES=$(shell find internal -name *.proto)
-NAME=am-downloadermanager
+NAME=am-downloadmanager
 
 .PHONY: errors
 
@@ -15,7 +15,7 @@ config:
 .PHONY: build
 # build
 build:
-	mkdir -p bin/ && go build -ldflags "-X main.Version=$(VERSION)" -o ./bin/$(NAME) ./cmd
+	mkdir -p ../../bin/ && go build -mod vendor -ldflags "-X main.Version=$(VERSION)" -o ../../bin/$(NAME) ./cmd
 
 .PHONY: generate
 # generate

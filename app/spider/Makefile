@@ -15,7 +15,7 @@ config:
 .PHONY: build
 # build
 build:
-	mkdir -p bin/ && go build -ldflags "-X main.Version=$(VERSION)" -o ./bin/$(NAME) ./cmd
+	mkdir -p ../../bin/ && go build -mod vendor -ldflags "-X main.Version=$(VERSION)" -o ../../bin/$(NAME) ./cmd
 
 .PHONY: generate
 # generate

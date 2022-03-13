@@ -3,12 +3,12 @@ module github.com/staroffish/am
 go 1.16
 
 require (
-	github.com/PuerkitoBio/goquery v1.8.0 // indirect
+	github.com/PuerkitoBio/goquery v1.8.0
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/go-kratos/kratos/contrib/config/etcd/v2 v2.0.0-20220215033000-471a2aab794b
-	github.com/go-kratos/kratos/contrib/registry/etcd/v2 v2.0.0-20220222060636-4dadafff9025 // indirect
+	github.com/go-kratos/kratos/contrib/registry/etcd/v2 v2.0.0-20220222060636-4dadafff9025
 	github.com/go-kratos/kratos/v2 v2.1.5
-	github.com/go-redis/redis/v8 v8.11.4 // indirect
+	github.com/go-redis/redis/v8 v8.11.4
 	github.com/google/wire v0.5.0
 	github.com/kr/pretty v0.2.0 // indirect
 	go.etcd.io/etcd/client/v3 v3.5.2
