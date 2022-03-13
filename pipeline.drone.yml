@@ -7,7 +7,7 @@ steps:
   image: registry.holygrail.com:5000/golang:1.17
   commands:
   - make build
-  trigger:
+  when:
     branch:
       - v1.0
     event:
@@ -19,11 +19,11 @@ steps:
   image: plugins/docker
   settings:
     repo: registry.holygrail.com:5000/am-micro
-    registry: archer.holygrail.com:5000
+    registry: registry.holygrail.com:5000
     auto_tag: true
     insecure: true
-    mirror: http://hub-mirror.c.163.com
-  trigger:
+    mirror: https://docker.mirrors.ustc.edu.cn/
+  when:
     branch:
       - v1.0
     event:
@@ -45,10 +45,14 @@ steps:
       - docker rmi archer.holygrail.com:5000/am-micro:latest
       - docker pull archer.holygrail.com:5000/am-micro:latest
       - docker-compose -f /usb/config/docker-compose/archer/docker-compose.yml up -d
-  trigger:
+  when:
     branch:
       - v1.0
     event:
     - promote
     target:
     - archer
+
+trigger:
+  branch:
+  - v1.0
