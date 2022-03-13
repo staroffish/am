@@ -41,8 +41,7 @@ steps:
     script:
       - docker stop am-downloader
       - docker rm am-downloader
-      - docker rmi archer.holygrail.com:5000/am-micro:latest
-      - docker pull archer.holygrail.com:5000/am-micro:latest
+      - docker rmi registry.holygrail.com:5000/am-micro:latest
       - docker-compose -f /store/config/docker-compose/archer/docker-compose.yml up -d am-downloader
   when:
     branch:
