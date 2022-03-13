@@ -33,17 +33,17 @@ steps:
 - name: deploy_archer
   image: appleboy/drone-ssh
   settings:
-    host: am.holygrail.com
+    host: archer.holygrail.com
     username:
       from_secret: docker_user
     password:
       from_secret: docker_password
     script:
-      - docker stop am-micro
-      - docker rm am-micro
+      - docker stop am-downloader
+      - docker rm am-downloader
       - docker rmi archer.holygrail.com:5000/am-micro:latest
       - docker pull archer.holygrail.com:5000/am-micro:latest
-      - docker-compose -f /usb/config/docker-compose/archer/docker-compose.yml up -d
+      - docker-compose -f /store/config/docker-compose/archer/docker-compose.yml up -d am-downloader
   when:
     branch:
       - v1.0
