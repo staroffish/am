@@ -18,9 +18,8 @@ steps:
 - name: docker-build
   image: plugins/docker
   settings:
-    repo: registry.holygrail.com:5000/am-micro
+    repo: registry.holygrail.com:5000/am-micro:latest
     registry: registry.holygrail.com:5000
-    auto_tag: true
     insecure: true
     mirror: https://docker.mirrors.ustc.edu.cn/
   when:
