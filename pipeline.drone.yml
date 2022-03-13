@@ -4,7 +4,7 @@ name: am-micro
 
 steps:
 - name: build
-  image: registry.holygrail.com:5000/golang:1.7
+  image: registry.holygrail.com:5000/golang:1.17
   commands:
   - make build
   trigger:
