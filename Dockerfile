@@ -1,11 +1,4 @@
-FROM golang:1.17 AS builder
-
-COPY .  /src
-WORKDIR /src
-
-RUN GOPROXY=https://goproxy.io make build
-
-FROM debian:buster-slim
+FROM registry.holygrail.com:5000/debian:buster-slim
 
 RUN echo 'deb http://mirrors.163.com/debian/ buster main non-free contrib\n\
 deb http://mirrors.163.com/debian/ buster-updates main non-free contrib\n\
@@ -24,7 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         && rm -rf /var/lib/apt/lists/ \
         && apt-get autoremove -y && apt-get autoclean -y
 
-COPY --from=builder /src/bin /app
+COPY bin/* /app/
 
 RUN ls /app
 
