@@ -36,7 +36,7 @@ func RegisterDownloadmanagerHTTPServer(s *http.Server, srv DownloadmanagerHTTPSe
 	r.POST("/v1/download_manager/download_task/update", _Downloadmanager_UpdateTask0_HTTP_Handler(srv))
 	r.DELETE("/v1/download_manager/download_task/{id}", _Downloadmanager_DeleteTask0_HTTP_Handler(srv))
 	r.GET("/v1/download_manager/download_task", _Downloadmanager_ListTask0_HTTP_Handler(srv))
-	r.GET("/v1/download_manager/download_task/{id}", _Downloadmanager_GetTask0_HTTP_Handler(srv))
+	r.POST("/v1/download_manager/download_task", _Downloadmanager_GetTask0_HTTP_Handler(srv))
 }
 
 func _Downloadmanager_ScanTaskAndDownload0_HTTP_Handler(srv DownloadmanagerHTTPServer) func(ctx http.Context) error {
@@ -159,10 +159,7 @@ func _Downloadmanager_ListTask0_HTTP_Handler(srv DownloadmanagerHTTPServer) func
 func _Downloadmanager_GetTask0_HTTP_Handler(srv DownloadmanagerHTTPServer) func(ctx http.Context) error {
 	return func(ctx http.Context) error {
 		var in GetTaskRequest
-		if err := ctx.BindQuery(&in); err != nil {
-			return err
-		}
-		if err := ctx.BindVars(&in); err != nil {
+		if err := ctx.Bind(&in); err != nil {
 			return err
 		}
 		http.SetOperation(ctx, "/api.downloadmanager.v1.Downloadmanager/GetTask")
@@ -224,11 +221,11 @@ func (c *DownloadmanagerHTTPClientImpl) DeleteTask(ctx context.Context, in *Dele
 
 func (c *DownloadmanagerHTTPClientImpl) GetTask(ctx context.Context, in *GetTaskRequest, opts ...http.CallOption) (*GetTaskReply, error) {
 	var out GetTaskReply
-	pattern := "/v1/download_manager/download_task/{id}"
-	path := binding.EncodeURL(pattern, in, true)
+	pattern := "/v1/download_manager/download_task"
+	path := binding.EncodeURL(pattern, in, false)
 	opts = append(opts, http.Operation("/api.downloadmanager.v1.Downloadmanager/GetTask"))
 	opts = append(opts, http.PathTemplate(pattern))
-	err := c.cc.Invoke(ctx, "GET", path, nil, &out, opts...)
+	err := c.cc.Invoke(ctx, "POST", path, in, &out, opts...)
 	if err != nil {
 		return nil, err
 	}

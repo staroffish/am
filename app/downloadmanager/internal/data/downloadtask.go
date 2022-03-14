@@ -245,3 +245,15 @@ func (s *DownloadTask) GetDownloadTaskInfoById(id int32) *dto.DownloadTaskInfo {
 
 	return &retTaskInfo
 }
+
+func (s *DownloadTask) GetDownloadTaskInfoByAnimeId(id string) *dto.DownloadTaskInfo {
+	s.rwLock.RLock()
+	defer s.rwLock.RUnlock()
+	taskInfo, ok := s.downloadTaskByAnimeId[id]
+	if !ok {
+		return nil
+	}
+	retTaskInfo := *taskInfo
+
+	return &retTaskInfo
+}

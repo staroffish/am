@@ -77,6 +77,10 @@ func (r *testRepo) GetDownloadTaskInfoById(id int32) *dtoDownloadmanager.Downloa
 	return nil
 }
 
+func (r *testRepo) GetDownloadTaskInfoByAnimeId(id string) *dtoDownloadmanager.DownloadTaskInfo {
+	return nil
+}
+
 func TestScan(t *testing.T) {
 	dm := &DownloadManager{
 		repo: &testRepo{},

@@ -116,11 +116,22 @@ func (s *DownloadmanagerService) UpdateTask(ctx context.Context, req *pb.UpdateT
 }
 
 func (s *DownloadmanagerService) GetTask(ctx context.Context, req *pb.GetTaskRequest) (*pb.GetTaskReply, error) {
-	taskInfo, err := s.downloadManager.GetDownloadTaskInfoById(ctx, req.Id)
-	if err != nil {
-		s.log.Errorf("DownloadmanagerService.GetTask error: %v", err)
-		return nil, err
+	var taskInfo *dtoDownloadManager.DownloadTaskInfo
+	var err error
+	if req.AnimeId != "" {
+		taskInfo, err = s.downloadManager.GetDownloadTaskInfoByAnimeId(ctx, req.AnimeId)
+		if err != nil {
+			s.log.Errorf("DownloadmanagerService.GetTask error: %v", err)
+			return nil, err
+		}
+	} else {
+		taskInfo, err = s.downloadManager.GetDownloadTaskInfoById(ctx, req.Id)
+		if err != nil {
+			s.log.Errorf("DownloadmanagerService.GetTask error: %v", err)
+			return nil, err
+		}
 	}
+
 	return &pb.GetTaskReply{Task: &pb.DownloadTaskInfo{
 		Id:            taskInfo.Id,
 		Name:          taskInfo.Name,

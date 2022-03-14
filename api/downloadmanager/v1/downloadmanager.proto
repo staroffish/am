@@ -44,7 +44,8 @@ service Downloadmanager {
 	}
 	rpc GetTask (GetTaskRequest) returns (GetTaskReply)  {
 		option (google.api.http) = {
-			get: "/v1/download_manager/download_task/{id}"
+			post: "/v1/download_manager/download_task"
+			body: "*"
 		};
 	}
 }
@@ -87,6 +88,7 @@ message DeleteTaskRequest {
 
 message GetTaskRequest {
 	int32 id = 1;
+	string anime_id = 2;
 }
 
 message DownloadTaskInfo {
