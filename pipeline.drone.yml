@@ -39,10 +39,10 @@ steps:
     password:
       from_secret: archer_docker_password
     script:
-      - docker stop am-downloader
-      - docker rm am-downloader
+      - docker stop am-downloader am-downloadmanager am-spider-dmhy am-spider-nyaa am-spider-miobt
+      - docker rm am-downloader am-downloadmanager am-spider-dmhy am-spider-nyaa am-spider-miobt
       - docker rmi registry.holygrail.com:5000/am-micro:latest
-      - docker-compose -f /store/config/docker-compose/archer/docker-compose.yml up -d am-downloader
+      - docker-compose -f /store/config/docker-compose/archer/docker-compose.yml up -d am-downloader am-downloadmanager am-spider-dmhy am-spider-nyaa am-spider-miobt
   when:
     branch:
       - v1.0
