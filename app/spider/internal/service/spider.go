@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"time"
 
 	"github.com/go-kratos/kratos/v2/log"
 	commonPb "github.com/staroffish/am/api/common"
@@ -23,6 +24,8 @@ func NewAmspiderService(amSpider *biz.AmSpider, logger log.Logger) *AmspiderServ
 }
 
 func (s *AmspiderService) Crawl(ctx context.Context, _ *commonPb.Empty) (*pb.CrawlResponse, error) {
+	deadLine, _ := ctx.Deadline()
+	s.log.Infof("ctx now=%v, deadline=%v", time.Now(), deadLine)
 	s.log.WithContext(ctx).Info("Call AmspiderService.Crawl")
 	animeMagnets, err := s.amSpider.CrawlLink(ctx)
 	animeMagnetdatas := []*pb.CrawlResponse_AnimeMagnetData{}

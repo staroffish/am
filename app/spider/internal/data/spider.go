@@ -105,6 +105,7 @@ func (a *amSpiderRepo) SaveAnimeMagnets(ctx context.Context, animeMagnets []*dto
 		if err != nil {
 			a.log.Errorf("amSpiderRepo.redisClient.HExists %s %s error:%v", key, animeMagnet.Name, err)
 			retError = err
+			continue
 		}
 
 		if exists {
