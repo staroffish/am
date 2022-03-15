@@ -151,6 +151,7 @@ func downloadTasksToReplayTaskInfos(downloadTasks []*biz.DownloadTask) []*pb.Dow
 			ChapterStart: downloadTask.ChapterStart,
 			ChapterEnd:   downloadTask.ChapterEnd,
 			MagnetLink:   downloadTask.MagnetLink,
+			AnimeId:      downloadTask.AnimeId,
 		}
 		replyTasks = append(replyTasks, replyTask)
 	}

@@ -67,7 +67,7 @@ func (s *DownloadTask) SyncDownloadTask() error {
 	s.rwLock.Lock()
 	defer s.rwLock.Unlock()
 
-	resp, err := s.db.etcdCli.Get(context.Background(), s.prefix, etcd.WithPrefix(), etcd.WithSort(etcd.SortByCreateRevision, etcd.SortDescend))
+	resp, err := s.db.etcdCli.Get(context.Background(), s.prefix, etcd.WithPrefix(), etcd.WithSort(etcd.SortByModRevision, etcd.SortDescend))
 	if err != nil {
 		s.log.Errorf("client.Get %s --prefix error:%v", err)
 		return err

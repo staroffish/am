@@ -260,6 +260,8 @@ components:
                     format: int32
                 magnetLink:
                     type: string
+                animeId:
+                    type: string
         DownloadTaskInfo:
             type: object
             properties:

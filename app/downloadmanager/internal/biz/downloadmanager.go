@@ -30,6 +30,7 @@ type DownloadTask struct {
 	ChapterEnd   int32
 	MagnetLink   string
 	StorePath    string
+	AnimeId      string
 }
 
 type DownloadManager struct {
@@ -78,6 +79,7 @@ func (a *DownloadManager) Scan(ctx context.Context) ([]*DownloadTask, error) {
 				MagnetLink:   animeMagnet.MagnetLink,
 				ChapterStart: latestChapter,
 				ChapterEnd:   latestChapter,
+				AnimeId:      taskInfo.AnimeId,
 			}
 
 			if len(foundList) > 2 {

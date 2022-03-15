@@ -55,6 +55,7 @@ message DownloadTask {
 	int32 chapter_start = 2;
 	int32 chapter_end = 3;
 	string magnet_link = 4;
+	string anime_id = 5;
 }
 
 message ScanTaskAndDownloadReply {
