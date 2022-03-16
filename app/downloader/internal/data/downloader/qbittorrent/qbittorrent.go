@@ -114,6 +114,7 @@ func (d *QbittorrentDownloaderRepo) List(ctx context.Context) ([]*biz.Downloader
 	listUrl := fmt.Sprintf("%s/api/v2/torrents/info", qbitConfig.url)
 	resp, err := util.SendHttpRequest(ctx, http.MethodGet, listUrl, "", cookies, nil)
 	if err != nil {
+		d.ClearCookies(ctx, d.getCookieCacheName())
 		d.log.Errorf("QbittorrentDownloaderRepo.List:SendHttpRequest %v", err)
 		return nil, err
 	}
@@ -259,6 +260,7 @@ func (d *QbittorrentDownloaderRepo) noResponseHttpRequest(ctx context.Context, m
 	cookies, err := d.login(ctx)
 	if err != nil {
 		d.log.Errorf("QbittorrentDownloaderRepo.Pause:login %v", err)
+		d.ClearCookies(ctx, d.getCookieCacheName())
 		return err
 	}
 

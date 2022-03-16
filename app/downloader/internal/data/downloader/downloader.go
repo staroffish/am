@@ -80,6 +80,15 @@ func (d *DownloaderBaseRepo) LoadCookies(ctx context.Context, key string) ([]*ht
 	return cookies, nil
 }
 
+func (d *DownloaderBaseRepo) ClearCookies(ctx context.Context, key string) error {
+	_, err := d.redisCli.Del(ctx, key).Result()
+	if err != nil {
+		d.log.Errorf("DownloaderBaseRepo.SaveCookie:redisCli.Get %s error:%v", key, err)
+		return err
+	}
+	return nil
+}
+
 func (d *DownloaderBaseRepo) GetComponentName() string {
 	return string(d.componentName)
 }
