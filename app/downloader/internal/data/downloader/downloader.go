@@ -67,7 +67,7 @@ func (d *DownloaderBaseRepo) SaveCookies(ctx context.Context, key string, cookie
 func (d *DownloaderBaseRepo) LoadCookies(ctx context.Context, key string) ([]*http.Cookie, error) {
 	value, err := d.redisCli.HGetAll(ctx, key).Result()
 	if err != nil && err != redis.Nil {
-		d.log.Errorf("DownloaderBaseRepo.SaveCookie:redisCli.Get %s error:%v", key, err)
+		d.log.Errorf("DownloaderBaseRepo.LoadCookies:redisCli.Get %s error:%v", key, err)
 		return nil, err
 	}
 	cookies := []*http.Cookie{}
@@ -83,7 +83,7 @@ func (d *DownloaderBaseRepo) LoadCookies(ctx context.Context, key string) ([]*ht
 func (d *DownloaderBaseRepo) ClearCookies(ctx context.Context, key string) error {
 	_, err := d.redisCli.Del(ctx, key).Result()
 	if err != nil {
-		d.log.Errorf("DownloaderBaseRepo.SaveCookie:redisCli.Get %s error:%v", key, err)
+		d.log.Errorf("DownloaderBaseRepo.ClearCookies:redisCli.Get %s error:%v", key, err)
 		return err
 	}
 	return nil
