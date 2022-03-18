@@ -1,0 +1,110 @@
+syntax = "proto3";
+
+package api.downloadmanager.v1;
+
+import "google/api/annotations.proto";
+import "api/common/common.proto";
+
+option go_package = "github.com/staroffish/am/api/downloadmanager/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.downloadmanager.v1";
+
+service Downloadmanager {
+	rpc ScanTaskAndDownload (api.common.Empty) returns (ScanTaskAndDownloadReply)  {
+		option (google.api.http) = {
+			post: "/v1/download_manager/scan_and_download"
+		};
+	}
+	rpc ScanTask (api.common.Empty) returns (ScanTaskReply)  {
+		option (google.api.http) = {
+			post: "/v1/download_manager/scan"
+		};
+	}
+	rpc AddTask (AddTaskRequest) returns (api.common.Empty)  {
+		option (google.api.http) = {
+			post: "/v1/download_manager/download_task/save"
+			body: "*"
+		};
+	}
+	rpc UpdateTask (UpdateTaskRequest) returns (api.common.Empty)  {
+		option (google.api.http) = {
+			post: "/v1/download_manager/download_task/update"
+			body: "*"
+		};
+	}
+	rpc DeleteTask (DeleteTaskRequest) returns (api.common.Empty)  {
+		option (google.api.http) = {
+			delete: "/v1/download_manager/download_task/{id}"
+		};
+	}
+	rpc ListTask (api.common.Empty) returns (ListTaskReply)  {
+		option (google.api.http) = {
+			get: "/v1/download_manager/download_task"
+		};
+	}
+	rpc GetTask (GetTaskRequest) returns (GetTaskReply)  {
+		option (google.api.http) = {
+			post: "/v1/download_manager/download_task"
+			body: "*"
+		};
+	}
+}
+
+message DownloadTask {
+	string name = 1;
+	int32 chapter_start = 2;
+	int32 chapter_end = 3;
+	string magnet_link = 4;
+}
+
+message ScanTaskAndDownloadReply {
+	repeated DownloadTask created_tasks = 1;
+}
+
+message ScanTaskReply {
+	repeated DownloadTask matched_tasks = 1;
+}
+
+message AddTaskRequest {
+	string name = 1;
+	string regexp = 2;
+	int32 latest_chapter = 3;
+	string store_path = 4;
+	string anime_id = 5;
+}
+
+message UpdateTaskRequest {
+	int32 id = 1;
+	string name = 2;
+	string regexp = 3;
+	int32 latest_chapter = 4;
+	string store_path = 5;
+	string anime_id = 6;
+}
+
+message DeleteTaskRequest {
+	int32 id = 1;
+}
+
+message GetTaskRequest {
+	int32 id = 1;
+	string anime_id = 2;
+}
+
+message DownloadTaskInfo {
+	int32 id = 1;
+	string name = 2;
+	string regexp = 3;
+	int32 latest_chapter = 4;
+	string store_path = 5;
+	string updateTime = 6;
+	string anime_id = 7;
+}
+
+message ListTaskReply {
+	repeated DownloadTaskInfo tasks = 1;;
+}
+
+message GetTaskReply {
+	DownloadTaskInfo task = 1;;
+}

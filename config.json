@@ -19,5 +19,7 @@
     "SaveDir": "/usb/",
     "AnimeDefaultDirPre": "/usb/TV/",
     "LogType": "FILE",
-    "LogFile": "/home/saber/tmp/am/am.log"
+    "LogFile": "./am.log",
+    "EtcdEndpoints": "etcd01.holygrail.com:2379",
+    "EtcdDialTimeout": 5
 }

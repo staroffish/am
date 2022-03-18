@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package api.common;
+
+option go_package = "github.com/staroffish/am/api/common;common";
+option java_multiple_files = true;
+option java_package = "api.api.common";
+
+message Empty {}

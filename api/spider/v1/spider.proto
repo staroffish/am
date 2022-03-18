@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package api.spider.v1;
+
+import "google/api/annotations.proto";
+import "api/common/common.proto";
+
+option go_package = "github.com/staroffish/am/api/spider/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.spider.v1";
+
+service Spider {
+	rpc Crawl (api.common.Empty) returns (CrawlResponse)  {
+		option (google.api.http) = {
+			post: "/v1/spider/crawl"
+		};
+	}
+}
+
+message CrawlResponse {
+	message AnimeMagnetData {
+		string itemName = 1;
+		string magnet = 2;
+	}
+	repeated AnimeMagnetData animeMagnetdatas = 1;
+}

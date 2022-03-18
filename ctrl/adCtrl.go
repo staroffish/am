@@ -1,13 +1,21 @@
 package ctrl
 
 import (
+	"context"
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 	"strconv"
 	"time"
 
+	"github.com/go-kratos/kratos/contrib/registry/etcd/v2"
+	"github.com/go-kratos/kratos/v2/transport/grpc"
+	"github.com/staroffish/am/api/common"
+	downloadermanagerv1 "github.com/staroffish/am/api/downloadmanager/v1"
 	"github.com/staroffish/am/db"
+	clientv3 "go.etcd.io/etcd/client/v3"
+	ggrpc "google.golang.org/grpc"
 
 	"github.com/staroffish/am/global"
 
@@ -19,6 +27,7 @@ import (
 type AdCtrl struct {
 	view.AdTaskPage
 	view.EditAdTaskPage
+	downloadermanagerv1.DownloadmanagerClient
 }
 
 // Init - 初始化
@@ -28,6 +37,35 @@ func (a *AdCtrl) Init() error {
 	}
 	return a.EditAdTaskPage.Init()
 
+}
+
+func (a *AdCtrl) InitClient() error {
+
+	client, err := clientv3.New(clientv3.Config{
+		Endpoints:   []string{global.Cfg.EtcdEndpoints},
+		DialTimeout: time.Duration(global.Cfg.EtcdDialTimeout) * time.Second,
+		DialOptions: []ggrpc.DialOption{ggrpc.WithBlock()},
+	})
+	if err != nil {
+		global.Log.Errorf("ad:Run:connectRedis error:%v", err)
+		log.Fatalf("ad:Run:connectRedis error:%v", err)
+	}
+
+	r := etcd.New(client)
+
+	connDownloadManager, err := grpc.DialInsecure(
+		context.Background(),
+		grpc.WithEndpoint("discovery:///download-manager"),
+		grpc.WithDiscovery(r),
+	)
+	if err != nil {
+		global.Log.Errorf("ad:Run:grpc.DialInsecure error:%v", err)
+		log.Fatalf("ad:Run:grpc.DialInsecure error:%v", err)
+	}
+
+	a.DownloadmanagerClient = downloadermanagerv1.NewDownloadmanagerClient(connDownloadManager)
+
+	return nil
 }
 
 type taskData struct {
@@ -70,24 +108,25 @@ func (a *AdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {
 		if id != "" {
 			//显示编辑页面
 
-			tasks := db.GetAdTaskByKey(bson.M{"_id": bson.ObjectIdHex(id)})
-			if tasks == nil {
-				return fmt.Errorf("RdCtrl.Process:tasks not found:id:%s", id)
+			task, err := a.getTask(id)
+			if err != nil {
+				return fmt.Errorf("RdCtrl.Process:getTask %s error :%v", id, err)
 			}
-			td.Id = tasks[0].Id.Hex()
-			td.Url = tasks[0].Url
-			td.UrlParam = tasks[0].UrlParam
-			td.SchExp = tasks[0].SchExp
-			td.SchChapt = tasks[0].SchChapt
-			td.MagExp = tasks[0].MagExp
-			td.AnimeID = tasks[0].AnimeID.Hex()
 
-			anime := db.GetAnimeByKey(bson.M{"_id": tasks[0].AnimeID}, 0)
-			if anime == nil {
-				return fmt.Errorf("RdCtrl.Process:anime of tasks not found:id:%s", tasks[0].AnimeID.Hex())
+			td.Id = task.Id
+			td.Url = task.Url
+			td.UrlParam = task.UrlParam
+			td.SchExp = task.SchExp
+			td.SchChapt = task.SchChapt
+			td.MagExp = task.MagExp
+			td.AnimeID = task.AnimeID.Hex()
+
+			anime := db.GetAnimeByKey(bson.M{"_id": task.AnimeID}, 0)
+			if len(anime) == 0 {
+				return fmt.Errorf("RdCtrl.Process:anime of tasks not found:id:%s", task.AnimeID)
 			}
-			td.AnimeNameJp = anime[0].AnimeNameJp
-			td.StorDir = anime[0].StorDir
+			td.AnimeNameJp = task.Name
+			td.StorDir = task.StorePath
 			td.PlayDir = anime[0].PlayDir
 			td.Disabled = "disabled"
 		} else {
@@ -119,18 +158,18 @@ func (a *AdCtrl) Process(jr *JSONRequest, w http.ResponseWriter) error {
 
 		isDone, ok := jr.Params[1].(bool)
 		if ok && isDone {
-			adTask := db.GetAdTaskByKey(bson.M{"_id": bson.ObjectIdHex(_id)})
-			if adTask == nil || len(adTask) < 1 {
-				return fmt.Errorf("RdCtrl.Process:GetAdTaskByKey error")
+			task, err := a.getTask(_id)
+			if err != nil {
+				return fmt.Errorf("RdCtrl.Process:GetAdTaskByKey error:%v", err)
 			}
 
-			err := db.UpdateAnimeDone(adTask[0].AnimeID)
+			err = db.UpdateAnimeDone(task.AnimeID)
 			if err != nil {
 				return fmt.Errorf("RdCtrl.Process:UpdateAnimeStatus err:%v", err)
 			}
 		}
 
-		err := db.DeleteAdTask(bson.ObjectIdHex(_id))
+		err := a.deleteTask(_id)
 		if err != nil {
 			return fmt.Errorf("RdCtrl.Process:DeletedTask err:%v", err)
 		}
@@ -144,31 +183,23 @@ func (a *AdCtrl) showAdTask(w http.ResponseWriter) error {
 	defer global.TraceLog("RdCtrl.showAdTask")()
 	tds := []taskData{}
 
-	tasks := db.GetAdTaskByKey(bson.M{})
-	if tasks != nil {
-		animeList := db.GetAnimeByKey(bson.M{}, 0)
-		if animeList != nil {
-			var animeMap = make(map[string]*db.Anime)
-			for i := 0; i < len(animeList); i++ {
-				animeList[i].ImageBin = nil
-				animeMap[animeList[i].AnimeID] = &animeList[i]
-			}
-			for _, task := range tasks {
-				var td taskData
-				td.Id = task.Id.Hex()
-				td.SchChapt = task.SchChapt
-				anime, ok := animeMap[task.AnimeID.Hex()]
-				if !ok {
-					global.Log.Debugf("am:db.AdTaskPage:animeID in adtask but not in anime:%s", task.AnimeID.Hex())
-					continue
-				}
-				td.StorDir = anime.StorDir
-				td.AnimeNameJp = anime.AnimeNameJp
-				td.UpdateTime = task.UpdateTime
-				tds = append(tds, td)
-			}
-		}
+	tasks, err := a.listTask()
+	if err != nil {
+		return fmt.Errorf("AdCtrl.showAdTask: listTask error: %v", err)
 	}
+
+	for _, task := range tasks {
+		var td taskData
+		td.Id = task.Id
+		td.SchChapt = task.SchChapt
+		td.StorDir = task.StorePath
+		td.AnimeNameJp = task.Name
+		td.UpdateTime = task.UpdateTime
+		td.AnimeID = task.AnimeID.Hex()
+		tds = append(tds, td)
+
+	}
+
 	return a.AdTaskPage.ShowPage(tds, w)
 }
 
@@ -185,15 +216,13 @@ func (a *AdCtrl) updateAdTask(req *JSONRequest, w http.ResponseWriter) error {
 		return fmt.Errorf("UpdateAdTask:ShowPageCtx:Parameter type error:%v", req.Params[0])
 	}
 
-	if _id == "" {
-		_id = bson.NewObjectId().Hex()
-	}
-	adTask.Id = bson.ObjectIdHex(_id)
+	adTask.Id = _id
 	var i = 1
 	ani.AnimeNameJp, ok = req.Params[i].(string)
 	if !ok {
 		return fmt.Errorf("UpdateAdTask:ShowPageCtx:Parameter type error:%v", req.Params[i])
 	}
+	adTask.Name = ani.AnimeNameJp
 	i++
 
 	adTask.Url, ok = req.Params[i].(string)
@@ -235,6 +264,7 @@ func (a *AdCtrl) updateAdTask(req *JSONRequest, w http.ResponseWriter) error {
 	if !ok {
 		return fmt.Errorf("UpdateAdTask:ShowPageCtx:Parameter type error:%v", req.Params[i])
 	}
+	adTask.StorePath = ani.StorDir
 	i++
 
 	ani.PlayDir, ok = req.Params[i].(string)
@@ -275,10 +305,142 @@ func (a *AdCtrl) updateAdTask(req *JSONRequest, w http.ResponseWriter) error {
 		adTask.AnimeID = ani.ID
 	}
 
-	err = db.SaveAdTask(&adTask)
+	if adTask.Id == "" {
+		err = a.saveTask(&adTask)
+	} else {
+		err = a.updateTask(&adTask)
+	}
+
 	if err != nil {
-		return fmt.Errorf("UpdateAdTask:ShowPageCtx:SaveAdTask err:%v", err)
+		return fmt.Errorf("UpdateAdTask:ShowPageCtx:saveTask or updateTask err:%v: id = %s", err, adTask.Id)
 	}
 
 	return a.showAdTask(w)
+}
+
+func (a *AdCtrl) saveTask(adTask *db.AdTask) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	req := &downloadermanagerv1.AddTaskRequest{
+		Name:          adTask.Name,
+		Regexp:        adTask.SchExp,
+		LatestChapter: int32(adTask.SchChapt),
+		StorePath:     adTask.StorePath,
+		AnimeId:       adTask.AnimeID.Hex(),
+	}
+
+	if _, err := a.DownloadmanagerClient.AddTask(ctx, req); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AdCtrl) updateTask(adTask *db.AdTask) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	id, err := strconv.ParseInt(adTask.Id, 10, 64)
+	if err != nil {
+		return fmt.Errorf("ad task id is not int32 %v", adTask.Id)
+	}
+
+	req := &downloadermanagerv1.UpdateTaskRequest{
+		Id:            int32(id),
+		Name:          adTask.Name,
+		Regexp:        adTask.SchExp,
+		LatestChapter: int32(adTask.SchChapt),
+		StorePath:     adTask.StorePath,
+		AnimeId:       adTask.AnimeID.Hex(),
+	}
+
+	if _, err := a.DownloadmanagerClient.UpdateTask(ctx, req); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AdCtrl) deleteTask(id string) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	taskId, err := strconv.ParseInt(id, 10, 64)
+	if err != nil {
+		return fmt.Errorf("ad task id is not int32 %v", id)
+	}
+
+	req := &downloadermanagerv1.DeleteTaskRequest{
+		Id: int32(taskId),
+	}
+
+	if _, err := a.DownloadmanagerClient.DeleteTask(ctx, req); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (a *AdCtrl) listTask() ([]*db.AdTask, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	resp, err := a.DownloadmanagerClient.ListTask(ctx, &common.Empty{})
+	if err != nil {
+		return nil, err
+	}
+
+	adTasks := []*db.AdTask{}
+
+	for _, task := range resp.Tasks {
+		updateTime, err := time.Parse("2006-01-02 15:04:05", task.UpdateTime)
+		if err != nil {
+			return nil, err
+		}
+		adTask := &db.AdTask{
+			Id:         fmt.Sprintf("%d", task.Id),
+			AnimeID:    bson.ObjectIdHex(task.AnimeId),
+			SchExp:     task.Regexp,
+			StorePath:  task.StorePath,
+			SchChapt:   int(task.LatestChapter),
+			Name:       task.Name,
+			UpdateTime: updateTime,
+		}
+
+		adTasks = append(adTasks, adTask)
+	}
+	return adTasks, nil
+}
+
+func (a *AdCtrl) getTask(idStr string) (*db.AdTask, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	id, err := strconv.ParseInt(idStr, 10, 64)
+	if err != nil {
+		return nil, err
+	}
+
+	req := &downloadermanagerv1.GetTaskRequest{
+		Id: int32(id),
+	}
+
+	resp, err := a.DownloadmanagerClient.GetTask(ctx, req)
+	if err != nil {
+		return nil, err
+	}
+
+	updateTime, err := time.Parse("2006-01-02 15:04:05", resp.Task.UpdateTime)
+	if err != nil {
+		return nil, err
+	}
+
+	adTask := &db.AdTask{
+		Id:         fmt.Sprintf("%d", resp.Task.Id),
+		AnimeID:    bson.ObjectIdHex(resp.Task.AnimeId),
+		SchExp:     resp.Task.Regexp,
+		StorePath:  resp.Task.StorePath,
+		SchChapt:   int(resp.Task.LatestChapter),
+		Name:       resp.Task.Name,
+		UpdateTime: updateTime,
+	}
+
+	return adTask, nil
 }

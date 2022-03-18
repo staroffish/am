@@ -1,12 +1,15 @@
 package db
 
-import "gopkg.in/mgo.v2/bson"
-import "time"
+import (
+	"time"
+
+	"gopkg.in/mgo.v2/bson"
+)
 
 // AdTask - 自动下载任务的结构体
 type AdTask struct {
 	// Task ID
-	Id bson.ObjectId `bson:"_id"`
+	Id string `bson:"_id"`
 	// 动画网页的搜索地址
 	Url string `json:"url"`
 	// 检索动漫关键字
@@ -21,6 +24,10 @@ type AdTask struct {
 	UpdateTime time.Time `bson:"updatetime"`
 	// 动漫ID
 	AnimeID bson.ObjectId `json:"animeid" bson:"animeid"`
+	// 任务名称
+	Name string `json:"-"`
+	// 存储路径
+	StorePath string `json:"-"`
 }
 
 // Anime - 动画结构体

@@ -1,12 +1,20 @@
 package ctrl
 
 import (
+	"context"
 	"fmt"
 	"html/template"
 	"io/ioutil"
+	"log"
 	"net/http"
+	"time"
 
+	"github.com/go-kratos/kratos/contrib/registry/etcd/v2"
+	"github.com/go-kratos/kratos/v2/transport/grpc"
+	downloadermanagerv1 "github.com/staroffish/am/api/downloadmanager/v1"
 	"github.com/staroffish/am/global"
+	clientv3 "go.etcd.io/etcd/client/v3"
+	ggrpc "google.golang.org/grpc"
 
 	"github.com/staroffish/am/db"
 	"github.com/staroffish/am/view"
@@ -20,6 +28,7 @@ type AnimeCtrl struct {
 	view.AnimeCollectionPage
 	view.EditAnimePage
 	view.MainPage
+	downloadermanagerv1.DownloadmanagerClient
 }
 
 type collection struct {
@@ -45,6 +54,35 @@ func (a *AnimeCtrl) Init() error {
 		return err
 	}
 	return a.EditAnimePage.Init()
+}
+
+func (a *AnimeCtrl) InitClient() error {
+
+	client, err := clientv3.New(clientv3.Config{
+		Endpoints:   []string{global.Cfg.EtcdEndpoints},
+		DialTimeout: time.Duration(global.Cfg.EtcdDialTimeout) * time.Second,
+		DialOptions: []ggrpc.DialOption{ggrpc.WithBlock()},
+	})
+	if err != nil {
+		global.Log.Errorf("ad:Run:connectRedis error:%v", err)
+		log.Fatalf("ad:Run:connectRedis error:%v", err)
+	}
+
+	r := etcd.New(client)
+
+	connDownloadManager, err := grpc.DialInsecure(
+		context.Background(),
+		grpc.WithEndpoint("discovery:///download-manager"),
+		grpc.WithDiscovery(r),
+	)
+	if err != nil {
+		global.Log.Errorf("ad:Run:grpc.DialInsecure error:%v", err)
+		log.Fatalf("ad:Run:grpc.DialInsecure error:%v", err)
+	}
+
+	a.DownloadmanagerClient = downloadermanagerv1.NewDownloadmanagerClient(connDownloadManager)
+
+	return nil
 }
 
 func (a *AnimeCtrl) Close() {}
@@ -263,29 +301,30 @@ func (a *AnimeCtrl) updateAnime(req *JSONRequest, w http.ResponseWriter) error {
 	}
 
 	var i = 2
+	var id string = _id
 	// 添加新项目时ani.AnimeID不存在,生成一个新的object id
 	if _id == "" {
-		_id = bson.NewObjectId().Hex()
+		id = bson.NewObjectId().Hex()
 		prePage = ""
 	}
-	ani.ID = bson.ObjectIdHex(_id)
-	ani.AnimeNameCn, ok = req.Params[i].(string)
+	ani.ID = bson.ObjectIdHex(id)
+	ani.AnimeNameCn, _ = req.Params[i].(string)
 	i++
-	ani.AnimeNameJp, ok = req.Params[i].(string)
+	ani.AnimeNameJp, _ = req.Params[i].(string)
 	i++
-	ani.Cast, ok = req.Params[i].(string)
+	ani.Cast, _ = req.Params[i].(string)
 	i++
-	ani.Type, ok = req.Params[i].(string)
+	ani.Type, _ = req.Params[i].(string)
 	i++
-	ani.Status, ok = req.Params[i].(string)
+	ani.Status, _ = req.Params[i].(string)
 	i++
-	ani.SerialsDuri, ok = req.Params[i].(string)
+	ani.SerialsDuri, _ = req.Params[i].(string)
 	i++
-	ani.StorDir, ok = req.Params[i].(string)
+	ani.StorDir, _ = req.Params[i].(string)
 	i++
-	ani.PlayDir, ok = req.Params[i].(string)
+	ani.PlayDir, _ = req.Params[i].(string)
 	i++
-	imageUrl, ok := req.Params[i].(string)
+	imageUrl, _ := req.Params[i].(string)
 	i++
 
 	// 如果图片路径存在则取得图片
@@ -306,6 +345,35 @@ func (a *AnimeCtrl) updateAnime(req *JSONRequest, w http.ResponseWriter) error {
 	err := db.SaveAnime(&ani)
 	if err != nil {
 		return fmt.Errorf("AnimeCtrl:updateAnime:SaveAnime:%v", err)
+	}
+
+	// 更改动漫信息时一起更新存储路径
+	if _id != "" {
+		func() {
+			ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+			resp, err := a.GetTask(ctx, &downloadermanagerv1.GetTaskRequest{
+				AnimeId: _id,
+			})
+			cancel()
+			if err != nil {
+				global.Log.Errorf("AnimeCtrl:updateAnime:GetTask:%v", err)
+				return
+			}
+
+			ctx, cancel = context.WithTimeout(context.Background(), 10*time.Second)
+			_, err = a.UpdateTask(ctx, &downloadermanagerv1.UpdateTaskRequest{
+				Id:            resp.Task.Id,
+				Name:          resp.Task.Name,
+				Regexp:        resp.Task.Regexp,
+				AnimeId:       resp.Task.AnimeId,
+				StorePath:     ani.StorDir,
+				LatestChapter: resp.Task.LatestChapter,
+			})
+			cancel()
+			if err != nil {
+				global.Log.Errorf("AnimeCtrl:updateAnime:UpdateTask %d:%v", resp.Task.Id, err)
+			}
+		}()
 	}
 
 	var jr JSONRequest

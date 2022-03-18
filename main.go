@@ -16,17 +16,19 @@ import (
 	"github.com/staroffish/am/ctrl"
 	"github.com/staroffish/am/db"
 	"github.com/staroffish/am/global"
-	_ "github.com/staroffish/am/rd/deluge"
+	_ "github.com/staroffish/am/rd/ammicro"
 	_ "github.com/staroffish/am/rd/http"
 )
 
 var usage = `Usage:am [Config Path]`
 var ctrlMap map[string]ctrl.Control
+var adCtl *ctrl.AdCtrl
+var anime *ctrl.AnimeCtrl
 
 func init() {
 	ctrlMap = make(map[string]ctrl.Control)
 	ctrlMap["main"] = &ctrl.MainCtrl{}
-	anime := &ctrl.AnimeCtrl{}
+	anime = &ctrl.AnimeCtrl{}
 	ctrlMap["show_collection"] = anime
 	ctrlMap["show_anime"] = anime
 	ctrlMap["edit_anime"] = anime
@@ -38,7 +40,7 @@ func init() {
 	ctrlMap["start_task"] = rdCtl
 	ctrlMap["del_task"] = rdCtl
 	ctrlMap["add_task"] = rdCtl
-	adCtl := &ctrl.AdCtrl{}
+	adCtl = &ctrl.AdCtrl{}
 	ctrlMap["show_adtask"] = adCtl
 	ctrlMap["edit_adtask"] = adCtl
 	ctrlMap["update_adTask"] = adCtl
@@ -56,6 +58,9 @@ func main() {
 	}
 
 	global.Log.Infof("Start Program")
+
+	adCtl.InitClient()
+	anime.InitClient()
 
 	workDir := filepath.Dir(os.Args[0])
 

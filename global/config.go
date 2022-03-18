@@ -62,7 +62,9 @@ type Config struct {
 	// 日志路径 当制定SYSLOG时无效
 	LogFile string `json:"LogFile"`
 	// 网页缓存时长(天)
-	PageCacheDuration int `json:"PageCacheDuration"`
+	PageCacheDuration int    `json:"PageCacheDuration"`
+	EtcdEndpoints     string `json:"EtcdEndpoints"`
+	EtcdDialTimeout   int    `json:"EtcdDialTimeout"`
 }
 
 const (

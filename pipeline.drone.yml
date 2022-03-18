@@ -4,65 +4,45 @@ name: am
 
 steps:
 - name: build
-  image: archer.holygrail.com:5000/golang:latest
+  image: registry.holygrail.com:5000/golang:1.17
   commands:
   - go build -mod vendor -o am 
 
 - name: docker-build
   image: plugins/docker
   settings:
-    repo: archer.holygrail.com:5000/am
-    registry: archer.holygrail.com:5000
-    auto_tag: true
+    repo: registry.holygrail.com:5000/am
+    registry: registry.holygrail.com:5000
     insecure: true
-    mirror: http://hub-mirror.c.163.com
+    mirror: https://docker.mirrors.ustc.edu.cn/
   when:
+    branch:
+      - master
     event:
-    - promote
+      include:
+      - push
+      - pull_request
 
 - name: deploy_archer
   image: appleboy/drone-ssh
   settings:
     host: archer.holygrail.com
     username:
-      from_secret: docker_user
+      from_secret: archer_docker_user
     password:
-      from_secret: docker_password
+      from_secret: archer_docker_password
     script:
       - docker stop am
       - docker rm am
-      - docker rmi archer.holygrail.com:5000/am:latest
-      - docker pull archer.holygrail.com:5000/am:latest
-      - docker-compose -f /usb/config/docker-compose/archer/docker-compose.yml up -d
+      - docker rmi registry.holygrail.com:5000/am:latest
+      - docker pull registry.holygrail.com:5000/am:latest
+      - docker-compose -f /usb/config/docker-compose/archer/docker-compose.yml up -d am
   when:
     event:
     - promote
     target:
     - archer
 
-- name: deploy_zotec
-  image: appleboy/drone-ssh
-  settings:
-    host: zotec.holygrail.com
-    username:
-      from_secret: docker_user
-    password:
-      from_secret: docker_password
-    script:
-      - docker stop am
-      - docker rm am
-      - docker rmi archer.holygrail.com:5000/am:latest
-      - docker pull archer.holygrail.com:5000/am:latest
-      - docker-compose -f /usb/config/docker-compose/zotec/docker-compose.yml up -d
-  when:
-    event:
-    - promote
-    target:
-    - zotec
-
 trigger:
   branch:
   - master
-  event:
-  - push
-  - promote
