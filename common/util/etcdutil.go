@@ -17,11 +17,6 @@ type EtcdWatcher struct {
 	log            log.Helper
 }
 
-type waitChangeInfo struct {
-	key              string
-	currentKeyModRev int64
-}
-
 type TaskEtcdPrefix string
 
 func NewEtcdWatcher(client *etcd.Client, watchKey TaskEtcdPrefix, logger log.Logger) *EtcdWatcher {
