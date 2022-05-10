@@ -16,8 +16,8 @@ import (
 	"github.com/go-kratos/kratos/v2/transport/grpc"
 	"github.com/go-kratos/kratos/v2/transport/http"
 	"github.com/staroffish/am/app/downloadmanager/internal/conf"
-	"github.com/staroffish/am/app/downloadmanager/internal/data"
 	commonConfig "github.com/staroffish/am/common/config"
+	"github.com/staroffish/am/common/util"
 	clientv3 "go.etcd.io/etcd/client/v3"
 	ggrpc "google.golang.org/grpc"
 )
@@ -107,7 +107,7 @@ func main() {
 		os.Exit(-1)
 	}
 
-	prefixString := data.TaskEtcdPrefix(fmt.Sprintf("/%s/%s/tasks", componentType, componentName))
+	prefixString := util.TaskEtcdPrefix(fmt.Sprintf("/%s/%s/tasks", componentType, componentName))
 
 	registry := etcd.New(client)
 

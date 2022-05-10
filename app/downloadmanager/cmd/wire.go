@@ -16,10 +16,12 @@ import (
 	"github.com/staroffish/am/app/downloadmanager/internal/service"
 	etcd "go.etcd.io/etcd/client/v3"
 
+	"github.com/staroffish/am/common"
 	"github.com/staroffish/am/common/config"
+	"github.com/staroffish/am/common/util"
 )
 
 // initApp init kratos application.
-func initApp(config.ComponentName, *etcd.Client, log.Logger, registry.Registrar, data.TaskEtcdPrefix, registry.Discovery) (*kratos.App, func(), error) {
-	panic(wire.Build(server.ProviderSet, data.ProviderSet, biz.ProviderSet, service.ProviderSet, newApp))
+func initApp(config.ComponentName, *etcd.Client, log.Logger, registry.Registrar, util.TaskEtcdPrefix, registry.Discovery) (*kratos.App, func(), error) {
+	panic(wire.Build(server.ProviderSet, data.ProviderSet, biz.ProviderSet, service.ProviderSet, common.ProviderSet, newApp))
 }
