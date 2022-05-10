@@ -9,6 +9,7 @@ import (
 
 	"github.com/go-kratos/kratos/v2/log"
 	dto "github.com/staroffish/am/common/dto/downloadmanager"
+	"github.com/staroffish/am/common/util"
 	etcd "go.etcd.io/etcd/client/v3"
 )
 
@@ -22,20 +23,20 @@ type DownloadTask struct {
 	downloadTaskByAnimeId map[string]*dto.DownloadTaskInfo
 	rwLock                *sync.RWMutex
 	log                   log.Helper
+	watcher               *util.EtcdWatcher
 }
 
-type TaskEtcdPrefix string
-
-func NewDownloadTask(db *Data, prefix TaskEtcdPrefix, logger log.Logger) *DownloadTask {
+func NewDownloadTask(db *Data, prefix util.TaskEtcdPrefix, watcher *util.EtcdWatcher, logger log.Logger) *DownloadTask {
 	downloadTask := &DownloadTask{
 		prefix:      string(prefix) + "/",
 		watchPrefix: string(prefix),
 		db:          db,
 		rwLock:      &sync.RWMutex{},
 		log:         *log.NewHelper(logger),
+		watcher:     watcher,
 	}
 
-	watchChan := downloadTask.db.etcdCli.Watch(context.Background(), downloadTask.watchPrefix)
+	watchChan := downloadTask.watcher.Watch()
 	go func() {
 		for range watchChan {
 			downloadTask.log.Infof("%s changed", downloadTask.watchPrefix)
@@ -124,6 +125,7 @@ func (s *DownloadTask) AddTaskInfo(ctx context.Context, taskInfo *dto.DownloadTa
 		id = s.downloadTaskInfos[len(s.downloadTaskInfos)-1].Id + 1
 	}
 	s.rwLock.RUnlock()
+	var newRev int64
 	for {
 		updateTime := time.Now()
 		updateUnixTime := updateTime.Unix()
@@ -152,11 +154,14 @@ func (s *DownloadTask) AddTaskInfo(ctx context.Context, taskInfo *dto.DownloadTa
 			return err
 		}
 		if resp.Succeeded {
+			newRev = resp.Header.GetRevision()
 			break
 		}
 		id++
 	}
-
+	if err := s.watcher.WaitUntilWatchKeyChanged(ctx, s.watchPrefix, newRev); err != nil {
+		s.log.Errorf("DownloadTask:watcher.WaitUntilWatchKeyChagned error:%v", err)
+	}
 	return nil
 }
 
@@ -178,6 +183,10 @@ func (s *DownloadTask) DeleteTask(ctx context.Context, id int32) error {
 	}
 	if !resp.Succeeded {
 		return fmt.Errorf("download task %d already deleted", id)
+	}
+
+	if err := s.watcher.WaitUntilWatchKeyChanged(ctx, s.watchPrefix, resp.Header.GetRevision()); err != nil {
+		s.log.Errorf("DownloadTask:watcher.DeleteTask error:%v", err)
 	}
 	return nil
 }
@@ -226,10 +235,14 @@ func (s *DownloadTask) UpdateTaskInfo(ctx context.Context, taskInfo *dto.Downloa
 			etcd.OpPut(key, string(valueStr)),
 			etcd.OpPut(s.watchPrefix, fmt.Sprintf("%d", updateTime.Unix())),
 		)
-	_, err = txn.Commit()
+	resp, err := txn.Commit()
 	if err != nil {
 		s.log.Errorf("DownloadTask.UpdateTaskInfo:txn.Commit error:%v", err)
 		return err
+	}
+
+	if err := s.watcher.WaitUntilWatchKeyChanged(ctx, s.watchPrefix, resp.Header.GetRevision()); err != nil {
+		s.log.Errorf("DownloadTask:watcher.DeleteTask error:%v", err)
 	}
 	return nil
 }
