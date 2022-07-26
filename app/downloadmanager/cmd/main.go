@@ -111,7 +111,7 @@ func main() {
 
 	registry := etcd.New(client)
 
-	app, cleanup, err := initApp(commonConfig.ComponentName(componentName), client, logger, registry, prefixString, registry)
+	app, cleanup, err := initApp(commonConfig.ComponentName(componentName), commonConfig.Version(Version), client, registry, prefixString, registry)
 	if err != nil {
 		panic(err)
 	}

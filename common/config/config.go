@@ -17,6 +17,8 @@ type ServerConfig struct {
 type HttpServerConfig ServerConfig
 type GrpcServerConfig ServerConfig
 type ComponentName string
+type ComponentType string
+type Version string
 
 type ReidsConfig struct {
 	Addr         string `protobuf:"bytes,1,opt,name=addr,proto3" json:"addr,omitempty"`

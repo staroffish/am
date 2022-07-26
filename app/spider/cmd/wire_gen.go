@@ -8,7 +8,6 @@ package main
 
 import (
 	"github.com/go-kratos/kratos/v2"
-	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/registry"
 	"github.com/staroffish/am/app/spider/internal/biz"
 	"github.com/staroffish/am/app/spider/internal/biz/spider"
@@ -17,13 +16,18 @@ import (
 	"github.com/staroffish/am/app/spider/internal/server"
 	"github.com/staroffish/am/app/spider/internal/service"
 	"github.com/staroffish/am/common/config"
+	"github.com/staroffish/am/common/util"
 	"go.etcd.io/etcd/client/v3"
 )
 
 // Injectors from wire.go:
 
 // initApp init kratos application.
-func initApp(configComponentName config.ComponentName, client *clientv3.Client, spiderConfig *conf.SpiderConfig, logger log.Logger, registrar registry.Registrar, discovery registry.Discovery) (*kratos.App, func(), error) {
+func initApp(configComponentName config.ComponentName, configComponentType config.ComponentType, version config.Version, client *clientv3.Client, registrar registry.Registrar, discovery registry.Discovery) (*kratos.App, func(), error) {
+	logger, err := util.NewLogger(client, configComponentName, version)
+	if err != nil {
+		return nil, nil, err
+	}
 	httpServerConfig, err := config.NewHTTPServerConfig(client, configComponentName)
 	if err != nil {
 		return nil, nil, err
@@ -37,6 +41,10 @@ func initApp(configComponentName config.ComponentName, client *clientv3.Client, 
 		return nil, nil, err
 	}
 	spiderServerConfig := conf.NewSpiderServerConfig(httpServerConfig, grpcServerConfig, reidsConfig)
+	spiderConfig, err := conf.NewSpiderConfig(configComponentName, configComponentType, client, logger)
+	if err != nil {
+		return nil, nil, err
+	}
 	dataData, cleanup, err := data.NewData(spiderServerConfig, logger)
 	if err != nil {
 		return nil, nil, err

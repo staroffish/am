@@ -7,7 +7,6 @@ package main
 
 import (
 	"github.com/go-kratos/kratos/v2"
-	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/registry"
 	"github.com/google/wire"
 	"github.com/staroffish/am/app/downloadmanager/internal/biz"
@@ -22,6 +21,6 @@ import (
 )
 
 // initApp init kratos application.
-func initApp(config.ComponentName, *etcd.Client, log.Logger, registry.Registrar, util.TaskEtcdPrefix, registry.Discovery) (*kratos.App, func(), error) {
+func initApp(config.ComponentName, config.Version, *etcd.Client, registry.Registrar, util.TaskEtcdPrefix, registry.Discovery) (*kratos.App, func(), error) {
 	panic(wire.Build(server.ProviderSet, data.ProviderSet, biz.ProviderSet, service.ProviderSet, common.ProviderSet, newApp))
 }

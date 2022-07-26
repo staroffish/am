@@ -28,9 +28,8 @@ func NewEtcdWatcher(client *etcd.Client, watchKey TaskEtcdPrefix, logger log.Log
 	}
 }
 
-func (e *EtcdWatcher) Watch(opts ...etcd.OpOption) <-chan etcd.WatchResponse {
+func (e *EtcdWatcher) Watch(handler func([]*etcd.Event) error, opts ...etcd.OpOption) {
 	watchChan := e.client.Watch(context.Background(), e.watchKey, opts...)
-	keyChangedChForExternal := make(chan etcd.WatchResponse)
 	go func() {
 		for watchResponse := range watchChan {
 			response := watchResponse
@@ -38,11 +37,12 @@ func (e *EtcdWatcher) Watch(opts ...etcd.OpOption) <-chan etcd.WatchResponse {
 				e.watchKeyModRev.Store(string(event.Kv.Key), event.Kv.ModRevision)
 			}
 			go func() {
-				keyChangedChForExternal <- response
+				if err := handler(response.Events); err != nil {
+					e.log.Errorf("EtcdWatcher.Watch handler error:%v", err)
+				}
 			}()
 		}
 	}()
-	return keyChangedChForExternal
 }
 
 func (e *EtcdWatcher) WaitUntilWatchKeyChanged(ctx context.Context, key string, baseRev int64) error {

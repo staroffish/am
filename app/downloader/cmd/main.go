@@ -105,7 +105,7 @@ func main() {
 		os.Exit(-1)
 	}
 
-	app, cleanup, err := initApp(commonConfig.ComponentName(componentName), client, logger, etcd.New(client))
+	app, cleanup, err := initApp(commonConfig.ComponentName(componentName), commonConfig.Version(Version), client, etcd.New(client))
 	if err != nil {
 		panic(err)
 	}

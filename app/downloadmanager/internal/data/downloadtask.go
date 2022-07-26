@@ -36,15 +36,16 @@ func NewDownloadTask(db *Data, prefix util.TaskEtcdPrefix, watcher *util.EtcdWat
 		watcher:     watcher,
 	}
 
-	watchChan := downloadTask.watcher.Watch()
 	go func() {
-		for range watchChan {
+		downloadTask.watcher.Watch(func(_ []*etcd.Event) error {
 			downloadTask.log.Infof("%s changed", downloadTask.watchPrefix)
 			if err := downloadTask.SyncDownloadTask(); err != nil {
 				downloadTask.log.Errorf("watch downloadTask.UpdateDownloadTask error:%v", err)
 			}
-		}
+			return nil
+		})
 	}()
+
 	if err := downloadTask.SyncDownloadTask(); err != nil {
 		panic(fmt.Sprintf("init downloadTask.UpdateDownloadTask error:%v", err))
 	}

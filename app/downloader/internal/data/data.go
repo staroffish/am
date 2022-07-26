@@ -18,12 +18,17 @@ import (
 )
 
 // ProviderSet is data providers.
-var DataProviderSet = wire.NewSet(NewData, NewDownloadRepo, util.NewReidsClient, config.NewRedisConfig, conf.NewDownloaderServerConfig, conf.NewDownloaderConfig)
+var DataProviderSet = wire.NewSet(NewData, NewDownloadRepo, util.NewReidsClient, config.NewRedisConfig, conf.NewDownloaderServerConfig)
 
 // Data .
 type Data struct {
 	redisCli *redis.Client
 	etcdCli  *etcd.Client
+}
+
+type downloaderRepoWithSyncConfig interface {
+	biz.DownloaderRepo
+	SyncConfig() error
 }
 
 // NewData .
@@ -38,7 +43,7 @@ func NewData(c *conf.DownloaderServerConfig, redisClient *redis.Client, etcdCli 
 	}, cleanup, nil
 }
 
-func NewDownloadRepo(database *Data, downloaderConfig *conf.DownloaderConfig, componentName config.ComponentName, logger log.Logger) (biz.DownloaderRepo, error) {
+func NewDownloadRepo(database *Data, componentName config.ComponentName, logger log.Logger) (biz.DownloaderRepo, error) {
 	key := fmt.Sprintf("/downloader/%s/type", componentName)
 	resp, err := database.etcdCli.Get(context.Background(), key)
 	if err != nil {
@@ -53,10 +58,21 @@ func NewDownloadRepo(database *Data, downloaderConfig *conf.DownloaderConfig, co
 		return nil, fmt.Errorf("NewDownloadRepo: downloader type %s dose not numbric", resp.Kvs[0].Value)
 	}
 
+	etcdWatcher := util.NewEtcdWatcher(database.etcdCli, util.TaskEtcdPrefix(fmt.Sprintf("/downloader/%s", componentName)), logger)
+	var repo downloaderRepoWithSyncConfig
+
 	switch downloaderType {
 	case downloader.QBITTORENT:
-		return qbittorrent.NewQbittorrentDownloaderRepo(downloader.NewDownloaderBaseRepo(componentName, database.redisCli, logger), database.etcdCli, logger), nil
+		repo = qbittorrent.NewQbittorrentDownloaderRepo(downloader.NewDownloaderBaseRepo(componentName, database.redisCli, logger), database.etcdCli, logger)
+	default:
+		err = fmt.Errorf("NewDownloadRepo: incorrect downloader type %d", downloaderType)
 	}
 
-	return nil, fmt.Errorf("NewDownloadRepo: incorrect downloader type %d", downloaderType)
+	go func() {
+		etcdWatcher.Watch(func(_ []*etcd.Event) error {
+			repo.SyncConfig()
+			return nil
+		})
+	}()
+	return repo, err
 }

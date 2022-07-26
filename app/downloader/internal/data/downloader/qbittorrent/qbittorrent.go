@@ -45,6 +45,7 @@ type QbittorrentDownloaderRepo struct {
 const BOUNDARY = "---------------------------6688794727912"
 
 func NewQbittorrentDownloaderRepo(baseRepo *downloader.DownloaderBaseRepo, etcdCli *etcd.Client, logger log.Logger) *QbittorrentDownloaderRepo {
+
 	repo := &QbittorrentDownloaderRepo{
 		log:                log.NewHelper(logger),
 		DownloaderBaseRepo: baseRepo,
@@ -52,12 +53,11 @@ func NewQbittorrentDownloaderRepo(baseRepo *downloader.DownloaderBaseRepo, etcdC
 		mutex:              &sync.RWMutex{},
 		qbittorrentConfig:  &qbittorrentConfig{},
 	}
-	if err := repo.syncConfig(); err != nil {
+
+	if err := repo.SyncConfig(); err != nil {
 		panic(fmt.Sprintf("NewQbittorrentDownloaderRepo:repo.syncConfig error: %v", err))
 	}
-	go func() {
-		repo.watchConfig()
-	}()
+
 	return repo
 }
 
@@ -220,25 +220,19 @@ func (d *QbittorrentDownloaderRepo) getConfig() *qbittorrentConfig {
 	return &qbitConfig
 }
 
-func (d *QbittorrentDownloaderRepo) watchConfig() {
-	prefix := fmt.Sprintf("/downloader/%s", d.GetComponentName())
-	watchChan := d.etcdCli.Watch(context.Background(), prefix, etcd.WithPrefix())
-
-	for range watchChan {
-		d.syncConfig()
-	}
-}
-
-func (d *QbittorrentDownloaderRepo) syncConfig() error {
+func (d *QbittorrentDownloaderRepo) SyncConfig() error {
 	d.mutex.Lock()
 	defer d.mutex.Unlock()
 	prefix := fmt.Sprintf("/downloader/%s", d.GetComponentName())
-	d.log.Infof("prefix=%s\n", prefix)
+
 	resp, err := d.etcdCli.Get(context.Background(), prefix, etcd.WithPrefix())
 	if err != nil {
 		d.log.Errorf("DownloaderConfig.Watch: etcdCli.Get %s error:%v", prefix, err)
 		return err
 	}
+
+	d.log.Infof("QbittorrentDownloaderRepo.SyncConfig:get kv prefix=%s\n", prefix)
+
 	for _, kv := range resp.Kvs {
 		switch string(kv.Key) {
 		case fmt.Sprintf("%s/%s", prefix, "username"):
@@ -253,6 +247,8 @@ func (d *QbittorrentDownloaderRepo) syncConfig() error {
 		d.log.Errorf("DownloaderConfig.Watch: url or username or password is empty")
 		return fmt.Errorf("DownloaderConfig.Watch: url or username or password is empty")
 	}
+
+	d.log.Infof("QbittorrentDownloaderRepo.SyncConfig:changed config:username=%s,url=%s\n", d.userName, d.url)
 	return nil
 }
 

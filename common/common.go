@@ -6,4 +6,4 @@ import (
 )
 
 // ProviderSet is biz providers.
-var ProviderSet = wire.NewSet(util.NewEtcdWatcher)
+var ProviderSet = wire.NewSet(util.NewEtcdWatcher, util.NewLogger)

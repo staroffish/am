@@ -8,7 +8,6 @@ package main
 
 import (
 	"github.com/go-kratos/kratos/v2"
-	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/registry"
 	"github.com/staroffish/am/app/downloader/internal/biz"
 	"github.com/staroffish/am/app/downloader/internal/conf"
@@ -23,7 +22,11 @@ import (
 // Injectors from wire.go:
 
 // initApp init kratos application.
-func initApp(configComponentName config.ComponentName, client *clientv3.Client, logger log.Logger, registrar registry.Registrar) (*kratos.App, func(), error) {
+func initApp(configComponentName config.ComponentName, version config.Version, client *clientv3.Client, registrar registry.Registrar) (*kratos.App, func(), error) {
+	logger, err := util.NewLogger(client, configComponentName, version)
+	if err != nil {
+		return nil, nil, err
+	}
 	httpServerConfig, err := config.NewHTTPServerConfig(client, configComponentName)
 	if err != nil {
 		return nil, nil, err
@@ -45,8 +48,7 @@ func initApp(configComponentName config.ComponentName, client *clientv3.Client, 
 	if err != nil {
 		return nil, nil, err
 	}
-	downloaderConfig := conf.NewDownloaderConfig(client, configComponentName, logger)
-	downloaderRepo, err := data.NewDownloadRepo(dataData, downloaderConfig, configComponentName, logger)
+	downloaderRepo, err := data.NewDownloadRepo(dataData, configComponentName, logger)
 	if err != nil {
 		cleanup()
 		return nil, nil, err

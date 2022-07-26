@@ -2,11 +2,9 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"os"
 	"time"
 
-	etcdCfg "github.com/go-kratos/kratos/contrib/config/etcd/v2"
 	etcd "github.com/go-kratos/kratos/contrib/registry/etcd/v2"
 	"github.com/go-kratos/kratos/v2"
 	"github.com/go-kratos/kratos/v2/config"
@@ -107,49 +105,8 @@ func main() {
 		os.Exit(-1)
 	}
 
-	etcdSourceSpider, err := etcdCfg.New(client, etcdCfg.WithPath(fmt.Sprintf("/%s/%s", componentType, componentName)), etcdCfg.WithPrefix(true))
-	if err != nil {
-		log.Errorf("New etcdSourceSpider error:%v", err)
-		os.Exit(-1)
-	}
-
-	etcdConfig := config.New(
-		config.WithSource(
-			etcdSourceSpider,
-		),
-	)
-	defer etcdConfig.Close()
-
-	if err := etcdConfig.Load(); err != nil {
-		log.Errorf("load etcd config error:%v", err)
-		os.Exit(-1)
-	}
-
-	spiderParam, err := initSpiderParameters(etcdConfig, componentName)
-	if err != nil {
-		log.Errorf("load spider config error:%v", err)
-		os.Exit(-1)
-	}
-
-	log.Infof("Bootstrap loaded spider config:%v", spiderParam)
-
-	spiderConfig := conf.NewSpiderConfig(spiderParam)
-
-	err = etcdConfig.Watch(fmt.Sprintf("/spider/%s", componentName), func(key string, v config.Value) {
-		spiderParam, err = initSpiderParameters(etcdConfig, componentName)
-		if err != nil {
-			log.Errorf("load spider config error:%v", err)
-		}
-		log.Infof("loaded spider config:%v", spiderParam)
-		spiderConfig.SetConfig(spiderParam)
-	})
-	if err != nil {
-		log.Errorf("etcdConfig.Watch error:%v", err)
-		os.Exit(-1)
-	}
-
 	registry := etcd.New(client)
-	app, cleanup, err := initApp(commonConfig.ComponentName(componentName), client, spiderConfig, logger, registry, registry)
+	app, cleanup, err := initApp(commonConfig.ComponentName(componentName), commonConfig.ComponentType(componentType), commonConfig.Version(Version), client, registry, registry)
 	if err != nil {
 		panic(err)
 	}
@@ -159,39 +116,4 @@ func main() {
 	if err := app.Run(); err != nil {
 		panic(err)
 	}
-}
-
-func initSpiderParameters(etcdConfig config.Config, componentName string) (*conf.SpiderParameter, error) {
-	prefix := fmt.Sprintf("/%s/%s", componentType, componentName)
-	var err error
-
-	spiderConf := &conf.SpiderParameter{}
-	spiderConf.Url, err = etcdConfig.Value(fmt.Sprintf("%s/%s", prefix, "url")).String()
-	if err != nil {
-		return nil, fmt.Errorf("get %s error:%v", fmt.Sprintf("%s/%s", prefix, "url"), err)
-	}
-	spiderConf.Proxy, _ = etcdConfig.Value(fmt.Sprintf("%s/%s", prefix, "proxy")).String()
-
-	spiderConf.Method, err = etcdConfig.Value(fmt.Sprintf("%s/%s", prefix, "method")).String()
-	if err != nil {
-		return nil, fmt.Errorf("get %s error:%v", fmt.Sprintf("%s/%s", prefix, "method"), err)
-	}
-	spiderConf.Type, err = etcdConfig.Value(fmt.Sprintf("%s/%s", prefix, "type")).String()
-	if err != nil {
-		return nil, fmt.Errorf("get %s error:%v", fmt.Sprintf("%s/%s", prefix, "type"), err)
-	}
-	spiderConf.Interval, err = etcdConfig.Value(fmt.Sprintf("%s/%s", prefix, "interval")).Int()
-	if err != nil {
-		return nil, fmt.Errorf("get %s error:%v", fmt.Sprintf("%s/%s", prefix, "interval"), err)
-	}
-	spiderConf.UserAgent, err = etcdConfig.Value(fmt.Sprintf("%s/%s", prefix, "user_agent")).String()
-	if err != nil {
-		return nil, fmt.Errorf("get %s error:%v", fmt.Sprintf("%s/%s", prefix, "user_agent"), err)
-	}
-	spiderConf.AnimeMagnetTimeout, err = etcdConfig.Value(fmt.Sprintf("%s/%s", prefix, "anime_magnet_timeout")).Int()
-	if err != nil {
-		return nil, fmt.Errorf("get %s error:%v", fmt.Sprintf("%s/%s", prefix, "anime_magnet_timeout"), err)
-	}
-
-	return spiderConf, err
 }
