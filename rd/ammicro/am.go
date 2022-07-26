@@ -30,16 +30,15 @@ func init() {
 }
 
 func (a *AmMicroDownloader) InitDownloader(cfg *global.Config) error {
-
-	fmt.Printf("%s\n", "AmMicroDownloader.InitDownloader")
+	global.Log.Infof("%s", "AmMicroDownloader.InitDownloader")
 	client, err := clientv3.New(clientv3.Config{
 		Endpoints:   []string{cfg.EtcdEndpoints},
 		DialTimeout: time.Duration(cfg.EtcdDialTimeout) * time.Second,
 		DialOptions: []ggrpc.DialOption{ggrpc.WithBlock()},
 	})
 	if err != nil {
-		global.Log.Errorf("ad:Run:connectRedis error:%v", err)
-		log.Fatalf("ad:Run:connectRedis error:%v", err)
+		global.Log.Errorf("AmMicroDownloader.InitDownloader:clientv3.New error:%v", err)
+		log.Fatalf("AmMicroDownloader.InitDownloader:clientv3.New error:%v", err)
 	}
 
 	r := etcd.New(client)
@@ -50,8 +49,8 @@ func (a *AmMicroDownloader) InitDownloader(cfg *global.Config) error {
 		grpc.WithDiscovery(r),
 	)
 	if err != nil {
-		global.Log.Errorf("ad:Run:grpc.DialInsecure error:%v", err)
-		log.Fatalf("ad:Run:grpc.DialInsecure error:%v", err)
+		global.Log.Errorf("AmMicroDownloader.InitDownloader:grpc.DialInsecure error:%v", err)
+		log.Fatalf("AmMicroDownloader.InitDownloader:grpc.DialInsecure error:%v", err)
 	}
 
 	a.downloader = downloaderv1.NewDownloaderClient(connDownloader)
@@ -59,7 +58,7 @@ func (a *AmMicroDownloader) InitDownloader(cfg *global.Config) error {
 }
 
 func (a *AmMicroDownloader) AddTask(t *rd.RdTask) error {
-	defer global.TraceLog("deluge.AmMicroDownloader.AddTask")()
+	defer global.TraceLog("AmMicroDownloader.AmMicroDownloader.AddTask")()
 
 	req := &downloaderv1.AddRequest{
 		Link:      t.Link,
@@ -75,7 +74,7 @@ func (a *AmMicroDownloader) AddTask(t *rd.RdTask) error {
 	return nil
 }
 func (a *AmMicroDownloader) PauseTask(t *rd.RdTask) error {
-	defer global.TraceLog("deluge.AmMicroDownloader.PauseTask")()
+	defer global.TraceLog("AmMicroDownloader.AmMicroDownloader.PauseTask")()
 
 	req := &downloaderv1.PauseRequest{
 		Id: t.Ids,
@@ -90,7 +89,7 @@ func (a *AmMicroDownloader) PauseTask(t *rd.RdTask) error {
 	return nil
 }
 func (a *AmMicroDownloader) ResumeTask(t *rd.RdTask) error {
-	defer global.TraceLog("deluge.AmMicroDownloader.ResumeTask")()
+	defer global.TraceLog("AmMicroDownloader.AmMicroDownloader.ResumeTask")()
 
 	req := &downloaderv1.ResumeRequest{
 		Id: t.Ids,
@@ -105,7 +104,7 @@ func (a *AmMicroDownloader) ResumeTask(t *rd.RdTask) error {
 	return nil
 }
 func (a *AmMicroDownloader) DeleteTask(t *rd.RdTask) error {
-	defer global.TraceLog("deluge.AmMicroDownloader.DeleteTask")()
+	defer global.TraceLog("AmMicroDownloader.AmMicroDownloader.DeleteTask")()
 
 	req := &downloaderv1.DeleteRequest{
 		Id: t.Ids,
@@ -126,7 +125,7 @@ func (a *AmMicroDownloader) GetAllTask() ([]rd.RdTask, error) {
 	resp, err := a.downloader.List(ctx, &common.Empty{})
 	cancel()
 	if err != nil {
-		return nil, fmt.Errorf("AmMicroDownloader.DeleteTask: add task error: %v", err)
+		return nil, fmt.Errorf("AmMicroDownloader.GetAllTask: add task error: %v", err)
 	}
 
 	tasks := []rd.RdTask{}
