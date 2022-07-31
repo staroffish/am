@@ -42,8 +42,8 @@ func New(cfg *global.Config) (*Ad, error) {
 		DialOptions: []ggrpc.DialOption{ggrpc.WithBlock()},
 	})
 	if err != nil {
-		global.Log.Errorf("ad:Run:connectRedis error:%v", err)
-		log.Fatalf("ad:Run:connectRedis error:%v", err)
+		global.Log.Errorf("ad:New:new etcd %v error:%v", []string{global.Cfg.EtcdEndpoints}, err)
+		log.Fatalf("ad:New:new etcd %v error:%v", []string{global.Cfg.EtcdEndpoints}, err)
 	}
 
 	r := etcd.New(client)

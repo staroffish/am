@@ -47,8 +47,8 @@ func (a *AdCtrl) InitClient() error {
 		DialOptions: []ggrpc.DialOption{ggrpc.WithBlock()},
 	})
 	if err != nil {
-		global.Log.Errorf("ad:Run:connectRedis error:%v", err)
-		log.Fatalf("ad:Run:connectRedis error:%v", err)
+		global.Log.Errorf("AdCtrl:InitClient:new etcd %v error:%v", []string{global.Cfg.EtcdEndpoints}, err)
+		log.Fatalf("AdCtrl:InitClient:new etcd %v error:%v", []string{global.Cfg.EtcdEndpoints}, err)
 	}
 
 	r := etcd.New(client)
