@@ -78,6 +78,9 @@ func (s *SpiderConfig) syncSpiderConfig() error {
 		return fmt.Errorf("SpiderConfig.syncSpiderConfig:client.Get %s --prefix error:%v", prefix, err)
 	}
 
+	param := &SpiderParameter{}
+	param.Type = s.spiderParameter.Type
+
 	for _, item := range resp.Kvs {
 		keyBase := path.Base(string(item.Key))
 		switch keyBase {
@@ -87,29 +90,30 @@ func (s *SpiderConfig) syncSpiderConfig() error {
 				s.log.Errorf("SpiderConfig.syncSpiderConfig:anime_magnet_timeout: parse int error %v", err)
 				continue
 			}
-			s.spiderParameter.AnimeMagnetTimeout = value
+			param.AnimeMagnetTimeout = value
 		case "interval":
 			value, err := strconv.ParseInt(string(item.Value), 10, 64)
 			if err != nil {
 				s.log.Errorf("SpiderConfig.syncSpiderConfig:interval: parse int error %v", err)
 				continue
 			}
-			s.spiderParameter.Interval = value
+			param.Interval = value
 		case "method":
-			s.spiderParameter.Method = string(item.Value)
+			param.Method = string(item.Value)
 		case "proxy":
-			s.spiderParameter.Proxy = string(item.Value)
+			param.Proxy = string(item.Value)
 		case "url":
-			s.spiderParameter.Url = string(item.Value)
+			param.Url = string(item.Value)
 		case "user_agent":
-			s.spiderParameter.UserAgent = string(item.Value)
+			param.UserAgent = string(item.Value)
 		case "type":
 			// 类型不能更改 只有为空的时候才赋值
-			if s.spiderParameter.Type == "" {
-				s.spiderParameter.Type = string(item.Value)
+			if param.Type == "" {
+				param.Type = string(item.Value)
 			}
 		}
 	}
+	s.spiderParameter = param
 	s.log.Infof("spider config changed: %v", s.spiderParameter)
 	return nil
 }

@@ -232,21 +232,23 @@ func (d *QbittorrentDownloaderRepo) SyncConfig() error {
 	}
 
 	d.log.Infof("QbittorrentDownloaderRepo.SyncConfig:get kv prefix=%s\n", prefix)
-
+	c := &qbittorrentConfig{}
 	for _, kv := range resp.Kvs {
 		switch string(kv.Key) {
 		case fmt.Sprintf("%s/%s", prefix, "username"):
-			d.userName = string(kv.Value)
+			c.userName = string(kv.Value)
 		case fmt.Sprintf("%s/%s", prefix, "password"):
-			d.password = string(kv.Value)
+			c.password = string(kv.Value)
 		case fmt.Sprintf("%s/%s", prefix, "url"):
-			d.url = string(kv.Value)
+			c.url = string(kv.Value)
 		}
 	}
-	if d.url == "" || d.userName == "" || d.password == "" {
+	if c.url == "" || c.userName == "" || c.password == "" {
 		d.log.Errorf("DownloaderConfig.Watch: url or username or password is empty")
 		return fmt.Errorf("DownloaderConfig.Watch: url or username or password is empty")
 	}
+
+	d.qbittorrentConfig = c
 
 	d.log.Infof("QbittorrentDownloaderRepo.SyncConfig:changed config:username=%s,url=%s\n", d.userName, d.url)
 	return nil
