@@ -151,7 +151,7 @@ func (s *DownloadTask) AddTaskInfo(ctx context.Context, taskInfo *dto.DownloadTa
 			)
 		resp, err := txn.Commit()
 		if err != nil {
-			s.log.Errorf("DownloadTask.AddTaskInfo:txn.Commit error:%v", err)
+			s.log.Errorf("DownloadTask.AddTaskInfo:txn.Commit key=%v value=%v updateUnixTime=%v error:%v", key, value, updateUnixTime, err)
 			return err
 		}
 		if resp.Succeeded {
