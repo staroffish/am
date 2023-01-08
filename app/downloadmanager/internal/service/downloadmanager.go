@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"time"
 
 	"github.com/go-kratos/kratos/v2/log"
 	commonPb "github.com/staroffish/am/api/common"
@@ -24,6 +25,8 @@ func NewDownloadmanagerService(downloadManager *biz.DownloadManager, logger log.
 }
 
 func (s *DownloadmanagerService) ScanTaskAndDownload(ctx context.Context, req *commonPb.Empty) (*pb.ScanTaskAndDownloadReply, error) {
+	deadline, _ := ctx.Deadline()
+	s.log.Infof("start ScanTaskAndDownload now=%v ctx.deadline=%v", time.Now(), deadline)
 	downloadTasks, err := s.downloadManager.ScanTaskAndDownload(ctx)
 	if err != nil {
 		s.log.Errorf("DownloadmanagerService.ScanTaskAndDownload:biz.DownloadManager.ScanTaskAndDownload error: %v", err)
@@ -39,6 +42,8 @@ func (s *DownloadmanagerService) ScanTaskAndDownload(ctx context.Context, req *c
 }
 
 func (s *DownloadmanagerService) ScanTask(ctx context.Context, req *commonPb.Empty) (*pb.ScanTaskReply, error) {
+	deadline, _ := ctx.Deadline()
+	s.log.Infof("start ScanTask now=%v ctx.deadline=%v", time.Now(), deadline)
 	downloadTasks, err := s.downloadManager.Scan(ctx)
 	if err != nil {
 		s.log.Errorf("DownloadmanagerService.ScanTaskAndDownload:biz.DownloadManager.ScanTask error: %v", err)
@@ -54,6 +59,8 @@ func (s *DownloadmanagerService) ScanTask(ctx context.Context, req *commonPb.Emp
 }
 
 func (s *DownloadmanagerService) AddTask(ctx context.Context, req *pb.AddTaskRequest) (*commonPb.Empty, error) {
+	deadline, _ := ctx.Deadline()
+	s.log.Infof("start AddTask now=%v ctx.deadline=%v", time.Now(), deadline)
 	downloadTaskInfo := &dtoDownloadManager.DownloadTaskInfo{
 		Name:          req.Name,
 		Regexp:        req.Regexp,
@@ -69,6 +76,8 @@ func (s *DownloadmanagerService) AddTask(ctx context.Context, req *pb.AddTaskReq
 }
 
 func (s *DownloadmanagerService) DeleteTask(ctx context.Context, req *pb.DeleteTaskRequest) (*commonPb.Empty, error) {
+	deadline, _ := ctx.Deadline()
+	s.log.Infof("start DeleteTask now=%v ctx.deadline=%v", time.Now(), deadline)
 	if err := s.downloadManager.DeleteTask(ctx, req.Id); err != nil {
 		s.log.Errorf("DownloadmanagerService.ScanTaskAndDownload:biz.DownloadManager.DeleteTask error: %v", err)
 		return nil, err
@@ -77,6 +86,8 @@ func (s *DownloadmanagerService) DeleteTask(ctx context.Context, req *pb.DeleteT
 }
 
 func (s *DownloadmanagerService) ListTask(ctx context.Context, req *commonPb.Empty) (*pb.ListTaskReply, error) {
+	deadline, _ := ctx.Deadline()
+	s.log.Infof("start ListTask now=%v ctx.deadline=%v", time.Now(), deadline)
 	downloadTaskInofs := s.downloadManager.ListTask(ctx)
 
 	reply := &pb.ListTaskReply{
@@ -100,6 +111,8 @@ func (s *DownloadmanagerService) ListTask(ctx context.Context, req *commonPb.Emp
 }
 
 func (s *DownloadmanagerService) UpdateTask(ctx context.Context, req *pb.UpdateTaskRequest) (*commonPb.Empty, error) {
+	deadline, _ := ctx.Deadline()
+	s.log.Infof("start UpdateTask now=%v ctx.deadline=%v", time.Now(), deadline)
 	err := s.downloadManager.UpdateTaskInfo(ctx, &dtoDownloadManager.DownloadTaskInfo{
 		Id:            req.Id,
 		Name:          req.Name,
@@ -116,6 +129,8 @@ func (s *DownloadmanagerService) UpdateTask(ctx context.Context, req *pb.UpdateT
 }
 
 func (s *DownloadmanagerService) GetTask(ctx context.Context, req *pb.GetTaskRequest) (*pb.GetTaskReply, error) {
+	deadline, _ := ctx.Deadline()
+	s.log.Infof("start GetTask now=%v ctx.deadline=%v", time.Now(), deadline)
 	var taskInfo *dtoDownloadManager.DownloadTaskInfo
 	var err error
 	if req.AnimeId != "" {

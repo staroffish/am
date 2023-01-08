@@ -14,9 +14,6 @@ github.com/dgryski/go-rendezvous
 # github.com/fsnotify/fsnotify v1.5.1
 ## explicit
 github.com/fsnotify/fsnotify
-# github.com/go-kratos/kratos/contrib/config/etcd/v2 v2.0.0-20220215033000-471a2aab794b
-## explicit
-github.com/go-kratos/kratos/contrib/config/etcd/v2
 # github.com/go-kratos/kratos/contrib/registry/etcd/v2 v2.0.0-20220222060636-4dadafff9025
 ## explicit
 github.com/go-kratos/kratos/contrib/registry/etcd/v2
