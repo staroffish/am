@@ -329,6 +329,8 @@ func (a *AdCtrl) saveTask(adTask *db.AdTask) error {
 		AnimeId:       adTask.AnimeID.Hex(),
 	}
 
+	deadline, _ := ctx.Deadline()
+	global.Log.Infof("call DownloadmanagerClient.AddTask now=%v ctx.deadline=%v", time.Now(), deadline)
 	if _, err := a.DownloadmanagerClient.AddTask(ctx, req); err != nil {
 		return err
 	}
