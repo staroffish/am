@@ -68,7 +68,9 @@ func (s *DownloadmanagerService) AddTask(ctx context.Context, req *pb.AddTaskReq
 		StorePath:     req.StorePath,
 		LatestChapter: req.LatestChapter,
 	}
-	if err := s.downloadManager.AddTask(ctx, downloadTaskInfo); err != nil {
+	addCtx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	if err := s.downloadManager.AddTask(addCtx, downloadTaskInfo); err != nil {
 		s.log.Errorf("DownloadmanagerService.ScanTaskAndDownload:biz.DownloadManager.SaveTask error: %v", err)
 		return nil, err
 	}

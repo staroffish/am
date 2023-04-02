@@ -37,6 +37,7 @@ func NewGrpcServerConfig(client *clientv3.Client, componentName ComponentName) (
 		return nil, err
 	}
 
+	fmt.Printf("GrpcServerConfig = %v\n", grpcConfig)
 	return (*GrpcServerConfig)(grpcConfig), nil
 }
 
@@ -47,7 +48,7 @@ func NewHTTPServerConfig(client *clientv3.Client, componentName ComponentName) (
 	if err != nil {
 		return nil, err
 	}
-
+	fmt.Printf("HttpServerConfig = %v\n", httpConfig)
 	return (*HttpServerConfig)(httpConfig), nil
 }
 
@@ -79,6 +80,7 @@ func newServerConfig(client *clientv3.Client, prefix string) (*ServerConfig, err
 	if serverConfig.Addr == "" {
 		return nil, fmt.Errorf("http or grpc server addr is empty")
 	}
+	fmt.Printf("ServerConfig = %v\n", serverConfig)
 	return serverConfig, nil
 }
 
@@ -124,5 +126,6 @@ func NewRedisConfig(client *clientv3.Client) (*ReidsConfig, error) {
 		}
 	}
 
+	fmt.Printf("ReidsConfig = %v\n", redisConfig)
 	return redisConfig, nil
 }
