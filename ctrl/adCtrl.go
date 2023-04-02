@@ -57,6 +57,7 @@ func (a *AdCtrl) InitClient() error {
 		context.Background(),
 		grpc.WithEndpoint("discovery:///download-manager"),
 		grpc.WithDiscovery(r),
+		grpc.WithTimeout(10*time.Second),
 	)
 	if err != nil {
 		global.Log.Errorf("ad:Run:grpc.DialInsecure error:%v", err)

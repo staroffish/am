@@ -52,6 +52,7 @@ func New(cfg *global.Config) (*Ad, error) {
 		context.Background(),
 		grpc.WithEndpoint("discovery:///spider"),
 		grpc.WithDiscovery(r),
+		grpc.WithTimeout(10*time.Second),
 	)
 	if err != nil {
 		global.Log.Errorf("ad:Run:grpc.DialInsecure error:%v", err)

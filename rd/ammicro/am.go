@@ -47,6 +47,7 @@ func (a *AmMicroDownloader) InitDownloader(cfg *global.Config) error {
 		context.Background(),
 		grpc.WithEndpoint("discovery:///downloader"),
 		grpc.WithDiscovery(r),
+		grpc.WithTimeout(10*time.Second),
 	)
 	if err != nil {
 		global.Log.Errorf("AmMicroDownloader.InitDownloader:grpc.DialInsecure error:%v", err)
