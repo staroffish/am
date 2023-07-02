@@ -24,7 +24,7 @@ func NewHTTPServer(c *conf.DownloaderServerConfig, downloaderService *service.Do
 	if c.Http.Addr != "" {
 		opts = append(opts, http.Address(c.Http.Addr))
 	}
-	if c.Grpc.Timeout > 0 {
+	if c.Http.Timeout > 0 {
 		opts = append(opts, http.Timeout(time.Duration(c.Http.Timeout)*time.Second))
 	}
 	srv := http.NewServer(opts...)
