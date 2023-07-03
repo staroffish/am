@@ -50,7 +50,7 @@ func (d *downloadManagerRepo) CreateDownloadTask(ctx context.Context, id int32, 
 		return err
 	}
 
-	timeoutCtx, cancel := context.WithTimeout(context.Background(), 15)
+	timeoutCtx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
 	// 调用下载器的接口，创建下载任务
