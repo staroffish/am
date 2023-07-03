@@ -28,6 +28,8 @@ func NewHTTPServer(c *conf.DownloadManagerServerConfig, taskManager *service.Dow
 		opts = append(opts, http.Timeout(time.Duration(c.Http.Timeout)*time.Second))
 	}
 	srv := http.NewServer(opts...)
+	log := log.NewHelper(logger)
+	log.Infof("srr=%v", srv)
 	v1.RegisterDownloadmanagerHTTPServer(srv, taskManager)
 
 	return srv

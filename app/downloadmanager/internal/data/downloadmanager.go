@@ -50,8 +50,11 @@ func (d *downloadManagerRepo) CreateDownloadTask(ctx context.Context, id int32, 
 		return err
 	}
 
+	timeoutCtx, cancel := context.WithTimeout(context.Background(), 15)
+	defer cancel()
+
 	// 调用下载器的接口，创建下载任务
-	_, err := d.downloader.Add(ctx, &downloaderV1.AddRequest{
+	_, err := d.downloader.Add(timeoutCtx, &downloaderV1.AddRequest{
 		Link:      MagnetLink,
 		StorePath: downloadTask.StorePath,
 	})
@@ -61,7 +64,7 @@ func (d *downloadManagerRepo) CreateDownloadTask(ctx context.Context, id int32, 
 	}
 
 	// 更新最新集数
-	if err := d.UpdateLatestChapter(ctx, id, latestChapter); err != nil {
+	if err := d.UpdateLatestChapter(timeoutCtx, id, latestChapter); err != nil {
 		d.log.Errorf("downloadManagerRepo.CreateDownloadTask:UpdateLatestChapter error: %v", err)
 		return err
 	}
