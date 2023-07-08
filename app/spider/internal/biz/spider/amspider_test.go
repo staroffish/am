@@ -277,3 +277,25 @@ func TestNyaaSpider(t *testing.T) {
 		t.Fatalf("DmhySpider.ExtractData length not equal 75 %v", len(animeMagnets))
 	}
 }
+
+func TestAcgnxSpider(t *testing.T) {
+	acgnxSpider := MiobtSpider{
+		BaseSpider: BaseSpider{
+			log: log.NewHelper(util.NewTestLogger()),
+		},
+	}
+
+	animeMagnets, err := acgnxSpider.ExtractData(context.Background(), acgnxHtml)
+	if err != nil {
+		t.Fatalf("acgnxSpider.ExtractData error %v", err)
+	}
+
+	if len(animeMagnets) != 40 {
+		t.Fatalf("acgnxSpider.ExtractData length not equal 75 %v", len(animeMagnets))
+	}
+
+	for _, magnet := range animeMagnets {
+		fmt.Printf("%v\n", magnet)
+	}
+
+}
