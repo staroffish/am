@@ -18,9 +18,10 @@ type SpiderInterface interface {
 }
 
 const (
-	MIOBT = "miobt"
-	DMHY  = "dmhy"
-	NYAA  = "nyaa"
+	MIOBT   = "miobt"
+	DMHY    = "dmhy"
+	NYAA    = "nyaa"
+	BANGUMI = "bangumi"
 )
 
 func NewSpider(spiderConf *conf.SpiderConfig, logger log.Logger) SpiderInterface {
@@ -39,6 +40,10 @@ func NewSpider(spiderConf *conf.SpiderConfig, logger log.Logger) SpiderInterface
 		}
 	case NYAA:
 		return &NyaaSpider{
+			BaseSpider: baseSpider,
+		}
+	case BANGUMI:
+		return &BangumiSpider{
 			BaseSpider: baseSpider,
 		}
 	}
