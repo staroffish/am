@@ -13,13 +13,13 @@ type BangumiSpider struct {
 }
 
 type bangumiItems struct {
-	PageCount int              `json: "page_count"`
-	Torrents  []bangumiTorrent `json: "torrents"`
+	PageCount int              `json:"page_count"`
+	Torrents  []bangumiTorrent `json:"torrents"`
 }
 
 type bangumiTorrent struct {
-	Title  string `json: "title"`
-	Magnet string `json: "magnet"`
+	Title  string `json:"title"`
+	Magnet string `json:"magnet"`
 }
 
 func (m *BangumiSpider) ExtractData(ctx context.Context, webContent string) ([]*spider.AnimeMagnet, error) {
