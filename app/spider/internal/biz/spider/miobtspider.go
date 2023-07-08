@@ -10,8 +10,7 @@ import (
 )
 
 // 支持的BT网站列表
-// www.miobt.coms
-// share.acgnx.se
+// www.miobt.com
 
 type MiobtSpider struct {
 	BaseSpider
