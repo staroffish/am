@@ -9,6 +9,10 @@ import (
 	"github.com/staroffish/am/common/dto/spider"
 )
 
+// 支持的BT网站列表
+// www.miobt.coms
+// share.acgnx.se
+
 type MiobtSpider struct {
 	BaseSpider
 }

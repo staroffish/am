@@ -6456,3 +6456,1167 @@ const nyaaHtml = `<!DOCTYPE html>
 		</footer>
 	</body>
 </html>`
+
+var acgnxHtml = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="zh-tw" />
+<title>末日動漫資源庫 - Project AcgnX Torrent Asia</title>
+<meta name="robots" content="all" />
+<meta name="keywords" content="BT,動畫,漫畫,遊戲,動漫音樂,動漫資源,bt,acg資源,動漫BT下載,動畫下載,漫畫下載" /><meta name="description" content="AcgnX末日動漫資源庫擁有華語範圍內最多最全的ACG資源,能為所有動漫愛好者提供最全的資源檢索服務" /><meta name="google-site-verification" content="l3wPX00gtRysj-lubJrjqi0-4hrGSZhuWg0vY-yyHfc" />
+<link rel="alternate" type="application/rss+xml" title="末日動漫資源庫 - Project AcgnX Torrent Asia[RSS订阅]" href="rss.xml" />
+<link type="text/css" rel="stylesheet" href="css/btmaster.css?v20180236" />
+<link type="text/css" rel="stylesheet" href="css/flags.min.css?v20180227" />
+<script type="text/javascript" src="javascripts/jquery.min.js"></script>
+<script type="text/javascript">jQuery.noConflict();</script>
+<script type="text/javascript" src="javascripts/mt-core.js?v20081230"></script>
+<script type="text/javascript" src="javascripts/btmaster.js?v20170623"></script>
+<script type="text/javascript">
+Config['url_rewrite'] = true;
+</script>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+<div id="btm" style="width:100%;">
+<div class="header">
+    <div class="top_nav">
+    <div class="mos">
+        <p class="left">末日動漫資源庫 - Project AcgnX Torrent Asia</p>
+        <p class="right"><a href="./feedback.php" target="_blank" style="color:red;font-weight:bold;">留言反饋</a> | <a href="https://t.me/acgnxtorrent" target="_blank" style="color:purple;font-weight:bold;">Telegram 公告頻道</a> | <a href="https://t.me/acgnxasiachat" target="_blank" style="color:#007FFF;font-weight:bold;text-decoration:underline;">Telegram Group</a> | <a href="https://blog.acgnx.se/archives/job.html" target="_blank" style="color:orange;font-weight:bold;">工作組成員招募</a> | <a href="https://blog.acgnx.se/FAQ.html" target="_blank">FAQ</a> | <a href="https://blog.acgnx.se/archives/tos.html" target="_blank" style="color:black;font-weight:bold;">站點服務條款</a> | <a href="https://blog.acgnx.se/archives/donate.html" target="_blank">捐助我們</a> | <a href="search.php">高級搜索</a> | <a href="user.php?o=upload">發佈資源</a> | <a href="javascript:void(0);" onclick="addFavorite('末日動漫資源庫 - Project AcgnX Torrent Asia', 'https://share.acgnx.se');return false;">加入收藏</a></p>
+    </div>
+    </div>
+    <div class="func">
+        <table class="mos"><tr>
+            <td class="t1"><a href="./"><img src="images/logo.png" width="150" height="51" alt="末日動漫資源庫 - Project AcgnX Torrent Asia" /></a></td>
+            <td class="t2"></td>
+            <td class="t3">
+                <div class="topsearch">
+                <select id="category_id" name="category_id"><option value="0">全部分類</option><option value="1"> 動畫 </option><option value="2">- 季度全集 </option><option value="3"> 出版品 </option><option value="4">- 港臺原版 </option><option value="5">- 日文原版 </option><option value="6"> 音樂 </option><option value="7">- 動漫音樂 </option><option value="8">- 同人音樂 </option><option value="9">- 流行音樂 </option><option value="10"> 日劇/日影 </option><option value="11"> RAW </option><option value="12"> 遊戲 </option><option value="13">- 電腦遊戲 </option><option value="14">- 電視遊戲 </option><option value="15">- 掌機遊戲 </option><option value="16">- 網絡遊戲 </option><option value="17">- 遊戲周邊 </option><option value="18"> 特攝 </option><option value="19"> 其他 </option></select>
+                <input type="text" id="topsearch" onkeypress="doSearchEvent(event);" value="請閣下輸入要檢索的關鍵字" onfocus="searchTip(0);"><a href="javascript:void(0);" onclick="doSearch();return false;"></a></div>
+                <script type="text/javascript">var kcount=0, kheight=18, kst=0;</script>
+                <div class="hotsearch">
+                    <span class="left">熱搜:</span>
+                    <div id="searchkey">
+                        <div id="searchkeybody">
+                                                <a href="search.php?keyword=bd">bd</a><a href="search.php?keyword=1080P">1080P</a><a href="search.php?keyword=Raws">Raws</a><a href="search.php?keyword=%E5%8A%87%E5%A0%B4">劇場</a><a href="search.php?keyword=mp4">mp4</a><a href="search.php?keyword=MOVIE">MOVIE</a><a href="search.php?keyword=%E9%9B%BB%E5%BD%B1">電影</a><a href="search.php?keyword=baha">baha</a><a href="search.php?keyword=720p">720p</a><a href="search.php?keyword=LILITH">LILITH</a>                                                </div>
+                    </div>
+                </div>
+            </td>
+        </tr></table>
+<div class="nav mos" id="smenu">
+    <ul>
+        <li><a href="./">首頁</a></li>
+        <li><a rel="menu198" href="today-1.html">本日新增</a></li>
+                <li><a rel="menu1" href="sort-1-1.html"><font color="red">動畫</font></a></li>
+                <li><a rel="menu3" href="sort-3-1.html"><font color="green">出版品</font></a></li>
+                <li><a rel="menu6" href="sort-6-1.html"><font color="purple">音樂</font></a></li>
+                <li><a href="sort-10-1.html"><font color="blue">日劇/日影</font></a></li>
+                <li><a href="sort-11-1.html"><font color="orange">RAW</font></a></li>
+                <li><a rel="menu12" href="sort-12-1.html"><font color="#0eb9e7">遊戲</font></a></li>
+                <li><a href="sort-18-1.html"><font color="brown">特攝</font></a></li>
+                <li><a href="sort-19-1.html"><font color="black">其他</font></a></li>
+                <li><a rel="menu199" href="./bangumi.php">動畫番組表</a></li>
+    </ul>
+    <a class="post-button" href="user.php?o=upload">發佈資源</a>
+    <ul style="float:right;"><li><a rel="menu200"><img src="/images/blanks.gif" class="flag flag-hk">&nbsp;亞太-繁體中文</a></li></ul>
+</div>
+    </div>
+</div>
+<div class="menudiv" id="menu198" style="top: 159px; left: 620px; visibility: hidden; width: 80px;">
+<a href="yesterday-1.html" style="border-top-width: 0px;">昨日新增</a>
+<a href="weekly-1.html" style="border-top-width: 0px;">本周新增</a>
+</div>
+<div class="menudiv" id="menu199" style="top: 159px; left: 620px; visibility: hidden; width: 80px;">
+<a href="./owaribangumi.html" style="border-top-width: 0px;">歷史番組表</a>
+<a href="union.php" style="border-top-width: 0px;">字幕組列表</a>
+<a href="leaderboard.html" style="border-top-width: 0px;">下載排行榜</a>
+<a href="top.php" style="border-top-width: 0px;">爬行榜</a>
+</div>
+<div class="menudiv" id="menu200" style="top: 159px; left: 620px; visibility: hidden; width: 80px;">
+<a href="https://www.acgnx.se/" style="border-top-width: 0px;"><img src="/images/blanks.gif" class="flag flag-gb">&nbsp;國際-English</a>
+</div>
+<div class="menudiv" id="menu1">
+        <a href="sort-2-1.html"><font color="red">季度全集</font></a>
+    </div>
+<div class="menudiv" id="menu3">
+        <a href="sort-4-1.html"><font color="green">港臺原版</font></a>
+        <a href="sort-5-1.html"><font color="green">日文原版</font></a>
+    </div>
+<div class="menudiv" id="menu6">
+        <a href="sort-7-1.html"><font color="purple">動漫音樂</font></a>
+        <a href="sort-8-1.html"><font color="purple">同人音樂</font></a>
+        <a href="sort-9-1.html"><font color="purple">流行音樂</font></a>
+    </div>
+<div class="menudiv" id="menu12">
+        <a href="sort-13-1.html"><font color="#0eb9e7">電腦遊戲</font></a>
+        <a href="sort-14-1.html"><font color="#0eb9e7">電視遊戲</font></a>
+        <a href="sort-15-1.html"><font color="#0eb9e7">掌機遊戲</font></a>
+        <a href="sort-16-1.html"><font color="#0eb9e7">網絡遊戲</font></a>
+        <a href="sort-17-1.html"><font color="#0eb9e7">遊戲周邊</font></a>
+    </div>
+<script type="text/javascript">btmenu.init('smenu', 'auto');</script>
+
+<div id="breadcrumb">
+    <div class="mos">
+    
+<div class="location">
+    </div>
+
+
+<div class="announcement">
+    <div class="annlist">
+    <a class="left" title="上一條" href="javascript:void(0);" onclick="rollAnnouncement(-1);return false;"><img src="images/icon_pre.gif" alt="上一条" /></a>
+                        <div class="left" id="announcement1" style="display:block;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#57">關於停用DISQUS評論系統的公告</a>(2022-01-09)</div>
+                       <div class="left" id="announcement2" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#56">公共Tracker伺服器關閉通知</a>(2021-09-03)</div>
+                       <div class="left" id="announcement3" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#55">大陸地區鏡像站已上綫</a>(2020-12-22)</div>
+                       <div class="left" id="announcement4" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#52">資源更新推送已加入Telegram</a>(2018-12-04)</div>
+                       <div class="left" id="announcement5" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="https://blog.acgnx.se/archives/173.html" target="_blank">RSS訂閱伺服器更改公告</a>(2018-06-27)</div>
+                       <div class="left" id="announcement6" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#50">微軟系列電郵無法使用問題</a>(2018-03-13)</div>
+                       <div class="left" id="announcement7" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#49">關於取消寬熒幕佈局</a>(2018-02-28)</div>
+                       <div class="left" id="announcement8" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="https://blog.acgnx.se/archives/142.html" target="_blank">捐助渠道與廣告細則更新</a>(2018-01-30)</div>
+                       <div class="left" id="announcement9" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#44">Telegram公告頻道創建完畢，點擊加入</a>(2017-09-22)</div>
+                       <div class="left" id="announcement10" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="https://blog.acgnx.se/archives/job.html" target="_blank">末日動漫資源庫工作組成員現在招募中</a>(2017-04-05)</div>
+                       <div class="left" id="announcement11" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#36">如有資源點開為502錯誤請與我們聯繫</a>(2017-01-23)</div>
+                       <div class="left" id="announcement12" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="https://blog.acgnx.se/archives/63.html" target="_blank">檢索功能更新：兼容動漫花園檢索模式</a>(2017-01-10)</div>
+                       <div class="left" id="announcement13" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="https://blog.acgnx.se/archives/Invitation.html" target="_blank">末日動漫資源庫誠邀發佈人員進駐發佈</a>(2016-11-16)</div>
+                       <div class="left" id="announcement14" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="https://blog.acgnx.se/archives/45.html" target="_blank">統計都是0並不影響下載,說明看這</a>(2016-11-16)</div>
+               <a class="right" title="下一条" href="javascript:void(0);" onclick="rollAnnouncement(1);return false;"><img src="images/icon_next.gif" alt="下一条" /></a>
+    </div>
+    <div class="annfunc">
+        <div id="annpageshow">1/14</div>        
+    </div>
+</div>
+<script type="text/javascript">
+var anndelay=10000,anntotal=14,anndefault=1,annst=null;
+rollAnnouncement.delay(anndelay, this, 1);
+</script>
+    </div>
+</div>
+
+<script type="text/javascript">btmenu.init('smenu', 'auto');</script>
+
+<div class="clear text_center banner" style="margin-bottom:10px;"><a target="_blank" href="https://segucrwj.taobao.com"><img border="0" src="/images/j1hLD8.jpg" alt="sg"></a></div>
+
+<div class="main">
+
+<div id="bangumi"><div class="block"><noscript><p>閣下必須啓用瀏覽器的JavaScript功能才能顯示動畫番組表！</p></noscript></div><a class="icon" href="bangumi.php" title="動畫番組表">動畫番組表</a></div>
+<script type="text/javascript" src="javascripts/bangumi.js?v20160916"></script>
+
+<div class="clear text_center banner" style="margin-bottom:10px; max-width: 100%;"><a target="_blank" href="https://6e7d3f4.bzjrxw.com/?code=zQ83&c=7616"><img border="0" src="/images/5Nptys.png" alt="fljad" ></a></div>
+
+<div id="recommend">
+    <div class="mos">
+        <div id="hometab1" class="left" style="width:388px;">
+            <div class="item-box">
+                <div class="title">
+                    <a href="leaderboard.html" target="_blank">熱門資源</a><div class="fright"></div>
+                </div>
+                <div class="column">
+                   
+                </div>
+            </div>
+        </div>
+        <div id="hometab2" class="left" style="width:386px;">
+            <div class="item-box" style="border-left:0;">
+                <div class="title">
+                    <a href="bangumi.php" target="_blank">新番推薦</a><a class="right" href="bangumi.php" target="_blank">更多»</a>
+                </div>
+                <div class="column">
+                 </div>
+            </div>
+        </div>
+        <div id="hometab3" class="left" style="width:386px;">
+            <div class="item-box" style="border-left:0;">
+                <div class="title">
+                    <a href="owaribangumi.html" target="_blank">完結番推薦</a><a class="right" href="owaribangumi.html" target="_blank">更多»</a>
+                </div>
+                <div class="column">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="javascripts/hottopics.js?v20170525"></script>
+
+<div class="clear text_center banner" style="margin-bottom:10px; max-width: 100%;"><a target="_blank" href="https://segucrwj.taobao.com/"><img border="0" src="/images/8FwFy.jpg" alt="sg"></a></div>
+
+
+
+
+<div class="box clear">
+<h2 class="title">
+        <div class="left">資源列表 [資源總計: 871842]&nbsp;<a href="rss.xml" target="_blank"><img src="images/icon_rss1.gif" alt="RSS" align="absmiddle" /></a></div>
+    <div class="right text_normal"><a href="today-1.html">本日新增</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="yesterday-1.html">昨日新增</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="weekly-1.html">本周新增</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="search.php?keyword=bd">BD</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="search.php?keyword=dvd">DVD</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="search.php?keyword=OVA%7COAD">OVA/OAD</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="search.php?keyword=劇場%7C電影%7CMOVIE">劇場版</a></div>
+    </h2>
+<div class="clear">
+<table id="listTable" class="list_style table_fixed">
+  <thead class="tcat">
+      <tr>
+        <th axis="string" class="l1">發佈時間</th>
+        <th axis="string" class="l2">分類</th>
+        <th axis="string" class="l3">資源名稱</th>
+        <th axis="size" class="l4">大小</th>
+        <th axis="string" class="l5">磁鏈</th>
+        <th axis="number" class="l5">上載</th>
+        <th axis="number" class="l6">下載</th>
+        <th axis="number" class="l7">完成</th>
+        <th axis="string" class="l8">發佈者/聯盟</th>
+      </tr>
+  </thead>
+  <tbody class="tbody" id="data_list">
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 17:03">今天 17:03</td>
+        <td><a href="sort-10-1.html"><font color="blue">日劇/日影</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-6ff80d6c2fec9bcc2d94f8677450e05792a68ee8.html" target="_blank">
+        【幻月字幕组】【23年日剧】【喜欢你.mp4】【04-06】【1080P】【中文字幕】</a>
+        </td>
+        <td>463.8MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:6ff80d6c2fec9bcc2d94f8677450e05792a68ee8&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_3">0</span>
+        </td>
+        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 16:11">今天 16:11</td>
+        <td><a href="sort-6-1.html"><font color="purple">音樂</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-e83fcdda86527123d65c2db646b1d97080238d23.html" target="_blank">
+        [2023-02-17] 宇多田ヒカル - 40代はいろいろ -Live from Metropolis Studios- (FLAC 24bit/48kHz)</a>
+        </td>
+        <td>90.4MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:e83fcdda86527123d65c2db646b1d97080238d23&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_2">1</span>
+        </td>
+        <td><a href="user-69-1.html">xSxSxSxSx</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 15:45">今天 15:45</td>
+        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-83c7841423e0c28e1ac8e2c819c463e370212376.html" target="_blank">
+        女神のカフェテラス2023年07月02日更新</a>
+        </td>
+        <td>947.3MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:83c7841423e0c28e1ac8e2c819c463e370212376&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_3">0</span>
+        </td>
+        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 15:13">今天 15:13</td>
+        <td><a href="sort-2-1.html"><font color="red">季度全集</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-3bd593144c449c89b1b5f8509087380766b346e0.html" target="_blank">
+        [喵萌Production&amp;VCB-Studio] 闪耀路标 / SHINE POST / シャインポスト 10-bit 1080p HEVC BDRip [Fin]</a>
+        </td>
+        <td>16.5GB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:3bd593144c449c89b1b5f8509087380766b346e0&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">9</span>
+        </td>
+        <td><a href="team-74-1.html" class="text_green">VCB-Studio</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 15:12">今天 15:12</td>
+        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-e5515e9aa037afa34224366c886d8af170d194b4.html" target="_blank">
+        OLさんと猫のはなし 第01-02巻 [OL San to Neko No Hanashi vol 01-02]</a>
+        </td>
+        <td>34.8MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:e5515e9aa037afa34224366c886d8af170d194b4&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_2">1</span>
+        </td>
+        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 15:10">今天 15:10</td>
+        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-9c5821154fd629f53b84f62431905acfebadcce7.html" target="_blank">
+        オーク編集と女騎士マンガ家さん 第01-03巻 [Oku Henshu to Onnakishi Mangakasan vol 01-03]</a>
+        </td>
+        <td>179.3MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:9c5821154fd629f53b84f62431905acfebadcce7&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_3">0</span>
+        </td>
+        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 14:52">今天 14:52</td>
+        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-aa3c20851575c86a195627280f902e32b3a94c42.html" target="_blank">
+        [星空字幕組][咒術回戰 / Jujutsu Kaisen][25][繁日雙語][1080P][WEBrip][MP4]（急招校對、後期）</a>
+        </td>
+        <td>525.2MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:aa3c20851575c86a195627280f902e32b3a94c42&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">94</span>
+        </td>
+        <td><a href="team-79-1.html" class="text_green">星空字幕组</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 14:51">今天 14:51</td>
+        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-645e3779624d90d23c7af741ea195aeb9d1e4fbc.html" target="_blank">
+        [星空字幕组][咒术回战 / Jujutsu Kaisen][25][简日双语][1080P][WEBrip][MP4]（急招校对、后期）</a>
+        </td>
+        <td>525.3MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:645e3779624d90d23c7af741ea195aeb9d1e4fbc&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">42</span>
+        </td>
+        <td><a href="team-79-1.html" class="text_green">星空字幕组</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 14:06">今天 14:06</td>
+        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-aa19292279d4346964b3d8aa3f825e07302ab54a.html" target="_blank">
+        [Lilith-Raws] 能幹貓今天也憂鬱 / Dekiru Neko wa Kyou mo Yuuutsu - 01 [Baha][WebDL 1080p AVC AAC][CHT]</a>
+        </td>
+        <td>550MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:aa19292279d4346964b3d8aa3f825e07302ab54a&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_1">5</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_1">4</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">603</span>
+        </td>
+        <td><a href="team-80-1.html" class="text_green">Lilith-Raws</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 14:05">今天 14:05</td>
+        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-684eee23aaea960e39d06e00b00781a7f6c59454.html" target="_blank">
+        [Lilith-Raws] AI 電子基因 / AI no Idenshi - 01 [Baha][WebDL 1080p AVC AAC][CHT]</a>
+        </td>
+        <td>516.8MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:684eee23aaea960e39d06e00b00781a7f6c59454&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_1">6</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_2">3</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">752</span>
+        </td>
+        <td><a href="team-80-1.html" class="text_green">Lilith-Raws</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 14:05">今天 14:05</td>
+        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-1099677de0b6927779b42c57d77f4496fe97de53.html" target="_blank">
+        [星空字幕组][布莱泽奥特曼 / ULTRAMAN BLAZAR][01][简日双语][1080P][TVrip][MP4]（急招校对、后期）</a>
+        </td>
+        <td>603.6MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:1099677de0b6927779b42c57d77f4496fe97de53&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">251</span>
+        </td>
+        <td><a href="team-79-1.html" class="text_green">星空字幕组</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 13:33">今天 13:33</td>
+        <td><a href="sort-6-1.html"><font color="purple">音樂</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-d69662dfb9488c0a5208610c59022ccc3534c405.html" target="_blank">
+        Kikuko Inoue - Fuchuu Shigure ／ Sakura Saginomiya (1996) [BVDR-1079] 府中しぐれ _ 鷺ノ宮さくら (井上喜久子) ふちゅう しぐれ _ さぎのみや さくら ( いのうえ きくこ ) FLAC</a>
+        </td>
+        <td>117.8MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:d69662dfb9488c0a5208610c59022ccc3534c405&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_2">1</span>
+        </td>
+        <td><a href="user-69-1.html">xSxSxSxSx</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 13:32">今天 13:32</td>
+        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-72ea94c66c3a122616485e00465ddbc7d7314336.html" target="_blank">
+        【FSD】[布莱泽奥特曼] [01] [第一波]</a>
+        </td>
+        <td>621.9MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:72ea94c66c3a122616485e00465ddbc7d7314336&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_2">2</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">11</span>
+        </td>
+        <td><a href="user-98-1.html">萌番組鏡像</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 13:03">今天 13:03</td>
+        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-9a27db07afd0254d5c0ad59c67e0175881a436d3.html" target="_blank">
+        母様の家‐拝み屋　郷内心瞳の怪異譚‐ 第01巻 [Haha Sama No Ie Ogami Ya Kyo Naishin Hitomi No Kai Tan vol 01]</a>
+        </td>
+        <td>132.2MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:9a27db07afd0254d5c0ad59c67e0175881a436d3&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_3">0</span>
+        </td>
+        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 13:02">今天 13:02</td>
+        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-23b58e84d066bce0420b527ea0e545c357da13cc.html" target="_blank">
+        メルヘン・メドヘン 第01-02巻</a>
+        </td>
+        <td>167.3MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:23b58e84d066bce0420b527ea0e545c357da13cc&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_2">1</span>
+        </td>
+        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 12:34">今天 12:34</td>
+        <td><a href="sort-10-1.html"><font color="blue">日劇/日影</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-aa5d6aaf80dd1dece98e4626af954625441c6570.html" target="_blank">
+        【幻月字幕组】【23年日剧】【晚酌的做派2】【01】【1080P】【中日双语】</a>
+        </td>
+        <td>548.5MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:aa5d6aaf80dd1dece98e4626af954625441c6570&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">4</span>
+        </td>
+        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 11:17">今天 11:17</td>
+        <td><a href="sort-10-1.html"><font color="blue">日劇/日影</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-71497aaa90e477ef78b5fefc7ed8ecbcf4f47850.html" target="_blank">
+        【幻月字幕组】【23年日剧】【治愈系邻居有秘密】【01】【1080P】【中日双语】</a>
+        </td>
+        <td>498.4MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:71497aaa90e477ef78b5fefc7ed8ecbcf4f47850&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_2">3</span>
+        </td>
+        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 11:14">今天 11:14</td>
+        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-44dd19383704574752f2a5226cacb26d34bbd1a1.html" target="_blank">
+        まだ間に合う！明日処刑される悪役令嬢ですけど、スチル回収だけはさせてください！ 第01-03巻 [Mada Maniau! Ashita Shokei sareru Akuyaku Reijo desukedo Suchiru Kaishu dakewa Sa</a>
+        </td>
+        <td>432.2MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:44dd19383704574752f2a5226cacb26d34bbd1a1&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_2">1</span>
+        </td>
+        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 11:08">今天 11:08</td>
+        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-f12c3e15c18fcdc4eca9820f486952775dd3d3e9.html" target="_blank">
+        あくまのまま 第01巻</a>
+        </td>
+        <td>134.9MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:f12c3e15c18fcdc4eca9820f486952775dd3d3e9&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_2">1</span>
+        </td>
+        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 10:58">今天 10:58</td>
+        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-9a057239594d25537eb5549cea2e74a8ceef9945.html" target="_blank">
+        【喵萌奶茶屋】★07月新番★[我喜歡的女孩忘記戴眼鏡 / Suki na Ko ga Megane wo Wasureta][01][1080p][繁日雙語][招募翻譯]</a>
+        </td>
+        <td>426.5MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:9a057239594d25537eb5549cea2e74a8ceef9945&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">132</span>
+        </td>
+        <td><a href="team-38-1.html" class="text_green">喵萌奶茶屋</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 10:58">今天 10:58</td>
+        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-09defe2ddd166d1a1684ad444a4bed0be48ec442.html" target="_blank">
+        【喵萌奶茶屋】★07月新番★[喜欢的人忘记戴眼镜了 / Suki na Ko ga Megane wo Wasureta][01][1080p][简日双语][招募翻译]</a>
+        </td>
+        <td>426.8MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:09defe2ddd166d1a1684ad444a4bed0be48ec442&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">51</span>
+        </td>
+        <td><a href="team-38-1.html" class="text_green">喵萌奶茶屋</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 10:45">今天 10:45</td>
+        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-62c986da65cb2bbe74fd86b45cb62520da83fda2.html" target="_blank">
+        [离谱Sub] BanG Dream!!! It's MyGO [02][AVC AAC][1080p][繁日內嵌]</a>
+        </td>
+        <td>392.1MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:62c986da65cb2bbe74fd86b45cb62520da83fda2&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">6</span>
+        </td>
+        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 10:44">今天 10:44</td>
+        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-a647755b02588367e120d80019236895765546b1.html" target="_blank">
+        [离谱Sub] BanG Dream!!! It's MyGO [02][AVC AAC][1080p][简日内嵌]</a>
+        </td>
+        <td>392.5MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:a647755b02588367e120d80019236895765546b1&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_2">1</span>
+        </td>
+        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 10:31">今天 10:31</td>
+        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-721cfb708097576a0bc0f4b9f5c159a1ed9ed5f5.html" target="_blank">
+        [GJ.Y] 影之诗F / Shadowverse Flame - 51 (CR 1920x1080 AVC AAC MKV)</a>
+        </td>
+        <td>1.4GB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:721cfb708097576a0bc0f4b9f5c159a1ed9ed5f5&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">6</span>
+        </td>
+        <td><a href="user-529-1.html">TrySail</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 10:30">今天 10:30</td>
+        <td><a href="sort-7-1.html"><font color="purple">動漫音樂</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-841b21b5946fc057aa99445c4caf099d62db1162.html" target="_blank">
+        [230628][World Dai Star世界大明星]TVアニメ『ワールドダイスター』劇中歌アルバム／石見舞菜香、長谷川育美、大空直美、佐々木李子、天城サリー、長縄まりあ[FLAC]</a>
+        </td>
+        <td>294.4MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:841b21b5946fc057aa99445c4caf099d62db1162&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">5</span>
+        </td>
+        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 10:22">今天 10:22</td>
+        <td><a href="sort-7-1.html"><font color="purple">動漫音樂</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-89d63328a90c5c0d339f0bf0394e03404e59d309.html" target="_blank">
+        [230628][World Dai Star世界大明星]TVアニメ『ワールドダイスター』劇中歌アルバム／石見舞菜香、長谷川育美、大空直美、佐々木李子、天城サリー、長縄まりあ[320K]</a>
+        </td>
+        <td>87.9MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:89d63328a90c5c0d339f0bf0394e03404e59d309&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">4</span>
+        </td>
+        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 10:03">今天 10:03</td>
+        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-4c2249e46f646412f790eb1cc8edf320312fd9dd.html" target="_blank">
+        あさりちゃん 第01-100巻 [Asarichan vol 01-100]</a>
+        </td>
+        <td>3.9GB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:4c2249e46f646412f790eb1cc8edf320312fd9dd&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_2">1</span>
+        </td>
+        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 10:01">今天 10:01</td>
+        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-ae4bcaba74e9d99df809cc28fc242d7372d060f7.html" target="_blank">
+        雑草転生 ～エルフの里を守りたい～ 第01-03巻 [Zasso Tensei Erufu No Sato Wo Mamoritai vol 01-03]</a>
+        </td>
+        <td>421.8MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:ae4bcaba74e9d99df809cc28fc242d7372d060f7&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_3">0</span>
+        </td>
+        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 10:00">今天 10:00</td>
+        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-4bc044068cb3551b0d8265dc7d16fea43763fa28.html" target="_blank">
+        [Novel] 世界最強は家族と仲良く出稼ぎ中! 第01-04巻 [Sekai Saikyo wa Kazoku to Nakayoku Dekasegi Chu! vol 01-04]</a>
+        </td>
+        <td>117.1MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:4bc044068cb3551b0d8265dc7d16fea43763fa28&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_2">2</span>
+        </td>
+        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 09:42">今天 09:42</td>
+        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-e4a134d7b275db719c43711ce3fba9a9e7e04958.html" target="_blank">
+        鴨乃橋ロンの禁断推理 raw 第01-11巻</a>
+        </td>
+        <td>1.2GB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:e4a134d7b275db719c43711ce3fba9a9e7e04958&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_2">1</span>
+        </td>
+        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 09:41">今天 09:41</td>
+        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-4287f2a95d4988a9e8a5cbecd44fafaa56e614f1.html" target="_blank">
+        お嬢さまの痴的好奇心 raw 全03巻</a>
+        </td>
+        <td>186.5MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:4287f2a95d4988a9e8a5cbecd44fafaa56e614f1&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_2">1</span>
+        </td>
+        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 09:40">今天 09:40</td>
+        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-c36d8ba43f7b71c696e275fb75e960e2fe131dbc.html" target="_blank">
+        異世界かくり世　あやかし喰奇譚 raw 第01巻</a>
+        </td>
+        <td>80.9MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:c36d8ba43f7b71c696e275fb75e960e2fe131dbc&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_3">0</span>
+        </td>
+        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 09:35">今天 09:35</td>
+        <td><a href="sort-18-1.html"><font color="brown">特攝</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-ee12a582b61d515b095c07382a695685a4cfdba4.html" target="_blank">
+        [天月搬運組] ULTRAMAN BLAZAR Episode 1 (New) &quot;First Wave&quot; -Official- (CHS/CHT/JP)</a>
+        </td>
+        <td>673.6MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:ee12a582b61d515b095c07382a695685a4cfdba4&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">82</span>
+        </td>
+        <td><a href="team-85-1.html" class="text_green">天月動漫&amp;發佈組</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 09:03">今天 09:03</td>
+        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-4986b61399f3d4878523d354ff51f87ad5ae42fc.html" target="_blank">
+        [ANi]  超人力霸王布雷薩 - 01 [1080P][Baha][WEB-DL][AAC AVC][CHT][MP4]</a>
+        </td>
+        <td>591.7MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:4986b61399f3d4878523d354ff51f87ad5ae42fc&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">377</span>
+        </td>
+        <td><a href="team-112-1.html" class="text_green">ANiTorrent</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 09:03">今天 09:03</td>
+        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-3b24a03cc8805126739c77c2db4f1ece3a3ebd56.html" target="_blank">
+        [GJ.Y] 卡片戰鬥!! 先導者 will+Dress 第三季 / Cardfight!! Vanguard: will+Dress Season 3 - 26 (Sentai 1920x1080 AVC AAC MKV)</a>
+        </td>
+        <td>333.2MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:3b24a03cc8805126739c77c2db4f1ece3a3ebd56&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_2">1</span>
+        </td>
+        <td><a href="user-529-1.html">TrySail</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 09:02">今天 09:02</td>
+        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-809d35e784e06c1282e48d19d49dc5a2bed950ca.html" target="_blank">
+        [GJ.Y] 超人力霸王布雷薩 / Ultraman Blaza - 01 (Baha 1920x1080 AVC AAC MP4)</a>
+        </td>
+        <td>591.3MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:809d35e784e06c1282e48d19d49dc5a2bed950ca&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">11</span>
+        </td>
+        <td><a href="user-529-1.html">TrySail</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 09:01">今天 09:01</td>
+        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-31c490da50444cc45a0534531d39e4269a7187fb.html" target="_blank">
+        [GJ.Y] 卡片戰鬥!! 先導者 will+Dress 第三季 / Cardfight!! Vanguard: will+Dress Season 3 - 01 (CR 1920x1080 AVC AAC MKV)</a>
+        </td>
+        <td>1.4GB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:31c490da50444cc45a0534531d39e4269a7187fb&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">5</span>
+        </td>
+        <td><a href="user-529-1.html">TrySail</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 09:01">今天 09:01</td>
+        <td><a href="sort-2-1.html"><font color="red">季度全集</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-233eaa4c4642740607d727d35064fbe93d60ea92.html" target="_blank">
+        [整理搬运] 新世纪福音战士 (新世紀エヴァンゲリオン／Neon Genesis Evangelion)：TV动画(初版,重制)+新老剧场版+ONA+CD+漫画+其他；日语,外挂简中&amp;英文字幕 (整理时间：2023.05.22)</a>
+        </td>
+        <td>154.2GB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:233eaa4c4642740607d727d35064fbe93d60ea92&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_2">3</span>
+        </td>
+        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
+      </tr>
+              <tr class="alt1">
+        <td nowrap="nowrap" title="2023-07-08 08:31">今天 08:31</td>
+        <td><a href="sort-19-1.html"><font color="black">其他</font></a></td>
+        <td style="text-align:left;">
+                <a href="./error-423.html" target="_blank">
+        <STRIKE>[萝莉哒胖次真的不见了！][第211期][300P]</STRIKE></a>
+        </td>
+        <td>1.9GB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="./error-423.html"><img src="./images/icon_delete.gif" title="下載禁止"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_3">0</span>
+        </td>
+        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
+      </tr>
+              <tr class="alt2">
+        <td nowrap="nowrap" title="2023-07-08 08:03">今天 08:03</td>
+        <td><a href="sort-10-1.html"><font color="blue">日劇/日影</font></a></td>
+        <td style="text-align:left;">
+                <a href="show-a51290dd15fc748030f4bb8448050d1c40b734e9.html" target="_blank">
+        【幻月字幕组】【23年日剧】【量产型璃子 另一位模型女子的人生组装记】【02】【1080P】【中日双语】</a>
+        </td>
+        <td>546.9MB</td>
+        <td nowrap="nowrap">
+                     <a id="magnet" href="magnet:?xt=urn:btih:a51290dd15fc748030f4bb8448050d1c40b734e9&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
+                 </td>
+        <td nowrap="nowrap">
+            <span class="bts_3">0</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btl_2">1</span>
+        </td>
+        <td nowrap="nowrap">
+            <span class="btc_1">18</span>
+        </td>
+        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
+      </tr>
+      </tbody>
+</table>
+</div>
+</div>
+<div class="pages clear"><span class="nextprev">&laquo; 上一頁</span><span class="current">1</span><a href="/2.html" target="_self">2</a><a href="/3.html" target="_self">3</a><a href="/4.html" target="_self">4</a><a href="/5.html" target="_self">5</a><span>&#8230;.</span><a href="/100.html" class="pager-last active" target="_self">100</a><a href="/2.html" class="nextprev" target="_self">下一頁 &raquo;</a></div><script type="text/javascript" src="javascripts/tablesort.js?v20081028"></script>
+<script type="text/javascript">
+window.addEvent('domready', function(){new SortableTable($('listTable'))});
+</script>
+
+
+
+
+
+<div class="box clear flink">
+    <h2 class="title">
+        <span class="left">友情鏈接</span>
+        <span class="right"><a href="javascript:void(0);" onclick="panelDeploy('flink', true);return false;" class="right"><img src="images/collapse.gif" id="panel_flink_button" /></a></span>
+    </h2>
+    <table class="list_style" cellpadding="0" cellspacing="0">
+        <tbody id="panel_flink">
+                                                  <tr class="alt1">
+                <td class="ftext">[<a href="http://yoooo.co/" target="_blank" title="We are all Gentlemen！">4MOE</a>]&nbsp;&nbsp;[<a href="https://www.blue-plus.net/" target="_blank" title="蓝+">Blue Plus</a>]&nbsp;&nbsp;[<a href="http://acgtracker.com/" target="_blank" title="ACGTracker是一个ACG領域的開放式Tracker">ACGTracker</a>]&nbsp;&nbsp;[<a href="https://bangumi.moe/" target="_blank" title="BangumiMoe - 萌番組">萌番組</a>]&nbsp;&nbsp;[<a href="https://www.moe123.net/" target="_blank" title="你的二次元导航姬！">萌导航</a>]&nbsp;&nbsp;[<a href="https://www.sshs.pw/" target="_blank" title="加入绅士们的奢华会所，从今天起，变身成为优雅的绅士。">绅士会所</a>]&nbsp;&nbsp;[<a href="https://www.acg123.co/" target="_blank" title="你也是二刺螈？">二刺螈导航</a>]&nbsp;&nbsp;[<a href="https://1ptba.com" target="_blank" title="影视游戏软件分享PT站/全站随机免费/注册送200G上传/保号300天/适合新人练手。">壹PT吧</a>]&nbsp;&nbsp;[<a href="https://hanime1.me/" target="_blank" title="H動漫的完美體驗">Hanime1.me</a>]&nbsp;&nbsp;[<a href="https://share.dmhy.org/" target="_blank" title="動漫花園資源網">動漫花園資源網</a>]&nbsp;&nbsp;[<a href="https://blog.acgnx.se/archives/addfriendlink.html" target="_blank" title="友情鏈接申請須知">友鏈申請</a>]&nbsp;&nbsp;</td>
+              </tr>
+                    </tbody>
+    </table>
+</div>
+<script type="text/javascript">panelDeploy('flink', 0);</script>
+
+</div>
+
+<div class="clear text_center banner" style="margin-bottom:10px;"><a target="_blank" href="https://xixiyun.top/#/login"><img border="0" src="/images/7ezF8r.jpg" alt="XXY" ></a></div>
+<script type="text/javascript" src="javascripts/redisplay.js?v20160401"></script>
+<div class="footer_menu"><div class="mos"><a href="https://blog.acgnx.se/archives/tos.html" target="_blank">末日動漫資源庫服務條款</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="./feedback.php" target="_blank">BUG反饋</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://blog.acgnx.se/archives/job.html" target="_blank">加入我們的工作組</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="./">返回首頁</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://t.me/acgnxtorrent" target="_blank">Telegram公告頻道</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://blog.acgnx.se/" target="_blank">最新動態</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://blog.acgnx.se/archives/donate.html" target="_blank">捐助我们</a>&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+<div class="footer">
+<div class="mos r2">
+    <div class="left">
+        <p>Copyright &copy;2015-2023&nbsp;<a href="https://share.acgnx.se/" target="_blank" class="copyright">Project AcgnX Torrent Asia</a>. All rights reserved.</p>
+        <p>Powered by HamotionCloud , Version:1.3.5</p>
+    </div>
+    <div class="right">
+        <p><a href="https://blog.acgnx.se/" target="_blank">官方部落格</a> - <a href="https://twitter.com/AcgnX" target="_blank">官方Twitter</a> - <a href="https://www.facebook.com/acgnx" target="_blank">官方Facebook</a> - <a href="https://blog.acgnx.se/archives/job.html" target="_blank">加入我們</a> - <a href="https://blog.acgnx.se/archives/dmca.html" target="_blank">DMCA</a> - <a href="https://blog.acgnx.se/archives/tos.html" target="_blank">服務條款</a> - <a href="https://blog.acgnx.se/about.html" target="_blank">關於我們</a> - <a href="https://blog.acgnx.se/archives/donate.html">捐助我们</a> <a type="application/rss+xml" href="./rss.xml" target="_blank"><img src="images/icon_rss.gif" alt="RSS订阅" title="RSS订阅" align="absmiddle" /></a></p>
+        <p>使用本站還請閣下遵守瑞典王國相關法律與閣下所在地的當地法律。 <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72732229-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<script type="text/javascript">
+  var _paq = window._paq = window._paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//analytics.acgnx.se/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', 'rexker175w']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script></p>
+    </div>
+</div>
+</div>
+
+</div>
+<div><script type="text/javascript" src="javascripts/scrolltopcontrol.js"></script></div>
+</body>
+</html>`
