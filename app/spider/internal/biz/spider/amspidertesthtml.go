@@ -6457,1166 +6457,3812 @@ const nyaaHtml = `<!DOCTYPE html>
 	</body>
 </html>`
 
-var acgnxHtml = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="Content-Language" content="zh-tw" />
-<title>末日動漫資源庫 - Project AcgnX Torrent Asia</title>
-<meta name="robots" content="all" />
-<meta name="keywords" content="BT,動畫,漫畫,遊戲,動漫音樂,動漫資源,bt,acg資源,動漫BT下載,動畫下載,漫畫下載" /><meta name="description" content="AcgnX末日動漫資源庫擁有華語範圍內最多最全的ACG資源,能為所有動漫愛好者提供最全的資源檢索服務" /><meta name="google-site-verification" content="l3wPX00gtRysj-lubJrjqi0-4hrGSZhuWg0vY-yyHfc" />
-<link rel="alternate" type="application/rss+xml" title="末日動漫資源庫 - Project AcgnX Torrent Asia[RSS订阅]" href="rss.xml" />
-<link type="text/css" rel="stylesheet" href="css/btmaster.css?v20180236" />
-<link type="text/css" rel="stylesheet" href="css/flags.min.css?v20180227" />
-<script type="text/javascript" src="javascripts/jquery.min.js"></script>
-<script type="text/javascript">jQuery.noConflict();</script>
-<script type="text/javascript" src="javascripts/mt-core.js?v20081230"></script>
-<script type="text/javascript" src="javascripts/btmaster.js?v20170623"></script>
-<script type="text/javascript">
-Config['url_rewrite'] = true;
-</script>
-<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-</head>
-
-<body>
-<div id="btm" style="width:100%;">
-<div class="header">
-    <div class="top_nav">
-    <div class="mos">
-        <p class="left">末日動漫資源庫 - Project AcgnX Torrent Asia</p>
-        <p class="right"><a href="./feedback.php" target="_blank" style="color:red;font-weight:bold;">留言反饋</a> | <a href="https://t.me/acgnxtorrent" target="_blank" style="color:purple;font-weight:bold;">Telegram 公告頻道</a> | <a href="https://t.me/acgnxasiachat" target="_blank" style="color:#007FFF;font-weight:bold;text-decoration:underline;">Telegram Group</a> | <a href="https://blog.acgnx.se/archives/job.html" target="_blank" style="color:orange;font-weight:bold;">工作組成員招募</a> | <a href="https://blog.acgnx.se/FAQ.html" target="_blank">FAQ</a> | <a href="https://blog.acgnx.se/archives/tos.html" target="_blank" style="color:black;font-weight:bold;">站點服務條款</a> | <a href="https://blog.acgnx.se/archives/donate.html" target="_blank">捐助我們</a> | <a href="search.php">高級搜索</a> | <a href="user.php?o=upload">發佈資源</a> | <a href="javascript:void(0);" onclick="addFavorite('末日動漫資源庫 - Project AcgnX Torrent Asia', 'https://share.acgnx.se');return false;">加入收藏</a></p>
-    </div>
-    </div>
-    <div class="func">
-        <table class="mos"><tr>
-            <td class="t1"><a href="./"><img src="images/logo.png" width="150" height="51" alt="末日動漫資源庫 - Project AcgnX Torrent Asia" /></a></td>
-            <td class="t2"></td>
-            <td class="t3">
-                <div class="topsearch">
-                <select id="category_id" name="category_id"><option value="0">全部分類</option><option value="1"> 動畫 </option><option value="2">- 季度全集 </option><option value="3"> 出版品 </option><option value="4">- 港臺原版 </option><option value="5">- 日文原版 </option><option value="6"> 音樂 </option><option value="7">- 動漫音樂 </option><option value="8">- 同人音樂 </option><option value="9">- 流行音樂 </option><option value="10"> 日劇/日影 </option><option value="11"> RAW </option><option value="12"> 遊戲 </option><option value="13">- 電腦遊戲 </option><option value="14">- 電視遊戲 </option><option value="15">- 掌機遊戲 </option><option value="16">- 網絡遊戲 </option><option value="17">- 遊戲周邊 </option><option value="18"> 特攝 </option><option value="19"> 其他 </option></select>
-                <input type="text" id="topsearch" onkeypress="doSearchEvent(event);" value="請閣下輸入要檢索的關鍵字" onfocus="searchTip(0);"><a href="javascript:void(0);" onclick="doSearch();return false;"></a></div>
-                <script type="text/javascript">var kcount=0, kheight=18, kst=0;</script>
-                <div class="hotsearch">
-                    <span class="left">熱搜:</span>
-                    <div id="searchkey">
-                        <div id="searchkeybody">
-                                                <a href="search.php?keyword=bd">bd</a><a href="search.php?keyword=1080P">1080P</a><a href="search.php?keyword=Raws">Raws</a><a href="search.php?keyword=%E5%8A%87%E5%A0%B4">劇場</a><a href="search.php?keyword=mp4">mp4</a><a href="search.php?keyword=MOVIE">MOVIE</a><a href="search.php?keyword=%E9%9B%BB%E5%BD%B1">電影</a><a href="search.php?keyword=baha">baha</a><a href="search.php?keyword=720p">720p</a><a href="search.php?keyword=LILITH">LILITH</a>                                                </div>
-                    </div>
-                </div>
-            </td>
-        </tr></table>
-<div class="nav mos" id="smenu">
-    <ul>
-        <li><a href="./">首頁</a></li>
-        <li><a rel="menu198" href="today-1.html">本日新增</a></li>
-                <li><a rel="menu1" href="sort-1-1.html"><font color="red">動畫</font></a></li>
-                <li><a rel="menu3" href="sort-3-1.html"><font color="green">出版品</font></a></li>
-                <li><a rel="menu6" href="sort-6-1.html"><font color="purple">音樂</font></a></li>
-                <li><a href="sort-10-1.html"><font color="blue">日劇/日影</font></a></li>
-                <li><a href="sort-11-1.html"><font color="orange">RAW</font></a></li>
-                <li><a rel="menu12" href="sort-12-1.html"><font color="#0eb9e7">遊戲</font></a></li>
-                <li><a href="sort-18-1.html"><font color="brown">特攝</font></a></li>
-                <li><a href="sort-19-1.html"><font color="black">其他</font></a></li>
-                <li><a rel="menu199" href="./bangumi.php">動畫番組表</a></li>
-    </ul>
-    <a class="post-button" href="user.php?o=upload">發佈資源</a>
-    <ul style="float:right;"><li><a rel="menu200"><img src="/images/blanks.gif" class="flag flag-hk">&nbsp;亞太-繁體中文</a></li></ul>
-</div>
-    </div>
-</div>
-<div class="menudiv" id="menu198" style="top: 159px; left: 620px; visibility: hidden; width: 80px;">
-<a href="yesterday-1.html" style="border-top-width: 0px;">昨日新增</a>
-<a href="weekly-1.html" style="border-top-width: 0px;">本周新增</a>
-</div>
-<div class="menudiv" id="menu199" style="top: 159px; left: 620px; visibility: hidden; width: 80px;">
-<a href="./owaribangumi.html" style="border-top-width: 0px;">歷史番組表</a>
-<a href="union.php" style="border-top-width: 0px;">字幕組列表</a>
-<a href="leaderboard.html" style="border-top-width: 0px;">下載排行榜</a>
-<a href="top.php" style="border-top-width: 0px;">爬行榜</a>
-</div>
-<div class="menudiv" id="menu200" style="top: 159px; left: 620px; visibility: hidden; width: 80px;">
-<a href="https://www.acgnx.se/" style="border-top-width: 0px;"><img src="/images/blanks.gif" class="flag flag-gb">&nbsp;國際-English</a>
-</div>
-<div class="menudiv" id="menu1">
-        <a href="sort-2-1.html"><font color="red">季度全集</font></a>
-    </div>
-<div class="menudiv" id="menu3">
-        <a href="sort-4-1.html"><font color="green">港臺原版</font></a>
-        <a href="sort-5-1.html"><font color="green">日文原版</font></a>
-    </div>
-<div class="menudiv" id="menu6">
-        <a href="sort-7-1.html"><font color="purple">動漫音樂</font></a>
-        <a href="sort-8-1.html"><font color="purple">同人音樂</font></a>
-        <a href="sort-9-1.html"><font color="purple">流行音樂</font></a>
-    </div>
-<div class="menudiv" id="menu12">
-        <a href="sort-13-1.html"><font color="#0eb9e7">電腦遊戲</font></a>
-        <a href="sort-14-1.html"><font color="#0eb9e7">電視遊戲</font></a>
-        <a href="sort-15-1.html"><font color="#0eb9e7">掌機遊戲</font></a>
-        <a href="sort-16-1.html"><font color="#0eb9e7">網絡遊戲</font></a>
-        <a href="sort-17-1.html"><font color="#0eb9e7">遊戲周邊</font></a>
-    </div>
-<script type="text/javascript">btmenu.init('smenu', 'auto');</script>
-
-<div id="breadcrumb">
-    <div class="mos">
-    
-<div class="location">
-    </div>
-
-
-<div class="announcement">
-    <div class="annlist">
-    <a class="left" title="上一條" href="javascript:void(0);" onclick="rollAnnouncement(-1);return false;"><img src="images/icon_pre.gif" alt="上一条" /></a>
-                        <div class="left" id="announcement1" style="display:block;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#57">關於停用DISQUS評論系統的公告</a>(2022-01-09)</div>
-                       <div class="left" id="announcement2" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#56">公共Tracker伺服器關閉通知</a>(2021-09-03)</div>
-                       <div class="left" id="announcement3" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#55">大陸地區鏡像站已上綫</a>(2020-12-22)</div>
-                       <div class="left" id="announcement4" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#52">資源更新推送已加入Telegram</a>(2018-12-04)</div>
-                       <div class="left" id="announcement5" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="https://blog.acgnx.se/archives/173.html" target="_blank">RSS訂閱伺服器更改公告</a>(2018-06-27)</div>
-                       <div class="left" id="announcement6" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#50">微軟系列電郵無法使用問題</a>(2018-03-13)</div>
-                       <div class="left" id="announcement7" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#49">關於取消寬熒幕佈局</a>(2018-02-28)</div>
-                       <div class="left" id="announcement8" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="https://blog.acgnx.se/archives/142.html" target="_blank">捐助渠道與廣告細則更新</a>(2018-01-30)</div>
-                       <div class="left" id="announcement9" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#44">Telegram公告頻道創建完畢，點擊加入</a>(2017-09-22)</div>
-                       <div class="left" id="announcement10" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="https://blog.acgnx.se/archives/job.html" target="_blank">末日動漫資源庫工作組成員現在招募中</a>(2017-04-05)</div>
-                       <div class="left" id="announcement11" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="announcement.php#36">如有資源點開為502錯誤請與我們聯繫</a>(2017-01-23)</div>
-                       <div class="left" id="announcement12" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="https://blog.acgnx.se/archives/63.html" target="_blank">檢索功能更新：兼容動漫花園檢索模式</a>(2017-01-10)</div>
-                       <div class="left" id="announcement13" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="https://blog.acgnx.se/archives/Invitation.html" target="_blank">末日動漫資源庫誠邀發佈人員進駐發佈</a>(2016-11-16)</div>
-                       <div class="left" id="announcement14" style="display:none;"><strong><a href="announcement.php">公告</a>：</strong><a href="https://blog.acgnx.se/archives/45.html" target="_blank">統計都是0並不影響下載,說明看這</a>(2016-11-16)</div>
-               <a class="right" title="下一条" href="javascript:void(0);" onclick="rollAnnouncement(1);return false;"><img src="images/icon_next.gif" alt="下一条" /></a>
-    </div>
-    <div class="annfunc">
-        <div id="annpageshow">1/14</div>        
-    </div>
-</div>
-<script type="text/javascript">
-var anndelay=10000,anntotal=14,anndefault=1,annst=null;
-rollAnnouncement.delay(anndelay, this, 1);
-</script>
-    </div>
-</div>
-
-<script type="text/javascript">btmenu.init('smenu', 'auto');</script>
-
-<div class="clear text_center banner" style="margin-bottom:10px;"><a target="_blank" href="https://segucrwj.taobao.com"><img border="0" src="/images/j1hLD8.jpg" alt="sg"></a></div>
-
-<div class="main">
-
-<div id="bangumi"><div class="block"><noscript><p>閣下必須啓用瀏覽器的JavaScript功能才能顯示動畫番組表！</p></noscript></div><a class="icon" href="bangumi.php" title="動畫番組表">動畫番組表</a></div>
-<script type="text/javascript" src="javascripts/bangumi.js?v20160916"></script>
-
-<div class="clear text_center banner" style="margin-bottom:10px; max-width: 100%;"><a target="_blank" href="https://6e7d3f4.bzjrxw.com/?code=zQ83&c=7616"><img border="0" src="/images/5Nptys.png" alt="fljad" ></a></div>
-
-<div id="recommend">
-    <div class="mos">
-        <div id="hometab1" class="left" style="width:388px;">
-            <div class="item-box">
-                <div class="title">
-                    <a href="leaderboard.html" target="_blank">熱門資源</a><div class="fright"></div>
-                </div>
-                <div class="column">
-                   
-                </div>
-            </div>
-        </div>
-        <div id="hometab2" class="left" style="width:386px;">
-            <div class="item-box" style="border-left:0;">
-                <div class="title">
-                    <a href="bangumi.php" target="_blank">新番推薦</a><a class="right" href="bangumi.php" target="_blank">更多»</a>
-                </div>
-                <div class="column">
-                 </div>
-            </div>
-        </div>
-        <div id="hometab3" class="left" style="width:386px;">
-            <div class="item-box" style="border-left:0;">
-                <div class="title">
-                    <a href="owaribangumi.html" target="_blank">完結番推薦</a><a class="right" href="owaribangumi.html" target="_blank">更多»</a>
-                </div>
-                <div class="column">
-                   
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script type="text/javascript" src="javascripts/hottopics.js?v20170525"></script>
-
-<div class="clear text_center banner" style="margin-bottom:10px; max-width: 100%;"><a target="_blank" href="https://segucrwj.taobao.com/"><img border="0" src="/images/8FwFy.jpg" alt="sg"></a></div>
-
-
-
-
-<div class="box clear">
-<h2 class="title">
-        <div class="left">資源列表 [資源總計: 871842]&nbsp;<a href="rss.xml" target="_blank"><img src="images/icon_rss1.gif" alt="RSS" align="absmiddle" /></a></div>
-    <div class="right text_normal"><a href="today-1.html">本日新增</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="yesterday-1.html">昨日新增</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="weekly-1.html">本周新增</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="search.php?keyword=bd">BD</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="search.php?keyword=dvd">DVD</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="search.php?keyword=OVA%7COAD">OVA/OAD</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="search.php?keyword=劇場%7C電影%7CMOVIE">劇場版</a></div>
-    </h2>
-<div class="clear">
-<table id="listTable" class="list_style table_fixed">
-  <thead class="tcat">
-      <tr>
-        <th axis="string" class="l1">發佈時間</th>
-        <th axis="string" class="l2">分類</th>
-        <th axis="string" class="l3">資源名稱</th>
-        <th axis="size" class="l4">大小</th>
-        <th axis="string" class="l5">磁鏈</th>
-        <th axis="number" class="l5">上載</th>
-        <th axis="number" class="l6">下載</th>
-        <th axis="number" class="l7">完成</th>
-        <th axis="string" class="l8">發佈者/聯盟</th>
-      </tr>
-  </thead>
-  <tbody class="tbody" id="data_list">
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 17:03">今天 17:03</td>
-        <td><a href="sort-10-1.html"><font color="blue">日劇/日影</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-6ff80d6c2fec9bcc2d94f8677450e05792a68ee8.html" target="_blank">
-        【幻月字幕组】【23年日剧】【喜欢你.mp4】【04-06】【1080P】【中文字幕】</a>
-        </td>
-        <td>463.8MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:6ff80d6c2fec9bcc2d94f8677450e05792a68ee8&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_3">0</span>
-        </td>
-        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 16:11">今天 16:11</td>
-        <td><a href="sort-6-1.html"><font color="purple">音樂</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-e83fcdda86527123d65c2db646b1d97080238d23.html" target="_blank">
-        [2023-02-17] 宇多田ヒカル - 40代はいろいろ -Live from Metropolis Studios- (FLAC 24bit/48kHz)</a>
-        </td>
-        <td>90.4MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:e83fcdda86527123d65c2db646b1d97080238d23&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_2">1</span>
-        </td>
-        <td><a href="user-69-1.html">xSxSxSxSx</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 15:45">今天 15:45</td>
-        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-83c7841423e0c28e1ac8e2c819c463e370212376.html" target="_blank">
-        女神のカフェテラス2023年07月02日更新</a>
-        </td>
-        <td>947.3MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:83c7841423e0c28e1ac8e2c819c463e370212376&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_3">0</span>
-        </td>
-        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 15:13">今天 15:13</td>
-        <td><a href="sort-2-1.html"><font color="red">季度全集</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-3bd593144c449c89b1b5f8509087380766b346e0.html" target="_blank">
-        [喵萌Production&amp;VCB-Studio] 闪耀路标 / SHINE POST / シャインポスト 10-bit 1080p HEVC BDRip [Fin]</a>
-        </td>
-        <td>16.5GB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:3bd593144c449c89b1b5f8509087380766b346e0&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">9</span>
-        </td>
-        <td><a href="team-74-1.html" class="text_green">VCB-Studio</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 15:12">今天 15:12</td>
-        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-e5515e9aa037afa34224366c886d8af170d194b4.html" target="_blank">
-        OLさんと猫のはなし 第01-02巻 [OL San to Neko No Hanashi vol 01-02]</a>
-        </td>
-        <td>34.8MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:e5515e9aa037afa34224366c886d8af170d194b4&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_2">1</span>
-        </td>
-        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 15:10">今天 15:10</td>
-        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-9c5821154fd629f53b84f62431905acfebadcce7.html" target="_blank">
-        オーク編集と女騎士マンガ家さん 第01-03巻 [Oku Henshu to Onnakishi Mangakasan vol 01-03]</a>
-        </td>
-        <td>179.3MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:9c5821154fd629f53b84f62431905acfebadcce7&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_3">0</span>
-        </td>
-        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 14:52">今天 14:52</td>
-        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-aa3c20851575c86a195627280f902e32b3a94c42.html" target="_blank">
-        [星空字幕組][咒術回戰 / Jujutsu Kaisen][25][繁日雙語][1080P][WEBrip][MP4]（急招校對、後期）</a>
-        </td>
-        <td>525.2MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:aa3c20851575c86a195627280f902e32b3a94c42&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">94</span>
-        </td>
-        <td><a href="team-79-1.html" class="text_green">星空字幕组</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 14:51">今天 14:51</td>
-        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-645e3779624d90d23c7af741ea195aeb9d1e4fbc.html" target="_blank">
-        [星空字幕组][咒术回战 / Jujutsu Kaisen][25][简日双语][1080P][WEBrip][MP4]（急招校对、后期）</a>
-        </td>
-        <td>525.3MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:645e3779624d90d23c7af741ea195aeb9d1e4fbc&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">42</span>
-        </td>
-        <td><a href="team-79-1.html" class="text_green">星空字幕组</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 14:06">今天 14:06</td>
-        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-aa19292279d4346964b3d8aa3f825e07302ab54a.html" target="_blank">
-        [Lilith-Raws] 能幹貓今天也憂鬱 / Dekiru Neko wa Kyou mo Yuuutsu - 01 [Baha][WebDL 1080p AVC AAC][CHT]</a>
-        </td>
-        <td>550MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:aa19292279d4346964b3d8aa3f825e07302ab54a&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_1">5</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_1">4</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">603</span>
-        </td>
-        <td><a href="team-80-1.html" class="text_green">Lilith-Raws</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 14:05">今天 14:05</td>
-        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-684eee23aaea960e39d06e00b00781a7f6c59454.html" target="_blank">
-        [Lilith-Raws] AI 電子基因 / AI no Idenshi - 01 [Baha][WebDL 1080p AVC AAC][CHT]</a>
-        </td>
-        <td>516.8MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:684eee23aaea960e39d06e00b00781a7f6c59454&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_1">6</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_2">3</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">752</span>
-        </td>
-        <td><a href="team-80-1.html" class="text_green">Lilith-Raws</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 14:05">今天 14:05</td>
-        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-1099677de0b6927779b42c57d77f4496fe97de53.html" target="_blank">
-        [星空字幕组][布莱泽奥特曼 / ULTRAMAN BLAZAR][01][简日双语][1080P][TVrip][MP4]（急招校对、后期）</a>
-        </td>
-        <td>603.6MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:1099677de0b6927779b42c57d77f4496fe97de53&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">251</span>
-        </td>
-        <td><a href="team-79-1.html" class="text_green">星空字幕组</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 13:33">今天 13:33</td>
-        <td><a href="sort-6-1.html"><font color="purple">音樂</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-d69662dfb9488c0a5208610c59022ccc3534c405.html" target="_blank">
-        Kikuko Inoue - Fuchuu Shigure ／ Sakura Saginomiya (1996) [BVDR-1079] 府中しぐれ _ 鷺ノ宮さくら (井上喜久子) ふちゅう しぐれ _ さぎのみや さくら ( いのうえ きくこ ) FLAC</a>
-        </td>
-        <td>117.8MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:d69662dfb9488c0a5208610c59022ccc3534c405&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_2">1</span>
-        </td>
-        <td><a href="user-69-1.html">xSxSxSxSx</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 13:32">今天 13:32</td>
-        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-72ea94c66c3a122616485e00465ddbc7d7314336.html" target="_blank">
-        【FSD】[布莱泽奥特曼] [01] [第一波]</a>
-        </td>
-        <td>621.9MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:72ea94c66c3a122616485e00465ddbc7d7314336&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_2">2</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">11</span>
-        </td>
-        <td><a href="user-98-1.html">萌番組鏡像</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 13:03">今天 13:03</td>
-        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-9a27db07afd0254d5c0ad59c67e0175881a436d3.html" target="_blank">
-        母様の家‐拝み屋　郷内心瞳の怪異譚‐ 第01巻 [Haha Sama No Ie Ogami Ya Kyo Naishin Hitomi No Kai Tan vol 01]</a>
-        </td>
-        <td>132.2MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:9a27db07afd0254d5c0ad59c67e0175881a436d3&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_3">0</span>
-        </td>
-        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 13:02">今天 13:02</td>
-        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-23b58e84d066bce0420b527ea0e545c357da13cc.html" target="_blank">
-        メルヘン・メドヘン 第01-02巻</a>
-        </td>
-        <td>167.3MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:23b58e84d066bce0420b527ea0e545c357da13cc&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_2">1</span>
-        </td>
-        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 12:34">今天 12:34</td>
-        <td><a href="sort-10-1.html"><font color="blue">日劇/日影</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-aa5d6aaf80dd1dece98e4626af954625441c6570.html" target="_blank">
-        【幻月字幕组】【23年日剧】【晚酌的做派2】【01】【1080P】【中日双语】</a>
-        </td>
-        <td>548.5MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:aa5d6aaf80dd1dece98e4626af954625441c6570&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">4</span>
-        </td>
-        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 11:17">今天 11:17</td>
-        <td><a href="sort-10-1.html"><font color="blue">日劇/日影</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-71497aaa90e477ef78b5fefc7ed8ecbcf4f47850.html" target="_blank">
-        【幻月字幕组】【23年日剧】【治愈系邻居有秘密】【01】【1080P】【中日双语】</a>
-        </td>
-        <td>498.4MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:71497aaa90e477ef78b5fefc7ed8ecbcf4f47850&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_2">3</span>
-        </td>
-        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 11:14">今天 11:14</td>
-        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-44dd19383704574752f2a5226cacb26d34bbd1a1.html" target="_blank">
-        まだ間に合う！明日処刑される悪役令嬢ですけど、スチル回収だけはさせてください！ 第01-03巻 [Mada Maniau! Ashita Shokei sareru Akuyaku Reijo desukedo Suchiru Kaishu dakewa Sa</a>
-        </td>
-        <td>432.2MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:44dd19383704574752f2a5226cacb26d34bbd1a1&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_2">1</span>
-        </td>
-        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 11:08">今天 11:08</td>
-        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-f12c3e15c18fcdc4eca9820f486952775dd3d3e9.html" target="_blank">
-        あくまのまま 第01巻</a>
-        </td>
-        <td>134.9MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:f12c3e15c18fcdc4eca9820f486952775dd3d3e9&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_2">1</span>
-        </td>
-        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 10:58">今天 10:58</td>
-        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-9a057239594d25537eb5549cea2e74a8ceef9945.html" target="_blank">
-        【喵萌奶茶屋】★07月新番★[我喜歡的女孩忘記戴眼鏡 / Suki na Ko ga Megane wo Wasureta][01][1080p][繁日雙語][招募翻譯]</a>
-        </td>
-        <td>426.5MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:9a057239594d25537eb5549cea2e74a8ceef9945&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">132</span>
-        </td>
-        <td><a href="team-38-1.html" class="text_green">喵萌奶茶屋</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 10:58">今天 10:58</td>
-        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-09defe2ddd166d1a1684ad444a4bed0be48ec442.html" target="_blank">
-        【喵萌奶茶屋】★07月新番★[喜欢的人忘记戴眼镜了 / Suki na Ko ga Megane wo Wasureta][01][1080p][简日双语][招募翻译]</a>
-        </td>
-        <td>426.8MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:09defe2ddd166d1a1684ad444a4bed0be48ec442&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">51</span>
-        </td>
-        <td><a href="team-38-1.html" class="text_green">喵萌奶茶屋</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 10:45">今天 10:45</td>
-        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-62c986da65cb2bbe74fd86b45cb62520da83fda2.html" target="_blank">
-        [离谱Sub] BanG Dream!!! It's MyGO [02][AVC AAC][1080p][繁日內嵌]</a>
-        </td>
-        <td>392.1MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:62c986da65cb2bbe74fd86b45cb62520da83fda2&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">6</span>
-        </td>
-        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 10:44">今天 10:44</td>
-        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-a647755b02588367e120d80019236895765546b1.html" target="_blank">
-        [离谱Sub] BanG Dream!!! It's MyGO [02][AVC AAC][1080p][简日内嵌]</a>
-        </td>
-        <td>392.5MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:a647755b02588367e120d80019236895765546b1&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_2">1</span>
-        </td>
-        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 10:31">今天 10:31</td>
-        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-721cfb708097576a0bc0f4b9f5c159a1ed9ed5f5.html" target="_blank">
-        [GJ.Y] 影之诗F / Shadowverse Flame - 51 (CR 1920x1080 AVC AAC MKV)</a>
-        </td>
-        <td>1.4GB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:721cfb708097576a0bc0f4b9f5c159a1ed9ed5f5&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">6</span>
-        </td>
-        <td><a href="user-529-1.html">TrySail</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 10:30">今天 10:30</td>
-        <td><a href="sort-7-1.html"><font color="purple">動漫音樂</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-841b21b5946fc057aa99445c4caf099d62db1162.html" target="_blank">
-        [230628][World Dai Star世界大明星]TVアニメ『ワールドダイスター』劇中歌アルバム／石見舞菜香、長谷川育美、大空直美、佐々木李子、天城サリー、長縄まりあ[FLAC]</a>
-        </td>
-        <td>294.4MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:841b21b5946fc057aa99445c4caf099d62db1162&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">5</span>
-        </td>
-        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 10:22">今天 10:22</td>
-        <td><a href="sort-7-1.html"><font color="purple">動漫音樂</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-89d63328a90c5c0d339f0bf0394e03404e59d309.html" target="_blank">
-        [230628][World Dai Star世界大明星]TVアニメ『ワールドダイスター』劇中歌アルバム／石見舞菜香、長谷川育美、大空直美、佐々木李子、天城サリー、長縄まりあ[320K]</a>
-        </td>
-        <td>87.9MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:89d63328a90c5c0d339f0bf0394e03404e59d309&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">4</span>
-        </td>
-        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 10:03">今天 10:03</td>
-        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-4c2249e46f646412f790eb1cc8edf320312fd9dd.html" target="_blank">
-        あさりちゃん 第01-100巻 [Asarichan vol 01-100]</a>
-        </td>
-        <td>3.9GB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:4c2249e46f646412f790eb1cc8edf320312fd9dd&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_2">1</span>
-        </td>
-        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 10:01">今天 10:01</td>
-        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-ae4bcaba74e9d99df809cc28fc242d7372d060f7.html" target="_blank">
-        雑草転生 ～エルフの里を守りたい～ 第01-03巻 [Zasso Tensei Erufu No Sato Wo Mamoritai vol 01-03]</a>
-        </td>
-        <td>421.8MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:ae4bcaba74e9d99df809cc28fc242d7372d060f7&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_3">0</span>
-        </td>
-        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 10:00">今天 10:00</td>
-        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-4bc044068cb3551b0d8265dc7d16fea43763fa28.html" target="_blank">
-        [Novel] 世界最強は家族と仲良く出稼ぎ中! 第01-04巻 [Sekai Saikyo wa Kazoku to Nakayoku Dekasegi Chu! vol 01-04]</a>
-        </td>
-        <td>117.1MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:4bc044068cb3551b0d8265dc7d16fea43763fa28&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_2">2</span>
-        </td>
-        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 09:42">今天 09:42</td>
-        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-e4a134d7b275db719c43711ce3fba9a9e7e04958.html" target="_blank">
-        鴨乃橋ロンの禁断推理 raw 第01-11巻</a>
-        </td>
-        <td>1.2GB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:e4a134d7b275db719c43711ce3fba9a9e7e04958&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_2">1</span>
-        </td>
-        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 09:41">今天 09:41</td>
-        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-4287f2a95d4988a9e8a5cbecd44fafaa56e614f1.html" target="_blank">
-        お嬢さまの痴的好奇心 raw 全03巻</a>
-        </td>
-        <td>186.5MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:4287f2a95d4988a9e8a5cbecd44fafaa56e614f1&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_2">1</span>
-        </td>
-        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 09:40">今天 09:40</td>
-        <td><a href="sort-5-1.html"><font color="green">日文原版</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-c36d8ba43f7b71c696e275fb75e960e2fe131dbc.html" target="_blank">
-        異世界かくり世　あやかし喰奇譚 raw 第01巻</a>
-        </td>
-        <td>80.9MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:c36d8ba43f7b71c696e275fb75e960e2fe131dbc&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_3">0</span>
-        </td>
-        <td><a href="user-149-1.html">萌萌的搬運者</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 09:35">今天 09:35</td>
-        <td><a href="sort-18-1.html"><font color="brown">特攝</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-ee12a582b61d515b095c07382a695685a4cfdba4.html" target="_blank">
-        [天月搬運組] ULTRAMAN BLAZAR Episode 1 (New) &quot;First Wave&quot; -Official- (CHS/CHT/JP)</a>
-        </td>
-        <td>673.6MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:ee12a582b61d515b095c07382a695685a4cfdba4&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">82</span>
-        </td>
-        <td><a href="team-85-1.html" class="text_green">天月動漫&amp;發佈組</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 09:03">今天 09:03</td>
-        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-4986b61399f3d4878523d354ff51f87ad5ae42fc.html" target="_blank">
-        [ANi]  超人力霸王布雷薩 - 01 [1080P][Baha][WEB-DL][AAC AVC][CHT][MP4]</a>
-        </td>
-        <td>591.7MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:4986b61399f3d4878523d354ff51f87ad5ae42fc&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">377</span>
-        </td>
-        <td><a href="team-112-1.html" class="text_green">ANiTorrent</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 09:03">今天 09:03</td>
-        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-3b24a03cc8805126739c77c2db4f1ece3a3ebd56.html" target="_blank">
-        [GJ.Y] 卡片戰鬥!! 先導者 will+Dress 第三季 / Cardfight!! Vanguard: will+Dress Season 3 - 26 (Sentai 1920x1080 AVC AAC MKV)</a>
-        </td>
-        <td>333.2MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:3b24a03cc8805126739c77c2db4f1ece3a3ebd56&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_2">1</span>
-        </td>
-        <td><a href="user-529-1.html">TrySail</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 09:02">今天 09:02</td>
-        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-809d35e784e06c1282e48d19d49dc5a2bed950ca.html" target="_blank">
-        [GJ.Y] 超人力霸王布雷薩 / Ultraman Blaza - 01 (Baha 1920x1080 AVC AAC MP4)</a>
-        </td>
-        <td>591.3MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:809d35e784e06c1282e48d19d49dc5a2bed950ca&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">11</span>
-        </td>
-        <td><a href="user-529-1.html">TrySail</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 09:01">今天 09:01</td>
-        <td><a href="sort-1-1.html"><font color="red">動畫</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-31c490da50444cc45a0534531d39e4269a7187fb.html" target="_blank">
-        [GJ.Y] 卡片戰鬥!! 先導者 will+Dress 第三季 / Cardfight!! Vanguard: will+Dress Season 3 - 01 (CR 1920x1080 AVC AAC MKV)</a>
-        </td>
-        <td>1.4GB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:31c490da50444cc45a0534531d39e4269a7187fb&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">5</span>
-        </td>
-        <td><a href="user-529-1.html">TrySail</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 09:01">今天 09:01</td>
-        <td><a href="sort-2-1.html"><font color="red">季度全集</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-233eaa4c4642740607d727d35064fbe93d60ea92.html" target="_blank">
-        [整理搬运] 新世纪福音战士 (新世紀エヴァンゲリオン／Neon Genesis Evangelion)：TV动画(初版,重制)+新老剧场版+ONA+CD+漫画+其他；日语,外挂简中&amp;英文字幕 (整理时间：2023.05.22)</a>
-        </td>
-        <td>154.2GB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:233eaa4c4642740607d727d35064fbe93d60ea92&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_2">3</span>
-        </td>
-        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
-      </tr>
-              <tr class="alt1">
-        <td nowrap="nowrap" title="2023-07-08 08:31">今天 08:31</td>
-        <td><a href="sort-19-1.html"><font color="black">其他</font></a></td>
-        <td style="text-align:left;">
-                <a href="./error-423.html" target="_blank">
-        <STRIKE>[萝莉哒胖次真的不见了！][第211期][300P]</STRIKE></a>
-        </td>
-        <td>1.9GB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="./error-423.html"><img src="./images/icon_delete.gif" title="下載禁止"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_3">0</span>
-        </td>
-        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
-      </tr>
-              <tr class="alt2">
-        <td nowrap="nowrap" title="2023-07-08 08:03">今天 08:03</td>
-        <td><a href="sort-10-1.html"><font color="blue">日劇/日影</font></a></td>
-        <td style="text-align:left;">
-                <a href="show-a51290dd15fc748030f4bb8448050d1c40b734e9.html" target="_blank">
-        【幻月字幕组】【23年日剧】【量产型璃子 另一位模型女子的人生组装记】【02】【1080P】【中日双语】</a>
-        </td>
-        <td>546.9MB</td>
-        <td nowrap="nowrap">
-                     <a id="magnet" href="magnet:?xt=urn:btih:a51290dd15fc748030f4bb8448050d1c40b734e9&tr=http%3A%2F%2Fopentracker.acgnx.se%2Fannounce"><img src="./images/download_1.gif" title="磁力下載"></a>
-                 </td>
-        <td nowrap="nowrap">
-            <span class="bts_3">0</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btl_2">1</span>
-        </td>
-        <td nowrap="nowrap">
-            <span class="btc_1">18</span>
-        </td>
-        <td><a href="user-3-1.html">動漫花園鏡像</a></td>
-      </tr>
-      </tbody>
-</table>
-</div>
-</div>
-<div class="pages clear"><span class="nextprev">&laquo; 上一頁</span><span class="current">1</span><a href="/2.html" target="_self">2</a><a href="/3.html" target="_self">3</a><a href="/4.html" target="_self">4</a><a href="/5.html" target="_self">5</a><span>&#8230;.</span><a href="/100.html" class="pager-last active" target="_self">100</a><a href="/2.html" class="nextprev" target="_self">下一頁 &raquo;</a></div><script type="text/javascript" src="javascripts/tablesort.js?v20081028"></script>
-<script type="text/javascript">
-window.addEvent('domready', function(){new SortableTable($('listTable'))});
-</script>
-
-
-
-
-
-<div class="box clear flink">
-    <h2 class="title">
-        <span class="left">友情鏈接</span>
-        <span class="right"><a href="javascript:void(0);" onclick="panelDeploy('flink', true);return false;" class="right"><img src="images/collapse.gif" id="panel_flink_button" /></a></span>
-    </h2>
-    <table class="list_style" cellpadding="0" cellspacing="0">
-        <tbody id="panel_flink">
-                                                  <tr class="alt1">
-                <td class="ftext">[<a href="http://yoooo.co/" target="_blank" title="We are all Gentlemen！">4MOE</a>]&nbsp;&nbsp;[<a href="https://www.blue-plus.net/" target="_blank" title="蓝+">Blue Plus</a>]&nbsp;&nbsp;[<a href="http://acgtracker.com/" target="_blank" title="ACGTracker是一个ACG領域的開放式Tracker">ACGTracker</a>]&nbsp;&nbsp;[<a href="https://bangumi.moe/" target="_blank" title="BangumiMoe - 萌番組">萌番組</a>]&nbsp;&nbsp;[<a href="https://www.moe123.net/" target="_blank" title="你的二次元导航姬！">萌导航</a>]&nbsp;&nbsp;[<a href="https://www.sshs.pw/" target="_blank" title="加入绅士们的奢华会所，从今天起，变身成为优雅的绅士。">绅士会所</a>]&nbsp;&nbsp;[<a href="https://www.acg123.co/" target="_blank" title="你也是二刺螈？">二刺螈导航</a>]&nbsp;&nbsp;[<a href="https://1ptba.com" target="_blank" title="影视游戏软件分享PT站/全站随机免费/注册送200G上传/保号300天/适合新人练手。">壹PT吧</a>]&nbsp;&nbsp;[<a href="https://hanime1.me/" target="_blank" title="H動漫的完美體驗">Hanime1.me</a>]&nbsp;&nbsp;[<a href="https://share.dmhy.org/" target="_blank" title="動漫花園資源網">動漫花園資源網</a>]&nbsp;&nbsp;[<a href="https://blog.acgnx.se/archives/addfriendlink.html" target="_blank" title="友情鏈接申請須知">友鏈申請</a>]&nbsp;&nbsp;</td>
-              </tr>
-                    </tbody>
-    </table>
-</div>
-<script type="text/javascript">panelDeploy('flink', 0);</script>
-
-</div>
-
-<div class="clear text_center banner" style="margin-bottom:10px;"><a target="_blank" href="https://xixiyun.top/#/login"><img border="0" src="/images/7ezF8r.jpg" alt="XXY" ></a></div>
-<script type="text/javascript" src="javascripts/redisplay.js?v20160401"></script>
-<div class="footer_menu"><div class="mos"><a href="https://blog.acgnx.se/archives/tos.html" target="_blank">末日動漫資源庫服務條款</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="./feedback.php" target="_blank">BUG反饋</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://blog.acgnx.se/archives/job.html" target="_blank">加入我們的工作組</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="./">返回首頁</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://t.me/acgnxtorrent" target="_blank">Telegram公告頻道</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://blog.acgnx.se/" target="_blank">最新動態</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://blog.acgnx.se/archives/donate.html" target="_blank">捐助我们</a>&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
-<div class="footer">
-<div class="mos r2">
-    <div class="left">
-        <p>Copyright &copy;2015-2023&nbsp;<a href="https://share.acgnx.se/" target="_blank" class="copyright">Project AcgnX Torrent Asia</a>. All rights reserved.</p>
-        <p>Powered by HamotionCloud , Version:1.3.5</p>
-    </div>
-    <div class="right">
-        <p><a href="https://blog.acgnx.se/" target="_blank">官方部落格</a> - <a href="https://twitter.com/AcgnX" target="_blank">官方Twitter</a> - <a href="https://www.facebook.com/acgnx" target="_blank">官方Facebook</a> - <a href="https://blog.acgnx.se/archives/job.html" target="_blank">加入我們</a> - <a href="https://blog.acgnx.se/archives/dmca.html" target="_blank">DMCA</a> - <a href="https://blog.acgnx.se/archives/tos.html" target="_blank">服務條款</a> - <a href="https://blog.acgnx.se/about.html" target="_blank">關於我們</a> - <a href="https://blog.acgnx.se/archives/donate.html">捐助我们</a> <a type="application/rss+xml" href="./rss.xml" target="_blank"><img src="images/icon_rss.gif" alt="RSS订阅" title="RSS订阅" align="absmiddle" /></a></p>
-        <p>使用本站還請閣下遵守瑞典王國相關法律與閣下所在地的當地法律。 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-72732229-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-<script type="text/javascript">
-  var _paq = window._paq = window._paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//analytics.acgnx.se/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', 'rexker175w']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script></p>
-    </div>
-</div>
-</div>
-
-</div>
-<div><script type="text/javascript" src="javascripts/scrolltopcontrol.js"></script></div>
-</body>
-</html>`
+var bangumiJsonStr = `{
+    "page_count": 4997,
+    "torrents": [
+        {
+            "_id": "64a9491b6533870007279750",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[GJ.Y] 名侦探柯南 / Detective Conan - 1147 (B-Global 1920x1080 HEVC AAC MKV)",
+            "introduction": " <p><img src=\"https://rr1---bg.raws.dev/bfs/intl/management/20e3a0d64dbeb4ace98af47802d83bb5b5694a9e.png@960w_540h_100Q_1c.jpg\" alt /></p> <hr /> <p><h3><strong><i><em>Detective Conan</em></i></strong> - EP 1147</h3> <strong><a href=\"https://anilist.co/anime/235\" target=\"_blank\">AniList</a> | <a href=\"https://bgm.tv/subject/899\" target=\"_blank\">bangumi.tv</a> | <a href=\"https://myanimelist.net/anime/235/Detective_Conan\" target=\"_blank\">MAL</a> | <a href=\"https://www.themoviedb.org/tv/30983\" target=\"_blank\">TMDB</a></strong></p> <hr /> <p><strong>Information:</strong></p> <ul> <li><strong>Overall Bit Rate:</strong> 1 286 kb/s</li> <li><strong>Subtitle:</strong> English, Bahasa Indonesia</li> <li><strong>Duration:</strong> 00:24:40.042</li> <li><strong>CRC32:</strong> 5CBAD79E</li> <li><strong><a href=\"https://rr1---nfo.raws.dev/%5BGJ.Y%5D%20%E5%90%8D%E4%BE%A6%E6%8E%A2%E6%9F%AF%E5%8D%97%20-%201147%20%28B-Global%201920x1080%20HEVC%20AAC%20MKV%29%20%5B5CBAD79E%5D.mkv.nfo\" target=\"_blank\">MediaInfo</a></strong></li> </ul> <hr /> <p>In case of any issues with the file, please let us know via the contact details below.<br><strong>Xunlei has been banned by default.</strong><br><strong>Seeding after downloading is appreciated.</strong></p> <hr /> <p><strong>Contact:</strong> <ul> <li><strong>Rel: <a href=\"https://ouo.si/user/BraveSail\" target=\"_blank\">ouo.si</a> | <a href=\"https://bangumi.moe/search/63e4b7585fa12c0007949b88\" target=\"_blank\">bangumi.moe</a> | <a href=\"https://acg.rip/user/5570\" target=\"_blank\">acg.rip</a> | <a href=\"https://share.acgnx.se/user-529-1.html\" target=\"_blank\">acgnx.se</a></strong></li> <li>Join us on <a href=\"https://kirara-fantasia.moe/telegram\" target=\"_blank\">Telegram</a> | <a href=\"https://kirara-fantasia.moe/discord\" target=\"_blank\">Discord</a></li> </ul></p> ",
+            "tag_ids": [
+                "548ee2ce4ab7379536f56358",
+                "55c3024a7030f8c855f992ed",
+                "548ee00b4ab7379536f56353",
+                "548fe27ef892774b140ac6e8",
+                "63e4b7585fa12c0007949b88",
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 12,
+            "finished": 1,
+            "leechers": 1,
+            "seeders": 5,
+            "uploader_id": "60098e9132f14c000739f8f4",
+            "team_id": "63e497a55fa12c0007944399",
+            "publish_time": "2023-07-08T11:31:39.965Z",
+            "magnet": "magnet:?xt=urn:btih:1cfe76530da3b836261abce8d2adea1fdd1f87b6",
+            "infoHash": "1cfe76530da3b836261abce8d2adea1fdd1f87b6",
+            "file_id": "64a9491b653387000727974f",
+            "teamsync": true,
+            "content": [
+                [
+                    "[GJ.Y] 名侦探柯南 - 1147 (B-Global 1920x1080 HEVC AAC MKV) [5CBAD79E].mkv",
+                    "226.94 MB"
+                ]
+            ],
+            "size": "226.94 MB",
+            "btskey": "",
+            "sync": {
+                "acgrip": "https://acg.rip/t/283091",
+                "acgnx": "https://share.acgnx.se/show-1cfe76530da3b836261abce8d2adea1fdd1f87b6.html"
+            }
+        },
+        {
+            "_id": "64a9490f653387000727971e",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[GJ.Y] 名侦探柯南 / Detective Conan - 1089 (CR 1920x1080 AVC AAC MKV)",
+            "introduction": " <p><img src=\"https://img1.ak.crunchyroll.com/i/spire4-tmb/51aa223a541b15207e286e0693bb868a1688785959_full.jpg\" alt /></p> <hr /> <p><h3><strong><em><i>Detective Conan</i></em></strong> - EP 1089</h3> <strong><a href=\"https://anilist.co/anime/235\" target=\"_blank\">AniList</a> | <a href=\"https://bgm.tv/subject/899\" target=\"_blank\">bangumi.tv</a> | <a href=\"https://myanimelist.net/anime/235/Detective_Conan\" target=\"_blank\">MAL</a> | <a href=\"https://www.themoviedb.org/tv/30983\" target=\"_blank\">TMDB</a></strong></p> <hr /> <p><strong>Information:</strong></p> <ul> <li><strong>Overall Bit Rate:</strong> 8 158 kb/s</li> <li><strong>Subtitle:</strong> English (US)</li> <li><strong>Duration:</strong> 00:24:39.910</li> <li><strong>CRC32:</strong> 2DCE28F4</li> <li><strong><a href=\"https://rr1---nfo.raws.dev/%5BGJ.Y%5D%20Detective%20Conan%20-%201089%20%28CR%201920x1080%20AVC%20AAC%20MKV%29%20%5B2DCE28F4%5D.mkv.nfo\" target=\"_blank\">MediaInfo</a></strong></li> </ul> <hr /> <p>In case of any issues with the file, please let us know via the contact details below.<br><strong>Xunlei has been banned by default.</strong><br><strong>Seeding after downloading is appreciated.</strong></p> <hr /> <p><strong>Contact:</strong> <ul> <li><strong>Rel: <a href=\"https://ouo.si/user/BraveSail\" target=\"_blank\">ouo.si</a> | <a href=\"https://bangumi.moe/search/63e4b7585fa12c0007949b88\" target=\"_blank\">bangumi.moe</a> | <a href=\"https://acg.rip/user/5570\" target=\"_blank\">acg.rip</a> | <a href=\"https://share.acgnx.se/user-529-1.html\" target=\"_blank\">acgnx.se</a></strong></li> <li>Join us on <a href=\"https://kirara-fantasia.moe/telegram\" target=\"_blank\">Telegram</a> | <a href=\"https://kirara-fantasia.moe/discord\" target=\"_blank\">Discord</a></li> </ul></p> ",
+            "tag_ids": [
+                "548ee2ce4ab7379536f56358",
+                "55c3036c7030f8c855f992ee",
+                "548ee00b4ab7379536f56353",
+                "548fe27ef892774b140ac6e8",
+                "63e4b7585fa12c0007949b88",
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 12,
+            "finished": 7,
+            "leechers": 1,
+            "seeders": 8,
+            "uploader_id": "60098e9132f14c000739f8f4",
+            "team_id": "63e497a55fa12c0007944399",
+            "publish_time": "2023-07-08T11:31:27.584Z",
+            "magnet": "magnet:?xt=urn:btih:178a4612fafbcce80cba54a24a0fa58f40867865",
+            "infoHash": "178a4612fafbcce80cba54a24a0fa58f40867865",
+            "file_id": "64a9490f653387000727971d",
+            "teamsync": true,
+            "content": [
+                [
+                    "[GJ.Y] Detective Conan - 1089 (CR 1920x1080 AVC AAC MKV) [2DCE28F4].mkv",
+                    "1.41 GB"
+                ]
+            ],
+            "size": "1.41 GB",
+            "btskey": "",
+            "sync": {
+                "acgrip": "https://acg.rip/t/283089",
+                "acgnx": "https://share.acgnx.se/show-178a4612fafbcce80cba54a24a0fa58f40867865.html"
+            }
+        },
+        {
+            "_id": "64a93f4e6533870007277a92",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[Billion Meta Lab][能干猫猫今天也忧郁][01][1080p][HEVC 10bit][CHS&CHT]",
+            "introduction": "<p style=\"text-align:center\">怎么办！我也想养一只这样的猫猫呀！</p><p style=\"text-align:center\">欢迎关注Billion Meta Lab的<a href=\"https://t.me/Billion_Meta_Lab\">Telegram频道</a>、<a href=\"https://t.me/+mori_rnLfb0xZGM1\">Telegram群组</a>、<a href=\"https://github.com/microseventh\">GitHub</a>、<a href=\"https://space.bilibili.com/1810964185\">Bilibili</a>、<a href=\"https://www.billionmetalab.eu.org/\">官网</a>；我们会在TG上发布本组作品以及新番制作预告</p><p style=\"text-align:center\">如果你有什么事情想要联系组长，请发送邮件到billionmetalab@gmail.com与小柒联系哦</p><p style=\"text-align:center\"><img src=\"https://p.sda1.dev/12/d15ac4f872d365bb547284ca6f7daf52/000cat.jpg\"><br></p><p style=\"text-align:center\"><img src=\"https://p.sda1.dev/12/befb9c860c0654770ba0fe8b41a85fb5/NewMembers2.jpg\"></p>",
+            "tag_ids": [
+                "548ee2ce4ab7379536f56358",
+                "6347faf86b7b65000717975a",
+                "548ee0ea4ab7379536f56354",
+                "548ee1204ab7379536f56357",
+                "55c3024a7030f8c855f992ed",
+                "6347faf56b7b650007179750",
+                "649efeca68e7233aec4c96f3",
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 17,
+            "finished": 32,
+            "leechers": 13,
+            "seeders": 30,
+            "uploader_id": "633a296422a4a10007228b3a",
+            "team_id": "633a2c1d22a4a100072290d6",
+            "publish_time": "2023-07-08T10:49:50.837Z",
+            "magnet": "magnet:?xt=urn:btih:cff5ee4e7436a75b43dc0dfa00825329a6bb3708",
+            "infoHash": "cff5ee4e7436a75b43dc0dfa00825329a6bb3708",
+            "file_id": "64a93f116533870007277a2b",
+            "teamsync": true,
+            "content": [
+                [
+                    "[Billion Meta Lab][能干猫猫今天也忧郁][01][1080p][HEVC 10bit][CHS&CHT].mkv",
+                    "460.39 MB"
+                ]
+            ],
+            "size": "460.39 MB",
+            "btskey": "",
+            "sync": {
+                "dmhy": "http://share.dmhy.org/topics/view/644947_Billion_Meta_Lab_01_1080p_HEVC_10bit_CHS_CHT.html",
+                "acgnx": "https://share.acgnx.se/show-cff5ee4e7436a75b43dc0dfa00825329a6bb3708.html",
+                "acgrip": "https://acg.rip/t/283088",
+                "acgnx_int": "https://www.acgnx.se/show-cff5ee4e7436a75b43dc0dfa00825329a6bb3708.html"
+            }
+        },
+        {
+            "_id": "64a93f066533870007277a18",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[Billion Meta Lab][能幹貓貓今天也憂鬱][01][1080p][CHT]",
+            "introduction": "<p style=\"text-align:center\">怎么办！我也想养一只这样的猫猫呀！</p><p style=\"text-align:center\">欢迎关注Billion Meta Lab的<a href=\"https://t.me/Billion_Meta_Lab\">Telegram频道</a>、<a href=\"https://t.me/+mori_rnLfb0xZGM1\">Telegram群组</a>、<a href=\"https://github.com/microseventh\">GitHub</a>、<a href=\"https://space.bilibili.com/1810964185\">Bilibili</a>、<a href=\"https://www.billionmetalab.eu.org/\">官网</a>；我们会在TG上发布本组作品以及新番制作预告</p><p style=\"text-align:center\">如果你有什么事情想要联系组长，请发送邮件到billionmetalab@gmail.com与小柒联系哦</p><p style=\"text-align:center\"><img src=\"https://p.sda1.dev/12/d15ac4f872d365bb547284ca6f7daf52/000cat.jpg\"><br></p><p style=\"text-align:center\"><img src=\"https://p.sda1.dev/12/befb9c860c0654770ba0fe8b41a85fb5/NewMembers2.jpg\"><br></p>",
+            "tag_ids": [
+                "548ee2ce4ab7379536f56358",
+                "6347faf86b7b65000717975a",
+                "649efeca68e7233aec4c96f3",
+                "6347faf56b7b650007179750",
+                "549ef207fe682f7549f1ea90",
+                "548ee1204ab7379536f56357"
+            ],
+            "comments": 0,
+            "downloads": 16,
+            "finished": 57,
+            "leechers": 16,
+            "seeders": 43,
+            "uploader_id": "633a296422a4a10007228b3a",
+            "team_id": "633a2c1d22a4a100072290d6",
+            "publish_time": "2023-07-08T10:48:38.741Z",
+            "magnet": "magnet:?xt=urn:btih:116f986eb17f42d8593aad8ae472c4cbc12b9e7c",
+            "infoHash": "116f986eb17f42d8593aad8ae472c4cbc12b9e7c",
+            "file_id": "64a93ef065338700072779d4",
+            "teamsync": true,
+            "content": [
+                [
+                    "[Billion Meta Lab][能幹貓貓今天也憂鬱][01][1080p][CHT].mp4",
+                    "439.77 MB"
+                ]
+            ],
+            "size": "439.77 MB",
+            "btskey": "",
+            "sync": {
+                "dmhy": "http://share.dmhy.org/topics/view/644946_Billion_Meta_Lab_01_1080p_CHT.html",
+                "acgnx": "https://share.acgnx.se/show-116f986eb17f42d8593aad8ae472c4cbc12b9e7c.html",
+                "acgrip": "https://acg.rip/t/283087",
+                "acgnx_int": "https://www.acgnx.se/show-116f986eb17f42d8593aad8ae472c4cbc12b9e7c.html"
+            }
+        },
+        {
+            "_id": "64a93ed26533870007277992",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[Billion Meta Lab][能干猫猫今天也忧郁][01][1080p][CHS]",
+            "introduction": "<p style=\"text-align:center\">怎么办！我也想养一只这样的猫猫呀！</p><p style=\"text-align:center\">欢迎关注Billion Meta Lab的<a href=\"https://t.me/Billion_Meta_Lab\">Telegram频道</a>、<a href=\"https://t.me/+mori_rnLfb0xZGM1\">Telegram群组</a>、<a href=\"https://github.com/microseventh\">GitHub</a>、<a href=\"https://space.bilibili.com/1810964185\">Bilibili</a>、<a href=\"https://www.billionmetalab.eu.org/\">官网</a>；我们会在TG上发布本组作品以及新番制作预告</p><p style=\"text-align:center\">如果你有什么事情想要联系组长，请发送邮件到billionmetalab@gmail.com与小柒联系哦</p><p style=\"text-align:center\"><img src=\"https://p.sda1.dev/12/d15ac4f872d365bb547284ca6f7daf52/000cat.jpg\"><br></p><p style=\"text-align:center\"><img src=\"https://p.sda1.dev/12/befb9c860c0654770ba0fe8b41a85fb5/NewMembers2.jpg\"><br></p>",
+            "tag_ids": [
+                "548ee2ce4ab7379536f56358",
+                "6347faf86b7b65000717975a",
+                "548ee0ea4ab7379536f56354",
+                "649efeca68e7233aec4c96f3",
+                "6347faf56b7b650007179750",
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 12,
+            "finished": 16,
+            "leechers": 10,
+            "seeders": 19,
+            "uploader_id": "633a296422a4a10007228b3a",
+            "team_id": "633a2c1d22a4a100072290d6",
+            "publish_time": "2023-07-08T10:47:46.383Z",
+            "magnet": "magnet:?xt=urn:btih:294edbbc286466c198de082dccc8d5306c8b4199",
+            "infoHash": "294edbbc286466c198de082dccc8d5306c8b4199",
+            "file_id": "64a93e3965338700072777e9",
+            "teamsync": true,
+            "content": [
+                [
+                    "[Billion Meta Lab][能干猫猫今天也忧郁][01][1080p][CHS].mp4",
+                    "439.92 MB"
+                ]
+            ],
+            "size": "439.92 MB",
+            "btskey": "",
+            "sync": {
+                "dmhy": "http://share.dmhy.org/topics/view/644945_Billion_Meta_Lab_01_1080p_CHS.html",
+                "acgnx": "https://share.acgnx.se/show-294edbbc286466c198de082dccc8d5306c8b4199.html",
+                "acgrip": "https://acg.rip/t/283086",
+                "acgnx_int": "https://www.acgnx.se/show-294edbbc286466c198de082dccc8d5306c8b4199.html"
+            }
+        },
+        {
+            "_id": "64a936846533870007276191",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[霜庭云花Sub][BanG Dream! It's MyGO!!!!!][02][1080P][AVC AAC][简日双语][WebRip]",
+            "introduction": "<hr><p style=\"text-align:center\"><img src=\"https://styhsub.org/img/MyGO.jpg\" alt=\"BanG Dream! It's MyGO!!!!!\" style=\"width:560px;height:800px\"><img src=\"https://styhsub.org/Bulletin/\" alt=\"霜庭云花-公告展示图\" style=\"width:560px;height:800px\"></p><hr><details> <summary>霜庭云花Sub招募(点击展开)</summary>\n<ol> <p style=\"text-align:center\"><a href=\"https://styhsub.org/\" target=\"_blank\">详细请点击跳转官网</a></p> <p style=\"text-align:center\">驻日 翻译 校对 时轴 特效</p> <p style=\"text-align:center\">繁化 压制 分流 美工 专精</p>\n</ol>\n</details><hr><p style=\"text-align:center\"><a href=\"https://styhsub.org/jump/QQ-Group.html\" target=\"_blank\"><img src=\"http://styhsub.org/img/QQ.png\" alt=\"QQ群\"></a><a href=\"https://styhsub.org/jump/QQ-Seeder_Group.html\" target=\"_blank\"><img src=\"https://styhsub.org/img/Seeder_Group.png\" alt=\"分流群\"></a><a href=\"https://t.me/STYHSub\" target=\"_blank\"><img src=\"https://styhsub.org/img/TG.png\" alt=\"Telegram\"></a><a href=\"https://github.com/STYHSub/subtitles\" target=\"_blank\"><img src=\"https://styhsub.org/img/GitHub.png\" alt=\"GitHub\"></a></p><p style=\"text-align:center\"><a href=\"https://styhsub.org/jump/QQ-Group.html\" target=\"_blank\">QQ群</a> | <a href=\"https://styhsub.org/jump/QQ-Seeder_Group.html\" target=\"_blank\">分流交流群</a> | <a href=\"https://t.me/STYHSub\" target=\"_blank\">Telegram</a> | <a href=\"https://github.com/STYHSub/subtitles\" target=\"_blank\">GitHub</a></p><hr><p style=\"text-align:center\"><a href=\"https://creativecommons.org/licenses/by-nc-sa/4.0/\"><img src=\"https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png\" alt=\"知识共享许可协议\"></a><a href=\"https://styhsub.org/index.php/licenses/\" target=\"_blank\">本字幕作品遵循CC BY-NC-SA 4.0国际许可协议共享</a></p><hr><p style=\"text-align:center\">自2022年5月起， <a href=\"https://styhsub.org/\" target=\"_blank\">本组</a>作品默认添加WEB种子加速下载，请下载种子文件以便利用WEB种子。</p>",
+            "tag_ids": [
+                "549ef207fe682f7549f1ea90",
+                "55b86e9224180bc3647fea43",
+                "55c3036c7030f8c855f992ee",
+                "5869a9e8efe56b1860c8f836",
+                "548ee2ce4ab7379536f56358",
+                "60f1afe22525b00007362341"
+            ],
+            "comments": 0,
+            "downloads": 14,
+            "finished": 13,
+            "leechers": 6,
+            "seeders": 4,
+            "uploader_id": "60e06e2722aa3e0007ca31d8",
+            "team_id": "60ed97282525b00007348052",
+            "publish_time": "2023-07-08T10:12:20.165Z",
+            "magnet": "magnet:?xt=urn:btih:3554ae6005e6403ac2092e7df8dfe5923c676e5e",
+            "infoHash": "3554ae6005e6403ac2092e7df8dfe5923c676e5e",
+            "file_id": "64a9367b6533870007276165",
+            "teamsync": true,
+            "content": [
+                [
+                    "[STYHSub][BanG Dream! It's MyGO!!!!!][02][1080P][WebRip][CHS&JPN].mp4",
+                    "297.94 MB"
+                ]
+            ],
+            "size": "297.94 MB",
+            "btskey": "",
+            "sync": {
+                "dmhy": "http://share.dmhy.org/topics/view/644944_Sub_BanG_Dream%21_It_s_MyGO%21%21%21%21%21_02_1080P_AVC_AAC_WebRip.html",
+                "acgrip": "https://acg.rip/t/283085",
+                "acgnx": "https://share.acgnx.se/show-3554ae6005e6403ac2092e7df8dfe5923c676e5e.html",
+                "acgnx_int": "https://www.acgnx.se/show-3554ae6005e6403ac2092e7df8dfe5923c676e5e.html",
+                "nyaa": "unknown error 403"
+            }
+        },
+        {
+            "_id": "64a934796533870007275ad9",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[ANi]  卡片戰鬥!! 先導者 will+Dress 第三季 - 01 [1080P][Baha][WEB-DL][AAC AVC][CHT][MP4]",
+            "introduction": "<p>Torrent Info By: ANi API (Auto Generated)</p>\n<p>Subtitle:</p> <p>&emsp;HardSub</p>\n<p>Mediainfo:</p>\n<p>&emsp;Resolution: 1080P</p>\n<p>&emsp;Video Format: AVC</p>\n<p>&emsp;Audio Format: AAC</p>\n<br><p>Note:</p>\n<p>&emsp;Xunlei, torrent media player and offline downloader has been banned by our seeding server.</p>\n<p>&emsp;This automatic torrent publisher currently in beta test. If have any thought about this publisher. Feel free to contact me.</p>\n<p>&emsp;Telegram Chat: <a title=\"https://t.me/+SH8EUievFGLKQew_\" href=\"https://t.me/+SH8EUievFGLKQew_\" target=\"_blank\">https://t.me/+SH8EUievFGLKQew_</a></p>\n<p>2023/7/8 10:03:35 UTC+0000 (Coordinated Universal Time)</p>",
+            "tag_ids": [
+                "548ee2ce4ab7379536f56358",
+                "6039092432f14c00074809b9",
+                "55c3036c7030f8c855f992ee",
+                "548ee1204ab7379536f56357",
+                "548edffb4ab7379536f56352",
+                "62c125a72fc3ee0d0016bf36",
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 19,
+            "finished": 80,
+            "leechers": 8,
+            "seeders": 56,
+            "uploader_id": "5e43f999306f1a0007cd093f",
+            "team_id": "60313a6e32f14c000745a5e2",
+            "publish_time": "2023-07-08T10:03:37.976Z",
+            "magnet": "magnet:?xt=urn:btih:c39b8eae816614f11499e278dfd620420c245f89",
+            "infoHash": "c39b8eae816614f11499e278dfd620420c245f89",
+            "file_id": "64a934796533870007275ad8",
+            "teamsync": true,
+            "content": [
+                [
+                    "[ANi] 卡片戰鬥!! 先導者 will+Dress 第三季 - 01 [1080P][Baha][WEB-DL][AAC AVC][CHT].mp4",
+                    "433.24 MB"
+                ]
+            ],
+            "size": "433.24 MB",
+            "btskey": "",
+            "sync": {
+                "dmhy": "http://share.dmhy.org/topics/view/644943_ANi_%21%21_will_Dress_-_01_1080P_Baha_WEB-DL_AAC_AVC_CHT_MP4.html",
+                "acgrip": "https://acg.rip/t/283084",
+                "acgnx": "https://share.acgnx.se/show-c39b8eae816614f11499e278dfd620420c245f89.html"
+            }
+        },
+        {
+            "_id": "64a9342665338700072759be",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[GJ.Y] 卡片戰鬥!! 先導者 will+Dress 第三季 / Cardfight!! Vanguard: will+Dress Season 3 - 01 (Baha 1920x1080 AVC AAC MP4)",
+            "introduction": " <p><img src=\"https://rr1---bh.raws.dev/B/2KU/41/f64c0408f4b256100605fdcf851mdyl5.JPG\" alt /></p> <hr /> <p><h3><strong><i><em>Cardfight!! Vanguard: will+Dress Season 3</em></i></strong> - EP 01</h3> <strong><a href=\"https://anilist.co/anime/150970\" target=\"_blank\">AniList</a> | <a href=\"https://bgm.tv/subject/402835\" target=\"_blank\">bangumi.tv</a> | <a href=\"https://myanimelist.net/anime/52079\" target=\"_blank\">MAL</a> | <a href=\"https://www.themoviedb.org/tv/213700-will-dress\" target=\"_blank\">TMDB</a></strong></p> <hr /> <p><strong>Information:</strong></p> <ul> <li><strong>Overall Bit Rate:</strong> 2 496 kb/s</li> <li><strong>Subtitle:</strong> HardSub - 中文（繁體）</li> <li><strong>Duration:</strong> 00:24:15.062</li> <li><strong>CRC32:</strong> EAAA10C2</li> <li><strong><a href=\"https://rr1---nfo.raws.dev/%5BGJ.Y%5D%20%E5%8D%A1%E7%89%87%E6%88%B0%E9%AC%A5%21%21%20%E5%85%88%E5%B0%8E%E8%80%85%20will%2BDress%20%E7%AC%AC%E4%B8%89%E5%AD%A3%20-%2001%20%28Baha%201920x1080%20AVC%20AAC%20MP4%29%20%5BEAAA10C2%5D.mp4.nfo\" target=\"_blank\">MediaInfo</a></strong></li> </ul> <hr /> <p>In case of any issues with the file, please let us know via the contact details below.<br><strong>Xunlei has been banned by default.</strong><br><strong>Seeding after downloading is appreciated.</strong></p> <hr /> <p><strong>Contact:</strong> <ul> <li><strong>Rel: <a href=\"https://ouo.si/user/BraveSail\" target=\"_blank\">ouo.si</a> | <a href=\"https://bangumi.moe/search/63e4b7585fa12c0007949b88\" target=\"_blank\">bangumi.moe</a> | <a href=\"https://acg.rip/user/5570\" target=\"_blank\">acg.rip</a> | <a href=\"https://share.acgnx.se/user-529-1.html\" target=\"_blank\">acgnx.se</a></strong></li> <li>Join us on <a href=\"https://kirara-fantasia.moe/telegram\" target=\"_blank\">Telegram</a> | <a href=\"https://kirara-fantasia.moe/discord\" target=\"_blank\">Discord</a></li> </ul></p> ",
+            "tag_ids": [
+                "548ee2ce4ab7379536f56358",
+                "55c3036c7030f8c855f992ee",
+                "548edffb4ab7379536f56352",
+                "62c125a72fc3ee0d0016bf36",
+                "63e4b7585fa12c0007949b88",
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 14,
+            "finished": 9,
+            "leechers": 2,
+            "seeders": 6,
+            "uploader_id": "60098e9132f14c000739f8f4",
+            "team_id": "63e497a55fa12c0007944399",
+            "publish_time": "2023-07-08T10:02:14.000Z",
+            "magnet": "magnet:?xt=urn:btih:74c04ea4e969c01bfce1045953453ea745f71b1f",
+            "infoHash": "74c04ea4e969c01bfce1045953453ea745f71b1f",
+            "file_id": "64a9342565338700072759bd",
+            "teamsync": true,
+            "content": [
+                [
+                    "[GJ.Y] 卡片戰鬥!! 先導者 will+Dress 第三季 - 01 (Baha 1920x1080 AVC AAC MP4) [EAAA10C2].mp4",
+                    "432.88 MB"
+                ]
+            ],
+            "size": "432.88 MB",
+            "btskey": "",
+            "sync": {
+                "acgrip": "https://acg.rip/t/283083",
+                "acgnx": "https://share.acgnx.se/show-74c04ea4e969c01bfce1045953453ea745f71b1f.html"
+            }
+        },
+        {
+            "_id": "64a93418653387000727598d",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[ANi]  MIX 第二季 ~第二個夏天，邁向晴空~ - 14 [1080P][Baha][WEB-DL][AAC AVC][CHT][MP4]",
+            "introduction": "<p>Torrent Info By: ANi API (Auto Generated)</p>\n<p>Subtitle:</p> <p>&emsp;HardSub</p>\n<p>Mediainfo:</p>\n<p>&emsp;Resolution: 1080P</p>\n<p>&emsp;Video Format: AVC</p>\n<p>&emsp;Audio Format: AAC</p>\n<br><p>Note:</p>\n<p>&emsp;Xunlei, torrent media player and offline downloader has been banned by our seeding server.</p>\n<p>&emsp;This automatic torrent publisher currently in beta test. If have any thought about this publisher. Feel free to contact me.</p>\n<p>&emsp;Telegram Chat: <a title=\"https://t.me/+SH8EUievFGLKQew_\" href=\"https://t.me/+SH8EUievFGLKQew_\" target=\"_blank\">https://t.me/+SH8EUievFGLKQew_</a></p>\n<p>2023/7/8 10:01:58 UTC+0000 (Coordinated Universal Time)</p>",
+            "tag_ids": [
+                "548ee2ce4ab7379536f56358",
+                "6039092432f14c00074809b9",
+                "55c3036c7030f8c855f992ee",
+                "548ee1204ab7379536f56357",
+                "5ca206b4d8405d2d2e62b961",
+                "548edffb4ab7379536f56352",
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 18,
+            "finished": 235,
+            "leechers": 18,
+            "seeders": 110,
+            "uploader_id": "5e43f999306f1a0007cd093f",
+            "team_id": "60313a6e32f14c000745a5e2",
+            "publish_time": "2023-07-08T10:02:00.337Z",
+            "magnet": "magnet:?xt=urn:btih:8a6fcc8732eb69835c7e4657780c2a9ab59e90fb",
+            "infoHash": "8a6fcc8732eb69835c7e4657780c2a9ab59e90fb",
+            "file_id": "64a93418653387000727598c",
+            "teamsync": true,
+            "content": [
+                [
+                    "[ANi] MIX 第二季 ~第二個夏天，邁向晴空~ - 14 [1080P][Baha][WEB-DL][AAC AVC][CHT].mp4",
+                    "394.26 MB"
+                ]
+            ],
+            "size": "394.26 MB",
+            "btskey": "",
+            "sync": {
+                "dmhy": "http://share.dmhy.org/topics/view/644942_ANi_MIX_-_14_1080P_Baha_WEB-DL_AAC_AVC_CHT_MP4.html",
+                "acgrip": "https://acg.rip/t/283082",
+                "acgnx": "https://share.acgnx.se/show-8a6fcc8732eb69835c7e4657780c2a9ab59e90fb.html"
+            }
+        },
+        {
+            "_id": "64a933fa653387000727591d",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[GJ.Y] MIX 第二季 ~第二個夏天，邁向晴空~ / MIX Season 2 - 14 (CR 1920x1080 AVC AAC MKV)",
+            "introduction": " <p><img src=\"https://img1.ak.crunchyroll.com/i/spire3-tmb/06b3cb1dee5db3aa2b4d087cb43655061688785935_full.jpg\" alt /></p> <hr /> <p><h3><strong><em><i>MIX Season 2</i></em></strong> - EP 14</h3> <strong><a href=\"https://anilist.co/anime/153344\" target=\"_blank\">AniList</a> | <a href=\"https://bgm.tv/subject/394784\" target=\"_blank\">bangumi.tv</a> | <a href=\"https://myanimelist.net/anime/52614\" target=\"_blank\">MAL</a> | <a href=\"https://www.themoviedb.org/tv/87456-mix-meisei-story\" target=\"_blank\">TMDB</a></strong></p> <hr /> <p><strong>Information:</strong></p> <ul> <li><strong>Overall Bit Rate:</strong> 8 192 kb/s</li> <li><strong>Subtitle:</strong> العربية (Saudi Arabia), Deutsch (Germany), English (US), Español (Latin America), Português (Brasil), Русский (Russia)</li> <li><strong>Duration:</strong> 00:23:50.070</li> <li><strong>CRC32:</strong> DC3959BA</li> <li><strong><a href=\"https://rr1---nfo.raws.dev/%5BGJ.Y%5D%20MIX%20Season%202%20-%2014%20%28CR%201920x1080%20AVC%20AAC%20MKV%29%20%5BDC3959BA%5D.mkv.nfo\" target=\"_blank\">MediaInfo</a></strong></li> </ul> <hr /> <p>In case of any issues with the file, please let us know via the contact details below.<br><strong>Xunlei has been banned by default.</strong><br><strong>Seeding after downloading is appreciated.</strong></p> <hr /> <p><strong>Contact:</strong> <ul> <li><strong>Rel: <a href=\"https://ouo.si/user/BraveSail\" target=\"_blank\">ouo.si</a> | <a href=\"https://bangumi.moe/search/63e4b7585fa12c0007949b88\" target=\"_blank\">bangumi.moe</a> | <a href=\"https://acg.rip/user/5570\" target=\"_blank\">acg.rip</a> | <a href=\"https://share.acgnx.se/user-529-1.html\" target=\"_blank\">acgnx.se</a></strong></li> <li>Join us on <a href=\"https://kirara-fantasia.moe/telegram\" target=\"_blank\">Telegram</a> | <a href=\"https://kirara-fantasia.moe/discord\" target=\"_blank\">Discord</a></li> </ul></p> ",
+            "tag_ids": [
+                "548ee2ce4ab7379536f56358",
+                "55c3036c7030f8c855f992ee",
+                "5ca206b4d8405d2d2e62b961",
+                "548ee00b4ab7379536f56353",
+                "63e4b7585fa12c0007949b88",
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 10,
+            "finished": 3,
+            "leechers": 0,
+            "seeders": 4,
+            "uploader_id": "60098e9132f14c000739f8f4",
+            "team_id": "63e497a55fa12c0007944399",
+            "publish_time": "2023-07-08T10:01:30.033Z",
+            "magnet": "magnet:?xt=urn:btih:e58bd2122eac7b186e029d4f1824b55466a28358",
+            "infoHash": "e58bd2122eac7b186e029d4f1824b55466a28358",
+            "file_id": "64a933fa653387000727591c",
+            "teamsync": true,
+            "content": [
+                [
+                    "[GJ.Y] MIX Season 2 - 14 (CR 1920x1080 AVC AAC MKV) [DC3959BA].mkv",
+                    "1.36 GB"
+                ]
+            ],
+            "size": "1.36 GB",
+            "btskey": "",
+            "sync": {
+                "acgrip": "https://acg.rip/t/283081",
+                "acgnx": "https://share.acgnx.se/show-e58bd2122eac7b186e029d4f1824b55466a28358.html"
+            }
+        },
+        {
+            "_id": "64a933e665338700072758db",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[GJ.Y] MIX 第二季 ~第二個夏天，邁向晴空~ / MIX Season 2 - 14 (Baha 1920x1080 AVC AAC MP4)",
+            "introduction": " <p><img src=\"https://rr1---bh.raws.dev/B/2KU/98/5d6f081c602b0cd3aef49923c81mejm5.JPG\" alt /></p> <hr /> <p><h3><strong><i><em>MIX Season 2</em></i></strong> - EP 14</h3> <strong><a href=\"https://anilist.co/anime/153344\" target=\"_blank\">AniList</a> | <a href=\"https://bgm.tv/subject/394784\" target=\"_blank\">bangumi.tv</a> | <a href=\"https://myanimelist.net/anime/52614\" target=\"_blank\">MAL</a> | <a href=\"https://www.themoviedb.org/tv/87456-mix-meisei-story\" target=\"_blank\">TMDB</a></strong></p> <hr /> <p><strong>Information:</strong></p> <ul> <li><strong>Overall Bit Rate:</strong> 2 311 kb/s</li> <li><strong>Subtitle:</strong> HardSub - 中文（繁體）</li> <li><strong>Duration:</strong> 00:23:50.034</li> <li><strong>CRC32:</strong> 080C5CE2</li> <li><strong><a href=\"https://rr1---nfo.raws.dev/%5BGJ.Y%5D%20MIX%20%E7%AC%AC%E4%BA%8C%E5%AD%A3%20~%E7%AC%AC%E4%BA%8C%E5%80%8B%E5%A4%8F%E5%A4%A9%EF%BC%8C%E9%82%81%E5%90%91%E6%99%B4%E7%A9%BA~%20-%2014%20%28Baha%201920x1080%20AVC%20AAC%20MP4%29%20%5B080C5CE2%5D.mp4.nfo\" target=\"_blank\">MediaInfo</a></strong></li> </ul> <hr /> <p>In case of any issues with the file, please let us know via the contact details below.<br><strong>Xunlei has been banned by default.</strong><br><strong>Seeding after downloading is appreciated.</strong></p> <hr /> <p><strong>Contact:</strong> <ul> <li><strong>Rel: <a href=\"https://ouo.si/user/BraveSail\" target=\"_blank\">ouo.si</a> | <a href=\"https://bangumi.moe/search/63e4b7585fa12c0007949b88\" target=\"_blank\">bangumi.moe</a> | <a href=\"https://acg.rip/user/5570\" target=\"_blank\">acg.rip</a> | <a href=\"https://share.acgnx.se/user-529-1.html\" target=\"_blank\">acgnx.se</a></strong></li> <li>Join us on <a href=\"https://kirara-fantasia.moe/telegram\" target=\"_blank\">Telegram</a> | <a href=\"https://kirara-fantasia.moe/discord\" target=\"_blank\">Discord</a></li> </ul></p> ",
+            "tag_ids": [
+                "548ee2ce4ab7379536f56358",
+                "55c3036c7030f8c855f992ee",
+                "5ca206b4d8405d2d2e62b961",
+                "548edffb4ab7379536f56352",
+                "63e4b7585fa12c0007949b88",
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 16,
+            "finished": 20,
+            "leechers": 2,
+            "seeders": 11,
+            "uploader_id": "60098e9132f14c000739f8f4",
+            "team_id": "63e497a55fa12c0007944399",
+            "publish_time": "2023-07-08T10:01:10.297Z",
+            "magnet": "magnet:?xt=urn:btih:baa7d2938c578ccd39a84e1e487c470a81937084",
+            "infoHash": "baa7d2938c578ccd39a84e1e487c470a81937084",
+            "file_id": "64a933e665338700072758da",
+            "teamsync": true,
+            "content": [
+                [
+                    "[GJ.Y] MIX 第二季 ~第二個夏天，邁向晴空~ - 14 (Baha 1920x1080 AVC AAC MP4) [080C5CE2].mp4",
+                    "393.95 MB"
+                ]
+            ],
+            "size": "393.95 MB",
+            "btskey": "",
+            "sync": {
+                "acgrip": "https://acg.rip/t/283080",
+                "acgnx": "https://share.acgnx.se/show-baa7d2938c578ccd39a84e1e487c470a81937084.html"
+            }
+        },
+        {
+            "_id": "64a90cdf653387000726e3f2",
+            "category_tag_id": "54967e14ff43b99e284d0bf7",
+            "title": "[喵萌Production&VCB-Studio] 闪耀路标 / SHINE POST / シャインポスト 10-bit 1080p HEVC BDRip [Fin]",
+            "introduction": "<p><img src=\"https://img.2222.moe/images/2023/06/21/SHINE_POST_3_800.webp\" alt=\"SHINE_POST_3_800.webp\"><br><br>闪耀路标 / SHINE POST / シャインポスト BDRip <br><br>部分集数内封评论音轨。 <br>Certain episodes contain commentary tracks. <br><br>这个项目与 <strong>喵萌Production</strong> 合作，感谢他们精心制作的字幕。<br>This project is in cooperation with <strong>Nekomoe kissaten</strong>. Thanks to them for elaborating Chinese subtitles.<br><br>原盘画质一般，线条有明显的晕轮和锯齿问题，我们采用强力手段清除，并辅以适度的补偿性锐化，提升观感。原盘平面质量较差，虽然制作公司有意识地加入抖动来防止色带，但在一些暗场区域，仍然因为码率不足而产生了色带和色块。所幸色带程度不重，我们采用常规手段去除。最后进行常规的自适应降噪以控制码率。 <br>The image quality is normal with obvious ringing and aliasing issues. We applied powerful means to fix those and then supplemented this with moderate compensatory sharpening for a better viewing experience. The flat areas are of poor quality, though dithering was intentionally added during the production, some of the dark areas still suffered from colour banding and blocking due to the lack of bit-rate. Thankfully, the colour banding is not that serious and can be removed by routine processing. Finally, we adopted routine adaptive denoising to control the bit-rate. <br><br></p><hr><p>感谢所有资源提供者 / Thank to all resource providers: <br>Ronny@U2 <br><br></p><hr><p>本组正在招募新成员。详情请参见 <a href=\"https://vcb-s.com/archives/16986\">https://vcb-s.com/archives/16986</a>。<br>Please refer to <a href=\"https://vcb-s.com/archives/16986\">https://vcb-s.com/archives/16986</a> about information of our ongoing recruitment.<br><br>VCB-Studio 已不再保证收集作品相关 CD 和扫图资源，详情请参见 <a href=\"https://vcb-s.com/archives/14331\">https://vcb-s.com/archives/14331</a>。<br>Please refer to <a href=\"https://vcb-s.com/archives/14331\">https://vcb-s.com/archives/14331</a> for more information about that VCB-Studio will no longer guarantee to include relevant CDs and scans.<br><br>有关 TSDM 合购区的详情请参见 <a href=\"https://www.tsdm39.com/forum.php?mod=viewthread&amp;tid=879923\">https://www.tsdm39.com/forum.php?mod=viewthread&amp;tid=879923</a>。<br>Please refer to <a href=\"https://www.tsdm39.com/forum.php?mod=viewthread&amp;tid=879923\">https://www.tsdm39.com/forum.php?mod=viewthread&amp;tid=879923</a> for more information about jointly purchased music.<br><br>播放器教程索引： <a href=\"https://vcb-s.com/archives/16639\" target=\"_blank\">VCB-Studio 播放器推荐</a><br>中文字幕分享区： <a href=\"https://bbs.acgrip.com/\" target=\"_blank\">Anime 分享论坛</a><br>项目计划与列表： <a href=\"https://vcb-s.com/archives/138\" target=\"_blank\">VCB-Studio 项目列表</a><br>特殊格式与说明： <a href=\"https://vcb-s.com/archives/7949\" target=\"_blank\">WebP 扫图说明</a><br><br></p><hr><p>Comparison (right click on the image and open it in a new tab to see the full-size one) <br>Source________________________________________________Encode <br></p><p><a href=\"https://img.2222.moe/images/2023/04/23/919.png\"><img src=\"https://img.2222.moe/images/2023/04/23/919s0.png\"></a> <a href=\"https://img.2222.moe/images/2023/04/23/919v.png\"><img src=\"https://img.2222.moe/images/2023/04/23/919s1.png\"></a><br><br><a href=\"https://img.2222.moe/images/2023/04/23/3993.png\"><img src=\"https://img.2222.moe/images/2023/04/23/3993s0.png\"></a> <a href=\"https://img.2222.moe/images/2023/04/23/3993v.png\"><img src=\"https://img.2222.moe/images/2023/04/23/3993s1.png\"></a><br><br><a href=\"https://img.2222.moe/images/2023/04/23/4488.png\"><img src=\"https://img.2222.moe/images/2023/04/23/4488s0.png\"></a> <a href=\"https://img.2222.moe/images/2023/04/23/4488v.png\"><img src=\"https://img.2222.moe/images/2023/04/23/4488s1.png\"></a><br><br><a href=\"https://img.2222.moe/images/2023/04/23/5081.png\"><img src=\"https://img.2222.moe/images/2023/04/23/5081s0.png\"></a> <a href=\"https://img.2222.moe/images/2023/04/23/5081v.png\"><img src=\"https://img.2222.moe/images/2023/04/23/5081s1.png\"></a><br><br><a href=\"https://img.2222.moe/images/2023/04/23/7113.png\"><img src=\"https://img.2222.moe/images/2023/04/23/7113s0.png\"></a> <a href=\"https://img.2222.moe/images/2023/04/23/7113v.png\"><img src=\"https://img.2222.moe/images/2023/04/23/7113s1.png\"></a><br><br><a href=\"https://img.2222.moe/images/2023/04/23/11944.png\"><img src=\"https://img.2222.moe/images/2023/04/23/11944s0.png\"></a> <a href=\"https://img.2222.moe/images/2023/04/23/11944v.png\"><img src=\"https://img.2222.moe/images/2023/04/23/11944s1.png\"></a><br><br></p>",
+            "tag_ids": [
+                "54967e14ff43b99e284d0bf7",
+                "549ef207fe682f7549f1ea90",
+                "5596b174a0b788232ee352cb",
+                "548ee2ce4ab7379536f56358",
+                "548ee3e24ab7379536f5635b",
+                "55c3024a7030f8c855f992ed",
+                "62c125aa2fc3ee0d0016bf40"
+            ],
+            "comments": 0,
+            "downloads": 31,
+            "finished": 151,
+            "leechers": 42,
+            "seeders": 84,
+            "uploader_id": "55635af9a0b788232ee34dfc",
+            "team_id": "5596b14ba0b788232ee352ca",
+            "publish_time": "2023-07-08T07:14:39.532Z",
+            "magnet": "magnet:?xt=urn:btih:3bd593144c449c89b1b5f8509087380766b346e0",
+            "infoHash": "3bd593144c449c89b1b5f8509087380766b346e0",
+            "file_id": "64a90cb3653387000726e3ca",
+            "teamsync": null,
+            "content": [
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220817] ｢ワンダー・スターター／パレットガールズ｣／TINGS (flac+webp)/01. ワンダー・スターター.flac",
+                    "30.26 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220817] ｢ワンダー・スターター／パレットガールズ｣／TINGS (flac+webp)/02. パレットガールズ.flac",
+                    "32.01 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220817] ｢ワンダー・スターター／パレットガールズ｣／TINGS (flac+webp)/03. ワンダー・スターター -TV ver.-.flac",
+                    "12.17 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220817] ｢ワンダー・スターター／パレットガールズ｣／TINGS (flac+webp)/04. パレットガールズ -TV ver.-.flac",
+                    "11.76 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220817] ｢ワンダー・スターター／パレットガールズ｣／TINGS (flac+webp)/EYCA-13849.log",
+                    "7.06 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220817] ｢ワンダー・スターター／パレットガールズ｣／TINGS (flac+webp)/Scans/01.webp",
+                    "1.69 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220817] ｢ワンダー・スターター／パレットガールズ｣／TINGS (flac+webp)/Scans/02.webp",
+                    "5.4 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220817] ｢ワンダー・スターター／パレットガールズ｣／TINGS (flac+webp)/Scans/03.webp",
+                    "6.09 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220817] ｢ワンダー・スターター／パレットガールズ｣／TINGS (flac+webp)/Scans/04.webp",
+                    "336.49 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220817] ｢ワンダー・スターター／パレットガールズ｣／TINGS (flac+webp)/Scans/05.webp",
+                    "254.37 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220817] ｢ワンダー・スターター／パレットガールズ｣／TINGS (flac+webp)/Scans/06.webp",
+                    "1.7 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220817] ｢ワンダー・スターター／パレットガールズ｣／TINGS (flac+webp)/Scans/07.webp",
+                    "557.86 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220817] ｢ワンダー・スターター／パレットガールズ｣／TINGS (flac+webp)/Scans/08.webp",
+                    "128.02 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220817] ｢ワンダー・スターター／パレットガールズ｣／TINGS [24bit_96kHz] (flac)/01. ワンダー・スターター.flac",
+                    "88.84 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220817] ｢ワンダー・スターター／パレットガールズ｣／TINGS [24bit_96kHz] (flac)/02. パレットガールズ.flac",
+                    "95.06 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220919] ｢Life goes on!｣／TINGS [24bit_96kHz] (flac)/01. Life goes on!.flac",
+                    "52.85 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220919] ｢Misty=Missing You｣／HY：RAIN [24bit_96kHz] (flac)/01. Misty=Missing You.flac",
+                    "53.53 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220919] ｢Snow Leaves｣／TINGS [24bit_96kHz] (flac)/01. Snow Leaves.flac",
+                    "59.05 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[220919] ｢春風に乗って｣／TINGS [24bit_96kHz] (flac)/01. 春風に乗って.flac",
+                    "54.54 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/01. Sweet Surrender.flac",
+                    "35.98 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/02. TOKYO WATASHI COLLECTION.flac",
+                    "31.44 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/03. 前奏曲.flac",
+                    "38.03 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/04. 一歩前ノセカイ.flac",
+                    "33.81 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/05. Yellow Rose.flac",
+                    "41.71 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/06. Be Your Light!!.flac",
+                    "37.9 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/07. GYB!!.flac",
+                    "27.68 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/08. On Your Mark!!.flac",
+                    "27.03 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/09. Be Happy Time!!.flac",
+                    "34.63 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/EYCA-13850.log",
+                    "12.02 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/01.webp",
+                    "3.18 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/02.webp",
+                    "3.05 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/03.webp",
+                    "4.41 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/04.webp",
+                    "4.39 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/05.webp",
+                    "4.48 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/06.webp",
+                    "4.4 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/07.webp",
+                    "4.39 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/08.webp",
+                    "4.38 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/09.webp",
+                    "4.34 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/10.webp",
+                    "4.37 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/11.webp",
+                    "4.35 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/12.webp",
+                    "4.49 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/13.webp",
+                    "3.72 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/14.webp",
+                    "1.58 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/15.webp",
+                    "5.77 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/16.webp",
+                    "3.72 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/17.webp",
+                    "1.48 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/18.webp",
+                    "154.83 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection (flac+webp)/Scans/19.webp",
+                    "435.33 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection [24bit_96kHz] (flac)/01. Sweet Surrender.flac",
+                    "110.11 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection [24bit_96kHz] (flac)/02. TOKYO WATASHI COLLECTION.flac",
+                    "92.15 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection [24bit_96kHz] (flac)/03. 前奏曲.flac",
+                    "115.92 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection [24bit_96kHz] (flac)/04. 一歩前ノセカイ.flac",
+                    "98.87 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection [24bit_96kHz] (flac)/05. Yellow Rose.flac",
+                    "127.56 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection [24bit_96kHz] (flac)/06. Be Your Light!!.flac",
+                    "111.55 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection [24bit_96kHz] (flac)/07. GYB!!.flac",
+                    "86.3 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection [24bit_96kHz] (flac)/08. On Your Mark!!.flac",
+                    "78.9 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[221026] Character Song Collection [24bit_96kHz] (flac)/09. Be Happy Time!!.flac",
+                    "98.75 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/01. TINGSのテーマ.flac",
+                    "15.03 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/02. TINGSのテーマ・アレンジ.flac",
+                    "13.08 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/03. 春のテーマ.flac",
+                    "10.89 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/04. 春のテーマ・アレンジ①.flac",
+                    "9.97 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/05. 春のテーマ・アレンジ②.flac",
+                    "10.41 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/06. 理王のテーマ.flac",
+                    "12.29 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/07. 理王のテーマ・アレンジ.flac",
+                    "8.08 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/08. 杏夏のテーマ.flac",
+                    "9.1 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/09. 杏夏のテーマ・アレンジ.flac",
+                    "7.62 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/10. ゆきもじのテーマ.flac",
+                    "8.76 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/11. ゆきもじのテーマ・アレンジ.flac",
+                    "8.24 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/12. 螢のテーマ.flac",
+                    "11.46 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/13. 煌めき.flac",
+                    "11.96 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/14. 平和な日常.flac",
+                    "9.37 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/15. 包み込むぬくもり.flac",
+                    "14.82 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/16. 嬉しいキモチ.flac",
+                    "11.56 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/17. 幸せをかみしめて.flac",
+                    "8.86 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/18. 悲しみ.flac",
+                    "9.06 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/19. アイキャッチ.flac",
+                    "1.01 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/20. 虚無心.flac",
+                    "8.42 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/21. 心細いキモチ.flac",
+                    "12.27 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/22. 狼狽えてしまう.flac",
+                    "8.33 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/23. ギスギスとした空気.flac",
+                    "6.55 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/24. 目の前が明るく照らされ.flac",
+                    "12.32 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/25. みなぎるやる気.flac",
+                    "14.37 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/26. トホホ….flac",
+                    "7.23 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/27. 離れてゆくココロ.flac",
+                    "8.7 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/28. 思いつめた果てに.flac",
+                    "7.37 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/29. 春と蓮の想い出.flac",
+                    "11.96 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/30. 決して諦めない.flac",
+                    "15.14 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/31. 輝く道標.flac",
+                    "15.29 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/32. エピローグ.flac",
+                    "18.74 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/CDs/[230324] SPCD 02 Original Soundtrack (flac)/TCBD-1345-3.log",
+                    "32.04 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [IV01][Ma10p_1080p][x265_aac].mkv",
+                    "442.63 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [IV02][Ma10p_1080p][x265_aac].mkv",
+                    "1.69 GB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [Lyric Video 01][Ma10p_1080p][x265_flac].mkv.mkv",
+                    "524.45 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [Lyric Video 02][Ma10p_1080p][x265_flac].mkv.mkv",
+                    "245.05 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [Lyric Video 03][Ma10p_1080p][x265_flac].mkv.mkv",
+                    "268.81 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [Lyric Video 04][Ma10p_1080p][x265_flac].mkv.mkv",
+                    "276.4 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [Menu01][Ma10p_1080p][x265].mkv",
+                    "3.58 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [Menu02][Ma10p_1080p][x265].mkv",
+                    "3.71 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [Menu03][Ma10p_1080p][x265].mkv",
+                    "3.02 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [Menu04][Ma10p_1080p][x265].mkv",
+                    "3.01 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [NCED][Ma10p_1080p][x265_flac].mkv",
+                    "86.39 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [NCOP][Ma10p_1080p][x265_flac].mkv",
+                    "114.82 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [Song PV 01][Ma10p_1080p][x265_flac].mkv",
+                    "324.72 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [Song PV 02][Ma10p_1080p][x265_flac].mkv",
+                    "144.02 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [Song PV 03][Ma10p_1080p][x265_flac].mkv",
+                    "140 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/SPs/[Nekomoe kissaten&VCB-Studio] SHINE POST [Spot][Ma10p_1080p][x265_flac].mkv",
+                    "30.87 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/01.webp",
+                    "5.89 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/02.webp",
+                    "6.02 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/03.webp",
+                    "119.22 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/04.webp",
+                    "458.79 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/05.webp",
+                    "3.99 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/06.webp",
+                    "8.1 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/07.webp",
+                    "3.73 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/08.webp",
+                    "2 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/09.webp",
+                    "1.32 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/10.webp",
+                    "1.36 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/11.webp",
+                    "6.59 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/12.webp",
+                    "4.49 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/13.webp",
+                    "4.39 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/14.webp",
+                    "4.19 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/15.webp",
+                    "4.27 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/16.webp",
+                    "3.06 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/17.webp",
+                    "3.24 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/18.webp",
+                    "3.13 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/19.webp",
+                    "6.45 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/20.webp",
+                    "1.32 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/21.webp",
+                    "1.57 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/22.webp",
+                    "287.55 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/23.webp",
+                    "267.71 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/24.webp",
+                    "288.33 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/25.webp",
+                    "324.16 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/26.webp",
+                    "339.17 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/27.webp",
+                    "334.58 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/28.webp",
+                    "411.21 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/29.webp",
+                    "397.43 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/30.webp",
+                    "394.2 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/31.webp",
+                    "348.55 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/32.webp",
+                    "372.32 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/33.webp",
+                    "388.77 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/34.webp",
+                    "384.26 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/35.webp",
+                    "342.17 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/36.webp",
+                    "392.4 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/37.webp",
+                    "405.17 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/38.webp",
+                    "373.08 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/39.webp",
+                    "359.86 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/40.webp",
+                    "355.15 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/41.webp",
+                    "345.29 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/42.webp",
+                    "367.82 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/43.webp",
+                    "402.62 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/44.webp",
+                    "372.42 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/45.webp",
+                    "334.31 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.1/46.webp",
+                    "726.35 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/01.webp",
+                    "5.68 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/02.webp",
+                    "6.08 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/03.webp",
+                    "118.47 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/04.webp",
+                    "429.72 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/05.webp",
+                    "4.07 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/06.webp",
+                    "8.07 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/07.webp",
+                    "3.31 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/08.webp",
+                    "1.81 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/09.webp",
+                    "1.23 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/10.webp",
+                    "1.23 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/11.webp",
+                    "732.48 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/12.webp",
+                    "6.47 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/13.webp",
+                    "4.37 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/14.webp",
+                    "4.72 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/15.webp",
+                    "3.79 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/16.webp",
+                    "3.31 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/17.webp",
+                    "3.1 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/18.webp",
+                    "3.18 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/19.webp",
+                    "4.34 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/20.webp",
+                    "9.68 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/21.webp",
+                    "2.94 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/Scans/BOX Vol.2/22.webp",
+                    "1.36 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [01][Ma10p_1080p][x265_flac_aac].jpsc.ass",
+                    "535.74 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [01][Ma10p_1080p][x265_flac_aac].jptc.ass",
+                    "535.75 KB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [01][Ma10p_1080p][x265_flac_aac].mkv",
+                    "981.24 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [02][Ma10p_1080p][x265_flac].jpsc.ass",
+                    "9.27 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [02][Ma10p_1080p][x265_flac].jptc.ass",
+                    "9.47 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [02][Ma10p_1080p][x265_flac].mkv",
+                    "836.43 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [03][Ma10p_1080p][x265_flac].jpsc.ass",
+                    "9.29 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [03][Ma10p_1080p][x265_flac].jptc.ass",
+                    "9.49 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [03][Ma10p_1080p][x265_flac].mkv",
+                    "727.76 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [04][Ma10p_1080p][x265_flac].jpsc.ass",
+                    "9.28 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [04][Ma10p_1080p][x265_flac].jptc.ass",
+                    "9.48 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [04][Ma10p_1080p][x265_flac].mkv",
+                    "778.89 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [05][Ma10p_1080p][x265_flac].jpsc.ass",
+                    "9.27 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [05][Ma10p_1080p][x265_flac].jptc.ass",
+                    "9.47 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [05][Ma10p_1080p][x265_flac].mkv",
+                    "797.75 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [06][Ma10p_1080p][x265_flac].jpsc.ass",
+                    "9.36 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [06][Ma10p_1080p][x265_flac].jptc.ass",
+                    "9.56 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [06][Ma10p_1080p][x265_flac].mkv",
+                    "815.82 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [07][Ma10p_1080p][x265_flac].jpsc.ass",
+                    "9.28 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [07][Ma10p_1080p][x265_flac].jptc.ass",
+                    "9.48 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [07][Ma10p_1080p][x265_flac].mkv",
+                    "763.16 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [08][Ma10p_1080p][x265_flac].jpsc.ass",
+                    "9.26 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [08][Ma10p_1080p][x265_flac].jptc.ass",
+                    "9.46 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [08][Ma10p_1080p][x265_flac].mkv",
+                    "764.26 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [09][Ma10p_1080p][x265_flac].jpsc.ass",
+                    "9.26 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [09][Ma10p_1080p][x265_flac].jptc.ass",
+                    "9.46 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [09][Ma10p_1080p][x265_flac].mkv",
+                    "850.38 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [10][Ma10p_1080p][x265_flac].jpsc.ass",
+                    "13.46 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [10][Ma10p_1080p][x265_flac].jptc.ass",
+                    "13.66 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [10][Ma10p_1080p][x265_flac].mkv",
+                    "875.96 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [11][Ma10p_1080p][x265_flac].jpsc.ass",
+                    "9.26 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [11][Ma10p_1080p][x265_flac].jptc.ass",
+                    "9.46 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [11][Ma10p_1080p][x265_flac].mkv",
+                    "792.26 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [12][Ma10p_1080p][x265_flac_aac].jpsc.ass",
+                    "9.26 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [12][Ma10p_1080p][x265_flac_aac].jptc.ass",
+                    "9.46 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [12][Ma10p_1080p][x265_flac_aac].mkv",
+                    "930.68 MB"
+                ],
+                [
+                    "[Nekomoe kissaten&VCB-Studio] SHINE POST [Ma10p_1080p]/[Nekomoe kissaten&VCB-Studio] SHINE POST [Fonts].7z",
+                    "99.06 MB"
+                ]
+            ],
+            "size": "16.48 GB",
+            "btskey": ""
+        },
+        {
+            "_id": "64a907ab653387000726d3b1",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[星空字幕組][咒術回戰 / Jujutsu Kaisen][25][繁日雙語][1080P][WEBrip][MP4]（急招校對、後期）",
+            "introduction": "<p><img src=\"https://p.sda1.dev/12/23d24163e0d30feef271b479f9dad5bb/Jujutsu_anime_S2kv4.webp\" style=\"width:2897px;height:4096px\"></p><p>歡迎關注星空字幕組微博 : @星空字幕娘 <a href=\"https://weibo.com/XKsub\">https://weibo.com/XKsub</a></p><p>星空字幕組現急招翻譯、校對、時軸、特效等製作成員，要求如下</p><p>翻譯：日語N2或N2以上，有能力獨立翻譯一集特攝或動漫</p><p>校對：日語N1，能夠在短時間內查找翻譯錯誤並最佳化翻譯，語言組織能力強</p><p>時軸：熟練使用Aegisub等打軸軟體，能夠在3小時內打完一集24分鐘的特攝或動漫</p><p>特效：熟練使用AE、PR等軟體製作動態特效或熟練使用ass特效代碼製作特效</p><p>壓製：熟練使用AVS或VS進行壓制，具有較好的電腦配備</p><p>美工：熟練使用PS等軟體製作海報或漢化LOGO</p><p>希望有能力、愛特攝或動漫的朋友能夠加入我們，如有意願，歡迎加入星空字幕組招募QQ群：644319022</p>",
+            "tag_ids": [
+                "548ee2ce4ab7379536f56358",
+                "5f75680c4b840abcfc63b1c4",
+                "548edffb4ab7379536f56352",
+                "55b86d3824180bc3647fea42",
+                "5d23fecf306f1a0007b58066",
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 22,
+            "finished": 153,
+            "leechers": 5,
+            "seeders": 49,
+            "uploader_id": "5c595eb8475bb7b2732fba53",
+            "team_id": "5d2214af306f1a0007b55b1b",
+            "publish_time": "2023-07-08T06:52:27.443Z",
+            "magnet": "magnet:?xt=urn:btih:aa3c20851575c86a195627280f902e32b3a94c42",
+            "infoHash": "aa3c20851575c86a195627280f902e32b3a94c42",
+            "file_id": "64a90773653387000726d2f1",
+            "teamsync": true,
+            "content": [
+                [
+                    "[XKsub][Jujutsu Kaisen][25][CHT_JAP][1080P][WEBrip][MP4].mp4",
+                    "525.24 MB"
+                ]
+            ],
+            "size": "525.24 MB",
+            "btskey": "",
+            "sync": {
+                "nyaa": "unknown error 403",
+                "acgnx": "https://share.acgnx.se/show-aa3c20851575c86a195627280f902e32b3a94c42.html",
+                "dmhy": "http://share.dmhy.org/topics/view/644939_Jujutsu_Kaisen_25_1080P_WEBrip_MP4.html"
+            }
+        },
+        {
+            "_id": "64a9076d653387000726d2da",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[星空字幕组][咒术回战 / Jujutsu Kaisen][25][简日双语][1080P][WEBrip][MP4]（急招校对、后期）",
+            "introduction": "<p><img src=\"https://p.sda1.dev/12/23d24163e0d30feef271b479f9dad5bb/Jujutsu_anime_S2kv4.webp\"></p><p>欢迎关注星空字幕组微博 : @星空字幕娘 <a href=\"https://weibo.com/XKsub\">https://weibo.com/XKsub</a></p><p>星空字幕组现急招翻译、校对、时轴、特效等制作成员，要求如下</p><p>翻译：日语N2或N2以上，有能力独立翻译一集特摄或动漫</p><p>校对：日语N1，能够在短时间内查找翻译错误并优化翻译，语言组织能力强</p><p>时轴：熟练使用Aegisub等打轴软件，能够在3小时内打完一集24分钟的特摄或动漫</p><p>特效：熟练使用AE、PR等软件制作动态特效或熟练使用ass特效代码制作特效</p><p>压制：熟练使用AVS或VS进行压制，具有较好的电脑配置</p><p>美工：熟练使用PS等软件制作海报或汉化LOGO</p><p>希望有能力、爱特摄或动漫的朋友能够加入我们，如有意愿，欢迎加入星空字幕组招募QQ群：644319022</p>",
+            "tag_ids": [
+                "548ee2ce4ab7379536f56358",
+                "5f75680c4b840abcfc63b1c4",
+                "548edffb4ab7379536f56352",
+                "5d23fecf306f1a0007b58066",
+                "55b86e9224180bc3647fea43",
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 23,
+            "finished": 42,
+            "leechers": 14,
+            "seeders": 19,
+            "uploader_id": "5c595eb8475bb7b2732fba53",
+            "team_id": "5d2214af306f1a0007b55b1b",
+            "publish_time": "2023-07-08T06:51:25.801Z",
+            "magnet": "magnet:?xt=urn:btih:645e3779624d90d23c7af741ea195aeb9d1e4fbc",
+            "infoHash": "645e3779624d90d23c7af741ea195aeb9d1e4fbc",
+            "file_id": "64a90724653387000726d1f7",
+            "teamsync": true,
+            "content": [
+                [
+                    "[XKsub][Jujutsu Kaisen][25][CHS_JAP][1080P][WEBrip][MP4].mp4",
+                    "525.31 MB"
+                ]
+            ],
+            "size": "525.31 MB",
+            "btskey": "",
+            "sync": {
+                "nyaa": "unknown error 403",
+                "acgnx": "https://share.acgnx.se/show-645e3779624d90d23c7af741ea195aeb9d1e4fbc.html",
+                "dmhy": "http://share.dmhy.org/topics/view/644938_Jujutsu_Kaisen_25_1080P_WEBrip_MP4.html"
+            }
+        },
+        {
+            "_id": "64a901fa653387000726c224",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[国漫]万界仙踪第389集无水印高清迅雷下载",
+            "introduction": "<p>[国漫]万界仙踪第389集无水印高清迅雷下载</p>",
+            "tag_ids": [
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 14,
+            "finished": 4,
+            "leechers": 5,
+            "seeders": 2,
+            "uploader_id": "63eb6fc8c02db30007109b78",
+            "team_id": null,
+            "publish_time": "2023-07-08T06:28:10.078Z",
+            "magnet": "magnet:?xt=urn:btih:ed1b6e87fa122a963ce1cff22bcf0e0165fc329f",
+            "infoHash": "ed1b6e87fa122a963ce1cff22bcf0e0165fc329f",
+            "file_id": "64a901fa653387000726c223",
+            "teamsync": null,
+            "content": [
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载.mp4",
+                    "150.67 MB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/3AGirL全集.zip.torrent",
+                    "65.4 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/4K-STAR全集.zip.torrent",
+                    "118.04 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/Beautyleg全集.zip.torrent",
+                    "232.61 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/IMISS爱蜜社全集.zip.torrent",
+                    "121.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/PANS写真 全集.zip.torrent",
+                    "255.13 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 1[MP413700MB].zip.torrent",
+                    "17.01 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 2[MP414560MB].zip.torrent",
+                    "16.77 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 3[MP417680MB].zip.torrent",
+                    "16.89 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 4[MP416210MB].zip.torrent",
+                    "16.91 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 5[MP414710MB].zip.torrent",
+                    "17.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 6[MP413270MB].zip.torrent",
+                    "16.99 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 7 END[MP412090MB].zip.torrent",
+                    "17.23 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/Showgirl全集.zip.torrent",
+                    "55.32 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/TGOD推女神写真全集.zip.torrent",
+                    "151.33 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/pantyhoselife全集.zip.torrent",
+                    "97.2 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/rosi写真全集.zip.torrent",
+                    "103.39 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/rq-star全集.zip.torrent",
+                    "146.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/丝雅写真全集.zip.torrent",
+                    "57.79 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/丽柜Ligui全集.zip.torrent",
+                    "69.43 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/动感小站全集.zip.torrent",
+                    "135.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/国产小电影合集.7z.torrent",
+                    "1.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/国产私拍全集.zip.torrent",
+                    "106.42 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/如壹写真全集.zip.torrent",
+                    "60.27 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/学院派私拍全集.zip.torrent",
+                    "111.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/性感车模全集.zip.torrent",
+                    "55.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/细高跟全集.zip.torrent",
+                    "52.49 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/经典写真全集.zip.torrent",
+                    "144.12 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/美女自拍全集.zip.torrent",
+                    "65.35 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/街拍美女III全集.zip.torrent",
+                    "149.57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/街拍美女II全集.zip.torrent",
+                    "95.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/街拍美女全集.zip.torrent",
+                    "57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/韩国女主播全集.zip.torrent",
+                    "118.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/韩国饭拍III全集.zip.torrent",
+                    "132.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/韩国饭拍II全集.zip.torrent",
+                    "76.81 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/写真视频合集/韩国饭拍全集.zip.torrent",
+                    "115.03 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/动漫网站推荐.txt",
+                    "220 B"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界仙踪第389集无水印高清迅雷下载/添加微信不迷路.jpg",
+                    "143.21 KB"
+                ]
+            ],
+            "size": "159.89 MB",
+            "btskey": ""
+        },
+        {
+            "_id": "64a901b7653387000726c128",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[国漫]万界独尊第145集无水印高清迅雷下载",
+            "introduction": "<p>[国漫]万界独尊第145集无水印高清迅雷下载</p>",
+            "tag_ids": [
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 13,
+            "finished": 2,
+            "leechers": 5,
+            "seeders": 3,
+            "uploader_id": "63eb6fc8c02db30007109b78",
+            "team_id": null,
+            "publish_time": "2023-07-08T06:27:03.769Z",
+            "magnet": "magnet:?xt=urn:btih:d3c7c80e57541f644a64ed05981ede2d8a27d4fc",
+            "infoHash": "d3c7c80e57541f644a64ed05981ede2d8a27d4fc",
+            "file_id": "64a901b7653387000726c127",
+            "teamsync": null,
+            "content": [
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载.mp4",
+                    "174.46 MB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/3AGirL全集.zip.torrent",
+                    "65.4 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/4K-STAR全集.zip.torrent",
+                    "118.04 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/Beautyleg全集.zip.torrent",
+                    "232.61 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/IMISS爱蜜社全集.zip.torrent",
+                    "121.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/PANS写真 全集.zip.torrent",
+                    "255.13 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 1[MP413700MB].zip.torrent",
+                    "17.01 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 2[MP414560MB].zip.torrent",
+                    "16.77 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 3[MP417680MB].zip.torrent",
+                    "16.89 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 4[MP416210MB].zip.torrent",
+                    "16.91 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 5[MP414710MB].zip.torrent",
+                    "17.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 6[MP413270MB].zip.torrent",
+                    "16.99 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 7 END[MP412090MB].zip.torrent",
+                    "17.23 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/Showgirl全集.zip.torrent",
+                    "55.32 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/TGOD推女神写真全集.zip.torrent",
+                    "151.33 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/pantyhoselife全集.zip.torrent",
+                    "97.2 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/rosi写真全集.zip.torrent",
+                    "103.39 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/rq-star全集.zip.torrent",
+                    "146.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/丝雅写真全集.zip.torrent",
+                    "57.79 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/丽柜Ligui全集.zip.torrent",
+                    "69.43 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/动感小站全集.zip.torrent",
+                    "135.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/国产小电影合集.7z.torrent",
+                    "1.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/国产私拍全集.zip.torrent",
+                    "106.42 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/如壹写真全集.zip.torrent",
+                    "60.27 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/学院派私拍全集.zip.torrent",
+                    "111.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/性感车模全集.zip.torrent",
+                    "55.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/细高跟全集.zip.torrent",
+                    "52.49 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/经典写真全集.zip.torrent",
+                    "144.12 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/美女自拍全集.zip.torrent",
+                    "65.35 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/街拍美女III全集.zip.torrent",
+                    "149.57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/街拍美女II全集.zip.torrent",
+                    "95.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/街拍美女全集.zip.torrent",
+                    "57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/韩国女主播全集.zip.torrent",
+                    "118.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/韩国饭拍III全集.zip.torrent",
+                    "132.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/韩国饭拍II全集.zip.torrent",
+                    "76.81 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/写真视频合集/韩国饭拍全集.zip.torrent",
+                    "115.03 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/动漫网站推荐.txt",
+                    "220 B"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第145集无水印高清迅雷下载/添加微信不迷路.jpg",
+                    "143.21 KB"
+                ]
+            ],
+            "size": "183.64 MB",
+            "btskey": ""
+        },
+        {
+            "_id": "64a90164653387000726bfba",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[国漫]万界独尊第144集无水印高清迅雷下载",
+            "introduction": "<p>[国漫]万界独尊第144集无水印高清迅雷下载</p>",
+            "tag_ids": [
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 12,
+            "finished": 2,
+            "leechers": 3,
+            "seeders": 3,
+            "uploader_id": "63eb6fc8c02db30007109b78",
+            "team_id": null,
+            "publish_time": "2023-07-08T06:25:40.110Z",
+            "magnet": "magnet:?xt=urn:btih:576c4af27074081295a97538ebd6060166b0f1c7",
+            "infoHash": "576c4af27074081295a97538ebd6060166b0f1c7",
+            "file_id": "64a90164653387000726bfb9",
+            "teamsync": null,
+            "content": [
+                [
+                    "[acgyinghua.com][国漫]万界独尊第144集无水印高清迅雷\u008bè½½/[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½.mp4",
+                    "189.74 MB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/3AGirLå\u0085¨é\u009b\u0086.zip.torrent",
+                    "65.4 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/4K-STARå\u0085¨é\u009b\u0086.zip.torrent",
+                    "118.04 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/Beautylegå\u0085¨é\u009b\u0086.zip.torrent",
+                    "232.61 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/IMISSç\u0088±è\u009c\u009cç¤¾å\u0085¨é\u009b\u0086.zip.torrent",
+                    "121.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/PANSå\u0086\u0099ç\u009c\u009f å\u0085¨é\u009b\u0086.zip.torrent",
+                    "255.13 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/ROSIMMç¾\u008eè\u0085¿ä¸\u009dè¢\u009cé«\u0098æ¸\u0085è§\u0086é¢\u0091 1080P - 1[MP413700MB].zip.torrent",
+                    "17.01 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/ROSIMMç¾\u008eè\u0085¿ä¸\u009dè¢\u009cé«\u0098æ¸\u0085è§\u0086é¢\u0091 1080P - 2[MP414560MB].zip.torrent",
+                    "16.77 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/ROSIMMç¾\u008eè\u0085¿ä¸\u009dè¢\u009cé«\u0098æ¸\u0085è§\u0086é¢\u0091 1080P - 3[MP417680MB].zip.torrent",
+                    "16.89 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/ROSIMMç¾\u008eè\u0085¿ä¸\u009dè¢\u009cé«\u0098æ¸\u0085è§\u0086é¢\u0091 1080P - 4[MP416210MB].zip.torrent",
+                    "16.91 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/ROSIMMç¾\u008eè\u0085¿ä¸\u009dè¢\u009cé«\u0098æ¸\u0085è§\u0086é¢\u0091 1080P - 5[MP414710MB].zip.torrent",
+                    "17.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/ROSIMMç¾\u008eè\u0085¿ä¸\u009dè¢\u009cé«\u0098æ¸\u0085è§\u0086é¢\u0091 1080P - 6[MP413270MB].zip.torrent",
+                    "16.99 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/ROSIMMç¾\u008eè\u0085¿ä¸\u009dè¢\u009cé«\u0098æ¸\u0085è§\u0086é¢\u0091 1080P - 7 END[MP412090MB].zip.torrent",
+                    "17.23 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/Showgirlå\u0085¨é\u009b\u0086.zip.torrent",
+                    "55.32 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/TGODæ\u008e¨å¥³ç¥\u009eå\u0086\u0099ç\u009c\u009få\u0085¨é\u009b\u0086.zip.torrent",
+                    "151.33 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/pantyhoselifeå\u0085¨é\u009b\u0086.zip.torrent",
+                    "97.2 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/rosiå\u0086\u0099ç\u009c\u009få\u0085¨é\u009b\u0086.zip.torrent",
+                    "103.39 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/rq-starå\u0085¨é\u009b\u0086.zip.torrent",
+                    "146.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/ä¸\u009dé\u009b\u0085å\u0086\u0099ç\u009c\u009få\u0085¨é\u009b\u0086.zip.torrent",
+                    "57.79 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/ä¸½æ\u009f\u009cLiguiå\u0085¨é\u009b\u0086.zip.torrent",
+                    "69.43 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/å\u008a¨æ\u0084\u009få°\u008fç«\u0099å\u0085¨é\u009b\u0086.zip.torrent",
+                    "135.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/å\u009b½äº§å°\u008fç\u0094µå½±å\u0090\u0088é\u009b\u0086.7z.torrent",
+                    "1.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/å\u009b½äº§ç§\u0081æ\u008b\u008då\u0085¨é\u009b\u0086.zip.torrent",
+                    "106.42 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/å¦\u0082å£¹å\u0086\u0099ç\u009c\u009få\u0085¨é\u009b\u0086.zip.torrent",
+                    "60.27 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/å\u00ad¦é\u0099¢æ´¾ç§\u0081æ\u008b\u008då\u0085¨é\u009b\u0086.zip.torrent",
+                    "111.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/æ\u0080§æ\u0084\u009fè½¦æ¨¡å\u0085¨é\u009b\u0086.zip.torrent",
+                    "55.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/ç»\u0086é«\u0098è·\u009få\u0085¨é\u009b\u0086.zip.torrent",
+                    "52.49 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/ç»\u008få\u0085¸å\u0086\u0099ç\u009c\u009få\u0085¨é\u009b\u0086.zip.torrent",
+                    "144.12 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/ç¾\u008eå¥³è\u0087ªæ\u008b\u008då\u0085¨é\u009b\u0086.zip.torrent",
+                    "65.35 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/è¡\u0097æ\u008b\u008dç¾\u008eå¥³IIIå\u0085¨é\u009b\u0086.zip.torrent",
+                    "149.57 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/è¡\u0097æ\u008b\u008dç¾\u008eå¥³IIå\u0085¨é\u009b\u0086.zip.torrent",
+                    "95.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/è¡\u0097æ\u008b\u008dç¾\u008eå¥³å\u0085¨é\u009b\u0086.zip.torrent",
+                    "57 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/é\u009f©å\u009b½å¥³ä¸»æ\u0092\u00adå\u0085¨é\u009b\u0086.zip.torrent",
+                    "118.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/é\u009f©å\u009b½é¥\u00adæ\u008b\u008dIIIå\u0085¨é\u009b\u0086.zip.torrent",
+                    "132.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/é\u009f©å\u009b½é¥\u00adæ\u008b\u008dIIå\u0085¨é\u009b\u0086.zip.torrent",
+                    "76.81 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/é\u009f©å\u009b½é¥\u00adæ\u008b\u008då\u0085¨é\u009b\u0086.zip.torrent",
+                    "115.03 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u008a¨æ¼«ç½\u0091ç«\u0099æ\u008e¨è\u008d\u0090.txt",
+                    "220 B"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬144é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/æ·»å\u008a å¾®ä¿¡ä¸\u008dè¿·è·¯.jpg",
+                    "143.21 KB"
+                ]
+            ],
+            "size": "198.89 MB",
+            "btskey": ""
+        },
+        {
+            "_id": "64a900d9653387000726be53",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬143é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½",
+            "introduction": "<p>[å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬143é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½</p>",
+            "tag_ids": [
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 11,
+            "finished": 2,
+            "leechers": 3,
+            "seeders": 2,
+            "uploader_id": "63eb6fc8c02db30007109b78",
+            "team_id": null,
+            "publish_time": "2023-07-08T06:23:21.281Z",
+            "magnet": "magnet:?xt=urn:btih:f7876873659189b5d6b477b1e793eeb1b6256be8",
+            "infoHash": "f7876873659189b5d6b477b1e793eeb1b6256be8",
+            "file_id": "64a900d9653387000726be52",
+            "teamsync": null,
+            "content": [
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬143é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬143é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½.mp4",
+                    "152.71 MB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬143é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/3AGirLå\u0085¨é\u009b\u0086.zip.torrent",
+                    "65.4 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬143é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/4K-STARå\u0085¨é\u009b\u0086.zip.torrent",
+                    "118.04 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬143é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/Beautylegå\u0085¨é\u009b\u0086.zip.torrent",
+                    "232.61 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬143é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/IMISSç\u0088±è\u009c\u009cç¤¾å\u0085¨é\u009b\u0086.zip.torrent",
+                    "121.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][å\u009b½æ¼«]ä¸\u0087ç\u0095\u008cç\u008b¬å°\u008aç¬¬143é\u009b\u0086æ\u0097 æ°´å\u008d°é«\u0098æ¸\u0085è¿\u0085é\u009b·ä¸\u008bè½½/å\u0086\u0099ç\u009c\u009fè§\u0086é¢\u0091å\u0090\u0088é\u009b\u0086/PANSå\u0086\u0099ç\u009c\u009f å\u0085¨é\u009b\u0086.zip.torrent",
+                    "255.13 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 1[MP413700MB].zip.torrent",
+                    "17.01 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 2[MP414560MB].zip.torrent",
+                    "16.77 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 3[MP417680MB].zip.torrent",
+                    "16.89 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 4[MP416210MB].zip.torrent",
+                    "16.91 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 5[MP414710MB].zip.torrent",
+                    "17.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 6[MP413270MB].zip.torrent",
+                    "16.99 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 7 END[MP412090MB].zip.torrent",
+                    "17.23 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/Showgirl全集.zip.torrent",
+                    "55.32 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/TGOD推女神写真全集.zip.torrent",
+                    "151.33 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/pantyhoselife全集.zip.torrent",
+                    "97.2 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/rosi写真全集.zip.torrent",
+                    "103.39 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/rq-star全集.zip.torrent",
+                    "146.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/丝雅写真全集.zip.torrent",
+                    "57.79 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/丽柜Ligui全集.zip.torrent",
+                    "69.43 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/动感小站全集.zip.torrent",
+                    "135.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/国产小电影合集.7z.torrent",
+                    "1.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/国产私拍全集.zip.torrent",
+                    "106.42 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/如壹写真全集.zip.torrent",
+                    "60.27 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/学院派私拍全集.zip.torrent",
+                    "111.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/性感车模全集.zip.torrent",
+                    "55.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/细高跟全集.zip.torrent",
+                    "52.49 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/经典写真全集.zip.torrent",
+                    "144.12 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/美女自拍全集.zip.torrent",
+                    "65.35 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/街拍美女III全集.zip.torrent",
+                    "149.57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/街拍美女II全集.zip.torrent",
+                    "95.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/街拍美女全集.zip.torrent",
+                    "57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/韩国女主播全集.zip.torrent",
+                    "118.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/韩国饭拍III全集.zip.torrent",
+                    "132.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/韩国饭拍II全集.zip.torrent",
+                    "76.81 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/写真视频合集/韩国饭拍全集.zip.torrent",
+                    "115.03 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/动漫网站推荐.txt",
+                    "220 B"
+                ],
+                [
+                    "[acgyinghua.com][国漫]万界独尊第143集无水印高清迅雷下载/添加微信不迷路.jpg",
+                    "143.21 KB"
+                ]
+            ],
+            "size": "161.89 MB",
+            "btskey": ""
+        },
+        {
+            "_id": "64a90027653387000726bc22",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[国漫]完美世界第118集无水印高清迅雷下载",
+            "introduction": "<p>[国漫]完美世界第118集无水印高清迅雷下载</p>",
+            "tag_ids": [
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 18,
+            "finished": 10,
+            "leechers": 9,
+            "seeders": 7,
+            "uploader_id": "63eb6fc8c02db30007109b78",
+            "team_id": null,
+            "publish_time": "2023-07-08T06:20:23.398Z",
+            "magnet": "magnet:?xt=urn:btih:c40d4f7fdc2313d82e73288108c8e221fd5cf601",
+            "infoHash": "c40d4f7fdc2313d82e73288108c8e221fd5cf601",
+            "file_id": "64a90027653387000726bc21",
+            "teamsync": null,
+            "content": [
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载.mp4",
+                    "387.94 MB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/3AGirL全集.zip.torrent",
+                    "65.4 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/4K-STAR全集.zip.torrent",
+                    "118.04 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/Beautyleg全集.zip.torrent",
+                    "232.61 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/IMISS爱蜜社全集.zip.torrent",
+                    "121.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/PANS写真 全集.zip.torrent",
+                    "255.13 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 1[MP413700MB].zip.torrent",
+                    "17.01 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 2[MP414560MB].zip.torrent",
+                    "16.77 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 3[MP417680MB].zip.torrent",
+                    "16.89 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 4[MP416210MB].zip.torrent",
+                    "16.91 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 5[MP414710MB].zip.torrent",
+                    "17.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 6[MP413270MB].zip.torrent",
+                    "16.99 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 7 END[MP412090MB].zip.torrent",
+                    "17.23 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/Showgirl全集.zip.torrent",
+                    "55.32 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/TGOD推女神写真全集.zip.torrent",
+                    "151.33 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/pantyhoselife全集.zip.torrent",
+                    "97.2 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/rosi写真全集.zip.torrent",
+                    "103.39 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/rq-star全集.zip.torrent",
+                    "146.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/丝雅写真全集.zip.torrent",
+                    "57.79 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/丽柜Ligui全集.zip.torrent",
+                    "69.43 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/动感小站全集.zip.torrent",
+                    "135.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/国产小电影合集.7z.torrent",
+                    "1.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/国产私拍全集.zip.torrent",
+                    "106.42 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/如壹写真全集.zip.torrent",
+                    "60.27 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/学院派私拍全集.zip.torrent",
+                    "111.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/性感车模全集.zip.torrent",
+                    "55.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/细高跟全集.zip.torrent",
+                    "52.49 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/经典写真全集.zip.torrent",
+                    "144.12 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/美女自拍全集.zip.torrent",
+                    "65.35 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/街拍美女III全集.zip.torrent",
+                    "149.57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/街拍美女II全集.zip.torrent",
+                    "95.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/街拍美女全集.zip.torrent",
+                    "57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/韩国女主播全集.zip.torrent",
+                    "118.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/韩国饭拍III全集.zip.torrent",
+                    "132.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/韩国饭拍II全集.zip.torrent",
+                    "76.81 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/写真视频合集/韩国饭拍全集.zip.torrent",
+                    "115.03 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/动漫网站推荐.txt",
+                    "220 B"
+                ],
+                [
+                    "[acgyinghua.com][国漫]完美世界第118集无水印高清迅雷下载/添加微信不迷路.jpg",
+                    "143.21 KB"
+                ]
+            ],
+            "size": "397.14 MB",
+            "btskey": ""
+        },
+        {
+            "_id": "64a8ffb9653387000726bac3",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[国漫]吞噬星空合集第10集无水印高清迅雷下载",
+            "introduction": "<p>[国漫]吞噬星空合集第10集无水印高清迅雷下载</p>",
+            "tag_ids": [
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 18,
+            "finished": 0,
+            "leechers": 12,
+            "seeders": 0,
+            "uploader_id": "63eb6fc8c02db30007109b78",
+            "team_id": null,
+            "publish_time": "2023-07-08T06:18:33.449Z",
+            "magnet": "magnet:?xt=urn:btih:f9f8e4e65db07de3327628f0831777392eea1771",
+            "infoHash": "f9f8e4e65db07de3327628f0831777392eea1771",
+            "file_id": "64a8ffb9653387000726bac2",
+            "teamsync": null,
+            "content": [
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载.mp4",
+                    "1.59 GB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/3AGirL全集.zip.torrent",
+                    "65.4 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/4K-STAR全集.zip.torrent",
+                    "118.04 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/Beautyleg全集.zip.torrent",
+                    "232.61 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/IMISS爱蜜社全集.zip.torrent",
+                    "121.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/PANS写真 全集.zip.torrent",
+                    "255.13 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 1[MP413700MB].zip.torrent",
+                    "17.01 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 2[MP414560MB].zip.torrent",
+                    "16.77 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 3[MP417680MB].zip.torrent",
+                    "16.89 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 4[MP416210MB].zip.torrent",
+                    "16.91 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 5[MP414710MB].zip.torrent",
+                    "17.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 6[MP413270MB].zip.torrent",
+                    "16.99 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 7 END[MP412090MB].zip.torrent",
+                    "17.23 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/Showgirl全集.zip.torrent",
+                    "55.32 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/TGOD推女神写真全集.zip.torrent",
+                    "151.33 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/pantyhoselife全集.zip.torrent",
+                    "97.2 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/rosi写真全集.zip.torrent",
+                    "103.39 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/rq-star全集.zip.torrent",
+                    "146.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/丝雅写真全集.zip.torrent",
+                    "57.79 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/丽柜Ligui全集.zip.torrent",
+                    "69.43 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/动感小站全集.zip.torrent",
+                    "135.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/国产小电影合集.7z.torrent",
+                    "1.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/国产私拍全集.zip.torrent",
+                    "106.42 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/如壹写真全集.zip.torrent",
+                    "60.27 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/学院派私拍全集.zip.torrent",
+                    "111.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/性感车模全集.zip.torrent",
+                    "55.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/细高跟全集.zip.torrent",
+                    "52.49 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/经典写真全集.zip.torrent",
+                    "144.12 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/美女自拍全集.zip.torrent",
+                    "65.35 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/街拍美女III全集.zip.torrent",
+                    "149.57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/街拍美女II全集.zip.torrent",
+                    "95.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/街拍美女全集.zip.torrent",
+                    "57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/韩国女主播全集.zip.torrent",
+                    "118.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/韩国饭拍III全集.zip.torrent",
+                    "132.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/韩国饭拍II全集.zip.torrent",
+                    "76.81 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/写真视频合集/韩国饭拍全集.zip.torrent",
+                    "115.03 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/动漫网站推荐.txt",
+                    "220 B"
+                ],
+                [
+                    "[acgyinghua.com][国漫]吞噬星空合集第10集无水印高清迅雷下载/添加微信不迷路.jpg",
+                    "143.21 KB"
+                ]
+            ],
+            "size": "1.61 GB",
+            "btskey": ""
+        },
+        {
+            "_id": "64a8ff43653387000726b8f2",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[国漫]十方剑圣第05集无水印高清迅雷下载",
+            "introduction": "<p>[国漫]十方剑圣第05集无水印高清迅雷下载</p>",
+            "tag_ids": [
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 21,
+            "finished": 5,
+            "leechers": 6,
+            "seeders": 3,
+            "uploader_id": "63eb6fc8c02db30007109b78",
+            "team_id": null,
+            "publish_time": "2023-07-08T06:16:35.954Z",
+            "magnet": "magnet:?xt=urn:btih:f46264e2decb5cf5e0a78b728fb8b3012a133b15",
+            "infoHash": "f46264e2decb5cf5e0a78b728fb8b3012a133b15",
+            "file_id": "64a8ff43653387000726b8f1",
+            "teamsync": null,
+            "content": [
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载.mp4",
+                    "186.35 MB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/3AGirL全集.zip.torrent",
+                    "65.4 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/4K-STAR全集.zip.torrent",
+                    "118.04 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/Beautyleg全集.zip.torrent",
+                    "232.61 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/IMISS爱蜜社全集.zip.torrent",
+                    "121.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/PANS写真 全集.zip.torrent",
+                    "255.13 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 1[MP413700MB].zip.torrent",
+                    "17.01 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 2[MP414560MB].zip.torrent",
+                    "16.77 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 3[MP417680MB].zip.torrent",
+                    "16.89 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 4[MP416210MB].zip.torrent",
+                    "16.91 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 5[MP414710MB].zip.torrent",
+                    "17.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 6[MP413270MB].zip.torrent",
+                    "16.99 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 7 END[MP412090MB].zip.torrent",
+                    "17.23 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/Showgirl全集.zip.torrent",
+                    "55.32 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/TGOD推女神写真全集.zip.torrent",
+                    "151.33 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/pantyhoselife全集.zip.torrent",
+                    "97.2 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/rosi写真全集.zip.torrent",
+                    "103.39 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/rq-star全集.zip.torrent",
+                    "146.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/丝雅写真全集.zip.torrent",
+                    "57.79 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/丽柜Ligui全集.zip.torrent",
+                    "69.43 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/动感小站全集.zip.torrent",
+                    "135.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/国产小电影合集.7z.torrent",
+                    "1.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/国产私拍全集.zip.torrent",
+                    "106.42 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/如壹写真全集.zip.torrent",
+                    "60.27 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/学院派私拍全集.zip.torrent",
+                    "111.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/性感车模全集.zip.torrent",
+                    "55.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/细高跟全集.zip.torrent",
+                    "52.49 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/经典写真全集.zip.torrent",
+                    "144.12 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/美女自拍全集.zip.torrent",
+                    "65.35 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/街拍美女III全集.zip.torrent",
+                    "149.57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/街拍美女II全集.zip.torrent",
+                    "95.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/街拍美女全集.zip.torrent",
+                    "57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/韩国女主播全集.zip.torrent",
+                    "118.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/韩国饭拍III全集.zip.torrent",
+                    "132.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/韩国饭拍II全集.zip.torrent",
+                    "76.81 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/写真视频合集/韩国饭拍全集.zip.torrent",
+                    "115.03 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/动漫网站推荐.txt",
+                    "220 B"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第05集无水印高清迅雷下载/添加微信不迷路.jpg",
+                    "143.21 KB"
+                ]
+            ],
+            "size": "195.64 MB",
+            "btskey": ""
+        },
+        {
+            "_id": "64a8fedd653387000726b78a",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[国漫]十方剑圣第04集无水印高清迅雷下载",
+            "introduction": "<p>[国漫]十方剑圣第04集无水印高清迅雷下载</p>",
+            "tag_ids": [
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 20,
+            "finished": 5,
+            "leechers": 3,
+            "seeders": 3,
+            "uploader_id": "63eb6fc8c02db30007109b78",
+            "team_id": null,
+            "publish_time": "2023-07-08T06:14:53.966Z",
+            "magnet": "magnet:?xt=urn:btih:33724d73c4e242afd9d0df1d9dec6c0d9abf3eac",
+            "infoHash": "33724d73c4e242afd9d0df1d9dec6c0d9abf3eac",
+            "file_id": "64a8fedd653387000726b789",
+            "teamsync": null,
+            "content": [
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载.mp4",
+                    "105.86 MB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/3AGirL全集.zip.torrent",
+                    "65.4 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/4K-STAR全集.zip.torrent",
+                    "118.04 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/Beautyleg全集.zip.torrent",
+                    "232.61 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/IMISS爱蜜社全集.zip.torrent",
+                    "121.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/PANS写真 全集.zip.torrent",
+                    "255.13 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 1[MP413700MB].zip.torrent",
+                    "17.01 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 2[MP414560MB].zip.torrent",
+                    "16.77 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 3[MP417680MB].zip.torrent",
+                    "16.89 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 4[MP416210MB].zip.torrent",
+                    "16.91 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 5[MP414710MB].zip.torrent",
+                    "17.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 6[MP413270MB].zip.torrent",
+                    "16.99 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 7 END[MP412090MB].zip.torrent",
+                    "17.23 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/Showgirl全集.zip.torrent",
+                    "55.32 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/TGOD推女神写真全集.zip.torrent",
+                    "151.33 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/pantyhoselife全集.zip.torrent",
+                    "97.2 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/rosi写真全集.zip.torrent",
+                    "103.39 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/rq-star全集.zip.torrent",
+                    "146.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/丝雅写真全集.zip.torrent",
+                    "57.79 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/丽柜Ligui全集.zip.torrent",
+                    "69.43 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/动感小站全集.zip.torrent",
+                    "135.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/国产小电影合集.7z.torrent",
+                    "1.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/国产私拍全集.zip.torrent",
+                    "106.42 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/如壹写真全集.zip.torrent",
+                    "60.27 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/学院派私拍全集.zip.torrent",
+                    "111.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/性感车模全集.zip.torrent",
+                    "55.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/细高跟全集.zip.torrent",
+                    "52.49 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/经典写真全集.zip.torrent",
+                    "144.12 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/美女自拍全集.zip.torrent",
+                    "65.35 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/街拍美女III全集.zip.torrent",
+                    "149.57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/街拍美女II全集.zip.torrent",
+                    "95.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/街拍美女全集.zip.torrent",
+                    "57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/韩国女主播全集.zip.torrent",
+                    "118.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/韩国饭拍III全集.zip.torrent",
+                    "132.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/韩国饭拍II全集.zip.torrent",
+                    "76.81 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/写真视频合集/韩国饭拍全集.zip.torrent",
+                    "115.03 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/动漫网站推荐.txt",
+                    "220 B"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第04集无水印高清迅雷下载/添加微信不迷路.jpg",
+                    "143.21 KB"
+                ]
+            ],
+            "size": "111.51 MB",
+            "btskey": ""
+        },
+        {
+            "_id": "64a8fe38653387000726b5a1",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[国漫]十方剑圣第02集无水印高清迅雷下载",
+            "introduction": "<p>[国漫]十方剑圣第02集无水印高清迅雷下载</p>",
+            "tag_ids": [
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 16,
+            "finished": 4,
+            "leechers": 2,
+            "seeders": 2,
+            "uploader_id": "63eb6fc8c02db30007109b78",
+            "team_id": null,
+            "publish_time": "2023-07-08T06:12:08.815Z",
+            "magnet": "magnet:?xt=urn:btih:7fd5cc37e550fd5c453ace8cf7cdaf79fade414d",
+            "infoHash": "7fd5cc37e550fd5c453ace8cf7cdaf79fade414d",
+            "file_id": "64a8fe38653387000726b5a0",
+            "teamsync": null,
+            "content": [
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载.mp4",
+                    "188.84 MB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/3AGirL全集.zip.torrent",
+                    "65.4 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/4K-STAR全集.zip.torrent",
+                    "118.04 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/Beautyleg全集.zip.torrent",
+                    "232.61 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/IMISS爱蜜社全集.zip.torrent",
+                    "121.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/PANS写真 全集.zip.torrent",
+                    "255.13 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 1[MP413700MB].zip.torrent",
+                    "17.01 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 2[MP414560MB].zip.torrent",
+                    "16.77 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 3[MP417680MB].zip.torrent",
+                    "16.89 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 4[MP416210MB].zip.torrent",
+                    "16.91 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 5[MP414710MB].zip.torrent",
+                    "17.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 6[MP413270MB].zip.torrent",
+                    "16.99 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 7 END[MP412090MB].zip.torrent",
+                    "17.23 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/Showgirl全集.zip.torrent",
+                    "55.32 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/TGOD推女神写真全集.zip.torrent",
+                    "151.33 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/pantyhoselife全集.zip.torrent",
+                    "97.2 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/rosi写真全集.zip.torrent",
+                    "103.39 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/rq-star全集.zip.torrent",
+                    "146.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/丝雅写真全集.zip.torrent",
+                    "57.79 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/丽柜Ligui全集.zip.torrent",
+                    "69.43 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/动感小站全集.zip.torrent",
+                    "135.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/国产小电影合集.7z.torrent",
+                    "1.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/国产私拍全集.zip.torrent",
+                    "106.42 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/如壹写真全集.zip.torrent",
+                    "60.27 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/学院派私拍全集.zip.torrent",
+                    "111.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/性感车模全集.zip.torrent",
+                    "55.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/细高跟全集.zip.torrent",
+                    "52.49 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/经典写真全集.zip.torrent",
+                    "144.12 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/美女自拍全集.zip.torrent",
+                    "65.35 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/街拍美女III全集.zip.torrent",
+                    "149.57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/街拍美女II全集.zip.torrent",
+                    "95.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/街拍美女全集.zip.torrent",
+                    "57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/韩国女主播全集.zip.torrent",
+                    "118.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/韩国饭拍III全集.zip.torrent",
+                    "132.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/韩国饭拍II全集.zip.torrent",
+                    "76.81 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/写真视频合集/韩国饭拍全集.zip.torrent",
+                    "115.03 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/动漫网站推荐.txt",
+                    "220 B"
+                ],
+                [
+                    "[acgyinghua.com][国漫]十方剑圣第02集无水印高清迅雷下载/添加微信不迷路.jpg",
+                    "143.21 KB"
+                ]
+            ],
+            "size": "198.14 MB",
+            "btskey": ""
+        },
+        {
+            "_id": "64a8fd9b653387000726b395",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[国漫]神印王座第62集无水印高清迅雷下载",
+            "introduction": "<p>[国漫]神印王座第62集无水印高清迅雷下载</p>",
+            "tag_ids": [
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 18,
+            "finished": 10,
+            "leechers": 10,
+            "seeders": 3,
+            "uploader_id": "63eb6fc8c02db30007109b78",
+            "team_id": null,
+            "publish_time": "2023-07-08T06:09:31.217Z",
+            "magnet": "magnet:?xt=urn:btih:951a997af714231070719eee38e50c4c8fa418ef",
+            "infoHash": "951a997af714231070719eee38e50c4c8fa418ef",
+            "file_id": "64a8fd9b653387000726b394",
+            "teamsync": null,
+            "content": [
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载.mp4",
+                    "309 MB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/3AGirL全集.zip.torrent",
+                    "65.4 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/4K-STAR全集.zip.torrent",
+                    "118.04 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/Beautyleg全集.zip.torrent",
+                    "232.61 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/IMISS爱蜜社全集.zip.torrent",
+                    "121.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/PANS写真 全集.zip.torrent",
+                    "255.13 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 1[MP413700MB].zip.torrent",
+                    "17.01 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 2[MP414560MB].zip.torrent",
+                    "16.77 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 3[MP417680MB].zip.torrent",
+                    "16.89 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 4[MP416210MB].zip.torrent",
+                    "16.91 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 5[MP414710MB].zip.torrent",
+                    "17.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 6[MP413270MB].zip.torrent",
+                    "16.99 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 7 END[MP412090MB].zip.torrent",
+                    "17.23 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/Showgirl全集.zip.torrent",
+                    "55.32 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/TGOD推女神写真全集.zip.torrent",
+                    "151.33 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/pantyhoselife全集.zip.torrent",
+                    "97.2 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/rosi写真全集.zip.torrent",
+                    "103.39 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/rq-star全集.zip.torrent",
+                    "146.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/丝雅写真全集.zip.torrent",
+                    "57.79 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/丽柜Ligui全集.zip.torrent",
+                    "69.43 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/动感小站全集.zip.torrent",
+                    "135.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/国产小电影合集.7z.torrent",
+                    "1.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/国产私拍全集.zip.torrent",
+                    "106.42 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/如壹写真全集.zip.torrent",
+                    "60.27 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/学院派私拍全集.zip.torrent",
+                    "111.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/性感车模全集.zip.torrent",
+                    "55.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/细高跟全集.zip.torrent",
+                    "52.49 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/经典写真全集.zip.torrent",
+                    "144.12 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/美女自拍全集.zip.torrent",
+                    "65.35 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/街拍美女III全集.zip.torrent",
+                    "149.57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/街拍美女II全集.zip.torrent",
+                    "95.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/街拍美女全集.zip.torrent",
+                    "57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/韩国女主播全集.zip.torrent",
+                    "118.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/韩国饭拍III全集.zip.torrent",
+                    "132.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/韩国饭拍II全集.zip.torrent",
+                    "76.81 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/写真视频合集/韩国饭拍全集.zip.torrent",
+                    "115.03 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/动漫网站推荐.txt",
+                    "220 B"
+                ],
+                [
+                    "[acgyinghua.com][国漫]神印王座第62集无水印高清迅雷下载/添加微信不迷路.jpg",
+                    "143.21 KB"
+                ]
+            ],
+            "size": "318.14 MB",
+            "btskey": ""
+        },
+        {
+            "_id": "64a8fcfd653387000726b1af",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[国漫]全职法师 第6季第07集无水印高清迅雷下载",
+            "introduction": "<p>[国漫]全职法师 第6季第07集无水印高清迅雷下载</p>",
+            "tag_ids": [
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 20,
+            "finished": 7,
+            "leechers": 2,
+            "seeders": 2,
+            "uploader_id": "63eb6fc8c02db30007109b78",
+            "team_id": null,
+            "publish_time": "2023-07-08T06:06:53.115Z",
+            "magnet": "magnet:?xt=urn:btih:5cd53f597973aeb169f74cdc14b3c4a8ef8301b3",
+            "infoHash": "5cd53f597973aeb169f74cdc14b3c4a8ef8301b3",
+            "file_id": "64a8fcfd653387000726b1ae",
+            "teamsync": null,
+            "content": [
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载.mp4",
+                    "183.8 MB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/3AGirL全集.zip.torrent",
+                    "65.4 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/4K-STAR全集.zip.torrent",
+                    "118.04 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/Beautyleg全集.zip.torrent",
+                    "232.61 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/IMISS爱蜜社全集.zip.torrent",
+                    "121.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/PANS写真 全集.zip.torrent",
+                    "255.13 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 1[MP413700MB].zip.torrent",
+                    "17.01 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 2[MP414560MB].zip.torrent",
+                    "16.77 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 3[MP417680MB].zip.torrent",
+                    "16.89 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 4[MP416210MB].zip.torrent",
+                    "16.91 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 5[MP414710MB].zip.torrent",
+                    "17.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 6[MP413270MB].zip.torrent",
+                    "16.99 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 7 END[MP412090MB].zip.torrent",
+                    "17.23 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/Showgirl全集.zip.torrent",
+                    "55.32 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/TGOD推女神写真全集.zip.torrent",
+                    "151.33 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/pantyhoselife全集.zip.torrent",
+                    "97.2 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/rosi写真全集.zip.torrent",
+                    "103.39 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/rq-star全集.zip.torrent",
+                    "146.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/丝雅写真全集.zip.torrent",
+                    "57.79 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/丽柜Ligui全集.zip.torrent",
+                    "69.43 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/动感小站全集.zip.torrent",
+                    "135.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/国产小电影合集.7z.torrent",
+                    "1.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/国产私拍全集.zip.torrent",
+                    "106.42 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/如壹写真全集.zip.torrent",
+                    "60.27 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/学院派私拍全集.zip.torrent",
+                    "111.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/性感车模全集.zip.torrent",
+                    "55.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/细高跟全集.zip.torrent",
+                    "52.49 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/经典写真全集.zip.torrent",
+                    "144.12 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/美女自拍全集.zip.torrent",
+                    "65.35 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/街拍美女III全集.zip.torrent",
+                    "149.57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/街拍美女II全集.zip.torrent",
+                    "95.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/街拍美女全集.zip.torrent",
+                    "57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/韩国女主播全集.zip.torrent",
+                    "118.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/韩国饭拍III全集.zip.torrent",
+                    "132.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/韩国饭拍II全集.zip.torrent",
+                    "76.81 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/写真视频合集/韩国饭拍全集.zip.torrent",
+                    "115.03 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/动漫网站推荐.txt",
+                    "220 B"
+                ],
+                [
+                    "[acgyinghua.com][国漫]全职法师 第6季第07集无水印高清迅雷下载/添加微信不迷路.jpg",
+                    "143.21 KB"
+                ]
+            ],
+            "size": "193.14 MB",
+            "btskey": ""
+        },
+        {
+            "_id": "64a8fce2653387000726b154",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[Lilith-Raws] 能幹貓今天也憂鬱 / Dekiru Neko wa Kyou mo Yuuutsu - 01 [Baha][WebDL 1080p AVC AAC][CHT]",
+            "introduction": "<p><a href=\"https://bit.ly/lilith-vision-zero\"><img src=\"https://i1.wp.com/p.sda1.dev/12/defd44ce5c39ab697d4977b0a77120c4?ssl=1\" alt=\"Vision Zero Banner\"></a></p><p>Telegram Update Notification Channel : <a href=\"https://t.me/lilithraws\">https://t.me/lilithraws</a><br>Open Data Platform : <a href=\"https://open.lilithraws.cf\">https://open.lilithraws.cf</a> (Support Streaming and Direct Download)<br>Twitter : <a href=\"https://twitter.com/lilithraws\">https://twitter.com/lilithraws</a></p><p>We're recommending <a href=\"https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases\">qBittorrent Enhanced Edition</a> for downloading our seeds.<br><a href=\"https://bit.ly/lilithcrypto\"><img src=\"https://i0.wp.com/p.sda1.dev/6/0180852211c0976ae980b760e0a86221?ssl=1\" alt=\"Lilith Crypto Banner\"></a></p><p>Paypal Donation -&gt; <a href=\"https://donorbox.org/lilithraws\">https://donorbox.org/lilithraws</a><br>Support Us on Patreon -&gt; <a href=\"https://www.patreon.com/lilithraws\">https://www.patreon.com/lilithraws</a></p>",
+            "tag_ids": [
+                "548ee2ce4ab7379536f56358",
+                "55c3036c7030f8c855f992ee",
+                "548ee1204ab7379536f56357",
+                "5d8b3245306f1a0007bd7aca",
+                "649efeca68e7233aec4c96f3",
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 59,
+            "finished": 665,
+            "leechers": 35,
+            "seeders": 191,
+            "uploader_id": "5d333d66306f1a0007b6c0bf",
+            "team_id": "5d8b24be306f1a0007bd7998",
+            "publish_time": "2023-07-08T06:06:26.395Z",
+            "magnet": "magnet:?xt=urn:btih:aa19292279d4346964b3d8aa3f825e07302ab54a",
+            "infoHash": "aa19292279d4346964b3d8aa3f825e07302ab54a",
+            "file_id": "64a8fcdb653387000726b137",
+            "teamsync": true,
+            "content": [
+                [
+                    "[Lilith-Raws] Dekiru Neko wa Kyou mo Yuuutsu - 01 [Baha][WebDL 1080p AVC AAC][CHT].mp4",
+                    "550.03 MB"
+                ]
+            ],
+            "size": "550.03 MB",
+            "btskey": "",
+            "sync": {
+                "dmhy": "http://share.dmhy.org/topics/view/644936_Lilith-Raws_Dekiru_Neko_wa_Kyou_mo_Yuuutsu_-_01_Baha_WebDL_1080p_AVC_AAC_CHT.html",
+                "acgrip": "https://acg.rip/t/283078",
+                "acgnx": "https://share.acgnx.se/show-aa19292279d4346964b3d8aa3f825e07302ab54a.html"
+            }
+        },
+        {
+            "_id": "64a8fcc5653387000726b0dd",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[Lilith-Raws] AI 電子基因 / AI no Idenshi - 01 [Baha][WebDL 1080p AVC AAC][CHT]",
+            "introduction": "<p><a href=\"https://bit.ly/lilith-vision-zero\"><img src=\"https://i1.wp.com/p.sda1.dev/12/defd44ce5c39ab697d4977b0a77120c4?ssl=1\" alt=\"Vision Zero Banner\"></a></p><p>Telegram Update Notification Channel : <a href=\"https://t.me/lilithraws\">https://t.me/lilithraws</a><br>Open Data Platform : <a href=\"https://open.lilithraws.cf\">https://open.lilithraws.cf</a> (Support Streaming and Direct Download)<br>Twitter : <a href=\"https://twitter.com/lilithraws\">https://twitter.com/lilithraws</a></p><p>We're recommending <a href=\"https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases\">qBittorrent Enhanced Edition</a> for downloading our seeds.<br><a href=\"https://bit.ly/lilithcrypto\"><img src=\"https://i0.wp.com/p.sda1.dev/6/0180852211c0976ae980b760e0a86221?ssl=1\" alt=\"Lilith Crypto Banner\"></a></p><p>Paypal Donation -&gt; <a href=\"https://donorbox.org/lilithraws\">https://donorbox.org/lilithraws</a><br>Support Us on Patreon -&gt; <a href=\"https://www.patreon.com/lilithraws\">https://www.patreon.com/lilithraws</a></p>",
+            "tag_ids": [
+                "548ee2ce4ab7379536f56358",
+                "55c3036c7030f8c855f992ee",
+                "548ee1204ab7379536f56357",
+                "5d8b3245306f1a0007bd7aca",
+                "649efec968e7233aec4c96f1",
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 63,
+            "finished": 678,
+            "leechers": 43,
+            "seeders": 177,
+            "uploader_id": "5d333d66306f1a0007b6c0bf",
+            "team_id": "5d8b24be306f1a0007bd7998",
+            "publish_time": "2023-07-08T06:05:57.136Z",
+            "magnet": "magnet:?xt=urn:btih:684eee23aaea960e39d06e00b00781a7f6c59454",
+            "infoHash": "684eee23aaea960e39d06e00b00781a7f6c59454",
+            "file_id": "64a8fcb9653387000726b0c2",
+            "teamsync": true,
+            "content": [
+                [
+                    "[Lilith-Raws] AI no Idenshi - 01 [Baha][WebDL 1080p AVC AAC][CHT].mp4",
+                    "516.85 MB"
+                ]
+            ],
+            "size": "516.85 MB",
+            "btskey": "",
+            "sync": {
+                "dmhy": "http://share.dmhy.org/topics/view/644935_Lilith-Raws_AI_AI_no_Idenshi_-_01_Baha_WebDL_1080p_AVC_AAC_CHT.html",
+                "acgrip": "https://acg.rip/t/283077",
+                "acgnx": "https://share.acgnx.se/show-684eee23aaea960e39d06e00b00781a7f6c59454.html"
+            }
+        },
+        {
+            "_id": "64a8fcc1653387000726b0d7",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[国漫]前情篇集无水印高清迅雷下载",
+            "introduction": "<p>[国漫]前情篇集无水印高清迅雷下载</p>",
+            "tag_ids": [
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 13,
+            "finished": 4,
+            "leechers": 3,
+            "seeders": 3,
+            "uploader_id": "63eb6fc8c02db30007109b78",
+            "team_id": null,
+            "publish_time": "2023-07-08T06:05:53.708Z",
+            "magnet": "magnet:?xt=urn:btih:6540e39d09049ec415a49416b2563583d3fde842",
+            "infoHash": "6540e39d09049ec415a49416b2563583d3fde842",
+            "file_id": "64a8fcc1653387000726b0d6",
+            "teamsync": null,
+            "content": [
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载.mp4",
+                    "304.93 MB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/3AGirL全集.zip.torrent",
+                    "65.4 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/4K-STAR全集.zip.torrent",
+                    "118.04 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/Beautyleg全集.zip.torrent",
+                    "232.61 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/IMISS爱蜜社全集.zip.torrent",
+                    "121.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/PANS写真 全集.zip.torrent",
+                    "255.13 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 1[MP413700MB].zip.torrent",
+                    "17.01 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 2[MP414560MB].zip.torrent",
+                    "16.77 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 3[MP417680MB].zip.torrent",
+                    "16.89 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 4[MP416210MB].zip.torrent",
+                    "16.91 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 5[MP414710MB].zip.torrent",
+                    "17.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 6[MP413270MB].zip.torrent",
+                    "16.99 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 7 END[MP412090MB].zip.torrent",
+                    "17.23 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/Showgirl全集.zip.torrent",
+                    "55.32 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/TGOD推女神写真全集.zip.torrent",
+                    "151.33 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/pantyhoselife全集.zip.torrent",
+                    "97.2 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/rosi写真全集.zip.torrent",
+                    "103.39 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/rq-star全集.zip.torrent",
+                    "146.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/丝雅写真全集.zip.torrent",
+                    "57.79 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/丽柜Ligui全集.zip.torrent",
+                    "69.43 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/动感小站全集.zip.torrent",
+                    "135.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/国产小电影合集.7z.torrent",
+                    "1.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/国产私拍全集.zip.torrent",
+                    "106.42 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/如壹写真全集.zip.torrent",
+                    "60.27 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/学院派私拍全集.zip.torrent",
+                    "111.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/性感车模全集.zip.torrent",
+                    "55.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/细高跟全集.zip.torrent",
+                    "52.49 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/经典写真全集.zip.torrent",
+                    "144.12 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/美女自拍全集.zip.torrent",
+                    "65.35 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/街拍美女III全集.zip.torrent",
+                    "149.57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/街拍美女II全集.zip.torrent",
+                    "95.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/街拍美女全集.zip.torrent",
+                    "57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/韩国女主播全集.zip.torrent",
+                    "118.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/韩国饭拍III全集.zip.torrent",
+                    "132.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/韩国饭拍II全集.zip.torrent",
+                    "76.81 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/写真视频合集/韩国饭拍全集.zip.torrent",
+                    "115.03 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/动漫网站推荐.txt",
+                    "220 B"
+                ],
+                [
+                    "[acgyinghua.com][国漫]前情篇集无水印高清迅雷下载/添加微信不迷路.jpg",
+                    "143.21 KB"
+                ]
+            ],
+            "size": "314.14 MB",
+            "btskey": ""
+        },
+        {
+            "_id": "64a8fc99653387000726b075",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[星空字幕组][布莱泽奥特曼 / ULTRAMAN BLAZAR][01][简日双语][1080P][TVrip][MP4]（急招校对、后期）",
+            "introduction": "<p><img src=\"https://p.sda1.dev/12/1f539ad888375be93e5d690d3f8e6159/星空汉化海报-副本2.png\"><br></p><p>欢迎关注星空字幕组微博 : @星空字幕娘 <a href=\"https://weibo.com/XKsub\">https://weibo.com/XKsub</a></p><p>星空字幕组现急招翻译、校对、时轴、特效等制作成员，要求如下</p><p>翻译：日语N2或N2以上，有能力独立翻译一集特摄或动漫</p><p>校对：日语N1，能够在短时间内查找翻译错误并优化翻译，语言组织能力强</p><p>时轴：熟练使用Aegisub等打轴软件，能够在3小时内打完一集24分钟的特摄或动漫</p><p>特效：熟练使用AE、PR等软件制作动态特效或熟练使用ass特效代码制作特效</p><p>压制：熟练使用AVS或VS进行压制，具有较好的电脑配置</p><p>美工：熟练使用PS等软件制作海报或汉化LOGO</p><p>希望有能力、爱特摄或动漫的朋友能够加入我们，如有意愿，欢迎加入星空字幕组招募QQ群：644319022</p>",
+            "tag_ids": [
+                "5d23fecf306f1a0007b58066",
+                "548edffb4ab7379536f56352",
+                "548ee0ea4ab7379536f56354",
+                "548ee2ce4ab7379536f56358",
+                "549ef207fe682f7549f1ea90",
+                "55b86e9224180bc3647fea43"
+            ],
+            "comments": 0,
+            "downloads": 27,
+            "finished": 257,
+            "leechers": 9,
+            "seeders": 85,
+            "uploader_id": "5c595eb8475bb7b2732fba53",
+            "team_id": "5d2214af306f1a0007b55b1b",
+            "publish_time": "2023-07-08T06:05:13.429Z",
+            "magnet": "magnet:?xt=urn:btih:1099677de0b6927779b42c57d77f4496fe97de53",
+            "infoHash": "1099677de0b6927779b42c57d77f4496fe97de53",
+            "file_id": "64a8fc81653387000726b042",
+            "teamsync": true,
+            "content": [
+                [
+                    "[XKsub][ULTRAMAN BLAZAR][01][CHS_JAP][1080P][TVrip][MP4].mp4",
+                    "603.61 MB"
+                ]
+            ],
+            "size": "603.61 MB",
+            "btskey": "",
+            "sync": {
+                "nyaa": "unknown error 403",
+                "acgnx": "https://share.acgnx.se/show-1099677de0b6927779b42c57d77f4496fe97de53.html",
+                "dmhy": "'https://p.sda1.dev/12/1f539ad888375be93e5d690d3f8e6159/星空汉化海报-副本2.png' is not a valid URL."
+            }
+        },
+        {
+            "_id": "64a8fc69653387000726afff",
+            "category_tag_id": "549ef207fe682f7549f1ea90",
+            "title": "[国漫]逆天至尊第212集无水印高清迅雷下载",
+            "introduction": "<p>[国漫]逆天至尊第212集无水印高清迅雷下载</p>",
+            "tag_ids": [
+                "549ef207fe682f7549f1ea90"
+            ],
+            "comments": 0,
+            "downloads": 15,
+            "finished": 5,
+            "leechers": 3,
+            "seeders": 3,
+            "uploader_id": "63eb6fc8c02db30007109b78",
+            "team_id": null,
+            "publish_time": "2023-07-08T06:04:25.580Z",
+            "magnet": "magnet:?xt=urn:btih:a72dcb7d52e1a4ea1ac786f925b82fb984428d17",
+            "infoHash": "a72dcb7d52e1a4ea1ac786f925b82fb984428d17",
+            "file_id": "64a8fc69653387000726affe",
+            "teamsync": null,
+            "content": [
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载.mp4",
+                    "211.82 MB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/3AGirL全集.zip.torrent",
+                    "65.4 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/4K-STAR全集.zip.torrent",
+                    "118.04 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/Beautyleg全集.zip.torrent",
+                    "232.61 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/IMISS爱蜜社全集.zip.torrent",
+                    "121.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/PANS写真 全集.zip.torrent",
+                    "255.13 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 1[MP413700MB].zip.torrent",
+                    "17.01 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 2[MP414560MB].zip.torrent",
+                    "16.77 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 3[MP417680MB].zip.torrent",
+                    "16.89 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 4[MP416210MB].zip.torrent",
+                    "16.91 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 5[MP414710MB].zip.torrent",
+                    "17.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 6[MP413270MB].zip.torrent",
+                    "16.99 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/ROSIMM美腿丝袜高清视频 1080P - 7 END[MP412090MB].zip.torrent",
+                    "17.23 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/Showgirl全集.zip.torrent",
+                    "55.32 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/TGOD推女神写真全集.zip.torrent",
+                    "151.33 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/pantyhoselife全集.zip.torrent",
+                    "97.2 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/rosi写真全集.zip.torrent",
+                    "103.39 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/rq-star全集.zip.torrent",
+                    "146.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/丝雅写真全集.zip.torrent",
+                    "57.79 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/丽柜Ligui全集.zip.torrent",
+                    "69.43 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/动感小站全集.zip.torrent",
+                    "135.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/国产小电影合集.7z.torrent",
+                    "1.71 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/国产私拍全集.zip.torrent",
+                    "106.42 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/如壹写真全集.zip.torrent",
+                    "60.27 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/学院派私拍全集.zip.torrent",
+                    "111.21 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/性感车模全集.zip.torrent",
+                    "55.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/细高跟全集.zip.torrent",
+                    "52.49 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/经典写真全集.zip.torrent",
+                    "144.12 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/美女自拍全集.zip.torrent",
+                    "65.35 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/街拍美女III全集.zip.torrent",
+                    "149.57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/街拍美女II全集.zip.torrent",
+                    "95.17 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/街拍美女全集.zip.torrent",
+                    "57 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/韩国女主播全集.zip.torrent",
+                    "118.34 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/韩国饭拍III全集.zip.torrent",
+                    "132.36 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/韩国饭拍II全集.zip.torrent",
+                    "76.81 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/写真视频合集/韩国饭拍全集.zip.torrent",
+                    "115.03 KB"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/动漫网站推荐.txt",
+                    "220 B"
+                ],
+                [
+                    "[acgyinghua.com][国漫]逆天至尊第212集无水印高清迅雷下载/添加微信不迷路.jpg",
+                    "143.21 KB"
+                ]
+            ],
+            "size": "221.14 MB",
+            "btskey": ""
+        }
+    ]
+}`

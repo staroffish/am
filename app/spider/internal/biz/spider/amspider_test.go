@@ -278,20 +278,20 @@ func TestNyaaSpider(t *testing.T) {
 	}
 }
 
-func TestAcgnxSpider(t *testing.T) {
-	acgnxSpider := MiobtSpider{
+func TestBangumiSpider(t *testing.T) {
+	bangumiSpider := BangumiSpider{
 		BaseSpider: BaseSpider{
 			log: log.NewHelper(util.NewTestLogger()),
 		},
 	}
 
-	animeMagnets, err := acgnxSpider.ExtractData(context.Background(), acgnxHtml)
+	animeMagnets, err := bangumiSpider.ExtractData(context.Background(), bangumiJsonStr)
 	if err != nil {
-		t.Fatalf("acgnxSpider.ExtractData error %v", err)
+		t.Fatalf("bangumiSpider.ExtractData error %v", err)
 	}
 
-	if len(animeMagnets) != 40 {
-		t.Fatalf("acgnxSpider.ExtractData length not equal 75 %v", len(animeMagnets))
+	if len(animeMagnets) != 30 {
+		t.Fatalf("bangumiSpider.ExtractData length not equal 30 %v", len(animeMagnets))
 	}
 
 	for _, magnet := range animeMagnets {
