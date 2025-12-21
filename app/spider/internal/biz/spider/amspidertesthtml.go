@@ -10266,3 +10266,1356 @@ var bangumiJsonStr = `{
         }
     ]
 }`
+
+var mikananiHtml = `<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="新番,动漫,动漫下載,新番下载,animation,bangumi,动画,蜜柑计划,Mikan Project" />
+    <meta name="description" content="蜜柑计划：新一代的动漫下载站" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 若用户有Google Chrome Frame,那么ie浏览时让IE使用chrome内核 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- 若是双核浏览器,默认webkit渲染(chrome) -->
+    <meta name="renderer" content="webkit">
+    <title>Mikan Project - &#x5217;&#x8868;&#x6A21;&#x5F0F;</title>
+
+    <!-- here put import css lib -->
+    
+    
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css?v=7s5uDGW3AHqw6xtJmNNtr-OBRJUlgkNJEo78P4b0yRw" />
+        <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=3dkvEK0WLHRJ7_Csr0BZjAWxERc5WH7bdeUya2aXxdU" />
+        <link rel="stylesheet" href="/css/thirdparty.min.css?v=c2SZy6n-55iljz60XCAALXejEZvjc43kgwamU5DAYUU" />
+        <link rel="stylesheet" href="/css/animate.min.css?v=w_eXqGX0NdMPQ0LZNhdQ8B-DQMYAxelvLoIP39dzmus" />
+        <link rel="stylesheet" href="/css/mikan.min.css?v=BgnOAfR_3VfhpdfW0WBlvPvNAZl933rSFc0qtUGyqJg" />
+
+        <script src="/lib/jquery/dist/jquery.min.js?v=BbhdlvQf_xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44"></script>
+        <script src="/lib/bootstrap/dist/js/bootstrap.min.js?v=KXn5puMvxCw-dAYznun-drMdG1IFl3agK0p_pqT9KAo"></script>
+        <script src="/js/thirdparty.min.js?v=NsK_w5fw7Nm4ZPm4eZDgsivasZNgT6ArhIjmj-bRnR0"></script>
+        <script src="/js/darkreader.min.js?v=Lr_8XODLEDSPtT6LqaeLKzREs4jocJUzV8HvQPItIic"></script>
+        <script src="/js/ScrollMagic.min.js?v=1xuIM3UJWEZX_wWN9zrA8W7CWukfsMaEqb759CeHo3U"></script>
+        <script src="/js/jquery.ScrollMagic.min.js?v=SyygQh9gWWfvyS13QwI0SKGAQyHDachlaigiK4X59iw"></script>
+    
+
+    <link rel="icon" href="/images/favicon.ico?v=2" />
+    <link rel="apple-touch-icon" href="\Images\apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="\Images\apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="\Images\apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="\Images\apple-touch-icon-144x144.png">
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-8911610-8', 'auto');
+        ga('send', 'pageview');
+    </script>
+</head>
+<body class="main">
+    <div id="sk-header" class="hidden-xs hidden-sm">
+        <div id="sk-top-nav" class="container">
+            <a id="logo" href="/" style="width:205px;"><img id="mikan-pic" src="/images/mikan-pic.png" /><img src="/images/mikan-text.svg" style="height:30px;" /></a>
+            <div id="nav-list">
+                <ul class="list-inline nav-ul">
+                    <li class="">
+                        <div class="sk-col"><a href="/"><i class="fa fa-home fa-lg"></i>主页</a></div>
+                    </li>
+                    <li class="">
+                        <div class="sk-col"><a href="/Home/MyBangumi"><i class="fa fa-rss fa-lg"></i>订阅</a></div>
+                    </li>
+                    <li class="active">
+                        <div class="sk-col"><a href="/Home/Classic"><i class="fa fa-slack fa-lg"></i>列表</a></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="search-form">
+                <form method="get" action="/Home/Search">
+                    <div class="form-group has-feedback">
+                        <label for="search" class="sr-only">搜索</label>
+                        <input type="text" class="form-control input-sm" name="searchstr" id="header-search" placeholder="搜索">
+                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                </form>
+            </div>
+
+            
+
+<section id="login">
+        <div id="user-login" class="pull-right">
+            <a href="/Account/Register" class="text-right">注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a onclick="ToggleActive(this)" class="text-right" data-toggle="popover-x" data-target="#login-popover" data-placement="bottom bottom-right" rel="popover">登录</a>
+<form action="/Account/Login?ReturnUrl=%2FHome%2FClassic" class="form-vertical" method="post">                <div id="login-popover" class="popover popover-default">
+                    <div class="arrow"></div>
+                    <div id="login-popover-conent">
+                        <div id="login-popover-input">
+                            <div id="login-popover-div-username">
+                                <img src="/images/user-name_login_icon.png" />
+                                <input type="text" placeholder="用户名" id="login-popover-input-username" name="UserName" />
+                            </div>
+                            <div id="login-popover-div-password">
+                                <img src="/images/password_login_icon.png" style="margin-left:3px;" />
+                                <input type="password" placeholder="密码" id="login-popover-input-password" name="Password" />
+                            </div>
+                        </div>
+                        <button id="login-popover-submit" type="submit" class="btn">登&nbsp;&nbsp;&nbsp;录</button>
+                        <div class="checkbox" id="login-popover-password">
+                            <label id="login-popover-remember-password"><input type="checkbox" value="true" name="RememberMe"><input type="hidden" value="false" name="RememberMe">记住密码</label>
+                            <div id="login-popover-forget-password" class="pull-right"><a href="/Account/ForgotPassword" class="forget-password">忘记密码</a></div>
+                        </div>
+
+                        <a id="login-popover-create-account">还没有账号？赶紧来注册一个吧~</a>
+                    </div>
+                </div>
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8MyNMqFNaC9JmJW13PvY-93Qv6FoO11TrXNGP9NbJg1RzjfnQ5Mn_PhOma8N2F6579cfbJJaNWaTg6pIS9gZAoO3VoI7DGqmd1Jgga4H9ur9WL02JEDK4tC8l6vHv6ddTJgvagirMkXpjM06zR0H3vk" /></form>        </div>
+        <script>
+            var AdvancedSubscriptionEnabled = false;
+        </script>
+</section>
+        </div>
+        <div class="ribbon">
+            <span class="ribbon-color1"></span>
+            <span class="ribbon-color2"></span>
+            <span class="ribbon-color3"></span>
+            <span class="ribbon-color4"></span>
+            <span class="ribbon-color5"></span>
+            <span class="ribbon-color6"></span>
+            <span class="ribbon-color7"></span>
+        </div>
+    </div>
+    <div class="m-home-nav hidden-lg hidden-md" id="sk-mobile-header">
+        <div class="m-home-tool-left clickable" data-toggle="modal" data-target="#modal-nav">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+        <div class="m-home-tool-left"></div>
+        <div style="text-align: center; height:100%;flex:1;">
+            <a href="/" style="text-decoration:none">
+                <img src="/images/mikan-pic.png" style="height: 3rem;margin-top: 0.5rem;">
+                <img src="/images/mikan-text.png" style="height: 1.5rem;margin-top: 0.5rem;">
+            </a>
+        </div>
+        <div class="m-home-tool-right clickable" data-toggle="modal" data-target="#modal-login">
+            <i class="fa fa-user" aria-hidden="true" style="margin-right: 1rem;"></i>
+        </div>
+        <div class="m-home-tool-right clickable" onclick="ShowNavSearch()">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+    </div>
+    <div class="m-nav-search" style="width: 100%;">
+        <div style="flex: 1;">
+            <form method="get" action="/Home/Search">
+                <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon1" style="border: none;background-color: white;">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="搜索" name="searchstr" aria-describedby="sizing-addon1" style="border: none;font-size:16px;">
+                </div>
+            </form>
+        </div>
+        <div style="width: 4rem;" onclick="HideNavSearch()">
+            <span style="font-size: 1.25rem;">取消</span>
+        </div>
+    </div>
+    
+
+<div id="sk-container" class="container">
+    <section class="main-content">
+        <div id="sk-body" style="background-color:white;padding:30px 30px 60px 30px;">
+            <div style="border-bottom: 2px solid #e8e8e8;height: 38px;margin-top:-20px;">
+                <span style="color: #555;font-size: 14px;font-weight: bold;line-height: 3.2;border-bottom: 2px solid #55c4c6;padding-bottom: 5px;">列表模式 <a href="/RSS/Classic" class="mikan-rss" data-placement="bottom" data-toggle="tooltip" data-original-title="RSS" target="_blank"><i class="fa fa-rss-square"></i></a></span>
+            </div>
+            <div class="classic-view-pagination1 pull-right" style="margin-top: -10px; "></div>
+
+            <div style="margin-top: -10px; margin-bottom: 10px;">
+                
+
+<div style="width:100%; margin-right: auto; margin-left: auto;" class="hidden-xs hidden-sm">
+    <a href="https://equity.tmall.com/tm?agentId=030f9003a26d4361&amp;bc_fl_src=tmall_market_llb_1_2698459&amp;llbPlatform=_pube&amp;llbOsd=1&amp;di=__IDFA__&amp;dim=__IMEI__&amp;oaid=__OAID__&amp;caid=__CAID__&amp;sy=llb" onclick="ga('send', 'event', 'sswj_lg', 'clicked', 'ad');">
+        <img src="/images/SSWJ/sswj7_lg.jpg" style='height: 100%; width: 100%; object-fit: contain' />
+    </a>
+</div>
+
+<div style="width:100%; margin-right: auto; margin-left: auto;" class="hidden-lg hidden-md">
+    <a href="https://equity.tmall.com/tm?agentId=030f9003a26d4361&amp;bc_fl_src=tmall_market_llb_1_2698459&amp;llbPlatform=_pube&amp;llbOsd=1&amp;di=__IDFA__&amp;dim=__IMEI__&amp;oaid=__OAID__&amp;caid=__CAID__&amp;sy=llb" onclick="ga('send', 'event', 'sswj_sm', 'clicked', 'ad');">
+        <img src="/images/SSWJ/sswj7_sm.jpg" style='height: 100%; width: 100%; object-fit: contain' />
+    </a>
+</div>
+            </div>
+
+            <table class="table table-striped tbl-border fadeIn">
+                <thead>
+                    <tr>
+                        <th width="12%">更新时间</th>
+                        <th width="12%">字幕组</th>
+                        <th width="58%">番组名</th>
+                        <th width="8%">大小</th>
+                        <th width="5%">下载</th>
+                        <th width="5%">播放</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                                <td>今天 09:00</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/b8eef0fd006d2a3e5b7eb63bbb1316bee40fa1c0" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x516C;&#x4E3B;&#x7684;&#x7BA1;&#x5F26;&#x4E50;&#x56E2; / Princession Orchestra - 36 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:b8eef0fd006d2a3e5b7eb63bbb1316bee40fa1c0&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>717.3 MB</td>
+                            <td><a href="/Download/20251221/b8eef0fd006d2a3e5b7eb63bbb1316bee40fa1c0.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Ab8eef0fd006d2a3e5b7eb63bbb1316bee40fa1c0"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 08:39</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/223" target="_blank" class="magnet-link-wrap">LoliHouse</a>
+                            </td>
+                            <td><a href="/Home/Episode/ee3f0f89152f24bcdb44f38695b266c4f1aded47" target="_blank" class="magnet-link-wrap">[&#x8C4C;&#x8C46;&#x5B57;&#x5E55;&#x7EC4;&amp;LoliHouse] &#x738B;&#x8005;&#x5929;&#x4E0B; &#x7B2C;&#x516D;&#x5B63; / Kingdom S6 - 12 [WebRip 1080p HEVC-10bit AAC][&#x7B80;&#x7E41;&#x5916;&#x6302;&#x5B57;&#x5E55;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:ee3f0f89152f24bcdb44f38695b266c4f1aded47&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>490.6MB</td>
+                            <td><a href="/Download/20251221/ee3f0f89152f24bcdb44f38695b266c4f1aded47.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Aee3f0f89152f24bcdb44f38695b266c4f1aded47"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 08:30</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/ea197614a6874f6cf8af23b663fd9fb3778ebed1" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] You and idol &#x5149;&#x4E4B;&#x7F8E;&#x5C11;&#x5973;&#x266A; / Kimi to Idol Precure&#x266A; - 44 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:ea197614a6874f6cf8af23b663fd9fb3778ebed1&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>732.0 MB</td>
+                            <td><a href="/Download/20251221/ea197614a6874f6cf8af23b663fd9fb3778ebed1.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Aea197614a6874f6cf8af23b663fd9fb3778ebed1"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 08:24</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/314" target="_blank" class="magnet-link-wrap">&#x5929;&#x6708;&#x52A8;&#x6F2B;&amp;&#x53D1;&#x5E03;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/b8dddd16ddc845e5c0960d0db09d33d4bd8c519c" target="_blank" class="magnet-link-wrap">[Skymoon-Raws] &#x95F4;&#x8C0D;&#x8FC7;&#x5BB6;&#x5BB6; &#x7B2C;3&#x671F; / SPY&#xD7;FAMILY Season 3 - 49 [ViuTV][WEB-DL][CHT][1080p][AVC AAC] (&#x95F4;&#x8C0D;&#x5BB6;&#x5BB6;&#x9152; Season 3)</a> <a data-clipboard-text="magnet:?xt=urn:btih:b8dddd16ddc845e5c0960d0db09d33d4bd8c519c&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>327.4MB</td>
+                            <td><a href="/Download/20251221/b8dddd16ddc845e5c0960d0db09d33d4bd8c519c.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Ab8dddd16ddc845e5c0960d0db09d33d4bd8c519c"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 07:44</td>
+                            <td>
+&#x751F;&#x8089;/&#x4E0D;&#x660E;&#x5B57;&#x5E55;                            </td>
+                            <td><a href="/Home/Episode/f98bab1ecbf32e51a5c23a1974d860d1388116ca" target="_blank" class="magnet-link-wrap">[&#x6574;&#x7406;&#x642C;&#x8FD0;] &#x661F;&#x9645;&#x725B;&#x4ED4; (&#x30AB;&#x30A6;&#x30DC;&#x30FC;&#x30A4;&#x30D3;&#x30D0;&#x30C3;&#x30D7;) (Cowboy Bebop)&#xFF1A;TV&#x52A8;&#x753B;&#x2B;&#x5267;&#x573A;&#x7248;&#x2B;&#x6F2B;&#x753B;&#x2B;&#x97F3;&#x4E50;&#x2B;&#x5176;&#x4ED6;&#xFF1B;&#x65E5;&#x8BED;&#x97F3;&#x8F68;; &#x5916;&#x6302;&#x7B80;&#x4E2D;&#x5B57;&#x5E55; (&#x6574;&#x7406;&#x65F6;&#x95F4;&#xFF1A;2024.03.05)</a> <a data-clipboard-text="magnet:?xt=urn:btih:f98bab1ecbf32e51a5c23a1974d860d1388116ca&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>49.7GB</td>
+                            <td><a href="/Download/20251221/f98bab1ecbf32e51a5c23a1974d860d1388116ca.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Af98bab1ecbf32e51a5c23a1974d860d1388116ca"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 07:36</td>
+                            <td>
+&#x751F;&#x8089;/&#x4E0D;&#x660E;&#x5B57;&#x5E55;                            </td>
+                            <td><a href="/Home/Episode/8581fdef053da99dcf84e78666c6dc463dd7db93" target="_blank" class="magnet-link-wrap">&#x200B;&#x200B;[&#x6574;&#x7406;&#x642C;&#x8FD0;] &#x732B;&#x773C;&#x4E09;&#x59D0;&#x59B9;&#xFF0F;&#x732B;&#x4E4B;&#x773C; (&#x30AD;&#x30E3;&#x30C3;&#x30C4;&#x30FB;&#x30A2;&#x30A4;) (Kyattsu Ai&#xFF0F;Cat&#x27;s Eye)&#xFF1A;TV&#x52A8;&#x753B; (1983&#x5E74;&#x7248;&#x3001;1984&#x5E74;&#x7248;)&#x2B;&#x5267;&#x573A;&#x7248;&#x2B;&#x6F2B;&#x753B;&#x2B;CD&#xFF1B;&#x534E;&#x65E5;&#x97F3;&#x8F68;; &#x5916;&#x6302;&#x7B80;&#x4E2D;&#x5B57;&#x5E55; (&#x6574;&#x7406;&#x65F6;&#x95F4;&#xFF1A;2023.11.20)</a> <a data-clipboard-text="magnet:?xt=urn:btih:8581fdef053da99dcf84e78666c6dc463dd7db93&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>139.8GB</td>
+                            <td><a href="/Download/20251221/8581fdef053da99dcf84e78666c6dc463dd7db93.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A8581fdef053da99dcf84e78666c6dc463dd7db93"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 07:33</td>
+                            <td>
+&#x751F;&#x8089;/&#x4E0D;&#x660E;&#x5B57;&#x5E55;                            </td>
+                            <td><a href="/Home/Episode/c0acbb1782912eb9e7302e581eda52d3d88618a5" target="_blank" class="magnet-link-wrap">[&#x6574;&#x7406;&#x642C;&#x8FD0;] &#x9752;&#x51FA;&#x4E8E;&#x84DD;&#xFF0F;&#x9752;&#x84DD;&#x59FB;&#x7F18;&#xFF0F;&#x672A;&#x5A5A;&#x5173;&#x7CFB; (&#x84DD;&#x3088;&#x308A;&#x9752;&#x3057;) (Ai Yori Aoshi)&#xFF1A;TV&#x52A8;&#x753B; (2002&#x5E74;&#x7248;&#x3001;2003&#x5E74;&#x7248;)&#x2B;OVA&#x7BC7;&#x2B;&#x6F2B;&#x753B;&#x2B;CD&#x2B;&#x5176;&#x4ED6;&#xFF1B;&#x65E5;&#x8BED;&#x97F3;&#x8F68;; &#x5916;&#x6302;&#x7E41;&#x4E2D;&#x5B57;&#x5E55; (&#x6574;&#x7406;&#x65F6;&#x95F4;&#xFF1A;2024.06.30)</a> <a data-clipboard-text="magnet:?xt=urn:btih:c0acbb1782912eb9e7302e581eda52d3d88618a5&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>8.6GB</td>
+                            <td><a href="/Download/20251221/c0acbb1782912eb9e7302e581eda52d3d88618a5.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Ac0acbb1782912eb9e7302e581eda52d3d88618a5"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 07:22</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/117d60a56bdea1a586dedff4007f3c9299cd0c9e" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] Minimini Minini - 51 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:117d60a56bdea1a586dedff4007f3c9299cd0c9e&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>55.0 MB</td>
+                            <td><a href="/Download/20251221/117d60a56bdea1a586dedff4007f3c9299cd0c9e.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A117d60a56bdea1a586dedff4007f3c9299cd0c9e"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 07:17</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/fac8034d2d4e5de93c376f1bb4eb823a5f83caa6" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x602A;&#x517D;&#x4E16;&#x754C;&#x5F81;&#x670D; / Kaijuu Sekai Seifuku - 38 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:fac8034d2d4e5de93c376f1bb4eb823a5f83caa6&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>81.1 MB</td>
+                            <td><a href="/Download/20251221/fac8034d2d4e5de93c376f1bb4eb823a5f83caa6.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Afac8034d2d4e5de93c376f1bb4eb823a5f83caa6"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 07:12</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/6a30b55b14d0c29f7254cd6b091ffb2f850bc8f1" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x6700;&#x5F3A;&#x738B;&#x56FE;&#x9274; &#xFF5E;The Ultimate Tournament / Sai-Kyo-Oh! Zukan: The Ultimate Tournament - 38 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:6a30b55b14d0c29f7254cd6b091ffb2f850bc8f1&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>330.9 MB</td>
+                            <td><a href="/Download/20251221/6a30b55b14d0c29f7254cd6b091ffb2f850bc8f1.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A6a30b55b14d0c29f7254cd6b091ffb2f850bc8f1"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 05:48</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/91" target="_blank" class="magnet-link-wrap">&#x8C4C;&#x8C46;&#x5B57;&#x5E55;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/57730e13d9ad996d3038cc62455447aed6ab8fca" target="_blank" class="magnet-link-wrap">&#x3010;&#x8C4C;&#x8C46;&#x5B57;&#x5E55;&#x7EC4;&#x3011;[&#x738B;&#x8005;&#x5929;&#x4E0B; &#x7B2C;&#x516D;&#x5B63; / Kingdom_S6][12][&#x7B80;&#x4F53;][1080P][MP4]</a> <a data-clipboard-text="magnet:?xt=urn:btih:57730e13d9ad996d3038cc62455447aed6ab8fca&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>422.6MB</td>
+                            <td><a href="/Download/20251221/57730e13d9ad996d3038cc62455447aed6ab8fca.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A57730e13d9ad996d3038cc62455447aed6ab8fca"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 05:48</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/91" target="_blank" class="magnet-link-wrap">&#x8C4C;&#x8C46;&#x5B57;&#x5E55;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/ff417e83fcc8dce256ca03421f7a01cff625e9dc" target="_blank" class="magnet-link-wrap">&#x3010;&#x8C4C;&#x8C46;&#x5B57;&#x5E55;&#x7EC4;&#x3011;[&#x738B;&#x8005;&#x5929;&#x4E0B; &#x7B2C;&#x516D;&#x5B63; / Kingdom_S6][12][&#x7E41;&#x4F53;][1080P][MP4]</a> <a data-clipboard-text="magnet:?xt=urn:btih:ff417e83fcc8dce256ca03421f7a01cff625e9dc&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>422.9MB</td>
+                            <td><a href="/Download/20251221/ff417e83fcc8dce256ca03421f7a01cff625e9dc.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Aff417e83fcc8dce256ca03421f7a01cff625e9dc"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 03:41</td>
+                            <td>
+&#x751F;&#x8089;/&#x4E0D;&#x660E;&#x5B57;&#x5E55;                            </td>
+                            <td><a href="/Home/Episode/2bfe25939f10958ae394d4fee1e2d016b6116682" target="_blank" class="magnet-link-wrap">&#x4E71;&#x9A6C;1/2&#x300C;&#x3089;&#x3093;&#x307E;1/2&#x300D;Ranma1/2 2024&#x5E74;&#x7248; &#x7B2C;2&#x671F; S02E12 1080p &#x65E5;&#x82F1;&#x53CC;&#x8BED;-&#x591A;&#x56FD;&#x5B57;&#x5E55;</a> <a data-clipboard-text="magnet:?xt=urn:btih:2bfe25939f10958ae394d4fee1e2d016b6116682&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>873.6MB</td>
+                            <td><a href="/Download/20251221/2bfe25939f10958ae394d4fee1e2d016b6116682.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A2bfe25939f10958ae394d4fee1e2d016b6116682"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 03:07</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/32a2fb7c008fff2b01587e637c78c61a4703bae1" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x738B;&#x8005;&#x5929;&#x4E0B; &#x7B2C;&#x516D;&#x5B63; / Kingdom 6th Season - 12 (CR 1920x1080 AVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:32a2fb7c008fff2b01587e637c78c61a4703bae1&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>829.7 MB</td>
+                            <td><a href="/Download/20251221/32a2fb7c008fff2b01587e637c78c61a4703bae1.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A32a2fb7c008fff2b01587e637c78c61a4703bae1"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 02:41</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/1004" target="_blank" class="magnet-link-wrap">&#x6CB8;&#x73ED;&#x4E9A;&#x9A6C;&#x5236;&#x4F5C;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/8bf10c8f2306b83148965ac9904faea6c1f40c6d" target="_blank" class="magnet-link-wrap">[&#x6CB8;&#x73ED;&#x4E9A;&#x9A6C;&#x5236;&#x4F5C;&#x7EC4;] &#x95F4;&#x8C0D;&#x8FC7;&#x5BB6;&#x5BB6; &#x7B2C;&#x4E09;&#x5B63; - 12 [IQIYI WebRip 2160p AV1 OPUS][&#x7B80;&#x7E41;&#x5185;&#x5C01;&#x5B57;&#x5E55;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:8bf10c8f2306b83148965ac9904faea6c1f40c6d&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>495.6MB</td>
+                            <td><a href="/Download/20251221/8bf10c8f2306b83148965ac9904faea6c1f40c6d.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A8bf10c8f2306b83148965ac9904faea6c1f40c6d"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 02:00</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/63639e4fbea2cedd7441c1dede08e583c7b9a379" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x8FD9;&#x91CC;&#x662F;&#x5145;&#x6EE1;&#x7B11;&#x5BB9;&#x7684;&#x804C;&#x573A;&#x3002; / Egao no Taenai Shokuba desu. - 11 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:63639e4fbea2cedd7441c1dede08e583c7b9a379&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>712.6 MB</td>
+                            <td><a href="/Download/20251221/63639e4fbea2cedd7441c1dede08e583c7b9a379.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A63639e4fbea2cedd7441c1dede08e583c7b9a379"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 01:33</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/6316b3234c0f6fa95889f6cae1c1490c1a4d80b1" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x670B;&#x53CB;&#x7684;&#x59B9;&#x59B9;&#x53EA;&#x7F20;&#x8457;&#x6211; / Tomodachi no Imouto ga Ore ni dake Uzai - 12 (CR 1920x1080 AVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:6316b3234c0f6fa95889f6cae1c1490c1a4d80b1&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>727.6 MB</td>
+                            <td><a href="/Download/20251221/6316b3234c0f6fa95889f6cae1c1490c1a4d80b1.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A6316b3234c0f6fa95889f6cae1c1490c1a4d80b1"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 01:31</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/359" target="_blank" class="magnet-link-wrap">ANi</a>
+                            </td>
+                            <td><a href="/Home/Episode/699483912f6938e330474b2ae0368d04ca21151d" target="_blank" class="magnet-link-wrap">[ANi]  &#x670B;&#x53CB;&#x7684;&#x59B9;&#x59B9;&#x53EA;&#x7F20;&#x8457;&#x6211; - 12 [1080P][Baha][WEB-DL][AAC AVC][CHT][MP4]</a> <a data-clipboard-text="magnet:?xt=urn:btih:699483912f6938e330474b2ae0368d04ca21151d&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>344.4 MB</td>
+                            <td><a href="/Download/20251221/699483912f6938e330474b2ae0368d04ca21151d.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A699483912f6938e330474b2ae0368d04ca21151d"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 01:31</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/174ce06f06f14acaf3a1fa117f4233e76c1d3919" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x670B;&#x53CB;&#x7684;&#x59B9;&#x59B9;&#x53EA;&#x7F20;&#x8457;&#x6211; / Tomodachi no Imouto ga Ore ni dake Uzai - 12 (Baha 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:174ce06f06f14acaf3a1fa117f4233e76c1d3919&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>344.2 MB</td>
+                            <td><a href="/Download/20251221/174ce06f06f14acaf3a1fa117f4233e76c1d3919.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A174ce06f06f14acaf3a1fa117f4233e76c1d3919"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 01:30</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/e9d8d79c300c9f23abd845739131db566c121057" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x670B;&#x53CB;&#x7684;&#x59B9;&#x59B9;&#x53EA;&#x7F20;&#x8457;&#x6211; / Tomodachi no Imouto ga Ore ni dake Uzai - 12 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:e9d8d79c300c9f23abd845739131db566c121057&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>701.6 MB</td>
+                            <td><a href="/Download/20251221/e9d8d79c300c9f23abd845739131db566c121057.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Ae9d8d79c300c9f23abd845739131db566c121057"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 01:08</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/223" target="_blank" class="magnet-link-wrap">LoliHouse</a>
+                            </td>
+                            <td><a href="/Home/Episode/6880644f3a41ae95af621b2f0a4b57cbcb354bb8" target="_blank" class="magnet-link-wrap">[LoliHouse] &#x8D2F;&#x5F7B;&#x8F85;&#x52A9;&#x9B54;&#x6CD5;&#x652F;&#x63F4;&#x5F31;&#x5C0F;&#x961F;&#x53CB;&#x7684;&#x5BAB;&#x5EF7;&#x9B54;&#x6CD5;&#x5E08;&#xFF0C;&#x60E8;&#x906D;&#x9A71;&#x9010;&#x540E;&#x76EE;&#x6807;&#x6210;&#x4E3A;&#x6700;&#x5F3A;&#x5192;&#x9669;&#x8005; / Mikata ga Yowasugite Hojo Maho - 12 [WebRip 1080p HEVC-10bit AAC][&#x7B80;&#x7E41;&#x5185;&#x5C01;&#x5B57;&#x5E55;][END]</a> <a data-clipboard-text="magnet:?xt=urn:btih:6880644f3a41ae95af621b2f0a4b57cbcb354bb8&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>403MB</td>
+                            <td><a href="/Download/20251221/6880644f3a41ae95af621b2f0a4b57cbcb354bb8.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A6880644f3a41ae95af621b2f0a4b57cbcb354bb8"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 01:03</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/8378840879a52a1946c31ebed8f855fe7135be40" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x4E1C;&#x5C9B;&#x4E39;&#x4E09;&#x90CE;&#x60F3;&#x6210;&#x4E3A;&#x5047;&#x9762;&#x9A91;&#x58EB; / Toujima Tanzaburou wa Kamen Rider ni Naritai - 12 (CR 1920x1080 AVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:8378840879a52a1946c31ebed8f855fe7135be40&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>867.7 MB</td>
+                            <td><a href="/Download/20251221/8378840879a52a1946c31ebed8f855fe7135be40.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A8378840879a52a1946c31ebed8f855fe7135be40"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 01:02</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/c465a2a1fa54b2f55d6505c2b9e86037c40057d6" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x4E1C;&#x5C9B;&#x4E39;&#x4E09;&#x90CE;&#x60F3;&#x6210;&#x4E3A;&#x5047;&#x9762;&#x9A91;&#x58EB; / Toujima Tanzaburou wa Kamen Rider ni Naritai - 12 (Baha 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:c465a2a1fa54b2f55d6505c2b9e86037c40057d6&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>413.6 MB</td>
+                            <td><a href="/Download/20251221/c465a2a1fa54b2f55d6505c2b9e86037c40057d6.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Ac465a2a1fa54b2f55d6505c2b9e86037c40057d6"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 01:01</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/359" target="_blank" class="magnet-link-wrap">ANi</a>
+                            </td>
+                            <td><a href="/Home/Episode/f2464e67da865ecb4331a43fbe45ef09f0526f2b" target="_blank" class="magnet-link-wrap">[ANi] Tojima Wants to Be a Kamen Rider /  &#x4E1C;&#x5C9B;&#x4E39;&#x4E09;&#x90CE;&#x60F3;&#x6210;&#x4E3A;&#x5047;&#x9762;&#x9A91;&#x58EB; - 12 [1080P][Baha][WEB-DL][AAC AVC][CHT][MP4]</a> <a data-clipboard-text="magnet:?xt=urn:btih:f2464e67da865ecb4331a43fbe45ef09f0526f2b&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>413.8 MB</td>
+                            <td><a href="/Download/20251221/f2464e67da865ecb4331a43fbe45ef09f0526f2b.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Af2464e67da865ecb4331a43fbe45ef09f0526f2b"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 01:00</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/95ce4bd58118833d58e9539962749e739c3b69d9" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x4E1C;&#x5C9B;&#x4E39;&#x4E09;&#x90CE;&#x60F3;&#x6210;&#x4E3A;&#x5047;&#x9762;&#x9A91;&#x58EB; / Toujima Tanzaburou wa Kamen Rider ni Naritai - 12 (B-Global 1920x1080 HEVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:95ce4bd58118833d58e9539962749e739c3b69d9&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>415.9 MB</td>
+                            <td><a href="/Download/20251221/95ce4bd58118833d58e9539962749e739c3b69d9.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A95ce4bd58118833d58e9539962749e739c3b69d9"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 01:00</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/288f77ca23ba3cfed2e845467a76df9ab124bbe0" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x8F6C;&#x751F;&#x6076;&#x5973;&#x7684;&#x9ED1;&#x5386;&#x53F2; / Tensei Akujo no Kuro Rekishi - 11 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:288f77ca23ba3cfed2e845467a76df9ab124bbe0&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>720.8 MB</td>
+                            <td><a href="/Download/20251221/288f77ca23ba3cfed2e845467a76df9ab124bbe0.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A288f77ca23ba3cfed2e845467a76df9ab124bbe0"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 01:00</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/223" target="_blank" class="magnet-link-wrap">LoliHouse</a>
+                            </td>
+                            <td><a href="/Home/Episode/f61794b18e43be455aa56bdbc54d5034cc81a2e9" target="_blank" class="magnet-link-wrap">[LoliHouse] &#x673A;&#x52A8;&#x6218;&#x58EB;&#x9AD8;&#x8FBE; &#x94C1;&#x8840;&#x7684;&#x5B64;&#x513F; &#x4E4C;&#x5C14;&#x5FB7;&#x72E9;&#x730E; -&#x5C0F;&#x5C0F;&#x6311;&#x6218;&#x8005;&#x7684;&#x8F68;&#x8FF9;- / Mobile Suit Gundam Tekketsu no Orphans - Urdr Hunt Chiisana Chousensha no Kiseki [WebRip 1080p HEVC-10bit AAC][&#x65E0;&#x5B57;&#x5E55;](&#x68C0;&#x7D22;&#x7528;&#xFF1A;&#x94C1;&#x8840;&#x7684;&#x5965;&#x5C14;&#x82AC;&#x65AF;)</a> <a data-clipboard-text="magnet:?xt=urn:btih:f61794b18e43be455aa56bdbc54d5034cc81a2e9&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>2.1GB</td>
+                            <td><a href="/Download/20251221/f61794b18e43be455aa56bdbc54d5034cc81a2e9.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Af61794b18e43be455aa56bdbc54d5034cc81a2e9"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 00:39</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/223" target="_blank" class="magnet-link-wrap">LoliHouse</a>
+                            </td>
+                            <td><a href="/Home/Episode/d51b571afd1d5fc8ebf776e0f48e39eb377fbc0b" target="_blank" class="magnet-link-wrap">[&#x8C4C;&#x8C46;&#x5B57;&#x5E55;&#x7EC4;&amp;&#x98CE;&#x4E4B;&#x5723;&#x6BBF;&#x5B57;&#x5E55;&#x7EC4;&amp;LoliHouse] &#x7535;&#x952F;&#x4EBA; &#x857E;&#x585E;&#x7BC7; / &#x94FE;&#x952F;&#x4EBA; &#x857E;&#x585E;&#x7BC7; / Chainsaw Man Reze Arc [WebRip 1080p HEVC-10bit AAC][&#x7B80;&#x7E41;&#x5916;&#x6302;&#x5B57;&#x5E55;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:d51b571afd1d5fc8ebf776e0f48e39eb377fbc0b&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>2.4GB</td>
+                            <td><a href="/Download/20251221/d51b571afd1d5fc8ebf776e0f48e39eb377fbc0b.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Ad51b571afd1d5fc8ebf776e0f48e39eb377fbc0b"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 00:34</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/223" target="_blank" class="magnet-link-wrap">LoliHouse</a>
+                            </td>
+                            <td><a href="/Home/Episode/5c1fa94518e4a131cafb2fc81984d1f5540afb62" target="_blank" class="magnet-link-wrap">[LoliHouse] &#x5A5A;&#x6212;&#x7269;&#x8BED;II / Kekkon Yubiwa Monogatari II - 12 [WebRip 1080p HEVC-10bit AAC][&#x7B80;&#x7E41;&#x5185;&#x5C01;&#x5B57;&#x5E55;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:5c1fa94518e4a131cafb2fc81984d1f5540afb62&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>652.2MB</td>
+                            <td><a href="/Download/20251221/5c1fa94518e4a131cafb2fc81984d1f5540afb62.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A5c1fa94518e4a131cafb2fc81984d1f5540afb62"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 00:32</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/696baa75f7b20386eab67e5f8ce5792c6ba2ea02" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] GNOSIA / Gnosia - 11 (CR 1920x1080 AVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:696baa75f7b20386eab67e5f8ce5792c6ba2ea02&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>1,002.5 MB</td>
+                            <td><a href="/Download/20251221/696baa75f7b20386eab67e5f8ce5792c6ba2ea02.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A696baa75f7b20386eab67e5f8ce5792c6ba2ea02"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 00:31</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/dbdfadb20e0e6bef1e85c1de23dd7e0727980a39" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] GNOSIA / Gnosia - 11 (Baha 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:dbdfadb20e0e6bef1e85c1de23dd7e0727980a39&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>503.0 MB</td>
+                            <td><a href="/Download/20251221/dbdfadb20e0e6bef1e85c1de23dd7e0727980a39.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Adbdfadb20e0e6bef1e85c1de23dd7e0727980a39"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 00:31</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/359" target="_blank" class="magnet-link-wrap">ANi</a>
+                            </td>
+                            <td><a href="/Home/Episode/cece8fcd08f9c7af944bd35844d6863534de253a" target="_blank" class="magnet-link-wrap">[ANi] GNOSIA /  GNOSIA - 11 [1080P][Baha][WEB-DL][AAC AVC][CHT][MP4]</a> <a data-clipboard-text="magnet:?xt=urn:btih:cece8fcd08f9c7af944bd35844d6863534de253a&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>503.4 MB</td>
+                            <td><a href="/Download/20251221/cece8fcd08f9c7af944bd35844d6863534de253a.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Acece8fcd08f9c7af944bd35844d6863534de253a"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 00:06</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/1004" target="_blank" class="magnet-link-wrap">&#x6CB8;&#x73ED;&#x4E9A;&#x9A6C;&#x5236;&#x4F5C;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/2ec5e7c1bbd4ea5ca4116f5ab1a93580d3cb8942" target="_blank" class="magnet-link-wrap">[&#x6CB8;&#x73ED;&#x4E9A;&#x9A6C;&#x5236;&#x4F5C;&#x7EC4;] &#x660E;&#x660E;&#x53EA;&#x662F;&#x6697;&#x6740;&#x8005;&#xFF0C;&#x6211;&#x7684;&#x9762;&#x677F;&#x6570;&#x503C;&#x5374;&#x6BD4;&#x52C7;&#x8005;&#x8FD8;&#x8981;&#x5F3A; - 11 [CR WebRip AI2160p AV1 OPUS][&#x7B80;&#x7E41;&#x5185;&#x5C01;&#x5B57;&#x5E55;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:2ec5e7c1bbd4ea5ca4116f5ab1a93580d3cb8942&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>727.8MB</td>
+                            <td><a href="/Download/20251221/2ec5e7c1bbd4ea5ca4116f5ab1a93580d3cb8942.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A2ec5e7c1bbd4ea5ca4116f5ab1a93580d3cb8942"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 00:02</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/84c2be58299ae53f9d88e25e8477fa3618938992" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x672B;&#x4E16;&#x4E8C;&#x8F6E;&#x4E4B;&#x65C5; / Shuumatsu Touring - 12 (CR 1920x1080 AVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:84c2be58299ae53f9d88e25e8477fa3618938992&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>945.6 MB</td>
+                            <td><a href="/Download/20251221/84c2be58299ae53f9d88e25e8477fa3618938992.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A84c2be58299ae53f9d88e25e8477fa3618938992"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 00:01</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/cc28a00763df52e8b5a53d3d6cf63bbcc0974f86" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x672B;&#x4E16;&#x4E8C;&#x8F6E;&#x4E4B;&#x65C5; / Shuumatsu Touring - 12 (Baha 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:cc28a00763df52e8b5a53d3d6cf63bbcc0974f86&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>358.4 MB</td>
+                            <td><a href="/Download/20251221/cc28a00763df52e8b5a53d3d6cf63bbcc0974f86.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Acc28a00763df52e8b5a53d3d6cf63bbcc0974f86"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 00:01</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/359" target="_blank" class="magnet-link-wrap">ANi</a>
+                            </td>
+                            <td><a href="/Home/Episode/46f3453ff453a587d01551517558b459c7e6112a" target="_blank" class="magnet-link-wrap">[ANi] Touring After the Apocalypse /  &#x672B;&#x4E16;&#x4E8C;&#x8F6E;&#x4E4B;&#x65C5; - 12 [1080P][Baha][WEB-DL][AAC AVC][CHT][MP4]</a> <a data-clipboard-text="magnet:?xt=urn:btih:46f3453ff453a587d01551517558b459c7e6112a&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>358.7 MB</td>
+                            <td><a href="/Download/20251221/46f3453ff453a587d01551517558b459c7e6112a.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A46f3453ff453a587d01551517558b459c7e6112a"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>今天 00:00</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/4641163b2a92d1dc3ee0df8e7dccc290852291c8" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x4E1C;&#x5C9B;&#x4E39;&#x4E09;&#x90CE;&#x60F3;&#x6210;&#x4E3A;&#x5047;&#x9762;&#x9A91;&#x58EB; / Toujima Tanzaburou wa Kamen Rider ni Naritai - 12 (ABEMA 1280x720 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:4641163b2a92d1dc3ee0df8e7dccc290852291c8&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>369.9 MB</td>
+                            <td><a href="/Download/20251221/4641163b2a92d1dc3ee0df8e7dccc290852291c8.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A4641163b2a92d1dc3ee0df8e7dccc290852291c8"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:48</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/1fb81370fff9ee0e08331e72f94d03886722a088" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x7ED9;&#x4E0D;&#x706D;&#x7684;&#x4F60; &#x7B2C;&#x4E09;&#x5B63; / Fumetsu no Anata e Season 3 - 12 (CR 1920x1080 AVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:1fb81370fff9ee0e08331e72f94d03886722a088&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>995.9 MB</td>
+                            <td><a href="/Download/20251220/1fb81370fff9ee0e08331e72f94d03886722a088.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A1fb81370fff9ee0e08331e72f94d03886722a088"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:45</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/ade309636aa6005ee3942800ef74fd0e21baa410" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x81F4;&#x4E0D;&#x706D;&#x7684;&#x4F60; &#x7B2C;&#x4E09;&#x5B63; / Fumetsu no Anata e Season 3 - 12 (B-Global 1920x1080 HEVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:ade309636aa6005ee3942800ef74fd0e21baa410&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>410.1 MB</td>
+                            <td><a href="/Download/20251220/ade309636aa6005ee3942800ef74fd0e21baa410.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Aade309636aa6005ee3942800ef74fd0e21baa410"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:30</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/5cc93f2971d135fcd83f365921a5dd0b92255491" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] GNOSIA / Gnosia - 11 (ABEMA 1280x720 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:5cc93f2971d135fcd83f365921a5dd0b92255491&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>396.1 MB</td>
+                            <td><a href="/Download/20251220/5cc93f2971d135fcd83f365921a5dd0b92255491.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A5cc93f2971d135fcd83f365921a5dd0b92255491"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:25</td>
+                            <td>
+&#x751F;&#x8089;/&#x4E0D;&#x660E;&#x5B57;&#x5E55;                            </td>
+                            <td><a href="/Home/Episode/bf0c9f336c1b54bfeeabc6b655c600a94c862213" target="_blank" class="magnet-link-wrap">[jibaketa&#x5408;&#x6210;&amp;&#x4E8C;&#x6B21;&#x538B;&#x5236;][TVB&#x7CA4;&#x8BED;]&#x79D1;&#x5B66;&#xD7;&#x5192;&#x9669;&#x7EDD;&#x5883;&#x6C42;&#x751F;&#x624B;&#x518C; / Kagaku x Bouken Survival! - 19 [&#x7CA4;&#x8BED;&#x2B;&#x65E0;&#x5B57;&#x5E55;][WEB 1920x1080 AVC AAC SRT YUE]</a> <a data-clipboard-text="magnet:?xt=urn:btih:bf0c9f336c1b54bfeeabc6b655c600a94c862213&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>717.3MB</td>
+                            <td><a href="/Download/20251220/bf0c9f336c1b54bfeeabc6b655c600a94c862213.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Abf0c9f336c1b54bfeeabc6b655c600a94c862213"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:22</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/146" target="_blank" class="magnet-link-wrap">&#x94F6;&#x8272;&#x5B50;&#x5F39;&#x5B57;&#x5E55;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/3754a715122d5b7da37b91e9c01a1b342db14207" target="_blank" class="magnet-link-wrap">[&#x94F6;&#x8272;&#x5B50;&#x5F39;&#x5B57;&#x5E55;&#x7EC4;][&#x540D;&#x4FA6;&#x63A2;&#x67EF;&#x5357;][&#x7B2C;98-99&#x96C6; &#x540D;&#x9676;&#x827A;&#x5BB6;&#x6740;&#x4EBA;&#x4E8B;&#x4EF6;][WEBRIP][&#x7B80;&#x65E5;&#x53CC;&#x8BED;MP4/&#x7E41;&#x65E5;&#x53CC;&#x8BED;MP4/&#x7B80;&#x7E41;&#x65E5;&#x591A;&#x8BED;MKV][1080P]</a> <a data-clipboard-text="magnet:?xt=urn:btih:3754a715122d5b7da37b91e9c01a1b342db14207&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>2.9GB</td>
+                            <td><a href="/Download/20251220/3754a715122d5b7da37b91e9c01a1b342db14207.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A3754a715122d5b7da37b91e9c01a1b342db14207"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:08</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/f9a55f8c0b71dd0ef7678ba21d4e92eb525e5c48" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x6843;&#x6E90;&#x6697;&#x9B3C; / Tougen Anki - 23 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:f9a55f8c0b71dd0ef7678ba21d4e92eb525e5c48&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>722.2 MB</td>
+                            <td><a href="/Download/20251220/f9a55f8c0b71dd0ef7678ba21d4e92eb525e5c48.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Af9a55f8c0b71dd0ef7678ba21d4e92eb525e5c48"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:05</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/ac4fea82a8d0a7ce2075c75368379f5375b9b032" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x672B;&#x4E16;&#x4E8C;&#x8F6E;&#x4E4B;&#x65C5; / Shuumatsu Touring - 12 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:ac4fea82a8d0a7ce2075c75368379f5375b9b032&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>712.1 MB</td>
+                            <td><a href="/Download/20251220/ac4fea82a8d0a7ce2075c75368379f5375b9b032.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Aac4fea82a8d0a7ce2075c75368379f5375b9b032"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:05</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/c5540a6436f0f81927aa4d85d94ec528166b8678" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x8D2F;&#x5F7B;&#x8F85;&#x52A9;&#x9B54;&#x6CD5;&#x652F;&#x63F4;&#x5F31;&#x5C0F;&#x961F;&#x53CB;&#x7684;&#x5BAB;&#x5EF7;&#x9B54;&#x6CD5;&#x5E08;&#xFF0C;&#x60E8;&#x906D;&#x9A71;&#x9010;&#x540E;&#x76EE;&#x6807;&#x6210;&#x4E3A;&#x6700;&#x5F3A;&#x5192;&#x9669;&#x8005; / Hojomaho - 12 (CR 1920x1080 AVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:c5540a6436f0f81927aa4d85d94ec528166b8678&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>799.4 MB</td>
+                            <td><a href="/Download/20251220/c5540a6436f0f81927aa4d85d94ec528166b8678.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Ac5540a6436f0f81927aa4d85d94ec528166b8678"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:04</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/20" target="_blank" class="magnet-link-wrap">&#x5E7B;&#x6A31;&#x5B57;&#x5E55;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/fca5a8fd5fcc96b921d9a73f45764b76cf2ad7cf" target="_blank" class="magnet-link-wrap">&#x3010;&#x5E7B;&#x6A31;&#x5B57;&#x5E55;&#x7EC4;&#x3011;&#x3010;10&#x6708;&#x65B0;&#x756A;&#x3011;&#x3010;&#x4E0D;&#x64C5;&#x5438;&#x8840;&#x7684;&#x5438;&#x8840;&#x9B3C; Chanto Suenai Kyuuketsuki-chan&#x3011;&#x3010;10&#x3011;&#x3010;BIG5_MP4&#x3011;&#x3010;1920X1080&#x3011;</a> <a data-clipboard-text="magnet:?xt=urn:btih:fca5a8fd5fcc96b921d9a73f45764b76cf2ad7cf&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>333.4MB</td>
+                            <td><a href="/Download/20251220/fca5a8fd5fcc96b921d9a73f45764b76cf2ad7cf.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Afca5a8fd5fcc96b921d9a73f45764b76cf2ad7cf"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:04</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/20" target="_blank" class="magnet-link-wrap">&#x5E7B;&#x6A31;&#x5B57;&#x5E55;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/bb260726e3b8a16584e4bb596b2c815c164525de" target="_blank" class="magnet-link-wrap">&#x3010;&#x5E7B;&#x6A31;&#x5B57;&#x5E55;&#x7EC4;&#x3011;&#x3010;10&#x6708;&#x65B0;&#x756A;&#x3011;&#x3010;&#x4E0D;&#x64C5;&#x5438;&#x8840;&#x7684;&#x5438;&#x8840;&#x9B3C; Chanto Suenai Kyuuketsuki-chan&#x3011;&#x3010;10&#x3011;&#x3010;GB_MP4&#x3011;&#x3010;1920X1080&#x3011;</a> <a data-clipboard-text="magnet:?xt=urn:btih:bb260726e3b8a16584e4bb596b2c815c164525de&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>333.4MB</td>
+                            <td><a href="/Download/20251220/bb260726e3b8a16584e4bb596b2c815c164525de.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Abb260726e3b8a16584e4bb596b2c815c164525de"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:03</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/284278fa0022bfc0b4c52f9bdc0fbe617b224625" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x8D2F;&#x5F7B;&#x8F85;&#x52A9;&#x9B54;&#x6CD5;&#x652F;&#x63F4;&#x5F31;&#x5C0F;&#x961F;&#x53CB;&#x7684;&#x5BAB;&#x5EF7;&#x9B54;&#x6CD5;&#x5E08;&#xFF0C;&#x60E8;&#x906D;&#x9A71;&#x9010;&#x540E;&#x76EE;&#x6807;&#x6210;&#x4E3A;&#x6700;&#x5F3A;&#x5192;&#x9669;&#x8005; / Hojomaho - 12 (Baha 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:284278fa0022bfc0b4c52f9bdc0fbe617b224625&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>336.9 MB</td>
+                            <td><a href="/Download/20251220/284278fa0022bfc0b4c52f9bdc0fbe617b224625.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A284278fa0022bfc0b4c52f9bdc0fbe617b224625"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:02</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/d3d6619f6ab9137b3c41a0c2c299e14c81fc9eb0" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] SPY&#xD7;FAMILY &#x95F4;&#x8C0D;&#x5BB6;&#x5BB6;&#x9152; Season 3 / Spy x Family Season 3 - 49 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:d3d6619f6ab9137b3c41a0c2c299e14c81fc9eb0&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>711.7 MB</td>
+                            <td><a href="/Download/20251220/d3d6619f6ab9137b3c41a0c2c299e14c81fc9eb0.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Ad3d6619f6ab9137b3c41a0c2c299e14c81fc9eb0"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:02</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/3d8e92fe4a64760f3cc6e36558fea0c83f9c8aa9" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] SPY&#xD7;FAMILY &#x95F4;&#x8C0D;&#x5BB6;&#x5BB6;&#x9152; Season 3 / Spy x Family Season 3 - 49 (CR 1920x1080 AVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:3d8e92fe4a64760f3cc6e36558fea0c83f9c8aa9&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>812.4 MB</td>
+                            <td><a href="/Download/20251220/3d8e92fe4a64760f3cc6e36558fea0c83f9c8aa9.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A3d8e92fe4a64760f3cc6e36558fea0c83f9c8aa9"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:02</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/5c73e77d18f383a444e838fafd99a3d3d8e3badc" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x961F;&#x53CB;&#x592A;&#x5F31;&#x6240;&#x4EE5;&#x8D2F;&#x5F7B;&#x8F85;&#x52A9;&#x7684;&#x5BAB;&#x5EF7;&#x9B54;&#x6CD5;&#x5E08;&#xFF0C;&#x60E8;&#x906D;&#x6D41;&#x653E;&#x76EE;&#x6807;&#x5374;&#x662F;&#x6700;&#x5F3A; / Hojomaho - 12 (B-Global 1920x1080 HEVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:5c73e77d18f383a444e838fafd99a3d3d8e3badc&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>290.5 MB</td>
+                            <td><a href="/Download/20251220/5c73e77d18f383a444e838fafd99a3d3d8e3badc.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A5c73e77d18f383a444e838fafd99a3d3d8e3badc"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:01</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/359" target="_blank" class="magnet-link-wrap">ANi</a>
+                            </td>
+                            <td><a href="/Home/Episode/cbdd289cbacda48668e0c1b55e30b737e6a700f7" target="_blank" class="magnet-link-wrap">[ANi] SPY x FAMILY /  SPY&#xD7;FAMILY &#x95F4;&#x8C0D;&#x5BB6;&#x5BB6;&#x9152; Season 3 - 49 [1080P][Baha][WEB-DL][AAC AVC][CHT][MP4]</a> <a data-clipboard-text="magnet:?xt=urn:btih:cbdd289cbacda48668e0c1b55e30b737e6a700f7&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>349.9 MB</td>
+                            <td><a href="/Download/20251220/cbdd289cbacda48668e0c1b55e30b737e6a700f7.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Acbdd289cbacda48668e0c1b55e30b737e6a700f7"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:01</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/ad8822ccb3068744f4fc79cba430a39de7be07ff" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] SPY&#xD7;FAMILY &#x95F4;&#x8C0D;&#x5BB6;&#x5BB6;&#x9152; Season 3 / Spy x Family Season 3 - 49 (Baha 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:ad8822ccb3068744f4fc79cba430a39de7be07ff&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>349.4 MB</td>
+                            <td><a href="/Download/20251220/ad8822ccb3068744f4fc79cba430a39de7be07ff.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Aad8822ccb3068744f4fc79cba430a39de7be07ff"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:01</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/359" target="_blank" class="magnet-link-wrap">ANi</a>
+                            </td>
+                            <td><a href="/Home/Episode/6a0b9af0329880252341ab2a763df64ae04b6391" target="_blank" class="magnet-link-wrap">[ANi]  &#x8D2F;&#x5F7B;&#x8F85;&#x52A9;&#x9B54;&#x6CD5;&#x652F;&#x63F4;&#x5F31;&#x5C0F;&#x961F;&#x53CB;&#x7684;&#x5BAB;&#x5EF7;&#x9B54;&#x6CD5;&#x5E08;&#xFF0C;&#x60E8;&#x906D;&#x9A71;&#x9010;&#x540E;&#x76EE;&#x6807;&#x6210;&#x4E3A;&#x6700;&#x5F3A;&#x5192;&#x9669;&#x8005; - 12 [1080P][Baha][WEB-DL][AAC AVC][CHT][MP4]</a> <a data-clipboard-text="magnet:?xt=urn:btih:6a0b9af0329880252341ab2a763df64ae04b6391&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>337.1 MB</td>
+                            <td><a href="/Download/20251220/6a0b9af0329880252341ab2a763df64ae04b6391.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A6a0b9af0329880252341ab2a763df64ae04b6391"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:00</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/ca4be0a0ea67807da85557dbf79f749d8db61968" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x95F4;&#x8C0D;&#x8FC7;&#x5BB6;&#x5BB6; &#x7B2C;&#x4E09;&#x5B63; / Spy x Family Season 3 - 49 (B-Global 1920x1080 HEVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:ca4be0a0ea67807da85557dbf79f749d8db61968&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>290.4 MB</td>
+                            <td><a href="/Download/20251220/ca4be0a0ea67807da85557dbf79f749d8db61968.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Aca4be0a0ea67807da85557dbf79f749d8db61968"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 23:00</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/17cce593f9e40716eeaebf038a746e6a996b32e1" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x8D2F;&#x5F7B;&#x8F85;&#x52A9;&#x9B54;&#x6CD5;&#x652F;&#x63F4;&#x5F31;&#x5C0F;&#x961F;&#x53CB;&#x7684;&#x5BAB;&#x5EF7;&#x9B54;&#x6CD5;&#x5E08;&#xFF0C;&#x60E8;&#x906D;&#x9A71;&#x9010;&#x540E;&#x76EE;&#x6807;&#x6210;&#x4E3A;&#x6700;&#x5F3A;&#x5192;&#x9669;&#x8005; / Hojomaho - 11 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:17cce593f9e40716eeaebf038a746e6a996b32e1&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>710.1 MB</td>
+                            <td><a href="/Download/20251220/17cce593f9e40716eeaebf038a746e6a996b32e1.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A17cce593f9e40716eeaebf038a746e6a996b32e1"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 22:40</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/156" target="_blank" class="magnet-link-wrap">VCB-Studio</a>
+                            </td>
+                            <td><a href="/Home/Episode/e4d99c470527fac73a9f98ce648248a151162d3e" target="_blank" class="magnet-link-wrap">[VCB-Studio] &#x5927;&#x53D4;&#x65B0;&#x4EBA;&#x5192;&#x9669;&#x8005;&#xFF0C;&#x88AB;&#x6700;&#x5F3A;&#x5C0F;&#x961F;&#x5F80;&#x6B7B;&#x91CC;&#x953B;&#x70BC;&#x540E;&#x53D8;&#x65E0;&#x654C;&#x4E86; / &#x65B0;&#x4EBA;&#x5927;&#x53D4;&#x5192;&#x9669;&#x8005;&#xFF0C;&#x88AB;&#x6700;&#x5F3A;&#x961F;&#x4F0D;&#x64CD;&#x5230;&#x6B7B;&#x6210;&#x65E0;&#x654C; / Shinmai Ossan Boukensha, Saikyou Party ni Shinu Hodo Kitaerarete Muteki ni Naru. 10-bit 1080p AVC BDRip [Fin]</a> <a data-clipboard-text="magnet:?xt=urn:btih:e4d99c470527fac73a9f98ce648248a151162d3e&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>17.5GB</td>
+                            <td><a href="/Download/20251220/e4d99c470527fac73a9f98ce648248a151162d3e.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Ae4d99c470527fac73a9f98ce648248a151162d3e"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 22:38</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/156" target="_blank" class="magnet-link-wrap">VCB-Studio</a>
+                            </td>
+                            <td><a href="/Home/Episode/9f99d1a0ef1c16decfdb44c6b310e4f6f7ce9f9d" target="_blank" class="magnet-link-wrap">[VCB-Studio] &#x82F1;&#x96C4;&#x6559;&#x5BA4; / Eiyuu Kyoushitsu 10-bit 1080p HEVC BDRip [Fin]</a> <a data-clipboard-text="magnet:?xt=urn:btih:9f99d1a0ef1c16decfdb44c6b310e4f6f7ce9f9d&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>29.8GB</td>
+                            <td><a href="/Download/20251220/9f99d1a0ef1c16decfdb44c6b310e4f6f7ce9f9d.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A9f99d1a0ef1c16decfdb44c6b310e4f6f7ce9f9d"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 22:36</td>
+                            <td>
+&#x751F;&#x8089;/&#x4E0D;&#x660E;&#x5B57;&#x5E55;                            </td>
+                            <td><a href="/Home/Episode/20a0a5daa29d1a1ab6e92412a5a78fff376747ce" target="_blank" class="magnet-link-wrap">[jibaketa&#x5408;&#x6210;&amp;&#x4E8C;&#x6B21;&#x538B;&#x5236;][ViuTV&#x7CA4;&#x8BED;]&#x5149;&#x4E4B;&#x7F8E;&#x5C11;&#x5973;&#x5076;&#x50CF;&#x4E0E;&#x4F60; / Idol&#x5149;&#x4E4B;&#x7F8E;&#x5C11;&#x5973;&#x4F60;&#x4E0E;&#x6211; / Kimi to Idol Precure - 35 [&#x7CA4;&#x8BED;&#x2B;&#x65E0;&#x5BF9;&#x767D;&#x5B57;&#x5E55;](WEB 1920x1080 x264 AAC YUE CHT)</a> <a data-clipboard-text="magnet:?xt=urn:btih:20a0a5daa29d1a1ab6e92412a5a78fff376747ce&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>803.9MB</td>
+                            <td><a href="/Download/20251220/20a0a5daa29d1a1ab6e92412a5a78fff376747ce.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A20a0a5daa29d1a1ab6e92412a5a78fff376747ce"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 22:30</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/d7ced823b5831d280fcc6f78d1bd415fd73f3367" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x8F6C;&#x751F;&#x540E;&#x7684;&#x6211;&#x6210;&#x4E86;&#x82F1;&#x96C4;&#x7238;&#x7238;&#x548C;&#x7CBE;&#x7075;&#x5988;&#x5988;&#x7684;&#x5973;&#x513F; / Hahanoha - 11 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:d7ced823b5831d280fcc6f78d1bd415fd73f3367&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>712.2 MB</td>
+                            <td><a href="/Download/20251220/d7ced823b5831d280fcc6f78d1bd415fd73f3367.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Ad7ced823b5831d280fcc6f78d1bd415fd73f3367"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 22:00</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/fcdfbbdd59b3c8b988b82c969d56b5ab12b1813f" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x9752;&#x4E4B;&#x58EC;&#x751F;&#x6D6A; &#x7B2C;&#x4E8C;&#x5B63; &#x82B9;&#x6CFD;&#x6697;&#x6740;&#x7BC7; / Ao no Miburo: Serizawa Ansatsu-hen - 01 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:fcdfbbdd59b3c8b988b82c969d56b5ab12b1813f&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>717.1 MB</td>
+                            <td><a href="/Download/20251220/fcdfbbdd59b3c8b988b82c969d56b5ab12b1813f.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Afcdfbbdd59b3c8b988b82c969d56b5ab12b1813f"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 21:47</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/1009" target="_blank" class="magnet-link-wrap">&#x7EFF;&#x8336;&#x5B57;&#x5E55;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/d2ea4c9fd5b991a17cd7f21e46eeccacea66f875" target="_blank" class="magnet-link-wrap">[&#x7EFF;&#x8336;&#x5B57;&#x5E55;&#x7EC4;] &#x4E0D;&#x64C5;&#x5438;&#x8840;&#x7684;&#x5438;&#x8840;&#x9B3C;/Chanto Suenai Kyuuketsuki-chan [10][WebRip][1080p][&#x7B80;&#x65E5;&#x5185;&#x5D4C;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:d2ea4c9fd5b991a17cd7f21e46eeccacea66f875&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>539.1 MB</td>
+                            <td><a href="/Download/20251220/d2ea4c9fd5b991a17cd7f21e46eeccacea66f875.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Ad2ea4c9fd5b991a17cd7f21e46eeccacea66f875"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 21:47</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/1009" target="_blank" class="magnet-link-wrap">&#x7EFF;&#x8336;&#x5B57;&#x5E55;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/14cf90f856e0a160e06e0b6100938ebe1a846231" target="_blank" class="magnet-link-wrap">[&#x7EFF;&#x8336;&#x5B57;&#x5E55;&#x7EC4;] &#x4E0D;&#x64C5;&#x5438;&#x8840;&#x7684;&#x5438;&#x8840;&#x9B3C;/Chanto Suenai Kyuuketsuki-chan [10][WebRip][1080p][&#x7E41;&#x7B80;&#x65E5;&#x5185;&#x5C01;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:14cf90f856e0a160e06e0b6100938ebe1a846231&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>537.1 MB</td>
+                            <td><a href="/Download/20251220/14cf90f856e0a160e06e0b6100938ebe1a846231.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A14cf90f856e0a160e06e0b6100938ebe1a846231"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 21:47</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/1009" target="_blank" class="magnet-link-wrap">&#x7EFF;&#x8336;&#x5B57;&#x5E55;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/67cda84fbb9977eccb93699654bc032d2c763f29" target="_blank" class="magnet-link-wrap">[&#x7EFF;&#x8336;&#x5B57;&#x5E55;&#x7EC4;] &#x4E0D;&#x64C5;&#x5438;&#x8840;&#x7684;&#x5438;&#x8840;&#x9B3C;/Chanto Suenai Kyuuketsuki-chan [10][WebRip][1080p][&#x7E41;&#x65E5;&#x5185;&#x5D4C;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:67cda84fbb9977eccb93699654bc032d2c763f29&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>539.1 MB</td>
+                            <td><a href="/Download/20251220/67cda84fbb9977eccb93699654bc032d2c763f29.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A67cda84fbb9977eccb93699654bc032d2c763f29"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 21:44</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/1009" target="_blank" class="magnet-link-wrap">&#x7EFF;&#x8336;&#x5B57;&#x5E55;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/7ca20b2c75315f6ad73d4b28a85da896781fed43" target="_blank" class="magnet-link-wrap">[&#x7EFF;&#x8336;&#x5B57;&#x5E55;&#x7EC4;] &#x670B;&#x53CB;&#x7684;&#x59B9;&#x59B9;&#x53EA;&#x559C;&#x6B22;&#x70E6;&#x6211; / Tomodachi no Imouto ga Ore ni dake Uzai [11][WebRip][1080p][&#x7E41;&#x65E5;&#x5185;&#x5D4C;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:7ca20b2c75315f6ad73d4b28a85da896781fed43&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>558.2 MB</td>
+                            <td><a href="/Download/20251220/7ca20b2c75315f6ad73d4b28a85da896781fed43.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A7ca20b2c75315f6ad73d4b28a85da896781fed43"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 21:43</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/1009" target="_blank" class="magnet-link-wrap">&#x7EFF;&#x8336;&#x5B57;&#x5E55;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/7f23d9a1bae23eddd810213bfad67b19bae3a7ee" target="_blank" class="magnet-link-wrap">[&#x7EFF;&#x8336;&#x5B57;&#x5E55;&#x7EC4;] &#x670B;&#x53CB;&#x7684;&#x59B9;&#x59B9;&#x53EA;&#x559C;&#x6B22;&#x70E6;&#x6211; / Tomodachi no Imouto ga Ore ni dake Uzai [11][WebRip][1080p][&#x7B80;&#x65E5;&#x5185;&#x5D4C;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:7f23d9a1bae23eddd810213bfad67b19bae3a7ee&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>558.3 MB</td>
+                            <td><a href="/Download/20251220/7f23d9a1bae23eddd810213bfad67b19bae3a7ee.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A7f23d9a1bae23eddd810213bfad67b19bae3a7ee"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 21:43</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/1009" target="_blank" class="magnet-link-wrap">&#x7EFF;&#x8336;&#x5B57;&#x5E55;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/be45eafd09f18dc1a618005c07de419d892f41e3" target="_blank" class="magnet-link-wrap">[&#x7EFF;&#x8336;&#x5B57;&#x5E55;&#x7EC4;] &#x670B;&#x53CB;&#x7684;&#x59B9;&#x59B9;&#x53EA;&#x559C;&#x6B22;&#x70E6;&#x6211; / Tomodachi no Imouto ga Ore ni dake Uzai [11][WebRip][1080p][&#x7E41;&#x7B80;&#x65E5;&#x5185;&#x5C01;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:be45eafd09f18dc1a618005c07de419d892f41e3&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>573.6 MB</td>
+                            <td><a href="/Download/20251220/be45eafd09f18dc1a618005c07de419d892f41e3.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Abe45eafd09f18dc1a618005c07de419d892f41e3"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 21:33</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/710f9fe731b19048199bfb768d1de45950bee763" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x5A5A;&#x6212;&#x7269;&#x8BED; &#x7B2C;&#x4E8C;&#x5B63; / Kekkon Yubiwa Monogatari II - 24 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:710f9fe731b19048199bfb768d1de45950bee763&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>712.6 MB</td>
+                            <td><a href="/Download/20251220/710f9fe731b19048199bfb768d1de45950bee763.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A710f9fe731b19048199bfb768d1de45950bee763"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 21:30</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/0724cef41efc0e4f4c443c92bd040d22d02d525a" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x91CE;&#x751F;&#x7684;&#x5927;&#x9B54;&#x738B;&#x51FA;&#x73B0;&#x4E86;&#xFF01; / Yasei no Last Boss ga Arawareta! - 12 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:0724cef41efc0e4f4c443c92bd040d22d02d525a&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>712.2 MB</td>
+                            <td><a href="/Download/20251220/0724cef41efc0e4f4c443c92bd040d22d02d525a.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A0724cef41efc0e4f4c443c92bd040d22d02d525a"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 21:07</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/0ea5df038663613db1584bb4e33b3741cbfc68cb" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x4E0D;&#x52A8;&#x58F0;&#x8272;&#x7684;&#x67CF;&#x7530;&#x4E0E;&#x559C;&#x5F62;&#x4E8E;&#x8272;&#x7684;&#x592A;&#x7530; / Kashiwada Ohta - 12 (CR 1920x1080 AVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:0ea5df038663613db1584bb4e33b3741cbfc68cb&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>1,014.9 MB</td>
+                            <td><a href="/Download/20251220/0ea5df038663613db1584bb4e33b3741cbfc68cb.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A0ea5df038663613db1584bb4e33b3741cbfc68cb"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 21:02</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/83468263c2c0e4552eeb870fdc4887ea7eed3b91" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x5A5A;&#x6212;&#x7269;&#x8BED; &#x7B2C;&#x4E8C;&#x5B63; / Kekkon Yubiwa Monogatari II - 12 (CR 1920x1080 AVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:83468263c2c0e4552eeb870fdc4887ea7eed3b91&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>1.0 GB</td>
+                            <td><a href="/Download/20251220/83468263c2c0e4552eeb870fdc4887ea7eed3b91.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A83468263c2c0e4552eeb870fdc4887ea7eed3b91"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 20:45</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/06139760bcb5bce04882386755e9b7e2366bc3de" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x9752;&#x4E4B;&#x58EC;&#x751F;&#x6D6A; &#x7B2C;&#x4E8C;&#x5B63; &#x82B9;&#x6CFD;&#x6697;&#x6740;&#x7BC7; / Ao no Miburo: Serizawa Ansatsu-hen - 01 (CR 1920x1080 AVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:06139760bcb5bce04882386755e9b7e2366bc3de&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>865.0 MB</td>
+                            <td><a href="/Download/20251220/06139760bcb5bce04882386755e9b7e2366bc3de.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A06139760bcb5bce04882386755e9b7e2366bc3de"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 20:40</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/223" target="_blank" class="magnet-link-wrap">LoliHouse</a>
+                            </td>
+                            <td><a href="/Home/Episode/75e457047e205ee8e096f325ace7d60d29bf6f3a" target="_blank" class="magnet-link-wrap">[LoliHouse] &#x6700;&#x540E;&#x53EF;&#x4EE5;&#x518D;&#x62DC;&#x6258;&#x60A8;&#x4E00;&#x4EF6;&#x4E8B;&#x5417;&#xFF1F; / Saigo ni Hitotsu dake Onegai Shitemo Yoroshii Deshou ka - 13 [WebRip 1080p HEVC-10bit AAC][&#x7B80;&#x7E41;&#x5185;&#x5C01;&#x5B57;&#x5E55;][END]</a> <a data-clipboard-text="magnet:?xt=urn:btih:75e457047e205ee8e096f325ace7d60d29bf6f3a&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>508.5MB</td>
+                            <td><a href="/Download/20251220/75e457047e205ee8e096f325ace7d60d29bf6f3a.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A75e457047e205ee8e096f325ace7d60d29bf6f3a"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 20:39</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/223" target="_blank" class="magnet-link-wrap">LoliHouse</a>
+                            </td>
+                            <td><a href="/Home/Episode/67ff26b2289151e9ccca1ccb527d3551e5e6e0e4" target="_blank" class="magnet-link-wrap">[LoliHouse] SANDA &#x53D8;&#x8EAB;&#x5723;&#x8BDE;&#x8001;&#x4EBA; - 12 [WebRip 1080p HEVC-10bit AAC][&#x7B80;&#x7E41;&#x5185;&#x5C01;&#x5B57;&#x5E55;][END]</a> <a data-clipboard-text="magnet:?xt=urn:btih:67ff26b2289151e9ccca1ccb527d3551e5e6e0e4&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>690.6MB</td>
+                            <td><a href="/Download/20251220/67ff26b2289151e9ccca1ccb527d3551e5e6e0e4.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A67ff26b2289151e9ccca1ccb527d3551e5e6e0e4"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 20:38</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/223" target="_blank" class="magnet-link-wrap">LoliHouse</a>
+                            </td>
+                            <td><a href="/Home/Episode/d58af941eeb8ecd1f11f58f761f674c154e509ef" target="_blank" class="magnet-link-wrap">[LoliHouse] &#x6843;&#x6E90;&#x6697;&#x9B3C; / TOUGEN ANKI - 23 [WebRip 1080p HEVC-10bit AAC][&#x7B80;&#x7E41;&#x5185;&#x5C01;&#x5B57;&#x5E55;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:d58af941eeb8ecd1f11f58f761f674c154e509ef&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>704.5MB</td>
+                            <td><a href="/Download/20251220/d58af941eeb8ecd1f11f58f761f674c154e509ef.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Ad58af941eeb8ecd1f11f58f761f674c154e509ef"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 20:31</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/32f944dc53ff9aaad8f1e3981e6db4408dd3ab05" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x5A5A;&#x6212;&#x7269;&#x8BED; &#x7B2C;&#x4E8C;&#x5B63; / Kekkon Yubiwa Monogatari II - 24 (Baha 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:32f944dc53ff9aaad8f1e3981e6db4408dd3ab05&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>453.8 MB</td>
+                            <td><a href="/Download/20251220/32f944dc53ff9aaad8f1e3981e6db4408dd3ab05.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A32f944dc53ff9aaad8f1e3981e6db4408dd3ab05"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 20:31</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/359" target="_blank" class="magnet-link-wrap">ANi</a>
+                            </td>
+                            <td><a href="/Home/Episode/db274178f78878800d7db71977db5d7a6ebd4021" target="_blank" class="magnet-link-wrap">[ANi] Tales of Wedding Rings S02 /  &#x5A5A;&#x6212;&#x7269;&#x8BED; &#x7B2C;&#x4E8C;&#x5B63; - 24 [1080P][Baha][WEB-DL][AAC AVC][CHT][MP4]</a> <a data-clipboard-text="magnet:?xt=urn:btih:db274178f78878800d7db71977db5d7a6ebd4021&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>454.2 MB</td>
+                            <td><a href="/Download/20251220/db274178f78878800d7db71977db5d7a6ebd4021.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Adb274178f78878800d7db71977db5d7a6ebd4021"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 20:30</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/a8c89bf103bf71c90922ddbb67894493a4ae1068" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x5A5A;&#x6212;&#x7269;&#x8BED; &#x7B2C;&#x4E8C;&#x5B63; / Kekkon Yubiwa Monogatari II - 12 (B-Global 1920x1080 HEVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:a8c89bf103bf71c90922ddbb67894493a4ae1068&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>345.7 MB</td>
+                            <td><a href="/Download/20251220/a8c89bf103bf71c90922ddbb67894493a4ae1068.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Aa8c89bf103bf71c90922ddbb67894493a4ae1068"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 20:04</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/1003" target="_blank" class="magnet-link-wrap">Prejudice-Studio</a>
+                            </td>
+                            <td><a href="/Home/Episode/d4c2c79cb7f696b825602b20f876ba9a3a88a6c8" target="_blank" class="magnet-link-wrap">[Prejudice-Studio] &#x4E0D;&#x52A8;&#x58F0;&#x8272;&#x7684;&#x67CF;&#x7530;&#x4E0E;&#x559C;&#x5F62;&#x4E8E;&#x8272;&#x7684;&#x592A;&#x7530; Kao ni Denai Kashiwada-san to Kao ni Deru Oota-kun [01-12][Bilibili WEB-DL 1080P AVC 8bit AAC MP4][&#x7B80;&#x65E5;&#x5185;&#x5D4C;][S1 Fin]</a> <a data-clipboard-text="magnet:?xt=urn:btih:d4c2c79cb7f696b825602b20f876ba9a3a88a6c8&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>3.6 GB</td>
+                            <td><a href="/Download/20251220/d4c2c79cb7f696b825602b20f876ba9a3a88a6c8.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Ad4c2c79cb7f696b825602b20f876ba9a3a88a6c8"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 20:01</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/1003" target="_blank" class="magnet-link-wrap">Prejudice-Studio</a>
+                            </td>
+                            <td><a href="/Home/Episode/50ff5d15b831dc96fd628a66af1a0f4326375cf8" target="_blank" class="magnet-link-wrap">[Prejudice-Studio] &#x4E0D;&#x52A8;&#x58F0;&#x8272;&#x7684;&#x67CF;&#x7530;&#x4E0E;&#x559C;&#x5F62;&#x4E8E;&#x8272;&#x7684;&#x592A;&#x7530; Kao ni Denai Kashiwada-san to Kao ni Deru Oota-kun - 12 [Bilibili WEB-DL 1080P AVC 8bit AAC MP4][&#x7B80;&#x65E5;&#x5185;&#x5D4C;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:50ff5d15b831dc96fd628a66af1a0f4326375cf8&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>316.7 MB</td>
+                            <td><a href="/Download/20251220/50ff5d15b831dc96fd628a66af1a0f4326375cf8.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A50ff5d15b831dc96fd628a66af1a0f4326375cf8"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 19:50</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/a9558fb320551c1b78eff1e136f1c31860c95d27" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x5251;&#x7F51;3&#xB7;&#x6C88;&#x5251;&#x5FC3;&#x7684;365&#x5929; / The Man From Dao Xiang Cun - 24 (B-Global Donghua 4096x1716 HEVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:a9558fb320551c1b78eff1e136f1c31860c95d27&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>187.2 MB</td>
+                            <td><a href="/Download/20251220/a9558fb320551c1b78eff1e136f1c31860c95d27.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Aa9558fb320551c1b78eff1e136f1c31860c95d27"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 19:49</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/76fe2d1571b0d1170a8c1dd14d7b9bbe30aa0152" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x5251;&#x7F51;3&#xB7;&#x6C88;&#x5251;&#x5FC3;&#x7684;365&#x5929; / The Man From Dao Xiang Cun - 23 (B-Global Donghua 4096x1716 HEVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:76fe2d1571b0d1170a8c1dd14d7b9bbe30aa0152&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>191.8 MB</td>
+                            <td><a href="/Download/20251220/76fe2d1571b0d1170a8c1dd14d7b9bbe30aa0152.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A76fe2d1571b0d1170a8c1dd14d7b9bbe30aa0152"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 18:01</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/359" target="_blank" class="magnet-link-wrap">ANi</a>
+                            </td>
+                            <td><a href="/Home/Episode/8ef090cb206df60693213bad6775bad94c227922" target="_blank" class="magnet-link-wrap">[ANi] YAIBA Samurai Legend /  &#x771F;&#xFF65;&#x6B66;&#x58EB;&#x4F20; YAIBA - 23 [1080P][Baha][WEB-DL][AAC AVC][CHT][MP4]</a> <a data-clipboard-text="magnet:?xt=urn:btih:8ef090cb206df60693213bad6775bad94c227922&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>796.9 MB</td>
+                            <td><a href="/Download/20251220/8ef090cb206df60693213bad6775bad94c227922.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A8ef090cb206df60693213bad6775bad94c227922"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 13:22</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/1003" target="_blank" class="magnet-link-wrap">Prejudice-Studio</a>
+                            </td>
+                            <td><a href="/Home/Episode/ca7447b58440373ea81346397201d97d4ca6dbd8" target="_blank" class="magnet-link-wrap">[Prejudice-Studio] &#x6700;&#x540E;&#x53EF;&#x4EE5;&#x518D;&#x62DC;&#x6258;&#x60A8;&#x4E00;&#x4EF6;&#x4E8B;&#x5417;&#xFF1F; Saigo ni Hitotsu dake Onegai [01-13][Bilibili WEB-DL 1080P AVC 8bit AAC MP4][&#x7B80;&#x65E5;&#x5185;&#x5D4C;][S1 Fin]</a> <a data-clipboard-text="magnet:?xt=urn:btih:ca7447b58440373ea81346397201d97d4ca6dbd8&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>4.5 GB</td>
+                            <td><a href="/Download/20251220/ca7447b58440373ea81346397201d97d4ca6dbd8.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Aca7447b58440373ea81346397201d97d4ca6dbd8"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 13:20</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/1003" target="_blank" class="magnet-link-wrap">Prejudice-Studio</a>
+                            </td>
+                            <td><a href="/Home/Episode/3148fa4ba3ad4308e3f4b68dce6c4832de06468f" target="_blank" class="magnet-link-wrap">[Prejudice-Studio] &#x6700;&#x540E;&#x53EF;&#x4EE5;&#x518D;&#x62DC;&#x6258;&#x60A8;&#x4E00;&#x4EF6;&#x4E8B;&#x5417;&#xFF1F; Saigo ni Hitotsu dake Onegai - 13 [Bilibili WEB-DL 1080P AVC 8bit AAC MP4][&#x7B80;&#x65E5;&#x5185;&#x5D4C;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:3148fa4ba3ad4308e3f4b68dce6c4832de06468f&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>365.2 MB</td>
+                            <td><a href="/Download/20251220/3148fa4ba3ad4308e3f4b68dce6c4832de06468f.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A3148fa4ba3ad4308e3f4b68dce6c4832de06468f"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 13:19</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/1003" target="_blank" class="magnet-link-wrap">Prejudice-Studio</a>
+                            </td>
+                            <td><a href="/Home/Episode/4f030450e17bf8ff13612dd77470466573232135" target="_blank" class="magnet-link-wrap">[Prejudice-Studio] &#x5A11;&#x5A46;&#x6C14; Shabake - 12 [Bilibili WEB-DL 1080P AVC 8bit AAC MP4][&#x7B80;&#x65E5;&#x5185;&#x5D4C;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:4f030450e17bf8ff13612dd77470466573232135&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>322.9 MB</td>
+                            <td><a href="/Download/20251220/4f030450e17bf8ff13612dd77470466573232135.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A4f030450e17bf8ff13612dd77470466573232135"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 13:15</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/1003" target="_blank" class="magnet-link-wrap">Prejudice-Studio</a>
+                            </td>
+                            <td><a href="/Home/Episode/5a17b85db1f88db510bfcc3460cb0f23fb79db65" target="_blank" class="magnet-link-wrap">[Prejudice-Studio] &#x79BB;&#x5F00;A&#x7EA7;&#x961F;&#x4F0D;&#x7684;&#x6211;&#xFF0C;&#x548C;&#x4ECE;&#x524D;&#x7684;&#x5F1F;&#x5B50;&#x5F80;&#x8FF7;&#x5BAB;&#x6DF1;&#x5904;&#x8FC8;&#x8FDB; A-Rank Party wo Ridatsu shita Ore wa - 08 [Bilibili WEB-DL 1080P AVC 8bit AAC MP4][&#x7B80;&#x4F53;&#x5185;&#x5D4C;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:5a17b85db1f88db510bfcc3460cb0f23fb79db65&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>372.5 MB</td>
+                            <td><a href="/Download/20251220/5a17b85db1f88db510bfcc3460cb0f23fb79db65.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A5a17b85db1f88db510bfcc3460cb0f23fb79db65"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 12:00</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/e84ebdde5800156ab074368c6d557cf137f2d954" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x5251;&#x7F51;3&#xB7;&#x6C88;&#x5251;&#x5FC3;&#x7684;365&#x5929; / The Man From Dao Xiang Cun - 22 (B-Global Donghua 4096x1716 HEVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:e84ebdde5800156ab074368c6d557cf137f2d954&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>206.4 MB</td>
+                            <td><a href="/Download/20251220/e84ebdde5800156ab074368c6d557cf137f2d954.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Ae84ebdde5800156ab074368c6d557cf137f2d954"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 11:10</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/410" target="_blank" class="magnet-link-wrap">TOC</a>
+                            </td>
+                            <td><a href="/Home/Episode/a177d648c9902660dca057fc7068e4f955e99728" target="_blank" class="magnet-link-wrap">[TOC] &#x6E21;&#x540C;&#x5B66;&#x7684;&#xD7;&#xD7;&#x6FD2;&#x4E34;&#x5D29;&#x574F; [25][1080P][AVC AAC][CHT][MP4]</a> <a data-clipboard-text="magnet:?xt=urn:btih:a177d648c9902660dca057fc7068e4f955e99728&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>714.6 MB</td>
+                            <td><a href="/Download/20251220/a177d648c9902660dca057fc7068e4f955e99728.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Aa177d648c9902660dca057fc7068e4f955e99728"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 11:10</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/1007" target="_blank" class="magnet-link-wrap">TOC</a>
+                            </td>
+                            <td><a href="/Home/Episode/a177d648c9902660dca057fc7068e4f955e99728" target="_blank" class="magnet-link-wrap">[TOC] &#x6E21;&#x540C;&#x5B66;&#x7684;&#xD7;&#xD7;&#x6FD2;&#x4E34;&#x5D29;&#x574F; [25][1080P][AVC AAC][CHT][MP4]</a> <a data-clipboard-text="magnet:?xt=urn:btih:a177d648c9902660dca057fc7068e4f955e99728&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>714.6 MB</td>
+                            <td><a href="/Download/20251220/a177d648c9902660dca057fc7068e4f955e99728.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Aa177d648c9902660dca057fc7068e4f955e99728"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 10:00</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/a67c13a8ea72a42893ce0a46e85465e1098f608a" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x901A;&#x7075;&#x5983; &#x7B2C;&#x4E8C;&#x5B63; / Psychic Princess Season 2 - 24 (B-Global Donghua 1920x1080 HEVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:a67c13a8ea72a42893ce0a46e85465e1098f608a&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>437.3 MB</td>
+                            <td><a href="/Download/20251220/a67c13a8ea72a42893ce0a46e85465e1098f608a.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Aa67c13a8ea72a42893ce0a46e85465e1098f608a"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 09:55</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/0e4ccc08491971b7f49ce2e2cceaf1445cceeabc" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x5B66;&#x6821;&#x6CA1;&#x6559;&#x7684;&#x91CD;&#x8981;&#x4E8B;&#x60C5; / Gakkou de wa Oshiete Kurenai Taisetsu na Koto - 25 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:0e4ccc08491971b7f49ce2e2cceaf1445cceeabc&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>149.2 MB</td>
+                            <td><a href="/Download/20251220/0e4ccc08491971b7f49ce2e2cceaf1445cceeabc.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A0e4ccc08491971b7f49ce2e2cceaf1445cceeabc"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 09:45</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/f52cac03dbe3a55e2bd90cc07309611ae1de35a5" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x5657;&#x5C3C;&#x8F6E;&#x8F6E; &#x5657;&#x5C3C;3 / Punirunes: Puni 3 - 25 (ABEMA 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:f52cac03dbe3a55e2bd90cc07309611ae1de35a5&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>368.3 MB</td>
+                            <td><a href="/Download/20251220/f52cac03dbe3a55e2bd90cc07309611ae1de35a5.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Af52cac03dbe3a55e2bd90cc07309611ae1de35a5"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 09:01</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/359" target="_blank" class="magnet-link-wrap">ANi</a>
+                            </td>
+                            <td><a href="/Home/Episode/1d836f15afabcf0b921c31d547dcb73c396d7213" target="_blank" class="magnet-link-wrap">[ANi] Ultraman Omega /  &#x8D85;&#x4EBA;&#x529B;&#x9738;&#x738B;&#x5965;&#x7C73;&#x52A0; - 23 [1080P][Baha][WEB-DL][AAC AVC][CHT][MP4]</a> <a data-clipboard-text="magnet:?xt=urn:btih:1d836f15afabcf0b921c31d547dcb73c396d7213&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>691.5 MB</td>
+                            <td><a href="/Download/20251220/1d836f15afabcf0b921c31d547dcb73c396d7213.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A1d836f15afabcf0b921c31d547dcb73c396d7213"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 09:01</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/71891de38a8d112f6dcd1f6432f4a0d6954172f7" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x8D85;&#x4EBA;&#x529B;&#x9738;&#x738B;&#x5965;&#x7C73;&#x52A0; / Ultraman Omega - 23 (Baha 1920x1080 AVC AAC MP4)</a> <a data-clipboard-text="magnet:?xt=urn:btih:71891de38a8d112f6dcd1f6432f4a0d6954172f7&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>691.1 MB</td>
+                            <td><a href="/Download/20251220/71891de38a8d112f6dcd1f6432f4a0d6954172f7.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A71891de38a8d112f6dcd1f6432f4a0d6954172f7"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 09:00</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/392" target="_blank" class="magnet-link-wrap">Kirara Fantasia</a>
+                            </td>
+                            <td><a href="/Home/Episode/4e557cb5928f38797ecb9e0de3135c4fe11d5b18" target="_blank" class="magnet-link-wrap">[&#x9ED2;&#x30CD;&#x30BA;&#x30DF;&#x305F;&#x3061;] &#x5B97;&#x95E8;&#x91CC;&#x9664;&#x4E86;&#x6211;&#x90FD;&#x662F;&#x5367;&#x5E95; / Spy x Sect - 110 (B-Global Donghua 1920x1080 HEVC AAC MKV)</a> <a data-clipboard-text="magnet:?xt=urn:btih:4e557cb5928f38797ecb9e0de3135c4fe11d5b18&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>370.7 MB</td>
+                            <td><a href="/Download/20251220/4e557cb5928f38797ecb9e0de3135c4fe11d5b18.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A4e557cb5928f38797ecb9e0de3135c4fe11d5b18"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 04:43</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/417" target="_blank" class="magnet-link-wrap">&#x4ECA;&#x665A;&#x6708;&#x8272;&#x771F;&#x7F8E;&#x4E2A;&#x4EBA;&#x53D1;&#x5E03;</a>
+                            </td>
+                            <td><a href="/Home/Episode/6f5a284647f1e9d47e0f421cc9e711dccfb9a365" target="_blank" class="magnet-link-wrap">&#x3010;&#x4ECA;&#x665A;&#x6708;&#x8272;&#x771F;&#x7F8E;&#x3011;[&#x6E21;&#x541B;&#x7684;&#xD7;&#xD7;&#x5373;&#x5C06;&#x5D29;&#x574F; / &#x6E21;&#x304F;&#x3093;&#x306E;&#xD7;&#xD7;&#x304C;&#x5D29;&#x58CA;&#x5BF8;&#x524D; / Watari-kun no xx ga Houkai Sunzen][25][WEBrip][1080P][&#x7B80;&#x4F53;&#x5185;&#x5D4C;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:6f5a284647f1e9d47e0f421cc9e711dccfb9a365&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>309.8 MB</td>
+                            <td><a href="/Download/20251220/6f5a284647f1e9d47e0f421cc9e711dccfb9a365.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A6f5a284647f1e9d47e0f421cc9e711dccfb9a365"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 03:23</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/181" target="_blank" class="magnet-link-wrap">&#x685C;&#x90FD;&#x5B57;&#x5E55;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/d1819b8eeefdc5b951a50738bcafba6dfc843b60" target="_blank" class="magnet-link-wrap">[&#x685C;&#x90FD;&#x5B57;&#x5E55;&#x7EC4;] 3&#x5E74;Z&#x7EC4;&#x94F6;&#x516B;&#x5148;&#x751F; / Gintama&#xFF1A; 3-nen Z-gumi Ginpachi-sensei [11][1080p][&#x7B80;&#x4F53;&#x5185;&#x5D4C;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:d1819b8eeefdc5b951a50738bcafba6dfc843b60&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>643.21 MB</td>
+                            <td><a href="/Download/20251220/d1819b8eeefdc5b951a50738bcafba6dfc843b60.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Ad1819b8eeefdc5b951a50738bcafba6dfc843b60"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 03:23</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/181" target="_blank" class="magnet-link-wrap">&#x685C;&#x90FD;&#x5B57;&#x5E55;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/695668e377fec1c4ae90cc63eb0f136bbc4590d5" target="_blank" class="magnet-link-wrap">[&#x685C;&#x90FD;&#x5B57;&#x5E55;&#x7EC4;] 3&#x5E74;Z&#x73ED;&#x94F6;&#x516B;&#x8001;&#x5E08; / Gintama&#xFF1A; 3-nen Z-gumi Ginpachi-sensei [11][1080p][&#x7E41;&#x4F53;&#x5185;&#x5D4C;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:695668e377fec1c4ae90cc63eb0f136bbc4590d5&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>642.97 MB</td>
+                            <td><a href="/Download/20251220/695668e377fec1c4ae90cc63eb0f136bbc4590d5.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A695668e377fec1c4ae90cc63eb0f136bbc4590d5"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 03:21</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/181" target="_blank" class="magnet-link-wrap">&#x685C;&#x90FD;&#x5B57;&#x5E55;&#x7EC4;</a>
+                            </td>
+                            <td><a href="/Home/Episode/4937a53d1c3b7710a00eefef9002573966b8aff2" target="_blank" class="magnet-link-wrap">[&#x685C;&#x90FD;&#x5B57;&#x5E55;&#x7EC4;] 3&#x5E74;Z&#x7EC4;&#x94F6;&#x516B;&#x5148;&#x751F; / Gintama&#xFF1A; 3-nen Z-gumi Ginpachi-sensei [11][1080p][&#x7B80;&#x7E41;&#x5185;&#x5C01;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:4937a53d1c3b7710a00eefef9002573966b8aff2&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>462.28 MB</td>
+                            <td><a href="/Download/20251220/4937a53d1c3b7710a00eefef9002573966b8aff2.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3A4937a53d1c3b7710a00eefef9002573966b8aff2"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                        <tr>
+                                <td>昨天 02:32</td>
+                            <td>
+                                    <a href="/Home/PublishGroup/233" target="_blank" class="magnet-link-wrap">&#x55B5;&#x840C;&#x5976;&#x8336;&#x5C4B;</a>
+                            </td>
+                            <td><a href="/Home/Episode/df15fdf9d84c4ca6aa9a3400b640166b5ba6c150" target="_blank" class="magnet-link-wrap">&#x3010;&#x55B5;&#x840C;&#x5976;&#x8336;&#x5C4B;&#x3011;&#x2605;10&#x6708;&#x65B0;&#x756A;&#x2605;[&#x60F3;&#x5403;&#x6389;&#x6211;&#x7684;&#x975E;&#x4EBA;&#x5C11;&#x5973; / &#x5BF9;&#x6211;&#x5782;&#x6D8E;&#x6B32;&#x6EF4;&#x7684;&#x975E;&#x4EBA;&#x5C11;&#x5973; / &#x79C1;&#x3092;&#x55B0;&#x3079;&#x305F;&#x3044;&#x3001;&#x3072;&#x3068;&#x3067;&#x306A;&#x3057; / Watashi wo Tabetai, Hitodenashi][12][1080p][&#x7E41;&#x65E5;&#x53CC;&#x8BED;]</a> <a data-clipboard-text="magnet:?xt=urn:btih:df15fdf9d84c4ca6aa9a3400b640166b5ba6c150&amp;tr=http%3a%2f%2ft.nyaatracker.com%2fannounce&amp;tr=http%3a%2f%2ftracker.kamigami.org%3a2710%2fannounce&amp;tr=http%3a%2f%2fshare.camoe.cn%3a8080%2fannounce&amp;tr=http%3a%2f%2fopentracker.acgnx.se%2fannounce&amp;tr=http%3a%2f%2fanidex.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2ft.acg.rip%3a6699%2fannounce&amp;tr=https%3a%2f%2ftr.bangumi.moe%3a9696%2fannounce&amp;tr=udp%3a%2f%2ftr.bangumi.moe%3a6969%2fannounce&amp;tr=http%3a%2f%2fopen.acgtracker.com%3a1096%2fannounce&amp;tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce" class="js-magnet magnet-link">[复制磁连]</a></td>
+                            <td>451.46 MB</td>
+                            <td><a href="/Download/20251220/df15fdf9d84c4ca6aa9a3400b640166b5ba6c150.torrent"><img src="/images/download_icon_blue.svg" style="margin-left: 2px;width: 20px;height:15px;"></a></td>
+                            <td><a target="_blank" href="https://keepshare.org/rclukaia/magnet%3A%3Fxt%3Durn%3Abtih%3Adf15fdf9d84c4ca6aa9a3400b640166b5ba6c150"><i class="fa fa-play-circle" style="color: #47c1c5; margin-left: 4px; font-size: 18px;"></i></a></td>
+                        </tr>
+                </tbody>
+            </table>
+            <div class="classic-view-pagination2 pull-right" style="margin-top: -15px; "></div>
+        </div>
+    </section>
+</div>
+
+
+<script>
+$('.classic-view-pagination1').bootpag({
+    total: 4561,
+    page: '1',
+    first:'首页',
+    last:'尾页',
+    maxVisible: 10,
+    firstLastUse:true
+    }).on('page', function(event, num){
+        window.location.href = '/Home/Classic/' + num;
+});
+
+$('.classic-view-pagination2').bootpag({
+    total: 4561,
+    page: '1',
+    first:'首页',
+    last:'尾页',
+    maxVisible: 10,
+    firstLastUse:true
+    }).on('page', function(event, num){
+        window.location.href = '/Home/Classic/' + num;
+});
+</script>
+    <div class="modal modal-fullscreen fade" id="modal-nav" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:#3bc0c3;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" style="margin: auto;width:100%;">
+                    <div class="m-tool">
+                        <span class="m-close clickable"><i class="fa fa-times" aria-hidden="true" data-toggle="modal" data-target="#modal-nav"></i></span>
+                        <div class="m-tool-toolbar">
+                            <img src="/images/mikan-pic.png" style="width: 3rem;">
+                            <img src="/images/mikan-text.png" style="width: 7rem;">
+                        </div>
+                        <div class="m-tool-list">
+                            <ul>
+                                <li><a href="/" class="link">主页</a></li>
+                                <li class="m-tool-search-change"><a href="/Home/MyBangumi" class="link">订阅</a></li>
+                                <li onclick="tool.clickSearch()" class="m-tool-search-change">
+                                    <i class="fa fa-search" aria-hidden="true"></i>&nbsp;&nbsp;搜索站内
+                                </li>
+                                <li class="m-tool-search-input">
+                                    <form method="get" action="/Home/Search">
+                                        <div style="display: flex;height: 100%;">
+                                            <input type="text" class="form-control" name="searchstr" style="font-size:16px;" />
+                                            <span style="width: 5rem;" onclick="tool.resetSearch()">取消</span>
+                                        </div>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal-fullscreen fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="background-color:#edf1f2;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" style="margin: auto;width:100%;height:85vh;">
+                    <div class="m-login">
+                        <span class="m-left clickable"><i class="fa fa-angle-left" aria-hidden="true" data-toggle="modal" data-target="#modal-login"></i></span>
+
+                            <div class="m-tool-title">
+                                登陆mikan账号
+                            </div>
+                            <div style="text-align: center;margin-top: 2rem;">
+                                <img src="/images/mikan-pic.png" style="width: 6rem;">
+                            </div>
+<form action="/Account/Login?ReturnUrl=%2FHome%2FClassic" method="post">                                <div>
+                                    <input type="text" class="form-control" aria-label="..." placeholder="用户名" name="UserName">
+                                    <input type="password" class="form-control" aria-label="..." placeholder="密码" name="Password">
+                                </div>
+                                <button class="form-control" type="submit">登录</button>
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8MyNMqFNaC9JmJW13PvY-93Qv6FoO11TrXNGP9NbJg1RzjfnQ5Mn_PhOma8N2F6579cfbJJaNWaTg6pIS9gZAoO3VoI7DGqmd1Jgga4H9ur9WL02JEDK4tC8l6vHv6ddTJgvagirMkXpjM06zR0H3vk" /></form>                            <div class="m-goto-registry">
+                                <a href="/Account/Register" class="w-other-c" style="color:#3bc0c3">立即注册</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer hidden-xs hidden-sm">
+        <div id="sk-footer" class="container text-center">
+            <div>Powered by Mikan Project <a href="/Home/Contact" target="_blank">联系我们</a></div>
+            <div>Cooperate by PlaymateCat@Lisa</div>
+        </div>
+    </footer>
+
+    <script>
+        var tool = {};
+        (function () {
+
+            var inputPEl = $('.m-tool-search-input');
+            var inputEl = inputPEl.find('input');
+            var changeEl = $('.m-tool-search-change');
+            inputPEl.hide();
+            tool.clickSearch = clickSearch;
+            tool.resetSearch = resetSearch;
+
+            function clickSearch() {
+                changeEl.hide();
+                inputPEl.show();
+                inputEl.focus();
+            }
+
+            function resetSearch() {
+                changeEl.show();
+                inputPEl.hide();
+                inputEl.val('');
+            }
+        })();
+    </script>
+
+    <script>
+        var pageUtil;
+
+        (function () {
+            pageUtil = {
+                isMobile: isMobile
+            };
+
+            function isMobile() {
+                var check = false;
+                (function (a) {
+                    if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true;
+                })(navigator.userAgent || navigator.vendor || window.opera);
+                return check;
+            }
+        })();
+
+        //detect if page is mobile
+        if (pageUtil.isMobile()) {
+            document.getElementsByTagName('html')[0].style['font-size'] = window.innerWidth / 32 + 'px';
+        }
+    </script>
+</body>
+
+<!-- here put your own javascript -->
+
+
+    <script src="/js/mikan.min.js?v=hp2XCniatvW3VYVBmEIiGOAygkfp_zGxGcIwcrumw0k"></script>
+
+
+
+</html>`

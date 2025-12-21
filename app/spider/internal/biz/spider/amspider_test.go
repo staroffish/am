@@ -295,7 +295,27 @@ func TestBangumiSpider(t *testing.T) {
 	}
 
 	for _, magnet := range animeMagnets {
-		fmt.Printf("%v\n", magnet)
+		t.Logf("Name: %v, MagnetLink: %v\n", magnet.Name, magnet.MagnetLink)
 	}
 
+}
+
+func TestMikananiSpider(t *testing.T) {
+	mikananiSpider := MikananiSpider{
+		BaseSpider: BaseSpider{
+			log: log.NewHelper(util.NewTestLogger()),
+		},
+	}
+	t.Log("start")
+	animeMagnets, err := mikananiSpider.ExtractData(context.Background(), mikananiHtml)
+	if err != nil {
+		t.Fatalf("mikananiSpider.ExtractData error %v", err)
+	}
+	// if len(animeMagnets) != 30 {
+	// 	t.Fatalf("mikananiSpider.ExtractData length not equal 30 %v", len(animeMagnets))
+	// }
+	t.Log(len(animeMagnets))
+	for _, magnet := range animeMagnets {
+		t.Logf("Name: %v, MagnetLink: %v\n", magnet.Name, magnet.MagnetLink)
+	}
 }
