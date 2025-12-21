@@ -35,9 +35,9 @@ steps:
   settings:
     host: assassin-hasan.holygrail.com
     username:
-      from_secret: assassin_docker_password
-    password:
       from_secret: assassin_docker_user
+    password:
+      from_secret: assassin_docker_password
     script:
       - docker stop am-downloader am-downloadmanager am-spider-dmhy am-spider-nyaa am-spider-miobt am-spider-bangumi am-spider-mikanani
       - docker rm am-downloader am-downloadmanager am-spider-dmhy am-spider-nyaa am-spider-miobt am-spider-bangumi am-spider-mikanani
