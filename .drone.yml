@@ -30,26 +30,26 @@ steps:
       - push
       - pull_request
 
-- name: deploy_archer
+- name: deploy_assassin
   image: appleboy/drone-ssh
   settings:
-    host: archer.holygrail.com
+    host: assassin-hasan.holygrail.com
     username:
-      from_secret: archer_docker_user
+      from_secret: assassin_docker_password
     password:
-      from_secret: archer_docker_password
+      from_secret: assassin_docker_user
     script:
-      - docker stop am-downloader am-downloadmanager am-spider-dmhy am-spider-nyaa am-spider-miobt am-spider-bangumi
-      - docker rm am-downloader am-downloadmanager am-spider-dmhy am-spider-nyaa am-spider-miobt am-spider-bangumi
+      - docker stop am-downloader am-downloadmanager am-spider-dmhy am-spider-nyaa am-spider-miobt am-spider-bangumi am-spider-mikanani
+      - docker rm am-downloader am-downloadmanager am-spider-dmhy am-spider-nyaa am-spider-miobt am-spider-bangumi am-spider-mikanani
       - docker rmi registry.holygrail.com:5000/am-micro:latest
-      - docker-compose -f /store/config/docker-compose/archer/docker-compose.yml up -d am-downloader am-downloadmanager am-spider-dmhy am-spider-nyaa am-spider-miobt am-spider-bangumi
+      - docker-compose -f /store/config/docker-compose/assassin-hasan/docker-compose.yml up -d am-downloader am-downloadmanager am-spider-dmhy am-spider-nyaa am-spider-miobt am-spider-bangumi am-spider-mikanani
   when:
     branch:
       - v1.0
     event:
     - promote
     target:
-    - archer
+    - assassin
 
 trigger:
   branch:
