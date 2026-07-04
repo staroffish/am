@@ -1,89 +1,63 @@
-GOPATH:=$(shell go env GOPATH)
-VERSION=$(shell git describe --tags --always)
-API_PROTO_FILES=$(shell find api -name *.proto)
-APP_CONFIG_DIRS=$(shell find app/*/internal -maxdepth 1 -type d -name conf)
-APP_DIRS=$(shell find app -maxdepth 1 -type d ! -name app)
-APP_DIRS_CONFIG=$(APP_DIRS:%=%_config)
-APP_DIRS_BUILD=$(APP_DIRS:%=%_build)
-APP_DIRS_GENERATE=$(APP_DIRS:%=%_generate)
+.PHONY: build run clean frontend install dev docker migrate
 
-.PHONY: $(APP_DIRS)
+NAME=am
+VERSION=$(shell git describe --tags --always 2>/dev/null || echo "dev")
+LDFLAGS=-ldflags "-s -w -X main.Version=$(VERSION)"
+GO_BUILD=go build $(LDFLAGS) -o bin/$(NAME) ./cmd/server
 
-.PHONY: init
-# init env
-init:
-	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-	go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-	go install github.com/go-kratos/kratos/cmd/kratos/v2@latest
-	go install github.com/go-kratos/kratos/cmd/protoc-gen-go-http/v2@latest
-	go install github.com/go-kratos/kratos/cmd/protoc-gen-go-errors/v2@latest
-	go install github.com/google/gnostic/cmd/protoc-gen-openapi@v0.6.1
+SHELL := /bin/bash
 
-.PHONY: errors
-# generate errors code
-errors:
-	protoc --proto_path=. \
-               --proto_path=./third_party \
-               --go_out=paths=source_relative:. \
-               --go-errors_out=paths=source_relative:. \
-               $(API_PROTO_FILES)
+export PATH := /usr/local/bin/go/bin:$(HOME)/go/bin:$(PATH)
 
-.PHONY: config $(APP_DIRS_CONFIG)
-# generate internal proto
-config: $(APP_DIRS_CONFIG)
+define NVM_LOAD
+export NVM_DIR="$(HOME)/.nvm"; \
+[ -s "$$NVM_DIR/nvm.sh" ] && . "$$NVM_DIR/nvm.sh" || true
+endef
 
-$(APP_DIRS_CONFIG): 
-	make -C $(@:%_config=%) config
+install:
+	@$(NVM_LOAD) && echo "Installing frontend dependencies..." && cd web && npm install && echo "Done."
 
-.PHONY: api
-# generate api proto
-api:
-	protoc --proto_path=. \
-	       --proto_path=./third_party \
- 	       --go_out=paths=source_relative:. \
- 	       --go-http_out=paths=source_relative:. \
- 	       --go-grpc_out=paths=source_relative:. \
- 	       --openapi_out==paths=source_relative:. \
-	       $(API_PROTO_FILES)
+frontend:
+	@$(NVM_LOAD) && echo "Building frontend..." && cd web && npm run build && echo "Frontend done."
 
-.PHONY: build $(APP_DIRS_BUILD)
-# build
-build: $(APP_DIRS_BUILD)
+build: frontend
+	@echo "Building $(NAME)..."
+	$(GO_BUILD)
+	@echo "Binary: bin/$(NAME)"
 
-$(APP_DIRS_BUILD):
-	 make -C $(@:%_build=%) build
+build-server:
+	@echo "Building server only..."
+	$(GO_BUILD)
+	@echo "Binary: bin/$(NAME)"
 
-.PHONY: generate $(APP_DIRS_GENERATE)
-# generate
-generate: $(APP_DIRS_GENERATE)
+migrate:
+	@echo "Building migration tool..."
+	go build $(LDFLAGS) -o bin/migrate ./cmd/migrate
+	@echo "Binary: bin/migrate"
 
-$(APP_DIRS_GENERATE): 
-	make -C $(@:%_generate=%) generate
+run:
+	go run ./cmd/server
 
-.PHONY: all
-# generate all
-all:
-	make api;
-	make errors;
-	make config;
-	make generate;
+dev:
+	go run ./cmd/server
 
-# show help
+clean:
+	rm -rf bin/
+	rm -f am.log
+
+docker:
+	docker build -t am:$(VERSION) .
+
+.PHONY: help
 help:
-	@echo ''
-	@echo 'Usage:'
-	@echo ' make [target]'
-	@echo ''
-	@echo 'Targets:'
-	@awk '/^[a-zA-Z\-\_0-9]+:/ { \
-	helpMessage = match(lastLine, /^# (.*)/); \
-		if (helpMessage) { \
-			helpCommand = substr($$1, 0, index($$1, ":")-1); \
-			helpMessage = substr(lastLine, RSTART + 2, RLENGTH); \
-			printf "\033[36m%-22s\033[0m %s\n", helpCommand,helpMessage; \
-		} \
-	} \
-	{ lastLine = $$0 }' $(MAKEFILE_LIST)
-
-.DEFAULT_GOAL := help
-
+	@echo "Usage: make [target]"
+	@echo ""
+	@echo "Targets:"
+	@echo "  install       - Install frontend npm dependencies"
+	@echo "  frontend      - Build Vue frontend only"
+	@echo "  build         - Build frontend + Go binary"
+	@echo "  build-server  - Build Go server only (skip frontend)"
+	@echo "  migrate       - Build etcd migration tool"
+	@echo "  run           - Run server (dev mode)"
+	@echo "  clean         - Remove build artifacts"
+	@echo "  docker        - Build Docker image"

@@ -1,7 +1,0 @@
-data:
-  etcd:
-    end_points: 
-      - etcd01.holygrail.com:2379
-      - etcd02.holygrail.com:2379
-      - etcd03.holygrail.com:2379
-    dial_timeout: 5
