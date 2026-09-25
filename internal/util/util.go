@@ -64,21 +64,27 @@ func FormatSize(size int64) string {
 	}
 }
 
-func GetNowSeason() (int, int) {
-	now := time.Now()
-	m := int(now.Month())
-	y := now.Year()
+// NearestSeason 返回离 t 最近的季度月份(1/4/7/10 月)。
+// 例如 9 月取 10 月、8 月取 7 月、12 月取次年 1 月。
+func NearestSeason(t time.Time) (int, int) {
+	y, m := t.Year(), int(t.Month())
 
 	switch {
-	case m >= 1 && m <= 3:
-		return y, 1
-	case m >= 4 && m <= 6:
-		return y, 4
-	case m >= 7 && m <= 9:
-		return y, 7
-	default:
+	case m == 12: // 离次年 1 月最近
+		return y + 1, 1
+	case m >= 9: // 9,10,11 -> 10 月
 		return y, 10
+	case m >= 6: // 6,7,8 -> 7 月
+		return y, 7
+	case m >= 3: // 3,4,5 -> 4 月
+		return y, 4
+	default: // 1,2 -> 1 月
+		return y, 1
 	}
+}
+
+func GetNowSeason() (int, int) {
+	return NearestSeason(time.Now())
 }
 
 func GetNextSeason() (int, int) {

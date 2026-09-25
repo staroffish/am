@@ -112,7 +112,7 @@ func (s *DownloadManagerService) ScanAndDownload(ctx context.Context) ([]model.M
 		s.log.Printf("adding download: %s → %s, magnet: %s", task.TaskName, task.StorePath, task.MagnetLink)
 		if err := s.dlSvc.Add(ctx, task.MagnetLink, task.StorePath); err != nil {
 			msg := fmt.Sprintf("add %s ch%d failed: %v", task.TaskName, task.ChapterStart, err)
-			s.log.Printf(msg)
+			s.log.Print(msg)
 			addErrors = append(addErrors, msg)
 			continue
 		}

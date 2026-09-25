@@ -34,7 +34,13 @@ function getDefaultStorePath() {
   const now = new Date()
   let y = now.getFullYear()
   const m = now.getMonth() + 1
-  const season = m <= 3 ? 1 : m <= 6 ? 4 : m <= 9 ? 7 : 10
+  // 取离当前月份最近的季度月份(1/4/7/10)，12 月归到次年 1 月
+  let season: number
+  if (m === 12) { y += 1; season = 1 }
+  else if (m >= 9) season = 10
+  else if (m >= 6) season = 7
+  else if (m >= 3) season = 4
+  else season = 1
   const prefix = localStorage.getItem('store_dir_prefix') || '/usb/TV/'
   return `${prefix}${y}${String(season).padStart(2,'0')}/`
 }

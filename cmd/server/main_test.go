@@ -38,8 +38,8 @@ func TestSPARouting(t *testing.T) {
 	}
 
 	body := rec.Body.String()
-	if !strings.Contains(body, "AM - Anime Manager") {
-		t.Fatalf("body does not contain 'AM - Anime Manager': %s", body[:200])
+	if !strings.Contains(body, `<div id="app">`) {
+		t.Fatalf("body does not contain SPA mount point: %s", body[:200])
 	}
 	t.Log("SPA index.html served correctly")
 }

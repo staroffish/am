@@ -10,6 +10,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/staroffish/am/internal/model"
 	"github.com/staroffish/am/internal/service"
+	"github.com/staroffish/am/internal/util"
 )
 
 type TaskWithAnime struct {
@@ -94,7 +95,7 @@ func (h *TaskHandler) Create(c echo.Context) error {
 	_, err := h.animeSvc.Get(c.Request().Context(), task.AnimeID)
 	if err != nil {
 		now := time.Now()
-		y, s := getSeason(now)
+		y, s := util.NearestSeason(now)
 		ani := &model.Anime{
 			AnimeNameJp: req.Name,
 			Status:      "连载中",
@@ -165,19 +166,4 @@ func (h *TaskHandler) ScanAndDownload(c echo.Context) error {
 		tasks = []model.MatchedTask{}
 	}
 	return c.JSON(http.StatusOK, tasks)
-}
-
-func getSeason(t time.Time) (int, int) {
-	y := t.Year()
-	m := int(t.Month())
-	switch {
-	case m <= 3:
-		return y, 1
-	case m <= 6:
-		return y, 4
-	case m <= 9:
-		return y, 7
-	default:
-		return y, 10
-	}
 }
