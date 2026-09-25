@@ -3,6 +3,7 @@
     <h2>下载规则</h2>
     <div class="toolbar">
       <router-link to="/tasks/new" class="btn">+ 新增规则</router-link>
+      <button @click="showMagnetBrowser = true">从爬虫数据新增</button>
       <button @click="scanDownload">扫描并下载</button>
       <button class="small secondary" @click="refresh" style="border-radius:50%;width:28px;height:28px;padding:0;" title="刷新">↻</button>
     </div>
@@ -31,15 +32,18 @@
       </tbody>
     </table>
     <div v-else class="empty">暂无下载规则</div>
+    <MagnetBrowser v-if="showMagnetBrowser" @close="showMagnetBrowser = false; fetchTasks()" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
+import MagnetBrowser from './MagnetBrowser.vue'
 
 const tasks = ref([] as any[])
 const spiders = ref([] as any[])
+const showMagnetBrowser = ref(false)
 
 function fmtTime(t: string) {
   if (!t || t.startsWith('0001')) return ''

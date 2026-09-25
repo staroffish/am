@@ -9,6 +9,7 @@
       <label><span>动漫ID</span><input v-model="form.anime_id" /></label>
       <div class="flex gap-2">
         <button type="submit">保存</button>
+        <router-link v-if="!isNew && form.anime_id" :to="'/anime/' + form.anime_id" class="btn secondary">动漫详情</router-link>
         <router-link to="/tasks" class="btn secondary">取消</router-link>
       </div>
     </form>
@@ -45,6 +46,12 @@ function generateObjectId() {
 }
 
 onMounted(async () => {
+  // Pre-fill from query params (from magnet browser AI generation)
+  const q = route.query
+  if (q.name) form.value.name = q.name as string
+  if (q.regexp) form.value.regexp = q.regexp as string
+  if (q.anime_id) form.value.anime_id = q.anime_id as string
+
   try {
     const cfg = await axios.get('/api/v1/config')
     if (cfg.data?.default_store_dir_prefix) {
@@ -64,7 +71,9 @@ onMounted(async () => {
     })
   } else {
     form.value.store_path = getDefaultStorePath()
-    form.value.anime_id = generateObjectId()
+    if (!form.value.anime_id) {
+      form.value.anime_id = generateObjectId()
+    }
   }
 })
 

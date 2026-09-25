@@ -15,6 +15,7 @@ type Config struct {
 	Spiders      []SpiderConfig     `yaml:"spiders"`
 	AutoDownload AutoDownloadConfig `yaml:"auto_download"`
 	Anime        AnimeConfig        `yaml:"anime"`
+	AI           AIConfig           `yaml:"ai"`
 	Log          LogConfig          `yaml:"log"`
 }
 
@@ -71,6 +72,12 @@ type AutoDownloadConfig struct {
 type AnimeConfig struct {
 	DefaultStoreDirPrefix string `yaml:"default_store_dir_prefix"`
 	MainPageCount         int    `yaml:"main_page_count"`
+}
+
+type AIConfig struct {
+	BaseURL string `yaml:"base_url"`
+	APIKey  string `yaml:"api_key"`
+	Model   string `yaml:"model"`
 }
 
 func Load(path string) (*Config, error) {

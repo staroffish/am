@@ -12,6 +12,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 
+	"github.com/staroffish/am/internal/ai"
 	"github.com/staroffish/am/internal/config"
 	mycron "github.com/staroffish/am/internal/cron"
 	"github.com/staroffish/am/internal/downloader"
@@ -114,6 +115,18 @@ func main() {
 
 	dlHandler := handler.NewDownloaderHandler(dlSvc)
 	dlHandler.Register(api.Group("/downloads"))
+
+	magnetHandler := handler.NewMagnetHandler(redis, logger)
+	magnetHandler.Register(api.Group("/magnets"))
+
+	aiClient := ai.NewClient(cfg.AI, logger)
+	if aiClient != nil {
+		logger.Printf("AI client initialized: %s (model: %s)", cfg.AI.BaseURL, cfg.AI.Model)
+	} else {
+		logger.Printf("AI not configured, /api/v1/ai endpoints will return 501")
+	}
+	aiHandler := handler.NewAIHandler(aiClient, logger)
+	aiHandler.Register(api.Group("/ai"))
 
 	api.GET("/config", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]interface{}{
