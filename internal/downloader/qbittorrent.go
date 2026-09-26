@@ -14,25 +14,26 @@ import (
 
 	"github.com/staroffish/am/internal/config"
 	"github.com/staroffish/am/internal/model"
-	"github.com/staroffish/am/internal/store"
 	"github.com/staroffish/am/internal/util"
 )
 
 type QBittorrentClient struct {
-	cfg      config.QBittorrentConfig
-	redis    *store.RedisClient
-	log      *log.Logger
-	cookieMu sync.Mutex
+	cfg          config.QBittorrentConfig
+	log          *log.Logger
+	cookieMu     sync.Mutex
+	cookies      map[string]string
+	cookieExpire time.Time
 }
 
 const boundary = "---------------------------6688794727912"
-const cookieCacheKey = "downloader:qbittorrent:cookie:login"
 
-func NewQBittorrent(cfg config.QBittorrentConfig, redis *store.RedisClient, logger *log.Logger) *QBittorrentClient {
+// cookieTTL 与原来 Redis 里 cookie 的过期时间保持一致。
+const cookieTTL = 5 * time.Minute
+
+func NewQBittorrent(cfg config.QBittorrentConfig, logger *log.Logger) *QBittorrentClient {
 	return &QBittorrentClient{
-		cfg:   cfg,
-		redis: redis,
-		log:   logger,
+		cfg: cfg,
+		log: logger,
 	}
 }
 
@@ -83,7 +84,7 @@ func (c *QBittorrentClient) List(ctx context.Context) ([]model.TorrentInfo, erro
 	listURL := fmt.Sprintf("%s/api/v2/torrents/info", c.cfg.URL)
 	resp, err := util.SendHTTPRequest(ctx, http.MethodGet, listURL, "", toHTTPCookies(cookies), nil)
 	if err != nil {
-		c.redis.ClearCookies(ctx, cookieCacheKey)
+		c.clearCookies()
 		return nil, err
 	}
 	defer resp.Body.Close()
@@ -128,10 +129,10 @@ func (c *QBittorrentClient) login(ctx context.Context) (map[string]string, error
 	c.cookieMu.Lock()
 	defer c.cookieMu.Unlock()
 
-	cookies, err := c.redis.LoadCookies(ctx, cookieCacheKey)
-	if err == nil && len(cookies) > 0 {
-		return cookies, nil
+	if len(c.cookies) > 0 && time.Now().Before(c.cookieExpire) {
+		return c.cookies, nil
 	}
+	c.cookies = nil
 
 	loginURL := fmt.Sprintf("%s/api/v2/auth/login", c.cfg.URL)
 	body := fmt.Sprintf("username=%s&password=%s", c.cfg.Username, c.cfg.Password)
@@ -148,28 +149,32 @@ func (c *QBittorrentClient) login(ctx context.Context) (map[string]string, error
 	respStr := strings.TrimSpace(string(b))
 	c.log.Printf("qBittorrent login: %s", respStr)
 
-	httpCookies := resp.Cookies()
-
-	cookieMap := make(map[string]string)
-	for _, ck := range httpCookies {
-		cookieMap[ck.Name] = ck.Value
-	}
-
 	if respStr != "Ok." {
 		return nil, fmt.Errorf("qBittorrent login failed: %s", respStr)
 	}
 
-	if err := c.redis.SaveCookies(ctx, cookieCacheKey, cookieMap); err != nil {
-		c.log.Printf("save cookies error: %v", err)
+	cookieMap := make(map[string]string)
+	for _, ck := range resp.Cookies() {
+		cookieMap[ck.Name] = ck.Value
 	}
 
+	c.cookies = cookieMap
+	c.cookieExpire = time.Now().Add(cookieTTL)
+
 	return cookieMap, nil
+}
+
+func (c *QBittorrentClient) clearCookies() {
+	c.cookieMu.Lock()
+	c.cookies = nil
+	c.cookieExpire = time.Time{}
+	c.cookieMu.Unlock()
 }
 
 func (c *QBittorrentClient) noResponseHTTPRequest(ctx context.Context, method, url, body string, headers http.Header) error {
 	cookies, err := c.login(ctx)
 	if err != nil {
-		c.redis.ClearCookies(ctx, cookieCacheKey)
+		c.clearCookies()
 		c.log.Printf("qBittorrent login error: %v", err)
 		return err
 	}

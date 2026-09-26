@@ -45,24 +45,19 @@ func main() {
 	logger := log.New(logWriter, "", log.LstdFlags)
 	logger.Printf("AM starting...")
 
-	mongo, err := store.NewMongoClient(cfg.MongoDB)
+	db, err := store.NewDB(cfg.SQLite)
 	if err != nil {
-		logger.Fatalf("connect mongo: %v", err)
+		logger.Fatalf("open database: %v", err)
 	}
-	defer mongo.Close()
+	defer db.Close()
+	logger.Printf("sqlite database ready: %s", cfg.SQLite.Path)
 
-	redis, err := store.NewRedisClient(cfg.Redis)
-	if err != nil {
-		logger.Fatalf("connect redis: %v", err)
-	}
-	defer redis.Close()
-
-	qbClient := downloader.NewQBittorrent(cfg.QBittorrent, redis, logger)
+	qbClient := downloader.NewQBittorrent(cfg.QBittorrent, logger)
 
 	dlSvc := service.NewDownloaderService(qbClient, logger)
-	animeSvc := service.NewAnimeService(mongo, logger, cfg.Anime.MainPageCount)
-	dmSvc := service.NewDownloadManagerService(mongo, redis, dlSvc, animeSvc, logger, cfg.AutoDownload.MagnetTimeout)
-	spiderSvc := service.NewSpiderService(cfg.Spiders, redis, dmSvc, logger, cfg.AutoDownload.MagnetTimeout)
+	animeSvc := service.NewAnimeService(db, logger, cfg.Anime.MainPageCount)
+	dmSvc := service.NewDownloadManagerService(db, dlSvc, animeSvc, logger, cfg.AutoDownload.MagnetTimeout)
+	spiderSvc := service.NewSpiderService(cfg.Spiders, db, dmSvc, logger)
 
 	ticker := mycron.Setup(cfg, spiderSvc, cfg.AutoDownload.Enabled, logger)
 	if ticker != nil {
@@ -116,7 +111,7 @@ func main() {
 	dlHandler := handler.NewDownloaderHandler(dlSvc)
 	dlHandler.Register(api.Group("/downloads"))
 
-	magnetHandler := handler.NewMagnetHandler(redis, logger)
+	magnetHandler := handler.NewMagnetHandler(db, logger)
 	magnetHandler.Register(api.Group("/magnets"))
 
 	aiClient := ai.NewClient(cfg.AI, logger)

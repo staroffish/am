@@ -57,7 +57,7 @@ help:
 	@echo "  frontend      - Build Vue frontend only"
 	@echo "  build         - Build frontend + Go binary"
 	@echo "  build-server  - Build Go server only (skip frontend)"
-	@echo "  migrate       - Build etcd migration tool"
+	@echo "  migrate       - Build legacy(Mongo/Redis) -> SQLite import tool"
 	@echo "  run           - Run server (dev mode)"
 	@echo "  clean         - Remove build artifacts"
 	@echo "  docker        - Build Docker image"

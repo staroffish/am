@@ -9,8 +9,7 @@ import (
 
 type Config struct {
 	Server       ServerConfig       `yaml:"server"`
-	MongoDB      MongoDBConfig      `yaml:"mongodb"`
-	Redis        RedisConfig        `yaml:"redis"`
+	SQLite       SQLiteConfig       `yaml:"sqlite"`
 	QBittorrent  QBittorrentConfig  `yaml:"qbittorrent"`
 	Spiders      []SpiderConfig     `yaml:"spiders"`
 	AutoDownload AutoDownloadConfig `yaml:"auto_download"`
@@ -32,19 +31,9 @@ func (s ServerConfig) Addr() string {
 	return fmt.Sprintf("%s:%d", s.Host, s.Port)
 }
 
-type MongoDBConfig struct {
-	URI      string `yaml:"uri"`
-	Database string `yaml:"database"`
-	Username string `yaml:"username"`
-	Password string `yaml:"password"`
-}
-
-type RedisConfig struct {
-	Addr         string `yaml:"addr"`
-	Password     string `yaml:"password"`
-	DB           int    `yaml:"db"`
-	ReadTimeout  int    `yaml:"read_timeout"`
-	WriteTimeout int    `yaml:"write_timeout"`
+type SQLiteConfig struct {
+	// Path 是 SQLite 数据库文件路径。必须放在本机磁盘上，不要放在网络共享盘（NFS/CIFS）上。
+	Path string `yaml:"path"`
 }
 
 type QBittorrentConfig struct {
@@ -66,7 +55,7 @@ type AutoDownloadConfig struct {
 	Enabled        bool `yaml:"enabled"`
 	ScanAfterCrawl bool `yaml:"scan_after_crawl"`
 	MagnetTimeout  int  `yaml:"magnet_timeout"`
-	Interval        int  `yaml:"interval"`
+	Interval       int  `yaml:"interval"`
 }
 
 type AnimeConfig struct {
@@ -106,11 +95,8 @@ func (c *Config) setDefaults() {
 	if c.Server.Port == 0 {
 		c.Server.Port = 8080
 	}
-	if c.Redis.ReadTimeout == 0 {
-		c.Redis.ReadTimeout = 5
-	}
-	if c.Redis.WriteTimeout == 0 {
-		c.Redis.WriteTimeout = 5
+	if c.SQLite.Path == "" {
+		c.SQLite.Path = "data/am.db"
 	}
 	if c.Anime.MainPageCount == 0 {
 		c.Anime.MainPageCount = 50
@@ -129,14 +115,8 @@ func (c *Config) setDefaults() {
 }
 
 func (c *Config) validate() error {
-	if c.MongoDB.URI == "" {
-		return fmt.Errorf("mongodb.uri is required")
-	}
-	if c.MongoDB.Database == "" {
-		return fmt.Errorf("mongodb.database is required")
-	}
-	if c.Redis.Addr == "" {
-		return fmt.Errorf("redis.addr is required")
+	if c.SQLite.Path == "" {
+		return fmt.Errorf("sqlite.path is required")
 	}
 	if c.QBittorrent.URL == "" {
 		return fmt.Errorf("qbittorrent.url is required")

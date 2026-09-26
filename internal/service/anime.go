@@ -11,33 +11,33 @@ import (
 )
 
 type AnimeService struct {
-	mongo         *store.MongoClient
+	db            *store.DB
 	log           *log.Logger
 	mainPageCount int
 }
 
-func NewAnimeService(mongo *store.MongoClient, logger *log.Logger, mainPageCount int) *AnimeService {
-	return &AnimeService{mongo: mongo, log: logger, mainPageCount: mainPageCount}
+func NewAnimeService(db *store.DB, logger *log.Logger, mainPageCount int) *AnimeService {
+	return &AnimeService{db: db, log: logger, mainPageCount: mainPageCount}
 }
 
 func (s *AnimeService) Get(ctx context.Context, id string) (*model.Anime, error) {
-	return s.mongo.GetAnime(ctx, id)
+	return s.db.GetAnime(ctx, id)
 }
 
 func (s *AnimeService) List(ctx context.Context, keyword string, skip, limit int, asc bool) ([]model.Anime, int64, error) {
-	return s.mongo.ListAnime(ctx, keyword, skip, limit, asc)
+	return s.db.ListAnime(ctx, keyword, skip, limit, asc)
 }
 
 func (s *AnimeService) Save(ctx context.Context, ani *model.Anime) error {
-	return s.mongo.SaveAnime(ctx, ani)
+	return s.db.SaveAnime(ctx, ani)
 }
 
 func (s *AnimeService) Delete(ctx context.Context, id string) error {
-	return s.mongo.DeleteAnime(ctx, id)
+	return s.db.DeleteAnime(ctx, id)
 }
 
 func (s *AnimeService) MarkDone(ctx context.Context, id string) error {
-	return s.mongo.MarkAnimeDone(ctx, id)
+	return s.db.MarkAnimeDone(ctx, id)
 }
 
 func (s *AnimeService) ListFiles(storDir string) ([]model.AnimeFile, error) {

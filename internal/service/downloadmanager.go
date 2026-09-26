@@ -13,18 +13,16 @@ import (
 )
 
 type DownloadManagerService struct {
-	mongo         *store.MongoClient
-	redis         *store.RedisClient
+	db            *store.DB
 	dlSvc         *DownloaderService
 	animeSvc      *AnimeService
 	log           *log.Logger
 	magnetTimeout int
 }
 
-func NewDownloadManagerService(mongo *store.MongoClient, redis *store.RedisClient, dlSvc *DownloaderService, animeSvc *AnimeService, logger *log.Logger, magnetTimeout int) *DownloadManagerService {
+func NewDownloadManagerService(db *store.DB, dlSvc *DownloaderService, animeSvc *AnimeService, logger *log.Logger, magnetTimeout int) *DownloadManagerService {
 	return &DownloadManagerService{
-		mongo:         mongo,
-		redis:         redis,
+		db:            db,
 		dlSvc:         dlSvc,
 		animeSvc:      animeSvc,
 		log:           logger,
@@ -38,7 +36,7 @@ func (s *DownloadManagerService) Scan(ctx context.Context) ([]model.MatchedTask,
 		return nil, fmt.Errorf("get anime magnets: %w", err)
 	}
 
-	tasks, err := s.mongo.ListTasks(ctx)
+	tasks, err := s.db.ListTasks(ctx)
 	if err != nil {
 		return nil, fmt.Errorf("list tasks: %w", err)
 	}
@@ -116,7 +114,7 @@ func (s *DownloadManagerService) ScanAndDownload(ctx context.Context) ([]model.M
 			addErrors = append(addErrors, msg)
 			continue
 		}
-		if err := s.mongo.UpdateTaskChapter(ctx, task.TaskID, task.ChapterEnd); err != nil {
+		if err := s.db.UpdateTaskChapter(ctx, task.TaskID, task.ChapterEnd); err != nil {
 			s.log.Printf("update task chapter error: %v", err)
 		}
 		created = append(created, task)
@@ -130,58 +128,50 @@ func (s *DownloadManagerService) ScanAndDownload(ctx context.Context) ([]model.M
 }
 
 func (s *DownloadManagerService) GetAnimeMagnets(ctx context.Context) ([]model.AnimeMagnet, error) {
-	var result []model.AnimeMagnet
-	now := time.Now()
 	maxDays := s.magnetTimeout
 	if maxDays <= 0 {
 		maxDays = 30
 	}
+	cutoff := time.Now().AddDate(0, 0, -maxDays).Format("2006-01-02")
 
-	for i := 0; i <= maxDays+7; i++ {
-		date := now.AddDate(0, 0, -i).Format("2006-01-02")
-		key := fmt.Sprintf("anime:link:%s", date)
+	if n, err := s.db.DeleteMagnetsBefore(ctx, cutoff); err != nil {
+		s.log.Printf("delete expired magnets: %v", err)
+	} else if n > 0 {
+		s.log.Printf("deleted %d expired magnets (before %s)", n, cutoff)
+	}
 
-		vals, err := s.redis.HGetAll(ctx, key)
-		if err != nil {
-			continue
-		}
+	rows, err := s.db.ListMagnetsSince(ctx, cutoff)
+	if err != nil {
+		return nil, err
+	}
 
-		if i > maxDays && len(vals) > 0 {
-			s.redis.Client().Del(ctx, key)
-			s.log.Printf("deleted expired magnet key: %s", key)
-			continue
-		}
-
-		if len(vals) > 0 {
-			s.log.Printf("Redis key %s: %d magnets", key, len(vals))
-		}
-		for name, magnetLink := range vals {
-			result = append(result, model.AnimeMagnet{Name: name, MagnetLink: magnetLink})
-		}
+	result := make([]model.AnimeMagnet, 0, len(rows))
+	for _, m := range rows {
+		result = append(result, model.AnimeMagnet{Name: m.Name, MagnetLink: m.MagnetLink})
 	}
 	return result, nil
 }
 
 func (s *DownloadManagerService) AddTask(ctx context.Context, task *model.DownloadTask) error {
-	return s.mongo.CreateTask(ctx, task)
+	return s.db.CreateTask(ctx, task)
 }
 
 func (s *DownloadManagerService) UpdateTask(ctx context.Context, task *model.DownloadTask) error {
-	return s.mongo.UpdateTask(ctx, task)
+	return s.db.UpdateTask(ctx, task)
 }
 
 func (s *DownloadManagerService) DeleteTask(ctx context.Context, id int32) error {
-	return s.mongo.DeleteTask(ctx, id)
+	return s.db.DeleteTask(ctx, id)
 }
 
 func (s *DownloadManagerService) ListTasks(ctx context.Context) ([]model.DownloadTask, error) {
-	return s.mongo.ListTasks(ctx)
+	return s.db.ListTasks(ctx)
 }
 
 func (s *DownloadManagerService) GetTask(ctx context.Context, id int32) (*model.DownloadTask, error) {
-	return s.mongo.GetTask(ctx, id)
+	return s.db.GetTask(ctx, id)
 }
 
 func (s *DownloadManagerService) GetTaskByAnimeID(ctx context.Context, animeID string) (*model.DownloadTask, error) {
-	return s.mongo.GetTaskByAnimeID(ctx, animeID)
+	return s.db.GetTaskByAnimeID(ctx, animeID)
 }

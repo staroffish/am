@@ -17,35 +17,33 @@ import (
 )
 
 type SpiderService struct {
-	cfg           []config.SpiderConfig
-	redis         *store.RedisClient
-	dmSvc         *DownloadManagerService
-	log           *log.Logger
-	status        map[string]*SpiderStatus
-	statusMu      sync.RWMutex
-	magnetTimeout int
+	cfg      []config.SpiderConfig
+	db       *store.DB
+	dmSvc    *DownloadManagerService
+	log      *log.Logger
+	status   map[string]*SpiderStatus
+	statusMu sync.RWMutex
 }
 
 type SpiderStatus struct {
-	Name       string    `json:"name"`
-	Type       string    `json:"type"`
-	Running    bool      `json:"running"`
-	LastRunAt  time.Time `json:"last_run_at"`
-	LastError  string    `json:"last_error,omitempty"`
+	Name      string    `json:"name"`
+	Type      string    `json:"type"`
+	Running   bool      `json:"running"`
+	LastRunAt time.Time `json:"last_run_at"`
+	LastError string    `json:"last_error,omitempty"`
 }
 
-func NewSpiderService(cfg []config.SpiderConfig, redis *store.RedisClient, dmSvc *DownloadManagerService, logger *log.Logger, magnetTimeout int) *SpiderService {
+func NewSpiderService(cfg []config.SpiderConfig, db *store.DB, dmSvc *DownloadManagerService, logger *log.Logger) *SpiderService {
 	status := make(map[string]*SpiderStatus)
 	for _, c := range cfg {
 		status[c.Name] = &SpiderStatus{Name: c.Name, Type: c.Type}
 	}
 	return &SpiderService{
-		cfg:           cfg,
-		redis:         redis,
-		dmSvc:         dmSvc,
-		log:           logger,
-		status:        status,
-		magnetTimeout: magnetTimeout,
+		cfg:    cfg,
+		db:     db,
+		dmSvc:  dmSvc,
+		log:    logger,
+		status: status,
 	}
 }
 
@@ -143,31 +141,12 @@ func (s *SpiderService) fetch(ctx context.Context, cfg *config.SpiderConfig) (st
 
 func (s *SpiderService) saveMagnets(ctx context.Context, cfg *config.SpiderConfig, magnets []*model.AnimeMagnet) error {
 	today := time.Now().Format("2006-01-02")
-	key := fmt.Sprintf("anime:link:%s", today)
 
-	for _, m := range magnets {
-		exists, err := s.redis.HExists(ctx, key, m.Name)
-		if err != nil {
-			return err
-		}
-		if exists {
-			continue
-		}
-		if err := s.redis.HSet(ctx, key, m.Name, m.MagnetLink); err != nil {
-			return err
-		}
-	}
-
-	ttl, err := s.redis.TTL(ctx, key)
+	added, err := s.db.SaveMagnets(ctx, today, magnets)
 	if err != nil {
 		return err
 	}
-	if ttl < 0 {
-		expire := time.Duration(s.magnetTimeout*24) * time.Hour
-		if err := s.redis.Expire(ctx, key, expire); err != nil {
-			return err
-		}
-	}
+	s.log.Printf("spider %s: %d new magnets saved (date %s)", cfg.Name, added, today)
 
 	if s.dmSvc != nil {
 		go func() {

@@ -3,13 +3,15 @@ package model
 import "time"
 
 type DownloadTask struct {
-	ID            int32     `bson:"id"             json:"id"`
-	Regexp        string    `bson:"regexp"         json:"regexp"`
-	LatestChapter int32     `bson:"latest_chapter" json:"latest_chapter"`
-	AnimeID       string    `bson:"anime_id"       json:"anime_id"`
-	CreatedAt     time.Time `bson:"created_at"     json:"created_at"`
-	UpdatedAt     time.Time `bson:"updated_at"     json:"updated_at"`
+	ID            int32     `gorm:"column:id;primaryKey;autoIncrement" json:"id"`
+	Regexp        string    `gorm:"column:regexp" json:"regexp"`
+	LatestChapter int32     `gorm:"column:latest_chapter" json:"latest_chapter"`
+	AnimeID       string    `gorm:"column:anime_id" json:"anime_id"`
+	CreatedAt     time.Time `gorm:"column:created_at" json:"created_at"`
+	UpdatedAt     time.Time `gorm:"column:updated_at" json:"updated_at"`
 }
+
+func (DownloadTask) TableName() string { return "download_tasks" }
 
 type MatchedTask struct {
 	TaskID       int32  `json:"task_id"`
