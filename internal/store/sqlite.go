@@ -215,6 +215,11 @@ func (d *DB) CreateTask(ctx context.Context, task *model.DownloadTask) error {
 	return d.gorm.WithContext(ctx).Create(task).Error
 }
 
+// ImportTask 原样写入（保留 id / created_at / updated_at）且可重复执行，只给一次性数据迁移用。
+func (d *DB) ImportTask(ctx context.Context, task *model.DownloadTask) error {
+	return d.gorm.WithContext(ctx).Clauses(clause.OnConflict{UpdateAll: true}).Create(task).Error
+}
+
 // UpdateTask 只更新用户可编辑的字段，避免把 created_at 覆盖成零值。
 func (d *DB) UpdateTask(ctx context.Context, task *model.DownloadTask) error {
 	return d.gorm.WithContext(ctx).Model(&model.DownloadTask{}).Where("id = ?", task.ID).Updates(map[string]interface{}{

@@ -35,14 +35,29 @@ sqlite:
   path: "./data/am.db"   # 本机磁盘路径
 ```
 
-## 从旧的 MongoDB/Redis 版本迁移
+## 从旧的 MongoDB/Redis 版本迁移（离线）
 
-旧服务还在运行时执行（导入工具走旧服务的 HTTP API，不依赖 mongo/redis 驱动）：
+导入工具在独立子模块 `tools/legacyimport` 里，**直连 MongoDB + Redis**，
+不需要旧服务进程在跑（只要求两个库网络可达）。它不会把 mongo/redis 依赖带进主模块。
 
 ```bash
 make migrate
-bin/migrate -old http://192.168.3.5:8222 -db ./data/am.db
-# 可选：-skip-images / -skip-magnets / -dry-run
+
+# 先看看能读到多少数据，不写库
+bin/migrate -dry-run -mongo-pass 'xxx' -redis-pass 'xxx'
+
+# 正式导入（-db 指向本机磁盘）
+bin/migrate -db /本机磁盘/am.db -mongo-pass 'xxx' -redis-pass 'xxx'
 ```
 
-然后停掉旧服务，用新二进制启动即可。导入是一次性的，迁移完成后 `cmd/migrate` 可以删掉。
+密码也可以用环境变量 `MONGO_PASS` / `REDIS_PASS` 传。常用参数：
+
+| 参数 | 默认值 | 说明 |
+|---|---|---|
+| `-mongo` / `-mongo-db` / `-mongo-user` | `mongodb://mongo.holygrail.com:27017` / `am` / `am` | Mongo 连接 |
+| `-redis` / `-redis-db` | `redis.holygrail.com:6379` / `2` | Redis 连接 |
+| `-db` | `data/am.db` | 目标 SQLite 文件 |
+| `-skip-images` / `-skip-magnets` | false | 跳过封面图 / 磁力缓存 |
+| `-dry-run` | false | 只统计 |
+
+导入是幂等的，可以重复跑。迁完之后 `tools/legacyimport` 就可以删掉了。

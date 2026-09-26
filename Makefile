@@ -31,8 +31,8 @@ build-server:
 	@echo "Binary: bin/$(NAME)"
 
 migrate:
-	@echo "Building migration tool..."
-	go build $(LDFLAGS) -o bin/migrate ./cmd/migrate
+	@echo "Building offline migration tool (Mongo/Redis -> SQLite)..."
+	cd tools/legacyimport && go build -o ../../bin/migrate .
 	@echo "Binary: bin/migrate"
 
 run:
