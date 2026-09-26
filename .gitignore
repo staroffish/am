@@ -1,2 +1,11 @@
-bin
-.vscode
+bin/
+web/dist/
+web/node_modules/
+*.log
+configs/config.yaml
+
+# SQLite 数据库文件
+data/
+*.db
+*.db-wal
+*.db-shm
