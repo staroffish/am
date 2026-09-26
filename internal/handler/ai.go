@@ -173,7 +173,7 @@ func (h *AIHandler) generateRegex(ctx context.Context, japaneseName, magnetName 
 	return h.aiClient.Chat(ctx, system, user)
 }
 
-// All existing regex patterns from MongoDB, hardcoded as permanent reference for the AI.
+// 从历史库里整理出来的正则样例，作为 AI 生成正则时的固定参考。
 const hardcodedExamples = `1. ` + "`" + `\[黒ネズミたち\]  ?.*?Ryoumin 0-nin Start no Henkyou Ryoushu-sama.+- (%02d)(?:.|&amp;)?(\d{2})?(?: (?:完|END|End|Fin|FIN))?(?: ?(?:(?:v|V)\d))?.+?Baha` + "`" + `
 2. ` + "`" + `\[黒ネズミたち\]  ?.*?Kore Kaite Shine.+- (%02d)(?:.|&amp;)?(\d{2})?(?: (?:完|END|End|Fin|FIN))?(?: ?(?:(?:v|V)\d))?.+?Baha` + "`" + `
 3. ` + "`" + `\[Nix-Raws\]  ?.*?Neko to Ryuu.+S01E(%02d)(?:.|&amp;)?(\d{2})?(?: (?:完|END|End|Fin|FIN))?(?: ?(?:(?:v|V)\d))?.+?CR` + "`" + `
