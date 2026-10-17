@@ -65,7 +65,7 @@ func (h *AIHandler) GenerateRule(c echo.Context) error {
 	// === Step 2: Generate regex ===
 	h.log.Printf("AI step2 generate-regex: name=%s, magnet=%s", japaneseName, req.MagnetName)
 	start = time.Now()
-	regexStr, err := h.generateRegex(ctx, japaneseName, req.MagnetName)
+	regexStr, err := h.generateRegexWithRetry(ctx, japaneseName, req.MagnetName)
 	elapsed = time.Since(start)
 	h.log.Printf("AI step2 took %v, regex=%s", elapsed, regexStr)
 	if err != nil {
@@ -97,7 +97,7 @@ func (h *AIHandler) searchJapaneseName(ctx context.Context, magnetName, userName
 		query += fmt.Sprintf("（中文名: %s）", userName)
 	}
 
-	response, err := h.aiClient.ChatWithSearch(ctx, "", query)
+	response, err := h.aiClient.ChatWithSearch(ctx, searchNameSystemPrompt, query)
 	if err != nil {
 		return "", err
 	}
@@ -113,6 +113,25 @@ func (h *AIHandler) searchJapaneseName(ctx context.Context, magnetName, userName
 
 	return name, nil
 }
+
+// searchNameSystemPrompt 约束第一步的输出格式：必须是纯 JSON、必须用 ASCII 直引号。
+// 注意：不要用代码兜底去修全角引号，靠提示词让模型直接输出合规格式。
+const searchNameSystemPrompt = `你是动漫标题查询工具。输入是一条动漫种子（磁链）名称，你要用联网搜索查出这部动漫的官方日语原名。
+
+搜索与判断：
+- 优先查日文维基百科、bangumi.tv、萌娘百科、anidb.net
+- 忽略种子名里的集数、分辨率、字幕组、来源标签（如 Baha/CR/ABEMA/1080p/MKV/简繁内封等），只认作品名
+- 必须命中同一部作品；找不到就当作未找到，绝不猜测、绝不编造、绝不用记忆代替搜索
+
+输出（严格遵守）：
+- 只输出一个 JSON 对象，不要 markdown 代码块、不要前后缀、不要解释
+- key 固定为 name：{"name":"日语原名"}
+- 引号必须使用英文半角双引号 " ，禁止使用中文全角引号 “ ” 、禁止单引号
+- 日语原名必须来自你搜到的网页标题，原样照抄，不要加书名号、括号、罗马音、中文翻译或任何说明文字
+- 找不到任何匹配 → 只输出 {"name":""}
+
+示例（正确）：{"name":"野生のラスボスが現れた！"}
+示例（错误，禁止）：{“name”:“野生のラスボスが現れた！”}`
 
 // parseJSONName extracts "name" field from a JSON response like {"name":"xxx"}
 func parseJSONName(raw string) string {
@@ -142,7 +161,42 @@ func parseJSONName(raw string) string {
 func (h *AIHandler) generateRegex(ctx context.Context, japaneseName, magnetName string) (string, error) {
 	user := fmt.Sprintf("动漫日文名: %s\n磁链名称: %s\n\n请为这条磁链生成一个Go正则模板。只返回正则字符串，不要markdown、JSON或解释。", japaneseName, magnetName)
 
-	system := `生成一个Go fmt.Sprintf正则模板，用于匹配动漫种子磁链名称。
+	return h.aiClient.Chat(ctx, regexSystemPrompt, user)
+}
+
+// generateRegexWithRetry 处理模型偶尔返回空正文（stop_reason=max_tokens 或只回思考块）的情况：
+// 重试一次；仍失败则把"动漫名 + 原始错误"带出去，便于定位是模型问题还是 prompt 问题。
+func (h *AIHandler) generateRegexWithRetry(ctx context.Context, japaneseName, magnetName string) (string, error) {
+	const attempts = 2
+	var lastErr error
+	for i := 1; i <= attempts; i++ {
+		if i > 1 {
+			h.log.Printf("AI step2 retry %d/%d: name=%s", i-1, attempts-1, japaneseName)
+		}
+		regexStr, err := h.generateRegex(ctx, japaneseName, magnetName)
+		if err == nil && strings.TrimSpace(regexStr) != "" {
+			return strings.TrimSpace(regexStr), nil
+		}
+		if err != nil {
+			lastErr = err
+		} else {
+			lastErr = fmt.Errorf("empty regex returned")
+		}
+		if ctx.Err() != nil {
+			break
+		}
+	}
+	return "", fmt.Errorf("动漫「%s」的正则生成失败（已重试 %d 次）: %w", japaneseName, attempts-1, lastErr)
+}
+
+// regexSystemPrompt 是第二步的提示词。除原有风格约束外，显式要求"必须输出非空正则"，
+// 避免模型把整个输出预算花在思考上、正文留空。
+const regexSystemPrompt = `生成一个Go fmt.Sprintf正则模板，用于匹配动漫种子磁链名称。
+
+输出格式（最重要，违反即作废）：
+- 必须输出且只输出一行正则字符串本身，不能为空
+- 禁止 markdown、代码块、反引号、JSON、引号包裹、前后缀说明、任何解释文字
+- 无论分析过程多长，最后都必须输出这一行正则
 
 格式说明：%d（或%02d、%03d）会在扫描时被替换为集数。
 
@@ -169,9 +223,6 @@ func (h *AIHandler) generateRegex(ctx context.Context, japaneseName, magnetName 
 - 版本和来源标签都是硬匹配，不能模糊
 
 只返回正则字符串。不要任何markdown、JSON、代码块、解释。`
-
-	return h.aiClient.Chat(ctx, system, user)
-}
 
 // 从历史库里整理出来的正则样例，作为 AI 生成正则时的固定参考。
 const hardcodedExamples = `1. ` + "`" + `\[黒ネズミたち\]  ?.*?Ryoumin 0-nin Start no Henkyou Ryoushu-sama.+- (%02d)(?:.|&amp;)?(\d{2})?(?: (?:完|END|End|Fin|FIN))?(?: ?(?:(?:v|V)\d))?.+?Baha` + "`" + `
