@@ -67,6 +67,9 @@ type AIConfig struct {
 	BaseURL string `yaml:"base_url"`
 	APIKey  string `yaml:"api_key"`
 	Model   string `yaml:"model"`
+	// MaxTokens 是单次请求的最大输出 token 数（0 表示用默认值）。
+	// 开启思考（reasoning）的模型会先消耗输出预算再产出正文，太小会导致正文为空。
+	MaxTokens int `yaml:"max_tokens"`
 }
 
 func Load(path string) (*Config, error) {
