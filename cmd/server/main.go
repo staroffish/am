@@ -123,6 +123,10 @@ func main() {
 	aiHandler := handler.NewAIHandler(aiClient, logger)
 	aiHandler.Register(api.Group("/ai"))
 
+	clashRelaySvc := service.NewClashRelayService(db, logger)
+	clashRelayHandler := handler.NewClashRelayHandler(clashRelaySvc, logger)
+	clashRelayHandler.Register(api.Group("/clash-relay"))
+
 	api.GET("/config", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]interface{}{
 			"default_store_dir_prefix": cfg.Anime.DefaultStoreDirPrefix,

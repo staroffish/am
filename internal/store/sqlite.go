@@ -58,7 +58,13 @@ func NewDB(cfg config.SQLiteConfig) (*DB, error) {
 	sqlDB.SetMaxIdleConns(1)
 	sqlDB.SetConnMaxLifetime(0)
 
-	if err := gdb.AutoMigrate(&model.Anime{}, &model.DownloadTask{}, &model.Magnet{}); err != nil {
+	if err := gdb.AutoMigrate(
+		&model.Anime{},
+		&model.DownloadTask{},
+		&model.Magnet{},
+		&model.ClashRelaySettings{},
+		&model.ClashRelayVersion{},
+	); err != nil {
 		return nil, fmt.Errorf("auto migrate: %w", err)
 	}
 

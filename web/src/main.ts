@@ -22,6 +22,7 @@ const routes = [
   { path: '/tasks/new', component: () => import('./views/TaskEdit.vue') },
   { path: '/tasks/:id/edit', component: () => import('./views/TaskEdit.vue') },
   { path: '/downloads', component: () => import('./views/Downloads.vue') },
+  { path: '/clash-relay', component: () => import('./views/ClashRelay.vue') },
 ]
 
 const router = createRouter({
