@@ -1,11 +1,12 @@
 <template>
   <div id="am-app">
     <header class="app-header">
-      <h1 class="app-title">动漫管理</h1>
+      <h1 class="app-title">飞鱼运维平台</h1>
       <nav class="app-nav">
         <router-link to="/">收藏</router-link>
         <router-link to="/tasks">下载规则</router-link>
         <router-link to="/downloads">下载任务</router-link>
+        <router-link to="/clash-relay">Clash 中转</router-link>
       </nav>
     </header>
     <main class="app-main">
