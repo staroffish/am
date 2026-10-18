@@ -14,3 +14,9 @@ data/
 tests/node_modules/
 tests/test-results/
 tests/playwright-report/
+
+# 本地工具与构建残留
+.claude/
+.vscode/
+/server
+/opencode_session
